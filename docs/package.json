@@ -2,6 +2,7 @@
   "name": "docs",
   "version": "0.1.0",
   "private": true,
+  "description": "This directory represents the documentation website for the component library",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

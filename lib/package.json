@@ -1,11 +1,15 @@
 {
-  "name": "devrosui",
+  "name": "@devrosui/react",
   "version": "1.0.0",
-  "description": "This repo is a React component library. Its main purpose is to create consistency in my products by abstracting away frequently used UI-components and style them according to my taste.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "This directory contains the exportable UI-components.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "author": "Devros",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
 }
