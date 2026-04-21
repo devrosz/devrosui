@@ -1,0 +1,15 @@
+{
+  "name": "@devrosui/react",
+  "version": "1.0.0",
+  "description": "This directory contains the exportable UI-components.",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "author": "Devros",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}
