@@ -5,7 +5,7 @@ import { motion } from "motion/react"
 import Link from "next/link"
 import ToggleLink from "./ToggleLink"
 import Logo from "../logo/Logo"
-import Menu from "@/components/menu/Menu"
+import Menu from "../menu/Menu"
 import LinkButton from "../linkbutton/LinkButton"
 import ThemeToggle from "../themetoggle/ThemeToggle"
 import { IoLogoGithub } from "react-icons/io"; 
@@ -34,7 +34,7 @@ export default function Navbar() {
                         </nav>
                     </div>
                     <div className="nav-btns">
-                        <LinkButton type="secondary" path="https://github.com/devrosz">
+                        <LinkButton type="secondary" path="https://github.com/devrosz" target="_blank">
                             <IoLogoGithub style={{height: 25, width: 25}} />
                             Github
                         </LinkButton>

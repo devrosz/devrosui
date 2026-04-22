@@ -1,8 +1,11 @@
+import Hero from "@/components/pages/home/hero/Hero"
+import "./page.css"
+
 
 export default function Home() {
   return (
-      <main>
-        <h1>React component libary</h1>
+      <main className="home-page">
+        <Hero />
       </main>
   )
 }

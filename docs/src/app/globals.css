@@ -56,20 +56,12 @@ body {
 }
 
 main {
-  margin: 120px 0 5px 0;
+  margin: 180px auto 5px auto;
   min-height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-}
-
-main > * {
-  scroll-margin-top: 10rem;
-  width: 80%;
-  margin: 5rem auto;
-  max-width: 1800px;
 }
 
 a {
@@ -99,6 +91,14 @@ h3 {
 
 h4 {
   font-size: 24px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 12px;
 }
 
 p {

@@ -16,7 +16,7 @@ type LinkButtonProps = {
 export default function LinkButton({
     type="primary",
     path="#",
-    target="_blank", 
+    target="_self", 
     children
 }: LinkButtonProps): JSX.Element {
     return (
