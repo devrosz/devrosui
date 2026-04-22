@@ -1,7 +1,7 @@
 .home-page {
-    max-width: 1400px;
+    max-width: 1000px;
 }
 
 .home-page > * {
-    margin: 5rem auto;
+    margin: 10rem auto;
 }
