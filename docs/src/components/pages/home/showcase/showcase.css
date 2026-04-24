@@ -1,0 +1,47 @@
+.showcase-header {
+    text-align: center;
+}
+
+.showcase-header h2 {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.showcase-header p {
+    max-width: 40%;
+    margin: 0 auto;
+}
+
+.showcase-content {
+    max-width: 70%;
+    margin: 0 auto;
+}
+
+.demo-container, .demo-container-flipped {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 5rem auto;
+}
+
+.demo-container h2, .demo-container-flipped h2 {
+    text-transform: capitalize;
+    text-align: left;
+}
+
+.demo-container-flipped {
+    flex-direction: row-reverse;
+}
+
+.showcase-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 800px) {
+    .showcase-content {
+        max-width: 90%;
+    }
+}
