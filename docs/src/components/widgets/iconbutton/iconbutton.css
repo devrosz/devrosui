@@ -1,0 +1,20 @@
+@import "@/app/globals.css";
+
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+}
+
+.icon-button > * {
+    font-size: 1rem;
+}
+
+.icon-button:hover {
+    background-color: var(--button-secondary-hover);
+}

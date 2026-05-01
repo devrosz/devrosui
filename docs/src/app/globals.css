@@ -103,9 +103,6 @@ p {
 }
 
 button {
-  border: none;
-  border-radius: 2rem;
-  padding: 0.75rem 1rem;
   font-weight: 600;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-display: swap;

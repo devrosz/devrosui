@@ -1,0 +1,25 @@
+@import "@/app/globals.css";
+
+.codeblock-header h5 {
+    text-decoration: underline 1px solid var(--text-primary);
+    text-underline-offset: 5px;
+}
+
+.codeblock-content {
+    position: relative;
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--button-secondary-border);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    margin: 1rem auto;
+}
+
+.codeblock-error {
+    text-align: center;
+}
+
+.codeblock-icon {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+}
