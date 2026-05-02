@@ -1,0 +1,18 @@
+@import "@/app/globals.css";
+
+.themetoggle-button {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.themetoggle-button:hover {
+    background-color: var(--button-secondary-hover);
+}
+
+.themetoggle-icon {
+    font-size: 2rem;
+}

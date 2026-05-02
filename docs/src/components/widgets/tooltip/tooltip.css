@@ -20,5 +20,13 @@
 }
 
 .bottom {
-    transform: translateY(calc(100% - 8px));
+    transform: translateY(calc(100% + 8px));
+}
+
+.right {
+    transform: translateX(calc(100% + 8px));
+}
+
+.left {
+    transform: translateX(calc(-100% - 8px));
 }

@@ -1,23 +1,16 @@
 import CodeBlock from "@/components/widgets/codeblock/CodeBlock"
+import OutputContainer from "@/components/widgets/outputcontainer/OutputContainer"
+import "./componentinfo.css"
 
 export default function ComponentInfo() {
 
-    const codeDemo: string =
-    `
-        export default function CodeBlock({language, children}: CodeBlockProps) {
-            return (
-                <div className="codeblock">
-                    <div className="codeblock-header">
-                       <h5>{language}</h5> 
-                    </div>
-                    <div className="codeblock-content">
-                        {children}
-                    </div>
-                    <BiCopy className="copy-icon" />
-                </div>
-            )
-        }
-    `
+    const codeDemo1: string = '<Accordion border={true} toggleIcon="plus" />'
+    const codeDemo2: string = '<Accordion border={false} toggleIcon="chevron" />'
+
+    const placeholder = () => (
+        <p>TBA</p>
+    )
+
     return (
         <section>
             <div className="component-info-header">
@@ -27,7 +20,16 @@ export default function ComponentInfo() {
                     are customizable to match its style with your taste.
                 </p>
             </div>
-            <CodeBlock language="JSX" code={codeDemo} />
+            <div className="component-info-content">
+                <div>
+                    <CodeBlock language="JSX" code={codeDemo1} />
+                    <OutputContainer components={[placeholder()]} height="10rem" />
+                </div>
+                <div>
+                    <CodeBlock language="JSX" code={codeDemo2} />
+                    <OutputContainer components={[placeholder()]} height="10rem" />
+                </div>
+            </div>
         </section>
     )
 }

@@ -1,11 +1,9 @@
 "use client"
 
 import React from "react"
-import { BiCopy } from "react-icons/bi"
-import { FaCheck } from "react-icons/fa6"
 import { codeToHtml } from "shiki"
-import IconButton from "../iconbutton/IconButton"
 import "./codeblock.css"
+import CopyButton from "../copybutton/CopyButton"
 
 type CodeBlockProps = {
     language: string,
@@ -14,7 +12,6 @@ type CodeBlockProps = {
     width?: string
 }
 
-
 // Renders a code display block where highlighted code can be displayed and copied.
 // language: programming language to be displayed.
 // code: code to be displayed
@@ -22,18 +19,20 @@ type CodeBlockProps = {
 // width: width of the codeblock container.
 export default function CodeBlock({language, code, height="100%", width="100%"}: CodeBlockProps) {
 
-    const [error, setError] = React.useState<string>("")
-    const [isCopied, setIsCopied] = React.useState<boolean>(false)
+    const [error, setError] = React.useState<string>("test")
     const [highlightedCode, setHighlightedCode] = React.useState<string>("")
+    const documentClassList = document?.documentElement.classList || null
+    const theme = documentClassList?.contains("light") ? "light" : "dark"
 
+    console.log(theme)
     React.useEffect(() => {
         let mounted: boolean = true
         async function highlightCode() {
             try {
                 setError("")
                 const html = await codeToHtml(code, {
-                    lang: language,
-                    theme: "vitesse-dark"
+                    lang: language.trim().toLowerCase(),
+                    theme: theme && theme === "light" ? "vitesse-light" : "vitesse-black"
                 })
 
                 if (mounted) {
@@ -54,15 +53,7 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
         mounted = false
        }
 
-    }, [code, language])
-
-    async function copyCode() {
-        setIsCopied(prev => !prev)
-        await navigator.clipboard.writeText(code)
-        setTimeout(() => {
-            setIsCopied(prev => !prev)
-        }, 1000)
-    }
+    }, [code, language, theme])
 
     return (
         <div className="codeblock">
@@ -75,15 +66,12 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
                         <p>{error}</p>
                     </div>
                     ) :
-                    <code>{highlightedCode}</code>
+                    <div 
+                        dangerouslySetInnerHTML={{__html: highlightedCode}}
+                        className="highlighted-code"
+                    ></div>
                 }
-                 <IconButton 
-                    icon={isCopied ? <FaCheck /> : <BiCopy />}
-                    tip={isCopied ? "" : "Copy"}
-                    className="codeblock-icon"
-                    disabled={isCopied}
-                    handler={copyCode} 
-                />
+                <CopyButton code={code} />
             </div>
         </div>
     )

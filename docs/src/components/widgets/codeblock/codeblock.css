@@ -9,12 +9,17 @@
     position: relative;
     background-color: var(--background-tertiary);
     border: 1px solid var(--button-secondary-border);
-    padding: 0.5rem 1rem;
     border-radius: 1rem;
     margin: 1rem auto;
 }
 
+.highlighted-code > * {
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
 .codeblock-error {
+    padding: 0.5rem 1rem;
     text-align: center;
 }
 
@@ -23,3 +28,4 @@
     top: 9px;
     right: 15px;
 }
+    

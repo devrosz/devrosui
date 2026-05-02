@@ -1,3 +1,25 @@
 .component-info-header {
     text-align: center;
 }
+
+.component-info-header p {
+    margin: 0 auto;
+    max-width: 40%;
+}
+
+.component-info-content {
+    margin: 3rem auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 48%);
+    gap: 5%;
+}
+
+@media (max-width: 900px) {
+    .component-info-content {
+        display: block;
+    }
+    .component-info-content > * {
+        margin: 1rem auto;
+    }
+}
