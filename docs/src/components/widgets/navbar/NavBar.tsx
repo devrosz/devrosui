@@ -9,11 +9,13 @@ import Menu from "../menu/Menu"
 import LinkButton from "../linkbutton/LinkButton"
 import ThemeToggle from "../themetoggle/ThemeToggle"
 import { IoLogoGithub } from "react-icons/io"; 
+import { useTheme } from "@/utils/ThemeProvider"
 import "./navbar.css"
 
 export default function Navbar() {
 
     const [open, setOpen] = React.useState<boolean>(false)
+    const themeContext = useTheme()
 
     function handleToggle() {
         setOpen(prevOpen => !prevOpen)
@@ -39,7 +41,7 @@ export default function Navbar() {
                             Github
                         </LinkButton>
                         <div className="divider"></div>
-                        <ThemeToggle />
+                        <ThemeToggle toggleFunction={themeContext.toggleTheme} />
                     </div>
                     <div className="toggle-menu-btn" onClick={handleToggle}>
                         <Menu open={open} handleToggle={handleToggle} />

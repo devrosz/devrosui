@@ -2,8 +2,9 @@
 
 import React from "react"
 import { codeToHtml } from "shiki"
-import "./codeblock.css"
 import CopyButton from "../copybutton/CopyButton"
+import { useTheme } from "@/utils/ThemeProvider"
+import "./codeblock.css"
 
 type CodeBlockProps = {
     language: string,
@@ -19,12 +20,22 @@ type CodeBlockProps = {
 // width: width of the codeblock container.
 export default function CodeBlock({language, code, height="100%", width="100%"}: CodeBlockProps) {
 
-    const [error, setError] = React.useState<string>("test")
+    const [error, setError] = React.useState<string>("")
+    const themeContext = useTheme()
     const [highlightedCode, setHighlightedCode] = React.useState<string>("")
-    const documentClassList = document?.documentElement.classList || null
-    const theme = documentClassList?.contains("light") ? "light" : "dark"
+    // const [theme, setTheme] = React.useState<"dark" | "light">("dark")
 
-    console.log(theme)
+    // // Listen to theme toggle.
+    // React.useEffect(() => {
+    //     if (typeof window !== "undefined") {
+    //         const documentClassList = document?.documentElement.classList || null
+    //         setTheme(documentClassList?.contains("light") ? "light" : "dark")
+    //     }
+    // }, [])
+
+    // Highlight code and style the background in contrast to theme of the app.
+    // I.e. if app is in dark mode -> highlighted code background should also be dark.
+    // Vica versa.
     React.useEffect(() => {
         let mounted: boolean = true
         async function highlightCode() {
@@ -32,7 +43,9 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
                 setError("")
                 const html = await codeToHtml(code, {
                     lang: language.trim().toLowerCase(),
-                    theme: theme && theme === "light" ? "vitesse-light" : "vitesse-black"
+                    theme: themeContext.theme === "light" 
+                    ? "vitesse-light" 
+                    : "vitesse-black"
                 })
 
                 if (mounted) {
@@ -53,7 +66,7 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
         mounted = false
        }
 
-    }, [code, language, theme])
+    }, [code, language, themeContext.theme])
 
     return (
         <div className="codeblock">
