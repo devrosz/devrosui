@@ -12,22 +12,40 @@ export default function ComponentInfo() {
     )
 
     return (
-        <section>
-            <div className="component-info-header">
-                <h2>Try out different styles</h2>
-                <p>
-                    We have various components in our library from which some of them
-                    are customizable to match its style with your taste.
-                </p>
-            </div>
-            <div className="component-info-content">
-                <div>
-                    <CodeBlock language="JSX" code={codeDemo1} />
-                    <OutputContainer components={[placeholder()]} height="10rem" />
+        <section className="component-info">
+            <div className="component-style-info">
+                <div className="component-info-header">
+                    <h2>Try out different styles</h2>
+                    <p>
+                        We have various components in our library from which some of them
+                        are customizable to match its style with your taste.
+                    </p>
                 </div>
-                <div>
-                    <CodeBlock language="JSX" code={codeDemo2} />
-                    <OutputContainer components={[placeholder()]} height="10rem" />
+                <div className="component-style-info-content">
+                    <div>
+                        <CodeBlock langHighlight="JSX" code={codeDemo1} />
+                        <OutputContainer components={[placeholder()]} height="10rem" />
+                    </div>
+                    <div>
+                        <CodeBlock langHighlight="JSX" code={codeDemo2} />
+                        <OutputContainer components={[placeholder()]} height="10rem" />
+                    </div>
+                </div>
+            </div>
+            <div className="component-theme-info">
+                <div className="component-info-header">
+                    <h2>All components are lightmode compatible</h2>
+                    <p>
+                        When the theme of an app gets toggled to light mode, the components
+                        automatically change color to match the app's theme. 
+                    </p>
+                </div> 
+                <div className="component-theme-info-content">
+                    <OutputContainer 
+                        components={[placeholder(), placeholder(), placeholder()]}
+                        addThemeToggle={true} 
+                        height="20rem"
+                    />
                 </div>
             </div>
         </section>

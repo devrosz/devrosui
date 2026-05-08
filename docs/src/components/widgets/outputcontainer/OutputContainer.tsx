@@ -1,5 +1,8 @@
+"use client"
+
 import { JSX } from "react"
 import ThemeToggle from "../themetoggle/ThemeToggle"
+import { useTheme } from "@/utils/ThemeProvider"
 import "./outputcontainer.css"
 
 type OutputContainerProps = {
@@ -18,18 +21,21 @@ export default function OutputContainer({
     height="fit-content",
     addThemeToggle=false
 }: OutputContainerProps) {
+    const themeContext = useTheme()
     return (
         <div className="output-container" style={{width: width, height: height}} >
             {addThemeToggle ? (
                 <div className="output-container-header">
-                    <ThemeToggle />
+                    <ThemeToggle toggleFunction={themeContext.toggleTheme} />
                 </div>
             ) : null}
-            {components.map((component, i) => (
-                <div key={"component-" + i}>
-                    {component}
-                </div>
-            ))}
+            <div className="output-container-content">
+                {components.map((component, i) => (
+                    <div key={"component-" + i}>
+                        {component}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

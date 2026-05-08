@@ -1,12 +1,17 @@
 @import "@/app/globals.css";
 
 .output-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 1rem;
     border: 1px solid var(--button-secondary-border);
     border-radius: 2rem;
+}
+
+.output-container-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
 }
 
 .output-container-header {

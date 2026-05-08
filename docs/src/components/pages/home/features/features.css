@@ -11,6 +11,7 @@
 .feature-container {
     text-align: center;
     margin: 1rem auto;
+    width: 20rem;
 }
 
 .feature-icon {
@@ -35,7 +36,7 @@ html.light .feature-icon {
 
 .feature-container h6 {
     font-weight: normal;
-    max-width: 75%;
+    max-width: 65%;
     margin: 0 auto;
 }
 

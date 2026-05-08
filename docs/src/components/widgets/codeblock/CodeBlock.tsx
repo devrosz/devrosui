@@ -7,31 +7,26 @@ import { useTheme } from "@/utils/ThemeProvider"
 import "./codeblock.css"
 
 type CodeBlockProps = {
-    language: string,
+    langHighlight: string,
+    langDisplay?: string,
     code: string,
     height?: string,
     width?: string
 }
 
 // Renders a code display block where highlighted code can be displayed and copied.
-// language: programming language to be displayed.
+// langHighlight: programming language to be highlighted.
+// langDisplay: programming language to be displayed above code block.
 // code: code to be displayed
 // heigth: height of the codeblock container.
 // width: width of the codeblock container.
-export default function CodeBlock({language, code, height="100%", width="100%"}: CodeBlockProps) {
+export default function CodeBlock({
+    langHighlight, langDisplay=langHighlight, code, height="100%", width="100%"
+}: CodeBlockProps) {
 
     const [error, setError] = React.useState<string>("")
     const themeContext = useTheme()
     const [highlightedCode, setHighlightedCode] = React.useState<string>("")
-    // const [theme, setTheme] = React.useState<"dark" | "light">("dark")
-
-    // // Listen to theme toggle.
-    // React.useEffect(() => {
-    //     if (typeof window !== "undefined") {
-    //         const documentClassList = document?.documentElement.classList || null
-    //         setTheme(documentClassList?.contains("light") ? "light" : "dark")
-    //     }
-    // }, [])
 
     // Highlight code and style the background in contrast to theme of the app.
     // I.e. if app is in dark mode -> highlighted code background should also be dark.
@@ -42,7 +37,7 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
             try {
                 setError("")
                 const html = await codeToHtml(code, {
-                    lang: language.trim().toLowerCase(),
+                    lang: langHighlight.trim().toLowerCase(),
                     theme: themeContext.theme === "light" 
                     ? "vitesse-light" 
                     : "vitesse-black"
@@ -66,12 +61,12 @@ export default function CodeBlock({language, code, height="100%", width="100%"}:
         mounted = false
        }
 
-    }, [code, language, themeContext.theme])
+    }, [code, langHighlight, themeContext.theme])
 
     return (
         <div className="codeblock">
             <div className="codeblock-header">
-               <h5>{language}</h5> 
+               <h5>{langDisplay}</h5> 
             </div>
             <div className="codeblock-content" style={{height: height, width: width}}>
                 {error ? (

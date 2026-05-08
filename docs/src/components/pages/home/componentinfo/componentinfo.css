@@ -2,12 +2,17 @@
     text-align: center;
 }
 
+.component-info-header h2 {
+    margin: 1rem auto;
+    max-width: 50%;
+}
+
 .component-info-header p {
     margin: 0 auto;
     max-width: 40%;
 }
 
-.component-info-content {
+.component-style-info-content {
     margin: 3rem auto;
     width: 100%;
     display: grid;
@@ -15,11 +20,19 @@
     gap: 5%;
 }
 
+.component-theme-info {
+    margin-top: 10rem;
+}
+
+.component-theme-info-content {
+    margin-top: 3rem;
+}
+
 @media (max-width: 900px) {
-    .component-info-content {
+    .component-style-info-content {
         display: block;
     }
-    .component-info-content > * {
+    .component-style-info-content > * {
         margin: 1rem auto;
     }
 }
