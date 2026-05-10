@@ -40,8 +40,20 @@
     justify-content: center;
 }
 
+@media (max-width: 900px) {
+    .showcase-header h2, .showcase-header p {
+        max-width: 70%;
+    }
+}
+
 @media (max-width: 800px) {
     .showcase-content {
         max-width: 90%;
+    }
+}
+
+@media (max-width: 450px) {
+    .showcase-header h2, .showcase-header p {
+        max-width: 80%;
     }
 }

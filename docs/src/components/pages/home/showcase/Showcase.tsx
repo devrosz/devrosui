@@ -49,7 +49,7 @@ export default function Showcase() {
                     const className: string = i % 2 == 0 ? "demo-container" : "demo-container-flipped"
                     return (
                         <div className={className} key={"showcase-" + i}>
-                            <OutputContainer components={[component]} width="25rem" height="25rem" />
+                            <OutputContainer components={[component]} width="22rem" height="22rem" />
                             <div className="component-header">
                                 <div>
                                     <h2>{name}</h2>

@@ -7,8 +7,7 @@ export default function Hero() {
             <div className="tag">
                 <h6>React component library</h6>
             </div>
-            <h1>Fast and easy modern looking</h1>
-            <h1>UI components</h1>
+            <h1>Fast and easy modern looking UI components</h1>
             <p>
                 Lorem ipsum dolor sit amet. 
                 Aut laborum nisi quo sequi laboriosam et odit omnis. 

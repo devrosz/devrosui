@@ -35,4 +35,13 @@
     .component-style-info-content > * {
         margin: 1rem auto;
     }
+    .component-info-header h2, .component-info-header p {
+        max-width: 70%;
+    }
+}
+
+@media (max-width: 450px) {
+    .component-info-header h2, .component-info-header p {
+        max-width: 80%;
+    }
 }

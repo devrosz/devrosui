@@ -28,4 +28,9 @@
     top: 9px;
     right: 15px;
 }
-    
+
+@media (max-width: 450px) {
+    .highlighted-code {
+        overflow-x: scroll;
+    }
+}
