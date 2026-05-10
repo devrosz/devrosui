@@ -1,0 +1,45 @@
+@import "@/app/globals.css";
+
+.link-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 2rem;
+    padding: 0.5rem 0.75rem;
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.primary {
+    background-color: var(--background-secondary);
+    color: var(--text-secondary)
+}
+
+.primary:hover {
+    background-color: var(--button-primary-hover);
+    color: var(--text-secondary);
+}
+
+.secondary {
+    border: 1px solid var(--button-secondary-border);
+    background-color: transparent;
+    color: var(--text-primary)
+}
+
+.secondary:hover {
+    background-color: var(--button-secondary-hover);
+}
+
+.tertiary {
+    color: var(--text-primary);
+    background-color: var(--background-tertiary);
+}
+
+.tertiary:hover {
+    background-color: var(--button-tertiary-hover);
+}

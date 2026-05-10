@@ -1,0 +1,47 @@
+@import "@/app/globals.css";
+
+.features {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.feature-container {
+    text-align: center;
+    margin: 1rem auto;
+    width: 20rem;
+}
+
+.feature-icon {
+    border: 1px solid var(--button-secondary-border);
+    width: fit-content;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
+html.light .feature-icon {
+    box-shadow: 1px 32px 36px -15px rgba(212,212,212,0.68);
+    -webkit-box-shadow: 1px 32px 36px -15px rgba(212,212,212,0.68);
+    -moz-box-shadow: 1px 32px 36px -15px rgba(212,212,212,0.68);
+}
+
+.feature-container span {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.feature-container h6 {
+    font-weight: normal;
+    max-width: 65%;
+    margin: 0 auto;
+}
+
+@media (max-width: 875px) {
+    .features {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,21 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.footer-inner {
+    display: flex;
+    gap: 8px;
+}
+
+footer p {
+    text-transform: capitalize;
+}
+
+.socials-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

@@ -1,0 +1,117 @@
+@import "@/app/globals.css";
+
+header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    max-width: 2200px;
+    padding: 12px 0;
+    background: var(--background-primary);
+}
+
+.nav-inner {
+    transition: ease-in-out 1.0s;
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navlink {
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 32px;
+}
+
+.navlink:hover {
+    color: var(--text-primary);
+}
+
+.toggle-menu li {
+    color: var(--text-tertiary);
+    margin: 1rem 0;
+    font-size: 14px;
+}
+
+.nav-btns {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.divider {
+    border-left: 2px solid var(--button-secondary-border);
+    width: 2px;
+    height: 30px;
+}
+
+/* Represents the open state of the mobile nav. */
+.toggle-open {
+    transition: ease-in-out 0.5s;
+    background-color: var(--background-primary);
+}
+
+.toggle-menu-btn {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    display: none;
+}
+
+.toggle-menu  {
+    display: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 90%;
+    text-align: left;
+    list-style: none;
+}
+
+@media (max-width: 770px) {
+    .toggle-menu, .toggle-menu-btn {
+        display: block;
+    }
+    .nav-container {
+        padding: 0 1rem;
+    }
+    .nav-inner {
+        max-width: 100%;
+        border-radius: 0;
+        padding: 1rem;
+
+    }
+    .nav-left {
+        display: block;
+    }
+    .nav-menu, .nav-btns {
+        display: none;
+    }
+}

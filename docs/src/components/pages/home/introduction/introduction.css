@@ -1,0 +1,42 @@
+.introduction-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.introduction-text {
+    max-width: 45%;
+}
+
+@media (max-width: 870px) {
+    .introduction-text {
+        max-width: 70%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    .introduction {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .introduction-content {
+        display: block;
+    }
+    .docs-link-container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .introduction {
+        display: block;
+    }
+}
+
+@media (max-width: 450px) {
+    .introduction-text {
+        max-width: 80%;
+    }
+}

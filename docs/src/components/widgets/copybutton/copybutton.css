@@ -1,0 +1,26 @@
+@import "@/app/globals.css";
+
+.copy-button-container {
+    position: absolute;
+    top: 9px;
+    right: 15px;
+}
+
+.copy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--text-primary)
+}
+
+.copy-button:hover {
+    background-color: var(--button-secondary-hover);
+}
+
+.copy-button-icon {
+    font-size: 1rem;
+}
