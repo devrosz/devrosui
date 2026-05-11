@@ -1,7 +1,7 @@
 import { JSX } from "react"
-import OutputContainer from "@/components/widgets/outputcontainer/OutputContainer"
-import ArrowLink from "@/components/widgets/arrowlink/ArrowLink"
-import LinkButton from "@/components/widgets/linkbutton/LinkButton"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import LinkButton from "@/components/interfaces/linkbutton/LinkButton"
 import "./showcase.css"
 
 type Demo = {

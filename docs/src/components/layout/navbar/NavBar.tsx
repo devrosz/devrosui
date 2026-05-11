@@ -4,12 +4,12 @@ import React from "react"
 import { motion } from "motion/react"
 import Link from "next/link"
 import ToggleLink from "./ToggleLink"
-import Logo from "../logo/Logo"
-import Menu from "../menu/Menu"
-import LinkButton from "../linkbutton/LinkButton"
-import ThemeToggle from "../themetoggle/ThemeToggle"
+import Logo from "../../interfaces/logo/Logo"
+import Menu from "../../interfaces/menu/Menu"
+import LinkButton from "../../interfaces/linkbutton/LinkButton"
+import ThemeToggle from "../../interfaces/themetoggle/ThemeToggle"
 import { IoLogoGithub } from "react-icons/io"; 
-import { useTheme } from "@/utils/ThemeProvider"
+import { useTheme } from "@/lib/ThemeProvider"
 import "./navbar.css"
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
                             <ul>
                                 <Link className="navlink" href="/">Home</Link>
                                 <Link className="navlink" href="/docs/components">Components</Link>
-                                <Link className="navlink" href="/docs/installation">Installation</Link>
+                                <Link className="navlink" href="/docs">Documentation</Link>
                             </ul>
                         </nav>
                     </div>

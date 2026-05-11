@@ -1,4 +1,4 @@
-import LinkButton from "../../../widgets/linkbutton/LinkButton"
+import LinkButton from "../../../../components/interfaces/linkbutton/LinkButton"
 import "./hero.css"
 
 export default function Hero() {

@@ -1,5 +1,5 @@
-import CodeBlock from "@/components/widgets/codeblock/CodeBlock"
-import OutputContainer from "@/components/widgets/outputcontainer/OutputContainer"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import "./componentinfo.css"
 
 export default function ComponentInfo() {
