@@ -1,4 +1,42 @@
-.docs.layout {
+@import "@/app/globals.css";
+
+.docs-layout {
+    font-family: var(--font-geist-sans);
+    margin: 180px auto auto auto;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 25% 75%;
+    max-width: 1500px;
+}
+
+.docs-nav-button {
+    text-transform: capitalize;
+    font-weight: normal;
+    font-size: 14px;
+    width: 100%;
+}
+
+.docs-nav ul {
+    list-style: none;
+}
+
+.docs-nav li {
+    padding: 6px;
+    border-radius: 8px;
+    width: 8rem;
+    margin: 3px 0;
+}
+
+.docs-link-item {
+    color: var(--text-tertiary);
+    background-color: transparent;
+}
+
+.docs-nav li:hover, .active-docs-link {
+    background-color: var(--button-secondary-hover);
+    color: var(--text-primary);
+}
+
+.docs-nav h6 {
+    padding: 6px;
+    font-weight: normal;
 }

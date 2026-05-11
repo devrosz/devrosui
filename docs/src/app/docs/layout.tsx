@@ -1,10 +1,14 @@
+"use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import React from "react"
 import { JSX } from "react"
 import "./layout.css"
 
 export default function DocsLayout({children}: {children: React.ReactNode}) {
 
+    const currentPath = usePathname()
     const gettingStartedPages: string[] = ["prerequisites", "installation"]
     const componentPages: string[] = [
         "accordion",
@@ -30,8 +34,8 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
         "toolbar"
     ]
 
-    function DocsNavBtns(title: string): JSX.Element {
-        const path = "/" + title
+    // Returns the JSX element of a documentation page link.
+    function DocsNavBtns(title: string, path: string): JSX.Element {
         return (
             <Link 
                 href={path}
@@ -46,21 +50,31 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
     return (
         <section className="docs-layout">
             <nav className="docs-nav">
-                <h5>Getting started</h5>
+                <h6>Getting started</h6>
                 <ul>
-                    {gettingStartedPages.map(page => (
-                        <li>
-                            {DocsNavBtns(page)}
-                        </li>
-                    ))}
+                    {gettingStartedPages.map(page => {
+                        const path = "/docs/getting-started/" + page
+                        const isActive = currentPath === `/docs/${page}` 
+                            || (page === "prerequisites" && currentPath === "/docs")
+                        
+                        return (
+                            <li className={isActive ? "active-docs-link" : "docs-link-item"}>
+                                {DocsNavBtns(page, path)}
+                            </li>
+                        )
+                    })}
                 </ul>
-                <h5>Components</h5>
+                <h6>Components</h6>
                 <ul>
-                    {componentPages.map(page => (
-                        <li>
-                            {DocsNavBtns(page)}
-                        </li>
-                    ))}
+                    {componentPages.map(page => {
+                        const path = "/docs/components/" + page
+                        const isActive = currentPath === `/docs/components/${page}`
+                        return (
+                            <li className={isActive ? "active-docs-link" : "docs-link-item"}>
+                                {DocsNavBtns(page, path)}
+                            </li>
+                        )
+                    })}
                 </ul>
             </nav>
             {children}
