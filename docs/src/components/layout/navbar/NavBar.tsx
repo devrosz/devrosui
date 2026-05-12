@@ -1,23 +1,28 @@
 "use client"
 
+import "./navbar.css"
+
+// Components
 import React from "react"
-import { motion } from "motion/react"
 import Link from "next/link"
-import ToggleLink from "./ToggleLink"
 import Logo from "../../interfaces/logo/Logo"
 import Menu from "../../interfaces/menu/Menu"
+import MobileNav from "./MobileNav"
 import LinkButton from "../../interfaces/linkbutton/LinkButton"
 import ThemeToggle from "../../interfaces/themetoggle/ThemeToggle"
-import { IoLogoGithub } from "react-icons/io"; 
+
+// Icons
+import { IoLogoGithub } from "react-icons/io"
+
+// Utils
 import { useTheme } from "@/lib/ThemeProvider"
-import { componentPages } from "@/app/docs/layout"
-import "./navbar.css"
 
 export default function Navbar() {
 
     const [open, setOpen] = React.useState<boolean>(false)
     const themeContext = useTheme()
 
+    // Toggles open state of mobile navigation.
     function handleToggle() {
         setOpen(prevOpen => !prevOpen)
     }
@@ -48,37 +53,7 @@ export default function Navbar() {
                         <Menu open={open} handleToggle={handleToggle} />
                     </div>
                 </div>
-                <motion.ul
-                    className="toggle-menu"
-                    initial={{height: "0"}}
-                    animate={{height: open ? "100vh" : "0"}}
-                    transition={{duration: 0.5, ease: "easeInOut"}}
-                    style={{overflowX: "hidden", overflowY: "scroll"}}
-                >
-                    <li>
-                        <h6>Pages</h6>
-                    </li>
-                    <ToggleLink path="/" toggleMenu={handleToggle}>Home</ToggleLink>
-                    <ToggleLink path="/docs/components" toggleMenu={handleToggle}>Components</ToggleLink>
-                    <ToggleLink path="/docs" toggleMenu={handleToggle}>Documentation</ToggleLink>
-                    <li>
-                        <h6>Getting started</h6>
-                    </li>
-                    <ToggleLink path="/docs/getting-started/prerequisites" toggleMenu={handleToggle}>
-                        Prerequisites
-                    </ToggleLink>
-                    <ToggleLink path="/docs/getting-started/installation" toggleMenu={handleToggle}>
-                        Installation
-                    </ToggleLink>
-                    <li>
-                        <h6>Components</h6>
-                    </li>
-                    {componentPages.map((page, i) =>(
-                        <ToggleLink path={"/docs/components/" + page} toggleMenu={handleToggle}>
-                            {page}
-                        </ToggleLink>
-                    ))}
-                </motion.ul>
+               <MobileNav open={open} toggle={handleToggle} />
             </div>
         </header>
     )

@@ -35,11 +35,7 @@ export const componentPages: string[] = [
 // Returns the JSX element of a documentation page link.
 function DocsNavBtns({title, path}: {title: string, path: string}): JSX.Element {
     return (
-        <Link 
-            href={path}
-            className="docs-nav-button"
-            key={title + "nav-button"}
-        >
+        <Link href={path} className="docs-nav-button">
             {title}
         </Link>
     )
@@ -62,7 +58,10 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                             || (page === "prerequisites" && currentPath === "/docs")
                         
                         return (
-                            <li className={isActive ? "active-docs-link" : "docs-link-item"}>
+                            <li 
+                                className={isActive ? "active-docs-link" : "docs-link-item"}
+                                key={page + "-nav-button"}
+                            >
                                 <DocsNavBtns title={page} path={path} />
                             </li>
                         )
@@ -74,7 +73,10 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                         const path = "/docs/components/" + page
                         const isActive = currentPath === `/docs/components/${page}`
                         return (
-                            <li className={isActive ? "active-docs-link" : "docs-link-item"}>
+                            <li 
+                                className={isActive ? "active-docs-link" : "docs-link-item"}
+                                key={page + "-nav-button"}
+                            >
                                 <DocsNavBtns title={page} path={path} />
                             </li>
                         )
