@@ -11,10 +11,10 @@ export default function Hero() {
             <p>
                 Lorem ipsum dolor sit amet. 
                 Aut laborum nisi quo sequi laboriosam et odit omnis. 
-                Est atque eius et sint magnam 33 tempore magnam. 
+                Est atque eius et sint magnam 33 tempore magnam.
             </p>
             <div className="hero-buttons">
-                <LinkButton type="primary" path="docs/installation">
+                <LinkButton type="primary" path="docs/getting-started">
                     Get started
                 </LinkButton>
                  <LinkButton type="secondary" path="docs/components">

@@ -6,46 +6,50 @@ import React from "react"
 import { JSX } from "react"
 import "./layout.css"
 
+// Export to Navbar component so the mobile navigation includes the component
+// pages using single source of truth.
+export const componentPages: string[] = [
+    "accordion",
+    "breadcrumbs",
+    "button",
+    "calendar",
+    "closeButton",
+    "cookieConsent",
+    "drawer",
+    "dropdown",
+    "error",
+    "inputOTP",
+    "outlink",
+    "popup",
+    "progressBar",
+    "select",
+    "skeleton",
+    "slider",
+    "spinner",
+    "switch",
+    "tabs",
+    "toast",
+    "toolbar"
+]
+
+// Returns the JSX element of a documentation page link.
+function DocsNavBtns({title, path}: {title: string, path: string}): JSX.Element {
+    return (
+        <Link 
+            href={path}
+            className="docs-nav-button"
+            key={title + "nav-button"}
+        >
+            {title}
+        </Link>
+    )
+}
+
 export default function DocsLayout({children}: {children: React.ReactNode}) {
 
     const currentPath = usePathname()
     const gettingStartedPages: string[] = ["prerequisites", "installation"]
-    const componentPages: string[] = [
-        "accordion",
-        "breadcrumbs",
-        "button",
-        "calendar",
-        "closeButton",
-        "cookieConsent",
-        "drawer",
-        "dropdown",
-        "error",
-        "inputOTP",
-        "outlink",
-        "popup",
-        "progressBar",
-        "select",
-        "skeleton",
-        "slider",
-        "spinner",
-        "switch",
-        "tabs",
-        "toast",
-        "toolbar"
-    ]
 
-    // Returns the JSX element of a documentation page link.
-    function DocsNavBtns(title: string, path: string): JSX.Element {
-        return (
-            <Link 
-                href={path}
-                className="docs-nav-button"
-                key={title + "nav-button"}
-            >
-                {title}
-            </Link>
-        )
-    }
 
     return (
         <section className="docs-layout">
@@ -59,7 +63,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                         
                         return (
                             <li className={isActive ? "active-docs-link" : "docs-link-item"}>
-                                {DocsNavBtns(page, path)}
+                                <DocsNavBtns title={page} path={path} />
                             </li>
                         )
                     })}
@@ -71,7 +75,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                         const isActive = currentPath === `/docs/components/${page}`
                         return (
                             <li className={isActive ? "active-docs-link" : "docs-link-item"}>
-                                {DocsNavBtns(page, path)}
+                                <DocsNavBtns title={page} path={path} />
                             </li>
                         )
                     })}

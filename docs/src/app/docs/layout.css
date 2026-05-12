@@ -40,3 +40,12 @@
     padding: 6px;
     font-weight: normal;
 }
+
+@media (max-width: 430px) {
+    .docs-layout {
+        max-width: 90%;
+    }
+    .docs-nav {
+        display: none;
+    }
+}

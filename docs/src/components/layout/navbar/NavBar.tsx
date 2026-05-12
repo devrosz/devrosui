@@ -10,6 +10,7 @@ import LinkButton from "../../interfaces/linkbutton/LinkButton"
 import ThemeToggle from "../../interfaces/themetoggle/ThemeToggle"
 import { IoLogoGithub } from "react-icons/io"; 
 import { useTheme } from "@/lib/ThemeProvider"
+import { componentPages } from "@/app/docs/layout"
 import "./navbar.css"
 
 export default function Navbar() {
@@ -52,11 +53,31 @@ export default function Navbar() {
                     initial={{height: "0"}}
                     animate={{height: open ? "100vh" : "0"}}
                     transition={{duration: 0.5, ease: "easeInOut"}}
-                    style={{overflow: "hidden"}}
+                    style={{overflowX: "hidden", overflowY: "scroll"}}
                 >
+                    <li>
+                        <h6>Pages</h6>
+                    </li>
                     <ToggleLink path="/" toggleMenu={handleToggle}>Home</ToggleLink>
                     <ToggleLink path="/docs/components" toggleMenu={handleToggle}>Components</ToggleLink>
-                    <ToggleLink path="/docs/installation" toggleMenu={handleToggle}>Installation</ToggleLink>
+                    <ToggleLink path="/docs" toggleMenu={handleToggle}>Documentation</ToggleLink>
+                    <li>
+                        <h6>Getting started</h6>
+                    </li>
+                    <ToggleLink path="/docs/getting-started/prerequisites" toggleMenu={handleToggle}>
+                        Prerequisites
+                    </ToggleLink>
+                    <ToggleLink path="/docs/getting-started/installation" toggleMenu={handleToggle}>
+                        Installation
+                    </ToggleLink>
+                    <li>
+                        <h6>Components</h6>
+                    </li>
+                    {componentPages.map((page, i) =>(
+                        <ToggleLink path={"/docs/components/" + page} toggleMenu={handleToggle}>
+                            {page}
+                        </ToggleLink>
+                    ))}
                 </motion.ul>
             </div>
         </header>

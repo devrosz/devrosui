@@ -60,6 +60,11 @@ header {
     color: var(--text-tertiary);
     margin: 1rem 0;
     font-size: 14px;
+    text-transform: capitalize;
+}
+
+.toggle-menu h6 {
+    color: var(--text-primary);
 }
 
 .nav-btns {
