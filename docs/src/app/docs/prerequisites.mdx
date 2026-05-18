@@ -1,0 +1,127 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+
+export const headers = [
+    {
+        id: "dependencies",
+        title: "dependencies",
+        level: 0
+    },
+    {
+        id: "apps",
+        title: "Next.js app and React.js app",
+        level: 1
+    },
+    {
+        id: "framer",
+        title: "framer motion",
+        level: 1
+    },
+    {
+        id: "react-icons",
+        title: "react icons",
+        level: 1
+    },
+    {
+        id: "themetoggle",
+        title: "theme toggle",
+        level: 0
+    }
+]
+export const themeCode = 
+`
+:root {
+    --background-primary: #000000;
+    --background-secondary: #fafafa;
+    --background-tertiary: #090909;
+
+    --text-primary: #ededed;
+    --text-secondary: #000;
+    --text-tertiary: #818181;
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+    --button-tertiary-hover: #131313;
+    --button-secondary-border: #1a1a1a;
+}
+
+html.light {
+    --background-primary: #fafafa;
+    --background-secondary: #000;
+    --background-tertiary: #efefef;
+
+    --text-primary: #000;
+    --text-secondary: #ededed;
+    --text-tertiary: #666;  
+
+    --button-primary-hover: #383838;
+    --button-secondary-hover: #f2f2f2;
+    --button-secondary-border: #e0dede;
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Prerequisites
+    This page describes the dependencies and conventions that are mandatory in order to use DevrosUI.
+    Therefore it is highly advised to read through this page first and follow the steps before
+    installing and using DevrosUI.
+
+    <h3 id="dependencies">Dependencies</h3>
+
+    <h4 id="apps">1. React app and Next.js app</h4>  
+
+    DevrosUI is a React component library that can be used within React apps and Next.js apps.
+    In order to use DevrosUI, you need to have already created your React app or Next.js app.
+    You can refer to the official documentation for installing a [React app](https://react.dev/learn/installation)
+    or for installing a [Next.js app](https://nextjs.org/docs/app/getting-started/installation).
+
+    <h4 id="framer">2. Framer motion</h4>  
+
+    DevrosUI also uses [Framer motion](https://motion.dev/) to implement animations in the components.
+    Make sure to install Framer motion along with DevrosUI.
+
+    <h4 id="react-icons">3. React icons</h4>  
+
+    Some components use icons from the react-icons library so it is also necessary to install
+    the react-icons library. You can do this via their official documentation site [here](https://react-icons.github.io/react-icons/).
+
+
+    <h3 id="themetoggle">Theme toggle</h3>
+
+    As mentioned in the homepage, all components are compatible with dark and light modes.
+    That is, the components follow a dark-theme by default, but change to a light-mode if
+    the theme of the whole app also changes to light-mode. This means that you don't have to
+    manually implement this for every component yourself. However, this requires you to follow
+    our implementation of a theme toggle so the internal theme toggles in the components will
+    be compatible with the theme toggle of your app.
+    Name your root CSS file `globals.css` and write the following:
+
+    <CodeBlock 
+        langHighlight="css"
+        langDisplay="CSS"
+        fileName="globals.css"
+        code ={themeCode}
+    />
+
+    Note that the colors being used are the default colors. You can fill in your own colors
+    because the components of DevrosUI use the CSS variables as declared above so your own colors will automatically
+    apply.
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/prerequisites" direction="left">Prerequisites</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/getting-started/installation" direction="right">Installation</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
+
+

@@ -1,6 +1,10 @@
 @import "@/app/globals.css";
 
-.codeblock-header h5 {
+.codeblock {
+    margin: 1rem auto;
+}
+
+.codeblock-langdisplay h5 {
     text-decoration: underline 1px solid var(--text-primary);
     text-underline-offset: 5px;
 }
@@ -14,7 +18,7 @@
 }
 
 .highlighted-code > * {
-    border-radius: 1rem;
+    border-radius: 0 0 1rem 1rem;
     padding: 1rem;
 }
 
@@ -23,10 +27,12 @@
     text-align: center;
 }
 
-.codeblock-icon {
-    position: absolute;
-    top: 9px;
-    right: 15px;
+.codeblock-header {
+    padding: 1rem;
+}
+
+.codeblock-header code {
+    color: var(--text-tertiary);
 }
 
 @media (max-width: 450px) {

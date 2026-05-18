@@ -9,6 +9,7 @@ import "./codeblock.css"
 type CodeBlockProps = {
     langHighlight: string,
     langDisplay?: string,
+    fileName?: string,
     code: string,
     height?: string,
     width?: string
@@ -17,11 +18,16 @@ type CodeBlockProps = {
 // Renders a code display block where highlighted code can be displayed and copied.
 // langHighlight: programming language to be highlighted.
 // langDisplay: programming language to be displayed above code block.
+// fileName: name of the file in which the displayed code is ought to be written.
 // code: code to be displayed
 // heigth: height of the codeblock container.
 // width: width of the codeblock container.
 export default function CodeBlock({
-    langHighlight, langDisplay=langHighlight, code, height="100%", width="100%"
+    langHighlight,
+    langDisplay=langHighlight,
+    fileName,
+    code,
+    height="100%", width="100%"
 }: CodeBlockProps) {
 
     const [error, setError] = React.useState<string>("")
@@ -40,7 +46,11 @@ export default function CodeBlock({
                     lang: langHighlight.trim().toLowerCase(),
                     theme: themeContext.theme === "light" 
                     ? "vitesse-light" 
-                    : "vitesse-black"
+                    : "vitesse-black",
+                    colorReplacements: {
+                        "ffffff": "efefef",
+                        "000": "090909"
+                    }
                 })
 
                 if (mounted) {
@@ -65,18 +75,23 @@ export default function CodeBlock({
 
     return (
         <div className="codeblock">
-            <div className="codeblock-header">
-               <h5>{langDisplay}</h5> 
+            <div className="codeblock-langdisplay">
+               <h5>{langDisplay}</h5>
             </div>
             <div className="codeblock-content" style={{height: height, width: width}}>
+                {fileName ? (
+                    <div className="codeblock-header">
+                        <code>{fileName}</code>
+                    </div>
+                ) : null}
                 {error ? (
                     <div className="codeblock-error">
                         <p>{error}</p>
                     </div>
                     ) :
                     <div 
-                        dangerouslySetInnerHTML={{__html: highlightedCode}}
-                        className="highlighted-code"
+                    dangerouslySetInnerHTML={{__html: highlightedCode}}
+                    className="highlighted-code"
                     ></div>
                 }
                 <CopyButton code={code} />

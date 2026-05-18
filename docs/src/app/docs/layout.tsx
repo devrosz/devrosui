@@ -83,7 +83,9 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                     })}
                 </ul>
             </nav>
-            {children}
+            <div className="docs-page">
+                {children}
+            </div>
         </section>
     )
 }

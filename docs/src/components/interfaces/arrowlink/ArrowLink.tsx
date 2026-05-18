@@ -26,9 +26,9 @@ export default function ArrowLink({
     children
 }: ArrowLinkProps) {
 
-    const rotation: string = direction === "left" ? "180" : "0"
+    const rotation: number = direction === "left" ? 180 : 0
     const arrowJSX: JSX.Element = 
-        arrowType === "straight" ? <FaArrowRight style={{transform: `rotate(${rotation})`}} /> 
+        arrowType === "straight" ? <FaArrowRight style={{transform: `rotate(${rotation}deg)`}} /> 
         : <FiArrowUpRight style={{transform: `rotate(${rotation})`}} />
 
     return (
