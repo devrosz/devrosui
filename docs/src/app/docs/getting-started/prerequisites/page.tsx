@@ -1,4 +1,4 @@
-import Prerequisites from "@/app/docs/prerequisites.mdx"
+import Prerequisites from "./prerequisites.mdx"
 
 export default function Page() {
     return <Prerequisites />

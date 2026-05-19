@@ -37,7 +37,7 @@ export default function Navbar() {
                             <ul>
                                 <Link className="navlink" href="/">Home</Link>
                                 <Link className="navlink" href="/docs/components">Components</Link>
-                                <Link className="navlink" href="/docs">Documentation</Link>
+                                <Link className="navlink" href="/docs/getting-started/prerequisites">Documentation</Link>
                             </ul>
                         </nav>
                     </div>

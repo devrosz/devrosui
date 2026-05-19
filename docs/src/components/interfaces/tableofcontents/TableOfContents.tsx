@@ -4,6 +4,10 @@ import Link from "next/link"
 import useHeaderObserver from "@/lib/useHeaderObserver"
 import "./tableofcontents.css"
 
+type TableOfContentsProps = {
+    headers: TableOfContentsItem[]
+}
+
 type TableOfContentsItem = {
     id: string,
     title: string,
@@ -13,7 +17,7 @@ type TableOfContentsItem = {
 // Returns a table of contents which highlights the current section in view.
 // Supports nested headers.
 // headers: the headers that are present on a page.
-export default function TableOfContents({headers}: TableOfContentsItem[]) {
+export default function TableOfContents({headers}: TableOfContentsProps) {
     const activeId = useHeaderObserver(
         headers.map((header: TableOfContentsItem) => header.id)
     )

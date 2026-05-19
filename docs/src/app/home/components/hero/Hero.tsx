@@ -14,7 +14,7 @@ export default function Hero() {
                 Est atque eius et sint magnam 33 tempore magnam.
             </p>
             <div className="hero-buttons">
-                <LinkButton type="primary" path="docs/getting-started">
+                <LinkButton type="primary" path="docs/getting-started/prerequisites">
                     Get started
                 </LinkButton>
                  <LinkButton type="secondary" path="docs/components">
