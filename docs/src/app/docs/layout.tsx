@@ -54,7 +54,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                 <ul>
                     {gettingStartedPages.map(page => {
                         const path = "/docs/getting-started/" + page
-                        const isActive = currentPath === `/docs/${page}` 
+                        const isActive = currentPath === `/docs/getting-started/${page}` 
                             || (page === "prerequisites" && currentPath === "/docs")
                         
                         return (

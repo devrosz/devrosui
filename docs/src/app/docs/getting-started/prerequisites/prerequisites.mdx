@@ -97,13 +97,15 @@ html.light {
     manually implement this for every component yourself. However, this requires you to follow
     our implementation of a theme toggle so the internal theme toggles in the components will
     be compatible with the theme toggle of your app.
-    Name your root CSS file `globals.css` and write the following:
+
+    - Name your root CSS file `globals.css`
+    - In `globals.css`, write the following code:   
 
     <CodeBlock 
         langHighlight="css"
         langDisplay="CSS"
         fileName="globals.css"
-        code ={themeCode}
+        code={themeCode}
     />
 
     Note that the colors being used are the default colors. You can fill in your own colors
