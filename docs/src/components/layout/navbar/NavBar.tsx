@@ -1,22 +1,28 @@
 "use client"
 
-import React from "react"
-import { motion } from "motion/react"
-import Link from "next/link"
-import ToggleLink from "./ToggleLink"
-import Logo from "../logo/Logo"
-import Menu from "../menu/Menu"
-import LinkButton from "../linkbutton/LinkButton"
-import ThemeToggle from "../themetoggle/ThemeToggle"
-import { IoLogoGithub } from "react-icons/io"; 
-import { useTheme } from "@/utils/ThemeProvider"
 import "./navbar.css"
+
+// Components
+import React from "react"
+import Link from "next/link"
+import Logo from "../../interfaces/logo/Logo"
+import Menu from "../../interfaces/menu/Menu"
+import MobileNav from "./MobileNav"
+import LinkButton from "../../interfaces/linkbutton/LinkButton"
+import ThemeToggle from "../../interfaces/themetoggle/ThemeToggle"
+
+// Icons
+import { IoLogoGithub } from "react-icons/io"
+
+// Utils
+import { useTheme } from "@/lib/ThemeProvider"
 
 export default function Navbar() {
 
     const [open, setOpen] = React.useState<boolean>(false)
     const themeContext = useTheme()
 
+    // Toggles open state of mobile navigation.
     function handleToggle() {
         setOpen(prevOpen => !prevOpen)
     }
@@ -31,7 +37,7 @@ export default function Navbar() {
                             <ul>
                                 <Link className="navlink" href="/">Home</Link>
                                 <Link className="navlink" href="/docs/components">Components</Link>
-                                <Link className="navlink" href="/docs/installation">Installation</Link>
+                                <Link className="navlink" href="/docs/getting-started/prerequisites">Documentation</Link>
                             </ul>
                         </nav>
                     </div>
@@ -47,17 +53,7 @@ export default function Navbar() {
                         <Menu open={open} handleToggle={handleToggle} />
                     </div>
                 </div>
-                <motion.ul
-                    className="toggle-menu"
-                    initial={{height: "0"}}
-                    animate={{height: open ? "100vh" : "0"}}
-                    transition={{duration: 0.5, ease: "easeInOut"}}
-                    style={{overflow: "hidden"}}
-                >
-                    <ToggleLink path="/" toggleMenu={handleToggle}>Home</ToggleLink>
-                    <ToggleLink path="/docs/components" toggleMenu={handleToggle}>Components</ToggleLink>
-                    <ToggleLink path="/docs/installation" toggleMenu={handleToggle}>Installation</ToggleLink>
-                </motion.ul>
+               <MobileNav open={open} toggle={handleToggle} />
             </div>
         </header>
     )

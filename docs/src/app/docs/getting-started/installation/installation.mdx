@@ -1,0 +1,48 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import Link from "next/link"
+
+export const headers = [
+    {
+        id: "quick-start",
+        title: "Quick start",
+        level: 0
+    }
+]
+
+export const installationCode = "npm install @devrosui"
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Installation
+    This page describes how you can install the DevrosUI component library in your app.
+    To learn how to use each component, you must read the <Link href="../components/accordion">component</Link> pages.
+
+    <h3 id="cli">Quick start</h3>  
+
+    1. Read the <Link href="prerequisites">prerequisites</Link>
+    2. Install the dependencies
+    3. Configure the theme colors
+    4. Use the CLI and type the following:
+
+    <CodeBlock
+        langHighlight="powershell"
+        langDisplay="npm"
+        code={installationCode}
+    />
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/prerequisites" direction="left">Prerequisites</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/accordion" direction="right">Components</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

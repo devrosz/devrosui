@@ -1,0 +1,32 @@
+@import "@/app/globals.css";
+
+.toc-docspage {
+    position: relative;
+}
+
+.toc-docspage-content {
+    position: fixed;
+}
+
+.toc-docspage ul {
+    list-style-type: none;
+}
+
+.toc-docspage li {
+    text-transform: capitalize;
+    margin: 1rem auto;
+}
+
+.toc-active-link {
+    color: var(--text-primary)
+}
+
+.toc-link {
+    color: var(--text-tertiary);
+}
+
+@media (max-width: 1100px) {
+    .toc-docspage {
+        display: none;
+    }
+}

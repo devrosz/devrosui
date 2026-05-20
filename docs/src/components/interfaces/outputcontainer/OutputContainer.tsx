@@ -2,7 +2,7 @@
 
 import { JSX } from "react"
 import ThemeToggle from "../themetoggle/ThemeToggle"
-import { useTheme } from "@/utils/ThemeProvider"
+import { useTheme } from "@/lib/ThemeProvider"
 import "./outputcontainer.css"
 
 type OutputContainerProps = {

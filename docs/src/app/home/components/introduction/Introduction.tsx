@@ -1,5 +1,5 @@
-import CodeBlock from "@/components/widgets/codeblock/CodeBlock"
-import ArrowLink from "@/components/widgets/arrowlink/ArrowLink"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import "./introduction.css"
 
 export default function Introduction() {
