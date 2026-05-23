@@ -1,0 +1,36 @@
+:root {
+  --background-primary: #000000;
+  --background-secondary: #fafafa;
+  --background-tertiary: #090909;
+
+  --text-primary: #ededed;
+  --text-secondary: #000;
+  --text-tertiary: #818181;
+
+  --button-primary-hover: #ccc;
+  --button-secondary-hover: #1a1a1a;
+  --button-tertiary-hover: #131313;
+  --button-secondary-border: #1a1a1a;
+
+  --skeleton-initial: hsl(0, 0%, 10%);
+  --skeleton-animate: hsl(0, 0%, 8%);
+
+  --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif 
+}
+
+html.light {
+  --background-primary: #fafafa;
+  --background-secondary: #000;
+  --background-tertiary: #efefef;
+
+  --text-primary: #000;
+  --text-secondary: #ededed;
+  --text-tertiary: #666;  
+
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #e0dede;
+
+  --skeleton-initial: hsl(0, 0%, 90%);
+  --skeleton-animate: hsl(0, 0%, 95%);
+}
