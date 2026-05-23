@@ -51,3 +51,25 @@ export const Chevron: Story = {
         items: accordionItems
     }
 }
+
+export const ChevronBorder: Story = {
+    args: {
+        items: accordionItems,
+        border: true
+    }
+}
+
+export const Plus: Story = {
+    args: {
+        items: accordionItems,
+        toggleIcon: "plus"
+    }
+}
+
+export const PlusBorder: Story = {
+    args: {
+        items: accordionItems,
+        toggleIcon: "plus",
+        border: true
+    }
+}

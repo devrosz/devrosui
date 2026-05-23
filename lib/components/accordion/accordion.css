@@ -5,7 +5,7 @@
     font-family: var(--font);
 }
 
-.accordion-item-container {
+.accordion-item-container, .accordion-item-container.outlined {
     background-color: var(--background-tertiary);
     color: var(--text-primary);
     padding: 1rem;
@@ -14,7 +14,11 @@
     margin: 0.5rem auto;
 }
 
-.accordion-item-container p {
+.accordion-item-container.outlined {
+    border: 1px solid var(--button-secondary-border);
+}
+
+.accordion-item-content p {
     color: var(--text-tertiary);
 }
 
@@ -25,15 +29,22 @@
 
 .accordion-header-container h4 {
     margin: 0;
-}
-
-.accordion-click-item {
-    font-size: 1.5rem;
+    font-weight: normal;
 }
 
 .accordion-header-container button {
     background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 1rem;
     border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-header-container button:hover {
+    background-color: var(--button-secondary-hover);
+    transition: 0.25s;
 }
 
 .accordion-toggle-icon {

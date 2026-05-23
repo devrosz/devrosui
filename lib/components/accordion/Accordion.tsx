@@ -2,12 +2,14 @@
 
 import React from "react"
 import { JSX } from "react"
-import { motion, AnimatePresence } from "motion/react"
-import { FaChevronDown } from "react-icons/fa6"
+import { motion } from "motion/react"
+import ToggleButton from "./ToggleButton"
 import "./accordion.css"
 
 export type AccordionProps = {
-    items: AccordionItem[]
+    items: AccordionItem[],
+    border?: boolean,
+    toggleIcon?: "plus" | "chevron"
 }
 
 type AccordionItem = {
@@ -15,13 +17,18 @@ type AccordionItem = {
     text: string
 }
 
-type openDict = {
-    ["key"]: boolean
-}
+// Component that renders an accordion.
+export default function Accordion({
+    items,
+    border=false,
+    toggleIcon="chevron"
+}: AccordionProps): JSX.Element {
+    
+    const [open, setOpen] = React.useState<Record<string, boolean>>({})
 
-export default function Accordion({items}: AccordionProps) {
-    const [open, setOpen] = React.useState<openDict | {}>({})
-
+    // Toggles the open state of a given item
+    // key: identifier to point which specific item in the accordion
+    // needs to be toggled.
     function toggle(key: string): void {
         setOpen(prev => (
             {
@@ -31,20 +38,10 @@ export default function Accordion({items}: AccordionProps) {
         ))
     }
 
+    // Returns whether an item identified by the given key
+    // is open or not.
     function getToggleStatus(key: string): boolean {
         return open[key]
-    }
-
-    function ToggleButton({entry}: {entry: string}): JSX.Element {
-        return (
-            <motion.button
-                animate={{rotate: getToggleStatus(entry) ? 180 : 0}}
-                transition={{duration: 0.25, ease: "easeInOut"}}
-                onClick={() => toggle(entry)}
-            >
-                <FaChevronDown className="accordion-toggle-icon" />
-            </motion.button>
-        )
     }
 
     return (
@@ -52,12 +49,21 @@ export default function Accordion({items}: AccordionProps) {
             {items.map((item, i) => {
                 const { header, text } = item
                 const itemKey = "item-" + i
+                const className = "accordion-item-container" + (border ? " outlined" : "")
 
                 return (
-                    <li className="accordion-item-container" key={itemKey}>
+                    <li 
+                        className={className}
+                        key={itemKey}
+                    >
                         <div className="accordion-header-container">
                             <h4>{header}</h4>
-                            <ToggleButton entry={itemKey} />
+                            <ToggleButton 
+                                entry={itemKey}
+                                getStatus={getToggleStatus}
+                                toggleStatus={toggle}
+                                icon={toggleIcon}
+                            />
                         </div>
                         <motion.div
                             className="accordion-item-content"
