@@ -48,28 +48,32 @@ const accordionItems = [
 
 export const Chevron: Story = {
     args: {
-        items: accordionItems
+        items: accordionItems,
+        width: "35rem"
     }
 }
 
-export const ChevronBorder: Story = {
+export const ChevronEmpty: Story = {
     args: {
         items: accordionItems,
-        border: true
+        background: "empty",
+        width: "35rem"
     }
 }
 
 export const Plus: Story = {
     args: {
         items: accordionItems,
-        toggleIcon: "plus"
+        toggleIcon: "plus",
+        width: "35rem"
     }
 }
 
-export const PlusBorder: Story = {
+export const PlusEmpty: Story = {
     args: {
         items: accordionItems,
         toggleIcon: "plus",
-        border: true
+        background: "empty",
+        width: "35rem"
     }
 }
