@@ -2,6 +2,8 @@
   "name": "devrosui",
   "version": "1.0.0",
   "description": "This repo is a React component library. Its main purpose is to create consistency in my products by abstracting away frequently used UI-components and style them according to my taste.",
+  "private": true,
+  "workspaces": ["docs", "lib", "testing"],
   "directories": {
     "doc": "docs",
     "lib": "lib"

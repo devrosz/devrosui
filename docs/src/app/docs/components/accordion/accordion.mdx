@@ -1,0 +1,97 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Accordion } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "chevron-empty",
+        title: "Chevron empty",
+        level: 1
+    },
+    {
+        id: "plus",
+        title: "Plus",
+        level: 1
+    },
+    {
+        id: "plus-empty",
+        title: "Plus empty",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const accordionItems = [
+    {
+        header: "Item 1",
+        text:
+        `
+            Lorem ipsum dolor sit amet. 
+            Eum necessitatibus modi ex culpa quis sit provident provident
+            non minima internos. Ut quia dolores eos numquam obcaecati aut
+            voluptatem voluptatibus qui vero corporis non autem impedit.
+        `
+    },
+     {
+        header: "Item 2",
+        text:
+        `
+            Lorem ipsum dolor sit amet. 
+            Eum necessitatibus modi ex culpa quis sit provident provident
+            non minima internos. Ut quia dolores eos numquam obcaecati aut
+            voluptatem voluptatibus qui vero corporis non autem impedit.
+        `
+    },
+     {
+        header: "Item 3",
+        text:
+        `
+            Lorem ipsum dolor sit amet. 
+            Eum necessitatibus modi ex culpa quis sit provident provident
+            non minima internos. Ut quia dolores eos numquam obcaecati aut
+            voluptatem voluptatibus qui vero corporis non autem impedit.
+        `
+    }
+]
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Accordion
+    This page describes how to use the accordion component and what variants exist.
+
+    <Accordion items={accordionItems} />
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/installation" direction="left">Installation</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/breadcrumbs" direction="right">Breadcrumbs</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
