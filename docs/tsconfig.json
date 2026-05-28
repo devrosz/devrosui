@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -13,10 +14,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@devrosui/react": ["../../lib/index.ts"]
+      "@/*": ["./src/*"]
     },
     "plugins": [
       {
