@@ -76,7 +76,7 @@ export default function Accordion({
                         onClick={(e) => toggle(itemKey, e)}
                     >
                         <div className="accordion-header-container">
-                            <h4>{header}</h4>
+                            <h5>{header}</h5>
                             <ToggleButton 
                                 entry={itemKey}
                                 getStatus={getToggleStatus}

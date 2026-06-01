@@ -1,6 +1,7 @@
 import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
 import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
 import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import { Accordion } from "@devrosui/react"
 
@@ -75,12 +76,142 @@ export const accordionItems = [
     }
 ]
 
+export const usageDefaultCode = 
+`
+"use client"
+
+import { Accordion } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    // Populate the accordion by passing an array containing objects
+    // with the keys 'header' and 'text'.
+    const accordionItems = [
+        {
+            header: "Lorem ipsum"
+            text: "Eum necessitatibus modi ex culpa quis sit provident."
+        },
+        {
+            header: "Lorem ipsum"
+            text: "Eum necessitatibus modi ex culpa quis sit provident."
+        }
+    ]
+
+    return (
+        <Accordion items={accordionItems} />
+    )
+}
+
+`
+
+export const chevronEmptyCode = 
+`
+import { Accordion } from "@devrosui/react"
+
+export default function myComponent() {
+
+    return (
+        <Accordion items={accordionItems} background="empty" />
+    )
+}
+
+`
+
+export const plusCode = 
+`
+import { Accordion } from "@devrosui/react"
+
+export default function myComponent() {
+
+    return (
+        <Accordion items={accordionItems} toggleIcon="plus" />
+    )
+}
+
+`
+
+export const plusEmptyCode = 
+`
+import { Accordion } from "@devrosui/react"
+
+export default function myComponent() {
+
+    return (
+        <Accordion
+            items={accordionItems}
+            toggleIcon="plus"
+            background="empty"
+        />
+    )
+}
+
+`
+
+export function getAccordion(variant) {
+    const isFilled = !variant.toLowerCase().includes("empty")
+    const hasChevron = variant.toLowerCase().includes("chevron")
+
+    return (
+        <div
+            className="accordion-container"
+            style={{margin: "0 auto", width: "60%"}}
+        >
+            <Accordion
+                items={accordionItems}
+                background={isFilled ? "filled" : "empty"}
+                toggleIcon={hasChevron ? "chevron" : "plus"}
+            />
+        </div>
+    )
+}
+
 <div className="docs-page-content">
     <BreadCrumbs />
     ## Accordion
     This page describes how to use the accordion component and what variants exist.
 
-    <Accordion items={accordionItems} />
+   <OutputContainer components={[getAccordion("chevron")]} />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+    langHighlight="jsx"
+    langDisplay="JSX"
+    code={'import { Accordion } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   As shown below, you can populate the Accordion component by passing an array containing
+   objects with the keys 'header' and 'text'. The header text will be visible at all time and
+   the text will become visible on toggle.
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={usageDefaultCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    You can also choose between different styles by passing props as shown in the
+    code examples below.
+
+    <h4 id="chevron-empty">Chevron Empty</h4>
+        <OutputContainer components={[getAccordion("chevron-empty")]} />
+        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={chevronEmptyCode} />
+
+    <h4 id="plus">Plus</h4>
+        <OutputContainer components={[getAccordion("plus")]} />
+        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusCode} />
+
+    <h4 id="plus-empty">Plus Empty</h4>
+        <OutputContainer components={[getAccordion("plus-empty")]} />
+        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusEmptyCode} />
+    
+    <h3 id="props">Props</h3>
+
+    | Prop | Type | Default | Description |
+    | :--- | :--- | :------ | :---------- |
+    | ```items``` | ```[{header: string, text: string}]``` | - | Items that the accordion contains |
+    | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
+    | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
+    | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">

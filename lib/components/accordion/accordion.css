@@ -39,7 +39,8 @@
     justify-content: space-between;
 }
 
-.accordion-header-container h4 {
+.accordion-header-container h5 {
+    color: var(--text-primary);
     margin: 0;
     font-weight: normal;
 }
