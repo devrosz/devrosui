@@ -1,0 +1,13 @@
+.accordion-container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 450px;
+}
+
+/*
+Already included in Accordion component but overwritten 
+by page styling so we have to overwrite it again.
+*/
+.accordion-container ul {
+    list-style: none;
+}

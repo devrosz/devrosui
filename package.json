@@ -2,6 +2,12 @@
   "name": "devrosui",
   "version": "1.0.0",
   "description": "This repo is a React component library. Its main purpose is to create consistency in my products by abstracting away frequently used UI-components and style them according to my taste.",
+  "private": true,
+  "workspaces": [
+    "docs",
+    "lib",
+    "testing"
+  ],
   "directories": {
     "doc": "docs",
     "lib": "lib"
@@ -15,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/devrosz/devrosui/issues"
   },
-  "homepage": "https://github.com/devrosz/devrosui#readme"
+  "homepage": "https://github.com/devrosz/devrosui#readme",
+  "dependencies": {
+    "remark-gfm": "^4.0.1"
+  }
 }

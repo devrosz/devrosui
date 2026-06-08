@@ -14,7 +14,8 @@
 
 .toc-docspage li {
     text-transform: capitalize;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
+    font-size: 14px;
 }
 
 .toc-active-link {

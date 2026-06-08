@@ -1,0 +1,60 @@
+@import "../../globals.css";
+
+.accordion {
+    list-style: none;
+    font-family: var(--font);
+}
+
+.accordion-item-container {
+    color: var(--text-primary);
+    padding: 1rem;
+    width: 100%;
+    margin: 0.5rem auto;
+    cursor: pointer;
+}
+
+.accordion-item-container.filled:hover,
+.accordion-item-container.empty:hover {
+    background-color: var(--button-secondary-hover);
+    transition: 0.25s;
+}
+
+.accordion-item-container.filled {
+    background-color: var(--background-tertiary);
+    border-radius: 1rem;
+}
+
+.accordion-item-container.empty {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid var(--button-secondary-border);
+}
+
+.accordion-item-content p {
+    color: var(--text-tertiary);
+}
+
+.accordion-header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-header-container h5 {
+    color: var(--text-primary);
+    margin: 0;
+    font-weight: normal;
+}
+
+.accordion-header-container button {
+    background-color: transparent;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-toggle-icon {
+    color: var(--text-primary);
+}
