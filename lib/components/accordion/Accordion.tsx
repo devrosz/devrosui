@@ -43,11 +43,7 @@ export default function Accordion({
     // Toggles the open state of a given item
     // key: identifier to point which specific item in the accordion
     // needs to be toggled.
-    function toggle(
-        key: string,
-        e: React.MouseEvent<HTMLLIElement> | React.MouseEvent<HTMLButtonElement>
-    ): void {
-        e.stopPropagation
+    function toggle(key: string): void {
         setOpen(prev => (
             {
                 ...prev,
@@ -73,7 +69,7 @@ export default function Accordion({
                     <li 
                         className={className}
                         key={itemKey}
-                        onClick={(e) => toggle(itemKey, e)}
+                        onClick={(e) => toggle(itemKey)}
                     >
                         <div className="accordion-header-container">
                             <h5>{header}</h5>

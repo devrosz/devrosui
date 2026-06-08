@@ -17,7 +17,7 @@ export default function Hero() {
                 <LinkButton type="primary" path="docs/getting-started/prerequisites">
                     Get started
                 </LinkButton>
-                 <LinkButton type="secondary" path="docs/components">
+                 <LinkButton type="secondary" path="docs/components/accordion">
                     View components
                 </LinkButton>
             </div>

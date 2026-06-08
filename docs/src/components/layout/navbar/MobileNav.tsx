@@ -47,7 +47,7 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
             <ToggleLink path="/" toggleMenu={toggle}>
                 Home
             </ToggleLink>
-            <ToggleLink path="/docs/components" toggleMenu={toggle}>
+            <ToggleLink path="/docs/components/accordion" toggleMenu={toggle}>
                 Components
             </ToggleLink>
             <ToggleLink path="/docs" toggleMenu={toggle}>

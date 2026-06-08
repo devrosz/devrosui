@@ -36,7 +36,7 @@ export default function Navbar() {
                         <nav className="nav-menu">
                             <ul>
                                 <Link className="navlink" href="/">Home</Link>
-                                <Link className="navlink" href="/docs/components">Components</Link>
+                                <Link className="navlink" href="/docs/components/accordion">Components</Link>
                                 <Link className="navlink" href="/docs/getting-started/prerequisites">Documentation</Link>
                             </ul>
                         </nav>
