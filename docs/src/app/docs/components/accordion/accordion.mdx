@@ -4,6 +4,7 @@ import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import { Accordion } from "@devrosui/react"
+import "./page.css"
 
 export const headers = [
     {
@@ -152,10 +153,7 @@ export function getAccordion(variant) {
     const hasChevron = variant.toLowerCase().includes("chevron")
 
     return (
-        <div
-            className="accordion-container"
-            style={{margin: "0 auto", width: "60%"}}
-        >
+        <div className="accordion-container">
             <Accordion
                 items={accordionItems}
                 background={isFilled ? "filled" : "empty"}
@@ -206,12 +204,14 @@ export function getAccordion(variant) {
     
     <h3 id="props">Props</h3>
 
-    | Prop | Type | Default | Description |
-    | :--- | :--- | :------ | :---------- |
-    | ```items``` | ```[{header: string, text: string}]``` | - | Items that the accordion contains |
-    | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
-    | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
-    | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```items``` | ```[{header: string, text: string}]``` | - | Items that the accordion contains |
+        | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
+        | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
+        | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
+    </div>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
