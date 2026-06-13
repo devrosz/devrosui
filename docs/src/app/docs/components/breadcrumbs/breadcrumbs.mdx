@@ -1,0 +1,148 @@
+import BreadCrumbsDynamic from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { BreadCrumbs } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "chevron-delimiter",
+        title: "Chevron delimiter",
+        level: 1
+    },
+    {
+        id: "slash-delimiter",
+        title: "Slash delimiter",
+        level: 1
+    },
+    {
+        id: "empty-delimiter",
+        title: "Empty delimiter",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const examplePath = "documentation/components/breadcrumbs"
+export const usageCode =
+`
+"use client"
+
+import { BreadCrumbs } from "@devrosui/react"
+import { usePathname } from "next/navigation"
+
+export default function MyComponent() {
+
+    const currentPath = usePathname()
+
+    return (
+        <BreadCrumbs path={currentPath} />
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbsDynamic />
+    ## BreadCrumbs
+    This page describes how to use the breadcrumbs component and what variants exist.
+    Breadcrumbs is a component which renders the current path you are visiting on a website
+    right now for easy navigation. It is also possible to click on parent directories within
+    this route to navigate back.
+
+    <OutputContainer components={[<BreadCrumbs path={examplePath} />]} height="20rem" />
+    <h3 id="import">Import</h3>
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { BreadCrumbs } from "@devrosui/react"`}
+    />
+
+    <h3 id="usage">Usage</h3>
+
+    The breadcrumbs component requires a pathname. This pathname can for example be obtained by 
+    using the usePathname hook in React or Next.js
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+
+    You can also choose any character as delimiter as shown below.
+
+    <h4 id="chevron-delimiter">Chevron Delimiter</h4>
+    <OutputContainer 
+        components={[<BreadCrumbs path={examplePath} delimiter=">" />]}
+        height="20rem"
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`<BreadCrumbs path={currentPath} delimiter=">" />`}
+    />
+
+    <h4 id="slash-delimiter">Slash Delimiter</h4>
+    <OutputContainer 
+        components={[<BreadCrumbs path={examplePath} delimiter="/" />]}
+        height="20rem"
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`<BreadCrumbs path={currentPath} delimiter="/" />`}
+    />
+
+    <h4 id="empty-delimiter">Empty Delimiter</h4>
+    <OutputContainer 
+        components={[<BreadCrumbs path={examplePath} delimiter=" " />]}
+        height="20rem"
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`<BreadCrumbs path={currentPath} delimiter=" " />`}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```path``` | ```string``` | - | URL path to be displayed |
+        | ```delimiter``` | ```string``` | ```">"``` | Symbol that seperates the directories |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/accordion" direction="left">Accordion</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/button" direction="right">Button</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

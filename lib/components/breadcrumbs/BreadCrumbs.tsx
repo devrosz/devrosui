@@ -14,13 +14,21 @@ const defaultPath = "documents/components/breadcrumbs"
 // path: path to be represented in crumbs.
 // delimiter: symbol between crumbs.
 export default function BreadCrumbs({path=defaultPath, delimiter=">"}: BreadCrumbsProps) {
+    if (typeof path != "string") {
+        throw new Error("BreadCrumbs: path must be a string")
+    }
+
+    if (typeof delimiter != "string") {
+        throw new Error("BreadCrumbs: delimiter must be a string")
+    }
+
     const pathParsed = path.split("/")
-    
     return (
         <div className="breadcrumbs">
             {pathParsed.map((dir, i) => {
                 // Navigate to specific crumb in the given path.
-                const currentPath = pathParsed.slice(0, i + 1).join('/')
+                const outDir = "../"
+                const currentPath = outDir.repeat(pathParsed.length - 1 - i)
                 const isLast = i === pathParsed.length - 1
 
                 return (

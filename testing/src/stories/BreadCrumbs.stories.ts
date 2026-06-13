@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { Breadcrumbs } from "@devrosui/react"
+import { BreadCrumbs } from "@devrosui/react"
 
 const meta = {
     title: "BreadCrumbs",
-    component: Breadcrumbs,
+    component: BreadCrumbs,
     parameters: {
         layout: "centered"
     },
     tags: ['autodocs']
-} satisfies Meta<typeof Breadcrumbs>
+} satisfies Meta<typeof BreadCrumbs>
 
 export default meta
 type Story = StoryObj<typeof meta>
