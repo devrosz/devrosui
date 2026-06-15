@@ -11,18 +11,23 @@ export const headers = [
     },
     {
         id: "apps",
-        title: "Next.js app and React.js app",
+        title: "Next.js and React.js",
         level: 1
     },
     {
-        id: "framer",
-        title: "framer motion",
+        id: "motion",
+        title: "Motion",
         level: 1
     },
     {
         id: "react-icons",
         title: "react icons",
         level: 1
+    },
+    {
+        id: "globals",
+        title: "Global stylesheet",
+        level: 0
     },
     {
         id: "themetoggle",
@@ -62,6 +67,17 @@ html.light {
 }
 `
 
+export const toggleThemeCode =
+`
+// Toggle dark/light mode
+
+function toggleTheme(): void {
+    
+    document.documentElement.classList.toggle("light")
+
+}        
+`
+
 <div className="docs-page-content">
     <BreadCrumbs />
     ## Prerequisites
@@ -71,23 +87,43 @@ html.light {
 
     <h3 id="dependencies">Dependencies</h3>
 
-    <h4 id="apps">1. React app and Next.js app</h4>  
+    <h4 id="apps">1. Next.js and React.js</h4>  
 
     DevrosUI is a React component library that can be used within React apps and Next.js apps.
     In order to use DevrosUI, you need to have already created your React app or Next.js app.
     You can refer to the official documentation for installing a [React app](https://react.dev/learn/installation)
     or for installing a [Next.js app](https://nextjs.org/docs/app/getting-started/installation).
 
-    <h4 id="framer">2. Framer motion</h4>  
+    <h4 id="motion">2. Motion</h4>  
 
-    DevrosUI also uses [Framer motion](https://motion.dev/) to implement animations in the components.
-    Make sure to install Framer motion along with DevrosUI.
+    DevrosUI also uses [Motion](https://motion.dev/) to implement animations in the components.
+    Make sure to install Motion along with DevrosUI.
 
     <h4 id="react-icons">3. React icons</h4>  
 
     Some components use icons from the react-icons library so it is also necessary to install
     the react-icons library. You can do this via their official documentation site [here](https://react-icons.github.io/react-icons/).
 
+    <h3 id="globals">Global stylesheet</h3>
+
+    In order to give the components correct styling, you need to import the global stylesheet **once**
+    in your app.
+    - In ```main.jsx``` or ```App.jsx```, write the following:
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        fileName="App.jsx"
+        code={`import "@devrosui/react/globals.css"`}
+    />
+
+    - Now you can use components in any file as shown below:
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { Calendar } from "@devrosui/react"`}
+    />
 
     <h3 id="themetoggle">Theme toggle</h3>
 
@@ -98,19 +134,22 @@ html.light {
     our implementation of a theme toggle so the internal theme toggles in the components will
     be compatible with the theme toggle of your app.
 
-    - Name your root CSS file `globals.css`
-    - In `globals.css`, write the following code:   
+    - In your root CSS file, write the following: 
 
     <CodeBlock 
         langHighlight="css"
         langDisplay="CSS"
-        fileName="globals.css"
         code={themeCode}
     />
 
-    Note that the colors being used are the default colors. You can fill in your own colors
-    because the components of DevrosUI use the CSS variables as declared above so your own colors will automatically
-    apply.
+    You can now toggle between dark and light mode by simply adding the class name 'light' to
+    the HTML document.
+
+    <CodeBlock
+        langDisplay="JSX"
+        langHighlight="jsx"
+        code={toggleThemeCode}
+    />
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
