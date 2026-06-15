@@ -37,6 +37,15 @@ export default function Accordion({
     toggleIcon="chevron",
     width="100%"
 }: AccordionProps): JSX.Element {
+
+    // Manual typechecking for non-TS users.
+    if (background != "filled" && background != "empty") {
+        throw new Error("Accordion: background value can only be 'filled' or 'empty'")
+    }
+
+    if (toggleIcon != "chevron" && toggleIcon != "plus") {
+        throw new Error("Accordion: toggleIcon value can only be 'chevron' or 'plus'.")
+    }
     
     const [open, setOpen] = React.useState<Record<string, boolean>>({})
 
@@ -62,6 +71,16 @@ export default function Accordion({
         <ul className="accordion" style={{width: width}}>
             {items.map((item, i) => {
                 const { header, text } = item
+
+                // Manual type-checking for non-TS users.
+                if (typeof(header) != "string" && typeof(header) != "number") {
+                    throw new Error("Accordion: headers in items array can only be of type string or number")
+                }
+
+                if (typeof(text) != "string" && typeof(text) != "number") {
+                    throw new Error("Accordion: text in items array can only be of type string or number")
+                }
+
                 const itemKey = "item-" + i
                 const className = 
                     "accordion-item-container " + background
