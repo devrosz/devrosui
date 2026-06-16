@@ -1,4 +1,5 @@
 import "./globals.css"
 export {default as Accordion} from "./components/accordion/Accordion"
 export {default as BreadCrumbs} from "./components/breadcrumbs/BreadCrumbs"
+export {default as Calendar} from "./components/calendar/Calendar"
 export { Button } from "./components/button/Button"
