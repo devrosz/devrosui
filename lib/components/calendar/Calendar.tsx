@@ -52,10 +52,11 @@ export default function Calendar() {
     function getFirstWeekdayOfMonth(year: number, month: number): number {
         const currentDate: number = Date.now()
         const date: number = changeYear(new Date(currentDate), year).setMonth(month)
+        const daysInMonth = months[monthNames[month]]
 
         // Substract one day from the current day in the given month and year
         // until the day doesn't belong to the given month.
-        const daysBack = [...Array(30).keys()].map(i => {
+        const daysBack = [...Array(daysInMonth).keys()].map(i => {
             // 1000 * 3600 * 24 = #milliseconds in a day and i is #days to be substracted.
             const prevDayTimestamp: number = date - (1000 * 3600 * 24 * i)
             const prevDay: Date = new Date(prevDayTimestamp)
@@ -73,18 +74,49 @@ export default function Calendar() {
         return daysBack.filter((x) => x > -1)[0]
     }
 
+    // Returns an array containing the days of the month for the first week of a given
+    // month in a given year.
+    // E.g:
+    // [28, 29, 30, 31, 1, 2, 3] -> this month started on a friday.
+    // [1, 2, 3, 4, 5, 6, 7] -> this month started on a monday.
     function getFirstWeekOfMonth(year: number, month: number) {
         const firstWeekdayOfMonth: number = getFirstWeekdayOfMonth(year, month)
-        const prevDays = [...Array(7 - firstWeekdayOfMonth + 1).keys()].map(i => {
-            return 31 - firstWeekdayOfMonth + i + 1
+        const daysInMonth = months[monthNames[month]]
+
+        // Fill days from previous month.
+        const prevMonth = [...Array(firstWeekdayOfMonth).keys()].map(i => {
+            return daysInMonth - firstWeekdayOfMonth + i + 1
         })
-        const currentDays = [...Array(7 - firstWeekdayOfMonth).keys()].map(i => {
+
+        // Fill days from current month.
+        const currentMonth = [...Array(7 - firstWeekdayOfMonth).keys()].map(i => {
             return i + 1
         })
-        return prevDays.concat(currentDays)
+        return prevMonth.concat(currentMonth)
     }
 
-    console.log(getFirstWeekOfMonth(2026, 5))
+    // Fill in day number of month for every week.
+    // Days from previous month and next month included.
+    // E.g: [[28, 29, 30, 31, 1, 2, 3],[4, 5, 6, 7, 8, 9, 10],...,[26, 27, 28, 29, 30, 31, 1]]
+    function populateMonth(year: number, month: number): number[][] {
+        const daysInNextMonth = months[monthNames[month + 1]]
+        const firstWeek = getFirstWeekOfMonth(year, month)
+        const secondWeek = [...Array(7).keys()].map(i => {
+            return firstWeek[6] + i + 1
+        })
+        const thirdWeek = [...Array(7).keys()].map(i => {
+            return secondWeek[6] + i + 1
+        })
+        const fourthWeek = [...Array(7).keys()].map(i => {
+            return thirdWeek[6] + i + 1
+        })
+        const fifthWeek = [...Array(7).keys()].map(i => {
+            return (fourthWeek[6] + i + 1) % daysInNextMonth + 1
+        })
+        return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
+    }
+
+    console.log(populateMonth(2024, 1))
 
     return (
         <h1>Calendar</h1>
