@@ -28,7 +28,35 @@ export default function Calendar() {
     }
     const monthNames: string[] = Object.keys(months)
     const dayNames: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-    
+
+    // Selects next month.
+    // If the current month is december, the month will be set to january
+    // and the year is incremented.
+    function incrementMonth() {
+        setMonth(prev => {
+            const newValue = prev + 1
+            if (newValue > 11) {
+                setYear(prev => prev + 1)
+                return 0
+            }
+            return newValue
+        })
+    }
+
+    // Selects the previous month.
+    // If the current month is january, the month will be set to december
+    // and the year is decremented.
+    function decrementMonth() {
+        setMonth(prev => {
+            const newValue = prev - 1
+            if (newValue < 0) {
+                setYear(prev => prev - 1)
+                return 11
+            }
+            return newValue
+        })
+    }
+
     // Sets the month of a given Date object to the new given
     // month and returns a new Date object with the new month.
     // Extends vanilla JS Date method 'setMonth' because the
@@ -116,9 +144,35 @@ export default function Calendar() {
         return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
     }
 
-    console.log(populateMonth(2024, 1))
-
     return (
-        <h1>Calendar</h1>
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        <h4>{monthNames[month] + " " + year}</h4>
+                    </td>
+                    <td>
+                        <button onClick={decrementMonth}>{"<"}</button>
+                    </td>
+                    <td>
+                        <button onClick={incrementMonth}>{">"}</button>
+                    </td>
+                </tr>
+                <tr>
+                    {dayNames.map(day => <td key={day}>{day.slice(0,3)}</td>)}
+                </tr>
+            </thead>
+            <tbody>
+                {populateMonth(year, month).map((week, i) => {
+                    return (
+                        <tr key={i}>
+                            {week.map(day => (
+                                <td key={day}>{day}</td>
+                            ))}
+                        </tr>
+                    )
+                })}
+            </tbody>
+        </table>
     )
 }
