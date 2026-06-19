@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import "./calendar.css"
 
 export default function Calendar() {
 
@@ -109,11 +110,11 @@ export default function Calendar() {
     // [1, 2, 3, 4, 5, 6, 7] -> this month started on a monday.
     function getFirstWeekOfMonth(year: number, month: number) {
         const firstWeekdayOfMonth: number = getFirstWeekdayOfMonth(year, month)
-        const daysInMonth = months[monthNames[month]]
+        const daysInPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
 
         // Fill days from previous month.
         const prevMonth = [...Array(firstWeekdayOfMonth).keys()].map(i => {
-            return daysInMonth - firstWeekdayOfMonth + i + 1
+            return daysInPrevMonth - firstWeekdayOfMonth + i + 1
         })
 
         // Fill days from current month.
@@ -127,7 +128,7 @@ export default function Calendar() {
     // Days from previous month and next month included.
     // E.g: [[28, 29, 30, 31, 1, 2, 3],[4, 5, 6, 7, 8, 9, 10],...,[26, 27, 28, 29, 30, 31, 1]]
     function populateMonth(year: number, month: number): number[][] {
-        const daysInNextMonth = months[monthNames[month + 1]]
+        const daysCurrentMonth = months[monthNames[month]]
         const firstWeek = getFirstWeekOfMonth(year, month)
         const secondWeek = [...Array(7).keys()].map(i => {
             return firstWeek[6] + i + 1
@@ -139,40 +140,57 @@ export default function Calendar() {
             return thirdWeek[6] + i + 1
         })
         const fifthWeek = [...Array(7).keys()].map(i => {
-            return (fourthWeek[6] + i + 1) % daysInNextMonth + 1
+            // We detect if a day belongs to next month by modulo daysCurrentMonth + 1
+            // such that e.g. 31 % 32 = 31 and 32 % 32 = 0.
+            // Because 0 is not a valid day in the month, we increment all days in this
+            // last week which are below 7 with 1 to compensate the offset.
+            // We chose 7 as upperbound because if the number is larger, it would mean
+            // that in the fourthweek the month ended which cannot be true because then
+            // the month has too less days.
+            const calculatedValue = (fourthWeek[6] + i + 1) % (daysCurrentMonth + 1)
+            return calculatedValue <= 7 ? calculatedValue + 1 : calculatedValue
         })
         return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
     }
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <td>
-                        <h4>{monthNames[month] + " " + year}</h4>
-                    </td>
-                    <td>
-                        <button onClick={decrementMonth}>{"<"}</button>
-                    </td>
-                    <td>
-                        <button onClick={incrementMonth}>{">"}</button>
-                    </td>
-                </tr>
-                <tr>
-                    {dayNames.map(day => <td key={day}>{day.slice(0,3)}</td>)}
-                </tr>
-            </thead>
-            <tbody>
-                {populateMonth(year, month).map((week, i) => {
-                    return (
-                        <tr key={i}>
-                            {week.map(day => (
-                                <td key={day}>{day}</td>
-                            ))}
-                        </tr>
-                    )
-                })}
-            </tbody>
-        </table>
+        <div className="calendar-container">
+            <div className="calendar-header">
+                    <h4>{monthNames[month] + " " + year}</h4>
+                <div className="calendar-buttons">
+                    <button onClick={decrementMonth}>{"<"}</button>
+                    <button onClick={incrementMonth}>{">"}</button>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        {dayNames.map(day => <td key={day}>{day.slice(0,3)}</td>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    {populateMonth(year, month).map((week, i) => {
+                        return (
+                            <tr key={i}>
+                                {week.map(day => {
+                                    // Give the days from another month a different color.
+                                    const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
+                                    const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
+                                    const isFromNextMonth = i == 4 && day >= 1 && day <= 7
+
+                                    return (
+                                        <td key={day}>
+                                            <button className={"day-button " + (isFromPrevMonth || isFromNextMonth ? "outlier" : "")}>
+                                                {day}
+                                            </button>
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
     )
 }
