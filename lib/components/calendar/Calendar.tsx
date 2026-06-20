@@ -3,32 +3,43 @@
 import React from "react"
 import "./calendar.css"
 
+type SelectedDate = {
+    year: number ,
+    month: string,
+    day: number
+}
+
 export default function Calendar() {
 
     const currentDate = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth())
-
+    
     // Object representing the months of the year with the amount
     // of days per month.
     // keys: monthnames
     // values: days that are in the month.
     const months = {
-        "january": 31,
-        "february": year && year % 4 == 0 ? 29 : 28,
-        "march": 31,
-        "april": 30,
-        "may": 31,
-        "june": 30,
-        "july": 31,
-        "august": 31,
-        "september": 30,
-        "october": 31,
-        "november": 30,
-        "december": 31 
+        january: 31,
+        february: year && year % 4 == 0 ? 29 : 28,
+        march: 31,
+        april: 30,
+        may: 31,
+        june: 30,
+        july: 31,
+        august: 31,
+        september: 30,
+        october: 31,
+        november: 30,
+        december: 31 
     }
     const monthNames: string[] = Object.keys(months)
     const dayNames: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+    const [selected, setSelected] = React.useState<SelectedDate>({
+        year: currentDate.getFullYear(),
+        month: monthNames[currentDate.getMonth()],
+        day: currentDate.getDay()
+    })
 
     // Selects next month.
     // If the current month is december, the month will be set to january
@@ -153,6 +164,15 @@ export default function Calendar() {
         return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
     }
 
+    // Saves the date that the user selected from the calendar.
+    function handleSelect(year: number, month: number, day: number): void {
+        setSelected({
+            year: year,
+            month: monthNames[month],
+            day: day
+        })
+    }
+
     return (
         <div className="calendar-container">
             <div className="calendar-header">
@@ -177,10 +197,18 @@ export default function Calendar() {
                                     const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
                                     const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
                                     const isFromNextMonth = i == 4 && day >= 1 && day <= 7
+                                    // Account for situation where e.g. calendar is at july and july ends on a friday,
+                                    // but user selects the saturday of this week (so 1st of august), then the correct
+                                    // month should be passed to the handleSelect.
+                                    const selectedMonth = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
+                                    const isSelected = selected.year === year && selected.month === monthNames[selectedMonth] && selected.day === day
 
                                     return (
-                                        <td key={day}>
-                                            <button className={"day-button " + (isFromPrevMonth || isFromNextMonth ? "outlier" : "")}>
+                                        <td key={day} className={"day-number " + (isSelected ? "selected" : "")}>
+                                            <button 
+                                                className={"day-button " + (isFromPrevMonth || isFromNextMonth ? "outlier" : "")}
+                                                onClick={() => handleSelect(year, selectedMonth, day)}
+                                            >
                                                 {day}
                                             </button>
                                         </td>

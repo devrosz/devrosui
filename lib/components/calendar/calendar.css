@@ -24,9 +24,15 @@
     font-family: var(--font);
     font-size: 1.25rem;
     border-radius: 2rem;
+    font-weight: bold;
 }
 
-.calendar-buttons button:hover, .day-button:hover {
+.day-number {
+    border-radius: 2rem;
+}
+
+.calendar-buttons button:hover, .day-button:hover,
+.day-number.selected {
     background-color: var(--button-secondary-hover);
     transition: 0.25s;
 }
