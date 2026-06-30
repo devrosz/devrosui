@@ -3,19 +3,20 @@
 import React from "react"
 import { FaChevronLeft } from "react-icons/fa6"
 import { FaChevronRight } from "react-icons/fa6"
+import { motion, AnimatePresence } from "motion/react"
 import "./calendar.css"
 
 type CalendarProps = {
     open: boolean,
     toggleOpen: () => void,
-    date?: null | Date,
-    setDate: (arg0: Date) => void
+    date?: null | string,
+    setDate: (arg0: string) => void
 }
 
 // Calendar component where the user can select a certain date.
 // open: if true, the calendar will be displayed; otherwise not.
 // toggleOpen: callback to toggle the open state.
-// (optional)date: initial date to be marked on the calendar.
+// (optional)date: initial date as string in the format yyyy-mm-dd to be marked on the calendar.
 // if no date has been given, the current date will be used.
 // setDate: callback to set the marked Date.
 export default function Calendar({open, toggleOpen, date=null, setDate}: CalendarProps) {
@@ -23,7 +24,7 @@ export default function Calendar({open, toggleOpen, date=null, setDate}: Calenda
     const currentDate = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth())
-    const selected = date ?? currentDate
+    const selected = new Date(date) ?? currentDate
     
     // Object representing the months of the year with the amount
     // of days per month.
@@ -187,67 +188,85 @@ export default function Calendar({open, toggleOpen, date=null, setDate}: Calenda
         return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
     }
 
+    // Constructs a date string in the format yyyy-mm-dd.
+    function parseDate(year: number, month: number, day: number) {
+        const dayOfMonthFormatted = day < 10 ? `0${day}` : day
+        const monthFormatted = month < 10 ? `0${month}` : month
+        return `${year}-${monthFormatted}-${dayOfMonthFormatted}`
+    }
+
     // Saves the date that the user selected from the calendar.
     function handleSelect(year: number, month: number, day: number): void {
-        const dateString = `${year}-${month + 1}-${day}`
-        setDate(new Date(dateString))
+        const dateString = parseDate(year, month + 1, day)
+        setDate(dateString)
         toggleOpen()
     }
 
-    return open ? (
-        <div className="calendar-container">
-            <div className="calendar-header">
-                    <h4>{monthNames[month] + " " + year}</h4>
-                <div className="calendar-buttons">
-                    <button onClick={decrementMonth}>
-                        <FaChevronLeft />
-                    </button>
-                    <button onClick={incrementMonth}>
-                        <FaChevronRight />
-                    </button>
-                </div>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        {getDayNames().map(day => <td key={day}>{day}</td>)}
-                    </tr>
-                </thead>
-                <tbody>
-                    {populateMonth(year, month).map((week, i) => {
-                        return (
-                            <tr key={i}>
-                                {week.map(day => {
-                                    // Give the days from another month a different color.
-                                    const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
-                                    const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
-                                    const isFromNextMonth = i == 4 && day >= 1 && day <= 7
-                                    // Account for situation where e.g. calendar is at july and july ends on a friday,
-                                    // but user selects the saturday of this week (so 1st of august), then the correct
-                                    // month should be passed to the handleSelect.
-                                    const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
-                                    const selectedYear = selected.getFullYear()
-                                    const selectedMonth = selected.getMonth()
-                                    const selectedDay = selected.getDate()
-                                    const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
-
-                                    return (
-                                        <td key={day} className={"day-number " + (isSelected ? "selected" : "") }>
-                                            <button 
-                                                className="day-button"
-                                                disabled={isFromPrevMonth || isFromNextMonth}
-                                                onClick={() => handleSelect(year, monthOfThisDay, day)}
-                                            >
-                                                {day}
-                                            </button>
-                                        </td>
-                                    )
-                                })}
+    return (
+        <AnimatePresence>
+            {open ? (
+                <motion.div 
+                    className="calendar-container"
+                    initial={{y: -10, opacity: 0}}
+                    animate={{y: 0, opacity: 1}}
+                    exit={{y: -10, opacity: 0}}
+                    transition={{duration: 0.2}}
+                >
+                    <div className="calendar-header">
+                            <h5>{monthNames[month] + " " + year}</h5>
+                        <div className="calendar-buttons">
+                            <button onClick={decrementMonth}>
+                                <FaChevronLeft />
+                            </button>
+                            <button onClick={incrementMonth}>
+                                <FaChevronRight />
+                            </button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                {getDayNames().map(day => <td key={day}>{day}</td>)}
                             </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        </div>
-    ) : null
+                        </thead>
+                        <tbody>
+                            {populateMonth(year, month).map((week, i) => {
+                                return (
+                                    <tr key={i}>
+                                        {week.map(day => {
+                                            // Give the days from another month a different color.
+                                            const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
+                                            const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
+                                            const isFromNextMonth = i == 4 && day >= 1 && day <= 7
+                                            // Account for situation where e.g. calendar is at july and july ends on a friday,
+                                            // but user selects the saturday of this week (so 1st of august), then the correct
+                                            // month should be passed to the handleSelect.
+                                            const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
+                                            const selectedYear = selected.getFullYear()
+                                            const selectedMonth = selected.getMonth()
+                                            const selectedDay = selected.getDate()
+                                            const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
+
+                                            return (
+                                                <td key={day} className={"day-number " + (isSelected ? "selected" : "") }>
+                                                    <button 
+                                                        className="day-button"
+                                                        disabled={isFromPrevMonth || isFromNextMonth}
+                                                        onClick={() => handleSelect(year, monthOfThisDay, day)}
+                                                    >
+                                                        {day}
+                                                    </button>
+                                                </td>
+                                            )
+                                        })}
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </motion.div>
+
+            ) : null}
+        </AnimatePresence>
+    )
 }

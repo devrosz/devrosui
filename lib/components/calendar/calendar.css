@@ -1,8 +1,52 @@
+
+.datepicker, .datepicker > * {
+    font-family: var(--font);
+}
+
+.datepicker {
+    position: relative;
+}
+
+.datepicker label {
+    display: block;
+    color: var(--text-primary);
+}
+
+.datepicker input {
+    width: 280px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    background-color: var(--background-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--button-secondary-border);
+}
+
+.datepicker input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+.datepicker input[type="date"]::placeholder {
+    color: var(--text-tertiary);
+}
+
+.calendar-icon {
+    position: absolute;
+    top: 40px;
+    right: 5px;
+    color: var(--text-primary);
+    background-color: transparent;
+    border: none
+}
+
 .calendar-container {
+    position: absolute;
+    z-index: 2;
     color: var(--text-primary);
     font-family: var(--font);
     background-color: var(--background-tertiary);
-    padding: 1rem 2rem;
+    padding: 1rem;
     border-radius: 2rem;
     border: 1px solid var(--button-secondary-border);
 }
@@ -14,7 +58,8 @@
     padding-left: 0.5rem;
 }
 
-.calendar-header h4 {
+.calendar-header h5 {
+    margin: 0;
     margin-bottom: 1rem;
     font-weight: normal;
 }
@@ -24,10 +69,17 @@
     border: none;
     color: var(--text-primary);
     font-family: var(--font);
-    font-size: 1.25rem;
     border-radius: 2rem;
     font-weight: 600;
-    padding: 0.75rem;
+    padding: 0.5rem;
+}
+
+.calendar-buttons button {
+    font-size: 0.75rem;
+}
+
+.day-button {
+    font-size: 1rem;
 }
 
 .day-number {
@@ -40,7 +92,7 @@
 }
 
 .calendar-container table thead tr td {
-    font-size: 1.25rem;
+    font-size: 1rem;
 }
 
 .calendar-container table td {
