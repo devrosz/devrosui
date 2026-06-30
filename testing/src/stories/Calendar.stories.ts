@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { Calendar } from "@devrosui/react"
+import { DatePicker } from "@devrosui/react"
 
 const meta = {
-    title: "Calendar",
-    component: Calendar,
+    title: "Datepicker",
+    component: DatePicker,
     parameters: {
         layout: "centered"
     }
-} satisfies Meta<typeof Calendar>
+} satisfies Meta<typeof DatePicker>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const CalendarDev: Story = {
+export const DatePickerDev: Story = {
     args: {}
 }
 

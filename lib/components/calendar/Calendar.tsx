@@ -1,19 +1,29 @@
 "use client"
 
 import React from "react"
+import { FaChevronLeft } from "react-icons/fa6"
+import { FaChevronRight } from "react-icons/fa6"
 import "./calendar.css"
 
-type SelectedDate = {
-    year: number ,
-    month: string,
-    day: number
+type CalendarProps = {
+    open: boolean,
+    toggleOpen: () => void,
+    date?: null | Date,
+    setDate: (arg0: Date) => void
 }
 
-export default function Calendar() {
+// Calendar component where the user can select a certain date.
+// open: if true, the calendar will be displayed; otherwise not.
+// toggleOpen: callback to toggle the open state.
+// (optional)date: initial date to be marked on the calendar.
+// if no date has been given, the current date will be used.
+// setDate: callback to set the marked Date.
+export default function Calendar({open, toggleOpen, date=null, setDate}: CalendarProps) {
 
     const currentDate = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth())
+    const selected = date ?? currentDate
     
     // Object representing the months of the year with the amount
     // of days per month.
@@ -34,12 +44,6 @@ export default function Calendar() {
         december: 31 
     }
     const monthNames: string[] = Object.keys(months)
-    const dayNames: string[] = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-    const [selected, setSelected] = React.useState<SelectedDate>({
-        year: currentDate.getFullYear(),
-        month: monthNames[currentDate.getMonth()],
-        day: currentDate.getDay()
-    })
 
     // Selects next month.
     // If the current month is december, the month will be set to january
@@ -69,22 +73,41 @@ export default function Calendar() {
         })
     }
 
-    // Sets the month of a given Date object to the new given
-    // month and returns a new Date object with the new month.
-    // Extends vanilla JS Date method 'setMonth' because the
+    // Sets the year of a given Date object to the new given
+    // year and returns a new Date object with the new year.
+    // Extends vanilla JS Date method 'setYear' because the
     // vanilla method returns a timestamp instead of a Date object.
     // With this helper function you don't have to create a new
     // instance of Date after every change.
-    function changeMonth(currentDate: Date, newMonth: number): Date {
-        const newDateTimestamp = currentDate.setMonth(newMonth)
-        return new Date(newDateTimestamp)
-    }
-
-    // Sets the year of a given Date object to the new given
-    // year and returns a new Date object with the new year.
     function changeYear(currentYear: Date, newYear: number): Date {
         const newDateTimestamp = currentYear.setFullYear(newYear)
         return new Date(newDateTimestamp)
+    }
+
+    // Returns an array of the short form of the days in a week
+    // in the language of the user.
+    // If the language of the user can't be inferred, a fallback to en-US
+    // will be used.
+    function getDayNames() {
+        // June 2026 started on a monday.
+        // Since we only care about the day names and Intl requires a date object,
+        // we just pass in the first seven days of june 2026 to get the ascending
+        // order of day names.
+        const alignedDates = [
+            "2026-06-1",
+            "2026-06-2",
+            "2026-06-3",
+            "2026-06-4",
+            "2026-06-5",
+            "2026-06-6",
+            "2026-06-7",
+        ]
+
+        return alignedDates.map(date => {
+            const dateObj = new Date(date)
+            const locale = navigator.language || "en-US"
+            return new Intl.DateTimeFormat(locale, { weekday: "short"}).format(dateObj)
+        })
     }
 
     // Returns the index of the first weekday of the given month
@@ -96,7 +119,7 @@ export default function Calendar() {
 
         // Substract one day from the current day in the given month and year
         // until the day doesn't belong to the given month.
-        const daysBack = [...Array(daysInMonth).keys()].map(i => {
+        const daysBack = [...Array(daysInMonth + 1).keys()].map(i => {
             // 1000 * 3600 * 24 = #milliseconds in a day and i is #days to be substracted.
             const prevDayTimestamp: number = date - (1000 * 3600 * 24 * i)
             const prevDay: Date = new Date(prevDayTimestamp)
@@ -166,26 +189,28 @@ export default function Calendar() {
 
     // Saves the date that the user selected from the calendar.
     function handleSelect(year: number, month: number, day: number): void {
-        setSelected({
-            year: year,
-            month: monthNames[month],
-            day: day
-        })
+        const dateString = `${year}-${month + 1}-${day}`
+        setDate(new Date(dateString))
+        toggleOpen()
     }
 
-    return (
+    return open ? (
         <div className="calendar-container">
             <div className="calendar-header">
                     <h4>{monthNames[month] + " " + year}</h4>
                 <div className="calendar-buttons">
-                    <button onClick={decrementMonth}>{"<"}</button>
-                    <button onClick={incrementMonth}>{">"}</button>
+                    <button onClick={decrementMonth}>
+                        <FaChevronLeft />
+                    </button>
+                    <button onClick={incrementMonth}>
+                        <FaChevronRight />
+                    </button>
                 </div>
             </div>
             <table>
                 <thead>
                     <tr>
-                        {dayNames.map(day => <td key={day}>{day.slice(0,3)}</td>)}
+                        {getDayNames().map(day => <td key={day}>{day}</td>)}
                     </tr>
                 </thead>
                 <tbody>
@@ -200,14 +225,18 @@ export default function Calendar() {
                                     // Account for situation where e.g. calendar is at july and july ends on a friday,
                                     // but user selects the saturday of this week (so 1st of august), then the correct
                                     // month should be passed to the handleSelect.
-                                    const selectedMonth = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
-                                    const isSelected = selected.year === year && selected.month === monthNames[selectedMonth] && selected.day === day
+                                    const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
+                                    const selectedYear = selected.getFullYear()
+                                    const selectedMonth = selected.getMonth()
+                                    const selectedDay = selected.getDate()
+                                    const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
 
                                     return (
-                                        <td key={day} className={"day-number " + (isSelected ? "selected" : "")}>
+                                        <td key={day} className={"day-number " + (isSelected ? "selected" : "") }>
                                             <button 
-                                                className={"day-button " + (isFromPrevMonth || isFromNextMonth ? "outlier" : "")}
-                                                onClick={() => handleSelect(year, selectedMonth, day)}
+                                                className="day-button"
+                                                disabled={isFromPrevMonth || isFromNextMonth}
+                                                onClick={() => handleSelect(year, monthOfThisDay, day)}
                                             >
                                                 {day}
                                             </button>
@@ -220,5 +249,5 @@ export default function Calendar() {
                 </tbody>
             </table>
         </div>
-    )
+    ) : null
 }
