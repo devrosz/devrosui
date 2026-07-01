@@ -8,9 +8,8 @@ import "./calendar.css"
 
 type CalendarProps = {
     open: boolean,
-    toggleOpen: () => void,
-    date?: null | string,
-    setDate: (arg0: string) => void
+    date: null | string,
+    onSelect: (value: string) => void
 }
 
 // Calendar component where the user can select a certain date.
@@ -19,7 +18,7 @@ type CalendarProps = {
 // (optional)date: initial date as string in the format yyyy-mm-dd to be marked on the calendar.
 // if no date has been given, the current date will be used.
 // setDate: callback to set the marked Date.
-export default function Calendar({open, toggleOpen, date=null, setDate}: CalendarProps) {
+export default function Calendar({open, date=null, onSelect}: CalendarProps) {
 
     const currentDate = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
@@ -195,13 +194,6 @@ export default function Calendar({open, toggleOpen, date=null, setDate}: Calenda
         return `${year}-${monthFormatted}-${dayOfMonthFormatted}`
     }
 
-    // Saves the date that the user selected from the calendar.
-    function handleSelect(year: number, month: number, day: number): void {
-        const dateString = parseDate(year, month + 1, day)
-        setDate(dateString)
-        toggleOpen()
-    }
-
     return (
         <AnimatePresence>
             {open ? (
@@ -246,13 +238,14 @@ export default function Calendar({open, toggleOpen, date=null, setDate}: Calenda
                                             const selectedMonth = selected.getMonth()
                                             const selectedDay = selected.getDate()
                                             const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
+                                            const dateString = parseDate(year, monthOfThisDay + 1, day)
 
                                             return (
                                                 <td key={day} className={"day-number " + (isSelected ? "selected" : "") }>
                                                     <button 
                                                         className="day-button"
                                                         disabled={isFromPrevMonth || isFromNextMonth}
-                                                        onClick={() => handleSelect(year, monthOfThisDay, day)}
+                                                        onClick={() => onSelect(dateString)}
                                                     >
                                                         {day}
                                                     </button>

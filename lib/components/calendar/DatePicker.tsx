@@ -2,6 +2,16 @@ import React from "react"
 import { LuCalendar } from "react-icons/lu"
 import Calendar from "./Calendar"
 
+type DatePickerProps = {
+    minYear?: number,
+    maxYear?: number,
+    disabled?: [Date],
+    id: string,
+    name: string,
+    value: string | null,
+    onChange: (name: string, value: string) => void
+}
+
 // Datepicker component that lets the user select a date.
 // The selected date is stored as string so it can be represented in the date input.
 // Communication Datepicker <> Calendar.
@@ -10,28 +20,35 @@ import Calendar from "./Calendar"
 // - Calendar operates on this Date object.
 // - When a date is selected via Calendar, the selected date as Date object is turned into a date string.
 // - This date string is passed to DatePicker and displayed.
-export default function DatePicker() {
-    const [date, setDate] = React.useState<null | string>(null)
+export default function DatePicker({
+    minYear,
+    maxYear,
+    disabled=[],
+    id="datepicker",
+    name="datepicker",
+    value,
+    onChange
+}: DatePickerProps) {
     const [openCalendar, setOpenCalendar] = React.useState<boolean>(false)
 
     function toggleCalendar() {
         setOpenCalendar(prev => !prev)
     }
 
-    function handleChange(e) {
-        const { value } = e.target
-        setDate(value)
+    function handleCalendarSelect(value: string): void {
+        onChange(name, value)
+        toggleCalendar()
     }
 
     return (
         <div className="datepicker">
-            <label htmlFor="datepicker">Date</label>
+            <label htmlFor={id}>Date</label>
             <input
                 type="date"
-                id="datepicker"
-                name="date"
-                value={date}
-                onChange={handleChange}
+                id={id}
+                name={name}
+                value={value}
+                onChange={(e) => onChange(name, e.target.value)}
             />
             <button type="button" onClick={toggleCalendar} className="calendar-icon">
                 <LuCalendar />
@@ -39,8 +56,9 @@ export default function DatePicker() {
             <Calendar 
                 open={openCalendar}
                 toggleOpen={toggleCalendar}
-                date={date}
-                setDate={setDate}
+                dateInputName={name}
+                date={value}
+                onSelect={handleCalendarSelect}
             />
         </div>
     )
