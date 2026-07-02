@@ -9,7 +9,10 @@ import "./calendar.css"
 type CalendarProps = {
     open: boolean,
     date: null | string,
-    onSelect: (value: string) => void
+    onSelect: (value: string) => void,
+    minYear?: number,
+    maxYear?: number,
+    disabled?: Date[]
 }
 
 // Calendar component where the user can select a certain date.
@@ -18,12 +21,11 @@ type CalendarProps = {
 // (optional)date: initial date as string in the format yyyy-mm-dd to be marked on the calendar.
 // if no date has been given, the current date will be used.
 // setDate: callback to set the marked Date.
-export default function Calendar({open, date=null, onSelect}: CalendarProps) {
-
+export default function Calendar({open, date=null, onSelect, minYear, maxYear, disabled=[]}: CalendarProps) {
     const currentDate = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth())
-    const selected = new Date(date) ?? currentDate
+    const selected = date ?? currentDate
     
     // Object representing the months of the year with the amount
     // of days per month.
@@ -80,8 +82,26 @@ export default function Calendar({open, date=null, onSelect}: CalendarProps) {
     // With this helper function you don't have to create a new
     // instance of Date after every change.
     function changeYear(currentYear: Date, newYear: number): Date {
+        if (newYear < minYear || newYear > maxYear) {
+            throw new Error(`Datepicker: year must be between ${minYear}-${maxYear}`)
+        }
         const newDateTimestamp = currentYear.setFullYear(newYear)
         return new Date(newDateTimestamp)
+    }
+
+    // Checks if a given date is in the array of disabled dates.
+    // Returns true if it is, otherwise false.
+    function checkDisabledDay(year: number, month: number, day: number): boolean {
+        if (disabled && disabled.length > 0) {
+            const isInDisabled = (date) => {
+                const dateObj = new Date(date)
+                return dateObj.getFullYear() === year && 
+                        dateObj.getMonth() === month && 
+                        dateObj.getDate() === day
+            }
+            return disabled.some(isInDisabled)
+        }
+        return false
     }
 
     // Returns an array of the short form of the days in a week
@@ -207,10 +227,18 @@ export default function Calendar({open, date=null, onSelect}: CalendarProps) {
                     <div className="calendar-header">
                             <h5>{monthNames[month] + " " + year}</h5>
                         <div className="calendar-buttons">
-                            <button onClick={decrementMonth}>
+                            <button 
+                                onClick={decrementMonth} 
+                                disabled={minYear && year <= minYear && month == 0}
+                                className="calendar-set-month-button"
+                            >
                                 <FaChevronLeft />
                             </button>
-                            <button onClick={incrementMonth}>
+                            <button 
+                                onClick={incrementMonth}
+                                disabled={maxYear && year >= maxYear && month == 11}
+                                className="calendar-set-month-button"
+                            >
                                 <FaChevronRight />
                             </button>
                         </div>
@@ -233,18 +261,24 @@ export default function Calendar({open, date=null, onSelect}: CalendarProps) {
                                             // Account for situation where e.g. calendar is at july and july ends on a friday,
                                             // but user selects the saturday of this week (so 1st of august), then the correct
                                             // month should be passed to the handleSelect.
+                                            // Is zero-indexed.
                                             const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
+                                            
+                                            // Get selected date properties to mark the selected date if applicable.
                                             const selectedYear = selected.getFullYear()
                                             const selectedMonth = selected.getMonth()
                                             const selectedDay = selected.getDate()
                                             const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
+                                            
+                                            // Check if date is already taken.
                                             const dateString = parseDate(year, monthOfThisDay + 1, day)
+                                            const isInDisabled = disabled.length > 0 && checkDisabledDay(year, monthOfThisDay, day)
 
                                             return (
-                                                <td key={day} className={"day-number " + (isSelected ? "selected" : "") }>
+                                                <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>
                                                     <button 
                                                         className="day-button"
-                                                        disabled={isFromPrevMonth || isFromNextMonth}
+                                                        disabled={isFromPrevMonth || isFromNextMonth || isInDisabled}
                                                         onClick={() => onSelect(dateString)}
                                                     >
                                                         {day}

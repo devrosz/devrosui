@@ -5,7 +5,7 @@ import Calendar from "./Calendar"
 type DatePickerProps = {
     minYear?: number,
     maxYear?: number,
-    disabled?: [Date],
+    disabled?: Date[],
     id: string,
     name: string,
     value: string | null,
@@ -55,10 +55,11 @@ export default function DatePicker({
             </button>
             <Calendar 
                 open={openCalendar}
-                toggleOpen={toggleCalendar}
-                dateInputName={name}
                 date={value}
                 onSelect={handleCalendarSelect}
+                minYear={minYear}
+                maxYear={maxYear}
+                disabled={disabled}
             />
         </div>
     )

@@ -1,4 +1,5 @@
 
+/* Datepicker styling */
 .datepicker, .datepicker > * {
     font-family: var(--font);
 }
@@ -22,6 +23,7 @@
     border: 1px solid var(--button-secondary-border);
 }
 
+/* Disable native calendar UI */
 .datepicker input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
@@ -31,6 +33,7 @@
     color: var(--text-tertiary);
 }
 
+/* Calendar styling */
 .calendar-icon {
     position: absolute;
     top: 40px;
@@ -64,7 +67,8 @@
     font-weight: normal;
 }
 
-.calendar-buttons button, .day-button {
+/* Default days styling */
+.calendar-set-month-button, .day-button {
     background-color: transparent;
     border: none;
     color: var(--text-primary);
@@ -72,10 +76,6 @@
     border-radius: 2rem;
     font-weight: 600;
     padding: 0.5rem;
-}
-
-.calendar-buttons button {
-    font-size: 0.75rem;
 }
 
 .day-button {
@@ -86,8 +86,34 @@
     border-radius: 2rem;
 }
 
-.calendar-buttons button:hover, .day-number:hover,
+.calendar-set-month-button {
+    font-size: 0.75rem;
+}
+
+.calendar-set-month-button:disabled {
+    color: var(--text-tertiary);
+}
+
+.calendar-set-month-button:hover, .day-number:hover {
+    background-color: var(--button-secondary-hover);
+}
+
+/* Selected days style */
+.day-number.selected .day-button {
+    color: var(--text-secondary);
+}
+
 .day-number.selected {
+    background-color: var(--background-secondary);
+}
+
+.day-number.selected:hover {
+    background-color: var(--button-primary-hover);
+    color: var(--text-secondary);
+}
+
+/* Taken days style */
+.day-number.taken {
     background-color: var(--button-secondary-hover);
 }
 

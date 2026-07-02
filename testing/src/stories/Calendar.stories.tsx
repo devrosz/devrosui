@@ -43,3 +43,71 @@ export const DatePickerDev: Story = {
     }
 }
 
+export const DatepickerYearLimits: Story = {
+    render: (args) => {
+        const [formData, setFormData] = React.useState<{
+            date: string | null;
+        }>({
+            date: null,
+        });
+
+        function handleChange(name: string, value: string) {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
+
+        return (
+            <DatePicker
+                {...args}
+                value={formData.date}
+                onChange={handleChange}
+            />
+        )
+    },
+    args: {
+        id: "datepicker",
+        name: "date",
+        minYear: 2025,
+        maxYear: 2027
+    }
+}
+
+export const DatepickerDisabled: Story = {
+    render: (args) => {
+        const [formData, setFormData] = React.useState<{
+            date: string | null;
+        }>({
+            date: null,
+        });
+
+        function handleChange(name: string, value: string) {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: value,
+            }));
+        }
+
+        return (
+            <DatePicker
+                {...args}
+                value={formData.date}
+                onChange={handleChange}
+            />
+        )
+    },
+    args: {
+        id: "datepicker",
+        name: "date",
+        minYear: 2025,
+        maxYear: 2027,
+        disabled: [
+            new Date("2026-07-03"),
+            new Date("2026-07-06"),
+            new Date("2026-07-15"),
+            new Date("2026-07-06")
+        ]
+    }
+}
+
