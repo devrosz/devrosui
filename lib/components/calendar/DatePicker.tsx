@@ -8,7 +8,7 @@ type DatePickerProps = {
     disabled?: Date[],
     id: string,
     name: string,
-    value: string | null,
+    value: string,
     onChange: (name: string, value: string) => void
 }
 

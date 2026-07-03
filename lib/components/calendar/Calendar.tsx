@@ -8,7 +8,7 @@ import "./calendar.css"
 
 type CalendarProps = {
     open: boolean,
-    date: null | string,
+    date: string,
     onSelect: (value: string) => void,
     minYear?: number,
     maxYear?: number,
@@ -21,29 +21,29 @@ type CalendarProps = {
 // (optional)date: initial date as string in the format yyyy-mm-dd to be marked on the calendar.
 // if no date has been given, the current date will be used.
 // setDate: callback to set the marked Date.
-export default function Calendar({open, date=null, onSelect, minYear, maxYear, disabled=[]}: CalendarProps) {
-    const currentDate = new Date()
+export default function Calendar({open, date, onSelect, minYear, maxYear, disabled=[]}: CalendarProps) {
+    const currentDate: Date = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth())
-    const selected = date ?? currentDate
+    const selected: Date = date ? new Date(date) : currentDate
     
     // Object representing the months of the year with the amount
     // of days per month.
     // keys: monthnames
     // values: days that are in the month.
-    const months = {
-        january: 31,
-        february: year && year % 4 == 0 ? 29 : 28,
-        march: 31,
-        april: 30,
-        may: 31,
-        june: 30,
-        july: 31,
-        august: 31,
-        september: 30,
-        october: 31,
-        november: 30,
-        december: 31 
+    const months: {[key:string]: number} = {
+        "january": 31,
+        "february": year && year % 4 == 0 ? 29 : 28,
+        "march": 31,
+        "april": 30,
+        "may": 31,
+        "june": 30,
+        "july": 31,
+        "august": 31,
+        "september": 30,
+        "october": 31,
+        "november": 30,
+        "december": 31 
     }
     const monthNames: string[] = Object.keys(months)
 
@@ -82,7 +82,10 @@ export default function Calendar({open, date=null, onSelect, minYear, maxYear, d
     // With this helper function you don't have to create a new
     // instance of Date after every change.
     function changeYear(currentYear: Date, newYear: number): Date {
-        if (newYear < minYear || newYear > maxYear) {
+        if (
+            minYear && maxYear &&
+            (newYear < minYear || newYear > maxYear)
+        ) {
             throw new Error(`Datepicker: year must be between ${minYear}-${maxYear}`)
         }
         const newDateTimestamp = currentYear.setFullYear(newYear)
@@ -93,7 +96,7 @@ export default function Calendar({open, date=null, onSelect, minYear, maxYear, d
     // Returns true if it is, otherwise false.
     function checkDisabledDay(year: number, month: number, day: number): boolean {
         if (disabled && disabled.length > 0) {
-            const isInDisabled = (date) => {
+            const isInDisabled = (date: Date) => {
                 const dateObj = new Date(date)
                 return dateObj.getFullYear() === year && 
                         dateObj.getMonth() === month && 
@@ -229,14 +232,14 @@ export default function Calendar({open, date=null, onSelect, minYear, maxYear, d
                         <div className="calendar-buttons">
                             <button 
                                 onClick={decrementMonth} 
-                                disabled={minYear && year <= minYear && month == 0}
+                                disabled={minYear != null && year <= minYear && month == 0}
                                 className="calendar-set-month-button"
                             >
                                 <FaChevronLeft />
                             </button>
                             <button 
                                 onClick={incrementMonth}
-                                disabled={maxYear && year >= maxYear && month == 11}
+                                disabled={maxYear != null && year >= maxYear && month == 11}
                                 className="calendar-set-month-button"
                             >
                                 <FaChevronRight />
