@@ -10,9 +10,9 @@ type CalendarProps = {
     open: boolean,
     date: string,
     onSelect: (value: string) => void,
-    minYear?: number,
-    maxYear?: number,
-    disabled?: Date[]
+    minYear?: number | null,
+    maxYear?: number | null,
+    disabled?: Date[] | null
 }
 
 // Calendar component where the user can select a certain date.
@@ -275,7 +275,7 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
                                             
                                             // Check if date is already taken.
                                             const dateString = parseDate(year, monthOfThisDay + 1, day)
-                                            const isInDisabled = disabled.length > 0 && checkDisabledDay(year, monthOfThisDay, day)
+                                            const isInDisabled = disabled != null && disabled.length > 0 && checkDisabledDay(year, monthOfThisDay, day)
 
                                             return (
                                                 <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>

@@ -3,13 +3,13 @@ import { LuCalendar } from "react-icons/lu"
 import Calendar from "./Calendar"
 
 type DatePickerProps = {
-    minYear?: number,
-    maxYear?: number,
-    disabled?: Date[],
+    minYear?: number | null,
+    maxYear?: number | null,
+    disabled?: Date[] | null,
     id: string,
     name: string,
-    value: string,
-    onChange: (name: string, value: string) => void
+    date: string,
+    onChange: (name: string, date: string) => void
 }
 
 // Datepicker component that lets the user select a date.
@@ -26,7 +26,7 @@ export default function DatePicker({
     disabled=[],
     id="datepicker",
     name="datepicker",
-    value,
+    date,
     onChange
 }: DatePickerProps) {
     const [openCalendar, setOpenCalendar] = React.useState<boolean>(false)
@@ -47,7 +47,7 @@ export default function DatePicker({
                 type="date"
                 id={id}
                 name={name}
-                value={value}
+                value={date}
                 onChange={(e) => onChange(name, e.target.value)}
             />
             <button type="button" onClick={toggleCalendar} className="calendar-icon">
@@ -55,7 +55,7 @@ export default function DatePicker({
             </button>
             <Calendar 
                 open={openCalendar}
-                date={value}
+                date={date}
                 onSelect={handleCalendarSelect}
                 minYear={minYear}
                 maxYear={maxYear}

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import React from "react"
-
 import { DatePicker } from "@devrosui/react"
+import { useArgs } from "storybook/internal/preview-api"
 
 const meta = {
     title: "Datepicker",
@@ -14,100 +13,93 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+
+// In the following stories, a dummy onChange will be passed in args
+// to satisfy the typechecking, but it will be overwritten by the function
+// defined in render.
 export const DatePickerDev: Story = {
-    render: (args) => {
-        const [formData, setFormData] = React.useState<{
-            date: string | null;
-        }>({
-            date: null,
-        });
-
+    args: {
+        id: "datepicker",
+        name: "date",
+        date: "",
+        onChange: () => {},
+    },
+    render: () => {
+        const [{id, name, date}, updateArgs] = useArgs()
+        
         function handleChange(name: string, value: string) {
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
+            updateArgs({[name]: value})
         }
-
+        
         return (
             <DatePicker
-                {...args}
-                value={formData.date}
+                id={id}
+                name={name}
+                date={date}
                 onChange={handleChange}
             />
         )
     },
-    args: {
-        id: "datepicker",
-        name: "date",
-    }
 }
 
 export const DatepickerYearLimits: Story = {
-    render: (args) => {
-        const [formData, setFormData] = React.useState<{
-            date: string | null;
-        }>({
-            date: null,
-        });
+    args: {
+        id: "datepicker",
+        name: "date",
+        date: "",
+        onChange: () => {},
+        minYear: 2025,
+        maxYear: 2027
+    },
+    render: () => {
+        const [{id, name, date, minYear, maxYear}, updateArgs] = useArgs()
 
         function handleChange(name: string, value: string) {
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
+           updateArgs({[name]: value})
         }
 
         return (
             <DatePicker
-                {...args}
-                value={formData.date}
+                id={id}
+                name={name}
+                date={date}
                 onChange={handleChange}
+                minYear={minYear}
+                maxYear={maxYear}
             />
         )
     },
-    args: {
-        id: "datepicker",
-        name: "date",
-        minYear: 2025,
-        maxYear: 2027
-    }
 }
 
 export const DatepickerDisabled: Story = {
-    render: (args) => {
-        const [formData, setFormData] = React.useState<{
-            date: string | null;
-        }>({
-            date: null,
-        });
-
-        function handleChange(name: string, value: string) {
-            setFormData((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-        }
-
-        return (
-            <DatePicker
-                {...args}
-                value={formData.date}
-                onChange={handleChange}
-            />
-        )
-    },
     args: {
         id: "datepicker",
         name: "date",
-        minYear: 2025,
-        maxYear: 2027,
+        date: "",
+        onChange: () => {},
         disabled: [
             new Date("2026-07-03"),
             new Date("2026-07-06"),
             new Date("2026-07-15"),
             new Date("2026-07-06")
         ]
-    }
+    },
+    render: () => {
+        const [{id, name, date, disabled}, updateArgs] = useArgs()
+
+        function handleChange(name: string, value: string) {
+           updateArgs({[name]: value})
+        }
+
+        return (
+            <DatePicker
+                id={id}
+                name={name}
+                date={date}
+                onChange={handleChange}
+                disabled={disabled}
+            />
+        )
+    },
 }
 
