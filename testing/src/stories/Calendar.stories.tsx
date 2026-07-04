@@ -77,7 +77,7 @@ export const DatepickerDisabled: Story = {
         name: "date",
         date: "",
         onChange: () => {},
-        disabled: [
+        disabledDays: [
             new Date("2026-07-03"),
             new Date("2026-07-06"),
             new Date("2026-07-15"),

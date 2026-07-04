@@ -49,6 +49,7 @@
 
 .docs-page-content {
     max-width: 800px;
+    width: 100%;
 }
 
 .docs-page-content h3 {
@@ -102,7 +103,7 @@
     color: var(--text-primary);
 }
 
-.docs-page table {
+/* .docs-page table {
     width: 100%;
     border-spacing: 0;
 }
@@ -137,7 +138,7 @@
 
 .docs-page-table-container {
     overflow-x: auto;
-}
+} */
 
 @media (max-width: 900px) {
     .docs-page-content {

@@ -75,7 +75,7 @@
     font-family: var(--font);
     border-radius: 2rem;
     font-weight: 600;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
 }
 
 .day-button {
@@ -127,4 +127,16 @@
 
 .day-button:disabled {
     color: var(--text-tertiary);
+}
+
+@media (max-width: 450px) {
+    .calendar-set-month-button, .day-button {
+        padding: 0.5rem 0.65rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .calendar-set-month-button, .day-button {
+        padding: 0.4rem 0.5rem;
+    }
 }

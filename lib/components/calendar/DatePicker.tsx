@@ -4,22 +4,25 @@ import DatePickerCalendar from "./DatePickerCalendar"
 
 // minYear: minimum year that can be set.
 // maxYear: maximum year that can be set.
-// disabled: array of Date objects representing dates that cannot be selected.
+// disabledDays: array of Date objects representing dates that cannot be selected.
 // id: id of the date input.
 // name: name of the date input.
 // date: datevalue for the date input.
 // onChange: callback function to change the date input.
 // - This callback function can be a general form handleChange function which receives
 // - the name of the input as well as the value for the input.
+// required: boolean indicating whether filling in this input is required for submission.
+// disabled: boolean indicating whether usage of date input is disabled.
 type DatePickerProps = {
     minYear?: number | undefined,
     maxYear?: number | undefined,
-    disabled?: Date[] | null,
+    disabledDays?: Date[] | null,
     id: string,
     name: string,
     date: string,
     onChange: (name: string, value: string) => void,
     required?: boolean,
+    disabled?: boolean
 }
 
 // Datepicker component that lets the user select a date.
@@ -33,12 +36,13 @@ type DatePickerProps = {
 export default function DatePicker({
     minYear=undefined,
     maxYear=undefined,
-    disabled=[],
+    disabledDays=[],
     id="datepicker",
     name="datepicker",
     date="",
     onChange,
-    required=true
+    required=true,
+    disabled=false
 }: DatePickerProps) {
     const [openCalendar, setOpenCalendar] = React.useState<boolean>(false)
 
@@ -70,8 +74,14 @@ export default function DatePicker({
                 min={minYear}
                 max={maxYear}
                 required={required}
+                disabled={disabled}
             />
-            <button type="button" onClick={toggleCalendar} className="calendar-icon">
+            <button 
+                type="button"
+                onClick={toggleCalendar}
+                className="calendar-icon"
+                disabled={disabled}
+            >
                 <LuCalendar />
             </button>
             <DatePickerCalendar 
@@ -80,7 +90,7 @@ export default function DatePicker({
                 onSelect={handleCalendarSelect}
                 minYear={minYear}
                 maxYear={maxYear}
-                disabled={disabled}
+                disabledDays={disabledDays}
             />
         </div>
     )

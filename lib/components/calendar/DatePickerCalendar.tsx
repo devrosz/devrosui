@@ -11,14 +11,14 @@ import "./calendar.css"
 // onSelect: callback function to pass selected date to Datepicker.
 // minYear: minimum year that can be set.
 // maxYear: maximum year that can be set.
-// disabled: array of Date objects representing dates that cannot be selected.
+// disabledDays: array of Date objects representing dates that cannot be selected.
 type DatePickerCalendarProps = {
     open: boolean,
     date: string,
     onSelect: (value: string) => void,
     minYear?: number | null,
     maxYear?: number | null,
-    disabled?: Date[] | null
+    disabledDays?: Date[] | null
 }
 
 // Calendar component where the user can select a certain date.
@@ -27,7 +27,7 @@ type DatePickerCalendarProps = {
 // During populating the calendar dates and handling selection, this date will be
 // turned from string -> Date object.
 // On selection, the Date object will be turned into a string again and passed to the Datepicker.
-export default function DatePickerCalendar({open, date, onSelect, minYear, maxYear, disabled}: DatePickerCalendarProps) {
+export default function DatePickerCalendar({open, date, onSelect, minYear, maxYear, disabledDays}: DatePickerCalendarProps) {
     const currentDate: Date = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth()) // Zero-indexed.
@@ -108,7 +108,7 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
     // Checks if a given date is in the array of disabled dates.
     // Returns true if it is, otherwise false.
     function checkDayIsDisabled(year: number, month: number, day: number): boolean {
-        if (disabled && disabled.length > 0) {
+        if (disabledDays && disabledDays.length > 0) {
             // Arrow function that matches the current date with every date in the disabled array.
             const isInDisabled = (date: Date) => {
                 const dateObj = new Date(date)
@@ -116,7 +116,7 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
                         dateObj.getMonth() === month && 
                         dateObj.getDate() === day
             }
-            return disabled.some(isInDisabled)
+            return disabledDays.some(isInDisabled)
         }
         return false
     }
@@ -289,7 +289,7 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
                                             
                                             // Check if date is already taken.
                                             const dateString = parseDate(year, monthOfThisDay + 1, day)
-                                            const isInDisabled = disabled != null && disabled.length > 0 && checkDayIsDisabled(year, monthOfThisDay, day)
+                                            const isInDisabled = disabledDays != null && disabledDays.length > 0 && checkDayIsDisabled(year, monthOfThisDay, day)
 
                                             return (
                                                 <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>
