@@ -6,7 +6,13 @@ import { FaChevronRight } from "react-icons/fa6"
 import { motion, AnimatePresence } from "motion/react"
 import "./calendar.css"
 
-type CalendarProps = {
+// Open: open state of the calendar UI.
+// date: current selected date.
+// onSelect: callback function to pass selected date to Datepicker.
+// minYear: minimum year that can be set.
+// maxYear: maximum year that can be set.
+// disabled: array of Date objects representing dates that cannot be selected.
+type DatePickerCalendarProps = {
     open: boolean,
     date: string,
     onSelect: (value: string) => void,
@@ -16,15 +22,15 @@ type CalendarProps = {
 }
 
 // Calendar component where the user can select a certain date.
-// open: if true, the calendar will be displayed; otherwise not.
-// toggleOpen: callback to toggle the open state.
-// (optional)date: initial date as string in the format yyyy-mm-dd to be marked on the calendar.
-// if no date has been given, the current date will be used.
-// setDate: callback to set the marked Date.
-export default function Calendar({open, date, onSelect, minYear, maxYear, disabled=[]}: CalendarProps) {
+// Receives the currently selected date as string and marks this date.
+// If no date is selected, the current date will be marked.
+// During populating the calendar dates and handling selection, this date will be
+// turned from string -> Date object.
+// On selection, the Date object will be turned into a string again and passed to the Datepicker.
+export default function DatePickerCalendar({open, date, onSelect, minYear, maxYear, disabled}: DatePickerCalendarProps) {
     const currentDate: Date = new Date()
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
-    const [month, setMonth] = React.useState<number>(currentDate.getMonth())
+    const [month, setMonth] = React.useState<number>(currentDate.getMonth()) // Zero-indexed.
     const selected: Date = date ? new Date(date) : currentDate
     
     // Object representing the months of the year with the amount
@@ -48,7 +54,7 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
     const monthNames: string[] = Object.keys(months)
 
     // Selects next month.
-    // If the current month is december, the month will be set to january
+    // Side-effect: If the current month is december, the month will be set to january
     // and the year is incremented.
     function incrementMonth() {
         setMonth(prev => {
@@ -69,7 +75,7 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
             const newValue = prev - 1
             if (newValue < 0) {
                 setYear(prev => prev - 1)
-                return 11
+                return monthNames.length - 1
             }
             return newValue
         })
@@ -81,21 +87,29 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
     // vanilla method returns a timestamp instead of a Date object.
     // With this helper function you don't have to create a new
     // instance of Date after every change.
-    function changeYear(currentYear: Date, newYear: number): Date {
-        if (
-            minYear && maxYear &&
-            (newYear < minYear || newYear > maxYear)
-        ) {
-            throw new Error(`Datepicker: year must be between ${minYear}-${maxYear}`)
+    function changeYear(currentDate: Date, newYear: number): Date {
+        if (minYear && newYear < minYear) {
+            throw new Error(`Datepicker: year must be above ${minYear}`)
+
         }
-        const newDateTimestamp = currentYear.setFullYear(newYear)
-        return new Date(newDateTimestamp)
+
+        if (maxYear && newYear > maxYear) {
+            throw new Error(`Datepicker: year must be below ${maxYear}`)
+        }
+        const newDateTimestamp: number = currentDate.setFullYear(newYear)
+        const newDate: Date = new Date(newDateTimestamp)
+
+        if (!newDateTimestamp || !newDate) {
+            throw new Error("Datepicker: new date is undefined when selecting new year.")
+        }
+        return newDate
     }
 
     // Checks if a given date is in the array of disabled dates.
     // Returns true if it is, otherwise false.
-    function checkDisabledDay(year: number, month: number, day: number): boolean {
+    function checkDayIsDisabled(year: number, month: number, day: number): boolean {
         if (disabled && disabled.length > 0) {
+            // Arrow function that matches the current date with every date in the disabled array.
             const isInDisabled = (date: Date) => {
                 const dateObj = new Date(date)
                 return dateObj.getFullYear() === year && 
@@ -111,12 +125,12 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
     // in the language of the user.
     // If the language of the user can't be inferred, a fallback to en-US
     // will be used.
-    function getDayNames() {
+    function getDayNames(): string[] {
         // June 2026 started on a monday.
         // Since we only care about the day names and Intl requires a date object,
         // we just pass in the first seven days of june 2026 to get the ascending
         // order of day names.
-        const alignedDates = [
+        const alignedDates: string[] = [
             "2026-06-1",
             "2026-06-2",
             "2026-06-3",
@@ -275,7 +289,7 @@ export default function Calendar({open, date, onSelect, minYear, maxYear, disabl
                                             
                                             // Check if date is already taken.
                                             const dateString = parseDate(year, monthOfThisDay + 1, day)
-                                            const isInDisabled = disabled != null && disabled.length > 0 && checkDisabledDay(year, monthOfThisDay, day)
+                                            const isInDisabled = disabled != null && disabled.length > 0 && checkDayIsDisabled(year, monthOfThisDay, day)
 
                                             return (
                                                 <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>
