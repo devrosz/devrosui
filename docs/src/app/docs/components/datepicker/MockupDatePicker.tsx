@@ -6,12 +6,13 @@ import React from "react"
 // Mockup component that extracts the React-logic from the MDX file of Datepicker to
 // make the code example work.
 export default function MockupDatePicker({
+    date="",
     minYear=undefined,
     maxYear=undefined,
     disabledDays=[],
     disabled=false
 }) {
-    const [mockupFormData, setMockupFormData] = React.useState({date: ""})
+    const [mockupFormData, setMockupFormData] = React.useState({date: date})
 
     function mockupHandleChange(name: string, value: string) {
         setMockupFormData(prev => {

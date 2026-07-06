@@ -106,7 +106,7 @@ export default function MyComponent() {
 
     <h3 id="variants">Variants</h3>
 
-    You can also choose any character as delimiter as shown below.
+    You can also add additional props to extend the functionalities of the datepicker.
 
     <h4 id="year-limits">Year limits</h4>
     <OutputContainer 
@@ -137,6 +137,7 @@ export default function MyComponent() {
     <OutputContainer 
             components={[
                 <MockupDatePicker
+                    date={new Date("2026-07-04")}
                     disabledDays={[
                         new Date("2026-07-03"),
                         new Date("2026-07-06"),
@@ -194,8 +195,11 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```path``` | ```string``` | - | URL path to be displayed |
-        | ```delimiter``` | ```string``` | ```">"``` | Symbol that seperates the directories |
+        | ```id``` | ```string``` | datepicker | id of date input |
+        | ```name``` | ```string``` | ```datepicker``` | name of  date input |
+        | ```date``` | ```string``` | ```""``` | selected date |
+        | ```name``` | ```string``` | ```datepicker``` | name of  date input |
+
     </div>
 
     <div className="docs-page-explore">

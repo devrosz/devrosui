@@ -147,6 +147,13 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
         })
     }
 
+    // Returns the month name of the locale language.
+    function getMonthNameLocale(monthIndex: number): string {
+        const dateObj = new Date(`2026-${monthIndex + 1}-01`)
+        const locale = navigator.language || "en-US"
+        return new Intl.DateTimeFormat(locale, { month: "long"}).format(dateObj)
+    }
+
     // Returns the index of the first weekday of the given month
     // in the given year.
     function getFirstWeekdayOfMonth(year: number, month: number): number {
@@ -242,7 +249,7 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
                     transition={{duration: 0.2}}
                 >
                     <div className="calendar-header">
-                            <h5>{monthNames[month] + " " + year}</h5>
+                            <h6>{getMonthNameLocale(month) + " " + year}</h6>
                         <div className="calendar-buttons">
                             <button 
                                 onClick={decrementMonth} 

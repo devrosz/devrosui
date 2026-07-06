@@ -71,7 +71,7 @@ export const DatepickerYearLimits: Story = {
     },
 }
 
-export const DatepickerDisabled: Story = {
+export const DatepickerDisabledDays: Story = {
     args: {
         id: "datepicker",
         name: "date",
@@ -85,7 +85,7 @@ export const DatepickerDisabled: Story = {
         ]
     },
     render: () => {
-        const [{id, name, date, disabled}, updateArgs] = useArgs()
+        const [{id, name, date, disabledDays}, updateArgs] = useArgs()
 
         function handleChange(name: string, value: string) {
            updateArgs({[name]: value})
@@ -97,7 +97,7 @@ export const DatepickerDisabled: Story = {
                 name={name}
                 date={date}
                 onChange={handleChange}
-                disabled={disabled}
+                disabledDays={disabledDays}
             />
         )
     },

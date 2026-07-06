@@ -37,7 +37,7 @@
 .calendar-icon {
     position: absolute;
     top: 40px;
-    right: 5px;
+    right: 10px;
     color: var(--text-primary);
     background-color: transparent;
     border: none
@@ -61,10 +61,9 @@
     padding-left: 0.5rem;
 }
 
-.calendar-header h5 {
+.calendar-header h6 {
     margin: 0;
     margin-bottom: 1rem;
-    font-weight: normal;
 }
 
 /* Default days styling */
@@ -75,7 +74,7 @@
     font-family: var(--font);
     border-radius: 2rem;
     font-weight: 600;
-    padding: 0.5rem 0.75rem;
+    padding: 0.4rem 0.6rem;
 }
 
 .day-button {
