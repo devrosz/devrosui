@@ -2,6 +2,7 @@ import { JSX } from "react"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import LinkButton from "@/components/interfaces/linkbutton/LinkButton"
+import MockupDatePicker from "@/app/docs/components/datepicker/MockupDatePicker"
 import "./showcase.css"
 
 type Demo = {
@@ -18,9 +19,9 @@ export default function Showcase() {
 
     const demos: Demo[] = [
         {
-            name: "calendar",
-            path: "docs/components/calendar",
-            component: placeholder()
+            name: "datepicker",
+            path: "docs/components/datepicker",
+            component: <MockupDatePicker />
         },
         {
             name: "dropdown",

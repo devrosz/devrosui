@@ -4,7 +4,7 @@ import React from "react"
 import { FaChevronLeft } from "react-icons/fa6"
 import { FaChevronRight } from "react-icons/fa6"
 import { motion, AnimatePresence } from "motion/react"
-import "./calendar.css"
+import "./datepicker.css"
 
 // Open: open state of the calendar UI.
 // date: current selected date.

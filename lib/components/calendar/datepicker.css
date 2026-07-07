@@ -23,6 +23,12 @@
     border: 1px solid var(--button-secondary-border);
 }
 
+html.light .datepicker input {
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+}
+
 /* Disable native calendar UI */
 .datepicker input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
@@ -31,6 +37,15 @@
 
 .datepicker input[type="date"]::placeholder {
     color: var(--text-tertiary);
+}
+
+.datepicker input[type="date"]:disabled,
+.datepicker input[type="date"]:disabled ~ .calendar-icon {
+    color: var(--text-tertiary);
+}
+
+.datepicker input[type="date"]:disabled {
+    cursor: not-allowed;
 }
 
 /* Calendar styling */
