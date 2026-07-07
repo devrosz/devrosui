@@ -1,0 +1,219 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { DatePicker } from "@devrosui/react"
+import MockupDatePicker from "./MockupDatePicker"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "year-limits",
+        title: "Year limits",
+        level: 1
+    },
+    {
+        id: "disabled-dates",
+        title: "Disabled days",
+        level: 1
+    },
+    {
+        id: "disabled-input",
+        title: "Disabled input",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const usageCode =
+`
+"use client"
+
+import { DatePicker } from "@devrosui/react"
+import React from "react"
+
+export default function MyComponent() {
+
+    const [formDate, setFormData] = React.useState({
+        date: "",
+        ... // add more fields according to your form.
+    })
+
+    function handleChange(name, value) {
+        setFormData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+
+    return (
+        <DatePicker 
+            id="datepicker" 
+            name="date"
+            date={formDate.date}
+            onChange={handleChange}
+        />
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## DatePicker
+    Component that lets the user select a date.
+
+    <OutputContainer 
+        components={[
+            <MockupDatePicker/>
+        ]} 
+        height="20rem" 
+    />
+    <h3 id="import">Import</h3>
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { DatePicker } from "@devrosui/react"`}
+    />
+
+    <h3 id="usage">Usage</h3>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+
+    You can also add additional props to extend the functionalities of the datepicker.
+
+    <h4 id="year-limits">Year limits</h4>
+    <OutputContainer 
+        components={[
+            <MockupDatePicker
+                minYear={2026}
+                maxYear={2026}
+            />
+        ]} 
+        height="20rem" 
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <DatePicker
+                id="datepicker"
+                name="date"
+                date={formData.date}
+                onChange={handleChange}
+                minYear={2026}
+                maxYear={2026}
+            />
+        `}
+    />
+
+    <h4 id="disabled-dates">Disabled days</h4>
+    <OutputContainer 
+            components={[
+                <MockupDatePicker
+                    date={new Date("2026-07-04")}
+                    disabledDays={[
+                        new Date("2026-07-03"),
+                        new Date("2026-07-06"),
+                        new Date("2026-07-15"),
+                        new Date("2026-07-06")
+                    ]}
+                />
+            ]} 
+            height="20rem" 
+        />
+        <CodeBlock
+            langHighlight="jsx"
+            langDisplay="JSX"
+            code={`
+                <DatePicker
+                    id="datepicker"
+                    name="date"
+                    date={formData.date}
+                    onChange={handleChange}
+                    disabledDays={[
+                        new Date("2026-07-03"),
+                        new Date("2026-07-06"),
+                        new Date("2026-07-15"),
+                        new Date("2026-07-06")
+                    ]}
+                />
+            `}
+        />
+
+    <h4 id="disabled-input">Disabled input</h4>
+    <OutputContainer 
+        components={[
+            <MockupDatePicker
+                disabled={true}
+            />
+        ]} 
+        height="20rem" 
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <DatePicker
+                id="datepicker"
+                name="date"
+                date={formData.date}
+                onChange={handleChange}
+                disabled={true}
+            />
+        `}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```id``` | ```string``` | ```datepicker``` | id of date input |
+        | ```name``` | ```string``` | ```datepicker``` | name of  date input |
+        | ```date``` | ```string``` | ```""``` | selected date |
+        | ```onChange``` | ```(name: string, value: string) => void``` | - | callback function that handles input change |
+        | ```required``` | ```boolean``` | ```true``` | is the date input required or not |
+        | ```disabled``` | ```boolean``` | ```false``` | disables/enables date input  |
+
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/accordion" direction="left">Accordion</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/button" direction="right">Button</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

@@ -15,6 +15,7 @@ export const componentPages: string[] = [
     "calendar",
     "closeButton",
     "cookieConsent",
+    "datepicker",
     "drawer",
     "dropdown",
     "error",
