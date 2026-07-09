@@ -28,6 +28,36 @@ export const SelectDev: Story = {
     }
 }
 
+export const Numbers: Story = {
+    args: {
+        name: "select",
+        id: "select",
+        options: [
+            1,
+            2,
+            3,
+            4
+        ],
+        label: "select",
+        placeholder: "Choose a number"
+    }
+}
+
+export const StringsAndNumbers: Story = {
+    args: {
+        name: "select",
+        id: "select",
+        options: [
+            "BMW",
+            2,
+            "Mercedes",
+            4
+        ],
+        label: "select",
+        placeholder: "Select one"
+    }
+}
+
 export const noLabel: Story = {
     args: {
         name: "select",
@@ -78,6 +108,22 @@ export const longList: Story = {
             "Bugatti"
         ],
         placeholder: "Favorite car"
+    }
+}
+
+export const multiple: Story = {
+    args: {
+        name: "select",
+        id: "select",
+        options: [
+            "Red",
+            "Blue",
+            "Green",
+            "Yellow"
+        ],
+        placeholder: "Pick a color",
+        multiple: true,
+        label: "Select"
     }
 }
 

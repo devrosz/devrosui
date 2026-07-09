@@ -13,9 +13,6 @@
 
 .select-button {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: var(--background-tertiary);
     border: 1px solid var(--button-secondary-border);
 }
@@ -47,6 +44,9 @@
 }
 
 .option-list button, .select-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: var(--text-primary);
     width: 100%;
     text-align: left;

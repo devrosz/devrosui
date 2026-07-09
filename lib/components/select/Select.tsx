@@ -2,6 +2,7 @@
 
 import React from "react"
 import { BiChevronDown } from "react-icons/bi"
+import { FaCheck } from "react-icons/fa6"
 import { motion, AnimatePresence } from "motion/react"
 import "./select.css"
 
@@ -11,6 +12,7 @@ type SelectProps = {
     options: (string | number)[],
     label?: string,
     required?: boolean,
+    multiple?: boolean,
     placeholder?: string | number,
 }
 
@@ -20,18 +22,27 @@ export default function Select({
     options=[],
     placeholder= options[0] ?? "Select an option",
     label,
+    multiple=false,
     required=true
 }: SelectProps) {
     const [open, setOpen] = React.useState<boolean>(false)
-    const [option, setOption] = React.useState<string | number>(placeholder)
+    const [selection, setSelection] = React.useState<(string | number)[]>([])
 
     function toggleOptions(): void {
         setOpen(prev => !prev)
     }
 
     function handleSelect(value: string | number): void {
-        setOption(value)
-        toggleOptions()
+        if (multiple) {
+            setSelection(prev => (
+                    prev.includes(value) ? prev.filter(prevOption => prevOption != value)
+                    : prev.concat([value])
+                )
+            )
+        } else {
+            setSelection(prev => prev[0] === value ? [] : [value])
+            toggleOptions()
+        }
     }
 
     return (
@@ -43,7 +54,13 @@ export default function Select({
                 onClick={toggleOptions}
                 className="select-button"
             >
-                {typeof option === "string" && option.length > 20 ? option.slice(0, 20) + "..." : option}
+                {selection.length > 0 ? selection.map((option, i) => {
+                    const isLast = i === selection.length - 1
+                    const optionDisplay = !multiple || isLast ? option : option + ", "
+                    return (
+                        optionDisplay
+                    )
+                }) : placeholder}
                 <BiChevronDown 
                     className="open-options-icon" 
                     style={{transform: `rotate(${open ? 180 : 0}deg)`, transition: "0.25s"}}
@@ -64,6 +81,7 @@ export default function Select({
                                 <li key={"option-" + i}>
                                     <button onClick={() => handleSelect(option)}>
                                         {option}
+                                        {selection.includes(option) && <FaCheck />}
                                     </button>
                                 </li>
                             )
