@@ -1,0 +1,34 @@
+.error-container {
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--button-secondary-border);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.error-container h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+.error-container.warning {
+    background-color: var(--background-tertiary);
+}
+
+.error-container.danger {
+    color: #ae1717;
+    background-color: #240d0d;
+    border: none;
+}
+
+html.light .error-container.danger {
+    background-color: rgb(255, 218, 218);
+    color: #ae1717;
+}
+
+.error-icon {
+    font-size: 1.25rem;
+}

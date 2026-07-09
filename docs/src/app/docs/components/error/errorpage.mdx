@@ -1,0 +1,122 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Accordion } from "@devrosui/react"
+import { Error } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "warning",
+        title: "Warning",
+        level: 1
+    },
+    {
+        id: "danger",
+        title: "Danger",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+
+export const exampleMessage = "An unexpected error occured. Please try again later."
+export const exampleCode = 
+`
+import { Error } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    const message = "An unexpected error occured. Please try again later."
+
+    return (
+        <Error message={message} />
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Error
+    Displays an error message.
+
+   <OutputContainer components={[<Error message={exampleMessage} />]} height="20rem" />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Error } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="warning">Warning</h4>
+    <OutputContainer
+        components={[<Error message={exampleMessage} />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'<Error message={message} type="warning" />'}
+    />
+
+    <h4 id="danger">Danger</h4>
+    <OutputContainer
+        components={[<Error message={exampleMessage} type="danger" />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'<Error message={message} type="danger" />'}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```message``` | ```string``` | - | Message to be displayed |
+        | ```type``` | ```"warning" \| "danger"``` | ```"warning"``` | Background color |
+        | ```width``` | ```string``` | ```"100%"``` | Width of the error container |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/dropdown" direction="left">Dropdown</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/inputotp" direction="right">InputOTP</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
