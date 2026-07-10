@@ -9,38 +9,44 @@ import "./select.css"
 type SelectProps = {
     name: string,
     id: string,
+    values: (string | number)[],
+    onSelect: (name: string, value: (string | number)[]) => void,
     options: (string | number)[],
     label?: string,
     required?: boolean,
     multiple?: boolean,
     placeholder?: string | number,
+    disabled?: boolean
 }
 
+// Component that lets the user select an option out of a list of options.
 export default function Select({
     name="select",
     id="select",
+    values=[],
+    onSelect,
     options=[],
-    placeholder= options[0] ?? "Select an option",
+    placeholder=options[0] ?? "Select an option",
     label,
     multiple=false,
-    required=true
+    required=true,
+    disabled=false
 }: SelectProps) {
     const [open, setOpen] = React.useState<boolean>(false)
-    const [selection, setSelection] = React.useState<(string | number)[]>([])
 
     function toggleOptions(): void {
         setOpen(prev => !prev)
     }
 
-    function handleSelect(value: string | number): void {
+    function handleSelect(selection: string | number): void {
         if (multiple) {
-            setSelection(prev => (
-                    prev.includes(value) ? prev.filter(prevOption => prevOption != value)
-                    : prev.concat([value])
-                )
-            )
+            const newValue =
+                    values.includes(selection) ? values.filter(prevOption => prevOption != selection)
+                    : values.concat([selection])
+            onSelect(name, newValue)
         } else {
-            setSelection(prev => prev[0] === value ? [] : [value])
+            const newValue = values[0] === selection ? [] : [selection]
+            onSelect(name, newValue)
             toggleOptions()
         }
     }
@@ -53,9 +59,10 @@ export default function Select({
                 id={id}
                 onClick={toggleOptions}
                 className="select-button"
+                disabled={disabled}
             >
-                {selection.length > 0 ? selection.map((option, i) => {
-                    const isLast = i === selection.length - 1
+                {values.length > 0 ? values.map((option, i) => {
+                    const isLast = i === values.length - 1
                     const optionDisplay = !multiple || isLast ? option : option + ", "
                     return (
                         optionDisplay
@@ -81,7 +88,7 @@ export default function Select({
                                 <li key={"option-" + i}>
                                     <button onClick={() => handleSelect(option)}>
                                         {option}
-                                        {selection.includes(option) && <FaCheck />}
+                                        {values.includes(option) && <FaCheck />}
                                     </button>
                                 </li>
                             )

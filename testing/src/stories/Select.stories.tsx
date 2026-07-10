@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-
+import { useArgs } from "storybook/internal/preview-api"
 import { Select } from "@devrosui/react"
 
 const meta = {
@@ -15,8 +15,10 @@ type Story = StoryObj<typeof meta>
 
 export const SelectDev: Story = {
     args: {
-        name: "select",
-        id: "select",
+        name: "car",
+        id: "car",
+        values: [],
+        onSelect: () => {},
         options: [
             "BMW",
             "Audi",
@@ -25,13 +27,34 @@ export const SelectDev: Story = {
         ],
         label: "select",
         placeholder: "Favorite car"
+    },
+    render: () => {
+        const [{name, id, car, options, label, placeholder}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={car}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+            />
+        )
     }
 }
 
-export const Numbers: Story = {
+export const numbers: Story = {
     args: {
-        name: "select",
-        id: "select",
+        name: "number",
+        id: "number",
+        values: [],
+        onSelect: () => {},
         options: [
             1,
             2,
@@ -39,14 +62,35 @@ export const Numbers: Story = {
             4
         ],
         label: "select",
-        placeholder: "Choose a number"
+        placeholder: "Select a number"
+    },
+    render: () => {
+        const [{name, id, number, options, label, placeholder}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={number}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+            />
+        )
     }
 }
 
-export const StringsAndNumbers: Story = {
+export const stringsAndNumbers: Story = {
     args: {
-        name: "select",
-        id: "select",
+        name: "option",
+        id: "option",
+        values: [],
+        onSelect: () => {},
         options: [
             "BMW",
             2,
@@ -55,27 +99,34 @@ export const StringsAndNumbers: Story = {
         ],
         label: "select",
         placeholder: "Select one"
-    }
-}
+    },
+    render: () => {
+        const [{name, id, option, options, label, placeholder}, updateArgs] = useArgs()
 
-export const noLabel: Story = {
-    args: {
-        name: "select",
-        id: "select",
-        options: [
-            "BMW",
-            "Audi",
-            "Mercedes",
-            "Volkswagen"
-        ],
-        placeholder: "Favorite car"
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={option}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+            />
+        )
     }
 }
 
 export const longPlaceholder: Story = {
     args: {
-        name: "select",
-        id: "select",
+        name: "car",
+        id: "car",
+        values: [],
+        onSelect: () => {},
         options: [
             "BMW",
             "Audi",
@@ -84,14 +135,35 @@ export const longPlaceholder: Story = {
         ],
         label: "select",
         placeholder: "Choose your favorite car brand"
+    },
+    render: () => {
+        const [{name, id, car, options, label, placeholder}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={car}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+            />
+        )
     }
 }
 
 export const longList: Story = {
     args: {
-        name: "select",
-        id: "select",
-        options: [
+        name: "car",
+        id: "car",
+        values: [],
+        onSelect: () => {},
+         options: [
             "BMW",
             "Audi",
             "Mercedes",
@@ -107,23 +179,203 @@ export const longList: Story = {
             "Lamborghini",
             "Bugatti"
         ],
+        label: "select",
         placeholder: "Favorite car"
+    },
+    render: () => {
+        const [{name, id, car, options, label, placeholder}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={car}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+            />
+        )
+    }
+}
+
+export const disabled: Story = {
+    args: {
+        name: "car",
+        id: "car",
+        values: [],
+        onSelect: () => {},
+        options: [
+            "BMW",
+            "Audi",
+            "Mercedes",
+            "Volkswagen"
+        ],
+        label: "select",
+        placeholder: "Favorite car",
+        disabled: true
+    },
+    render: () => {
+        const [{name, id, car, options, label, placeholder, disabled}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={car}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+                disabled={disabled}
+            />
+        )
     }
 }
 
 export const multiple: Story = {
     args: {
-        name: "select",
-        id: "select",
+        name: "colours",
+        id: "colours",
+        values: [],
+        onSelect: () => {},
         options: [
             "Red",
             "Blue",
             "Green",
             "Yellow"
         ],
-        placeholder: "Pick a color",
-        multiple: true,
-        label: "Select"
+        label: "select",
+        placeholder: "Choose a color",
+        multiple: true
+    },
+    render: () => {
+        const [{name, id, colours, options, label, placeholder, multiple}, updateArgs] = useArgs()
+
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
+
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={colours}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+                multiple={multiple}
+            />
+        )
     }
 }
+
+// export const StringsAndNumbers: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "BMW",
+//             2,
+//             "Mercedes",
+//             4
+//         ],
+//         label: "select",
+//         placeholder: "Select one"
+//     }
+// }
+
+// export const noLabel: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "BMW",
+//             "Audi",
+//             "Mercedes",
+//             "Volkswagen"
+//         ],
+//         placeholder: "Favorite car"
+//     }
+// }
+
+// export const longPlaceholder: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "BMW",
+//             "Audi",
+//             "Mercedes",
+//             "Volkswagen"
+//         ],
+//         label: "select",
+//         placeholder: "Choose your favorite car brand"
+//     }
+// }
+
+// export const longList: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "BMW",
+//             "Audi",
+//             "Mercedes",
+//             "Volkswagen",
+//             "Citroën",
+//             "Opel",
+//             "Ford",
+//             "Toyota",
+//             "Nissan",
+//             "Pagani",
+//             "Koeningsegg",
+//             "Ferrari",
+//             "Lamborghini",
+//             "Bugatti"
+//         ],
+//         placeholder: "Favorite car"
+//     }
+// }
+
+// export const multiple: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "Red",
+//             "Blue",
+//             "Green",
+//             "Yellow"
+//         ],
+//         placeholder: "Pick a color",
+//         multiple: true,
+//         label: "Select"
+//     }
+// }
+
+// export const disabled: Story = {
+//     args: {
+//         name: "select",
+//         id: "select",
+//         options: [
+//             "BMW",
+//             "Audi",
+//             "Mercedes",
+//             "Volkswagen"
+//         ],
+//         label: "select",
+//         placeholder: "Favorite car",
+//         disabled: true
+//     }
+// }
 
