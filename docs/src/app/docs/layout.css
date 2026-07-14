@@ -64,7 +64,7 @@
     color: var(--text-primary);
 }
 
-.docs-page-content ul {
+/* .docs-page-content ul {
     list-style: circle;
 }
 
@@ -75,7 +75,7 @@
 .docs-page-content li {
     color: var(--text-tertiary);
     margin: 1rem auto;
-}
+} */
 
 .docs-page-explore {
     display: flex;

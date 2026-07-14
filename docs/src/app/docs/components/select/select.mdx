@@ -1,0 +1,257 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Select } from "@devrosui/react"
+import MockupSelect from "./MockupSelect"
+import "./page.css"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "return",
+        title: "Return value",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "no-label",
+        title: "No label",
+        level: 1
+    },
+    {
+        id: "multiple",
+        title: "Multiple options",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "Disabled",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const usageCode =
+`
+"use client"
+
+import { Select } from "@devrosui/react"
+import React from "react"
+
+export default function MyComponent() {
+
+    const [formDate, setFormData] = React.useState({
+        carBrand: "",
+        ... // add more fields according to your form.
+    })
+
+    function handleChange(name, value) {
+        setFormData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
+    }
+
+    return (
+        <Select 
+            id="car-brand" 
+            name="carBrand"
+            values={formDate.carBrand}
+            onSelect={handleChange}
+            options={[
+                "Volkswagen",
+                "Audi",
+                "Mercedes",
+                "BMW"
+            ]}
+            placeholder="Select car brand"
+            label="Car brand"
+        />
+    )
+}
+`
+
+<div className="docs-page-content select">
+    <BreadCrumbs />
+    ## Select
+    Component that lets the user select an option from a list of options.
+
+    <OutputContainer 
+        components={[
+            <MockupSelect 
+                options={["Volkswagen","Audi","Mercedes","BMW"]} 
+                placeholder="Select one"
+                label="select"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <h3 id="import">Import</h3>
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { Select } from "@devrosui/react"`}
+    />
+
+    <h3 id="usage">Usage</h3>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    Note that the field name in ```formData``` that holds the value of the ```Select``` component
+    needs to be the same as the name that is given to the ```Select``` component.
+
+    <h3 id="return">Return value</h3>
+
+    The select component returns an array of the selected option(s).
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="no-label">No Label</h4>
+    <OutputContainer 
+        components={[
+            <MockupSelect 
+                options={["Volkswagen","Audi","Mercedes","BMW"]} 
+                placeholder="Select one"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Select
+                id="select"
+                name="select"
+                values={formData.select}
+                onSelect={handleChange}
+                options={[
+                    "Volkswagen",
+                    "Audi",
+                    "Mercedes",
+                    "BMW"
+                ]}
+                placeholder="Select one"
+        `}
+    />
+
+    <h4 id="multiple">Multiple</h4>
+    <OutputContainer 
+        components={[
+            <MockupSelect 
+                options={["Red","Blue","Green","Yellow"]} 
+                placeholder="Select one"
+                multiple={true}
+                label="Select"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Select
+                id="select"
+                name="select"
+                values={formData.select}
+                onSelect={handleChange}
+                options={[
+                    "Red",
+                    "Blue",
+                    "Green",
+                    "Yellow"
+                ]}
+                placeholder="Select one"
+                label="Select"
+                multiple={true}
+        `}
+    />
+
+    <h4 id="disabled">Disabled</h4>
+    <OutputContainer 
+        components={[
+            <MockupSelect 
+                options={["Volkswagen","Audi","Mercedes","BMW"]} 
+                placeholder="Select one"
+                disabled={true}
+                label="Select"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Select
+                id="select"
+                name="select"
+                values={formData.select}
+                onSelect={handleChange}
+                options={[
+                    "Volkswagen",
+                    "Audi",
+                    "Mercedes",
+                    "BMW"
+                ]}
+                placeholder="Select one"
+                disabled={true}
+        `}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```id``` | ```string``` | ```select``` | id of select input |
+        | ```name``` | ```string``` | ```select``` | name of select input |
+        | ```values``` | ```(string \| number)[]``` | ```[]``` | array of selected option(s) |
+        | ```onSelect``` | ```(name: string, value: string \| (string \| number)[]) => void``` | - | callback function that handles select change |
+        | ```options``` | ```(string \| number)[]``` | ```[]``` | array of options to choose from |
+        | ```label``` | ```string``` | - | Label above the select input |
+        | ```multiple``` | ```boolean``` | false | Enable selection of multiple options |
+        | ```placeholder``` | ```string``` | - | Placeholder for inside select input |
+        | ```disabled``` | ```boolean``` | ```false``` | disables/enables select input  |
+
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/cookie-consent" direction="left">CookieConsent</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/drawer" direction="right">Drawer</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
