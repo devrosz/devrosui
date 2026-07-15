@@ -1,16 +1,22 @@
 
 /* Datepicker styling */
-.datepicker, .datepicker > * {
+.datepicker, .datepicker > *, .datepicker input {
     font-family: var(--font);
 }
 
-.datepicker {
+.datepicker-input-container {
     position: relative;
+}
+
+.datepicker-input-container p {
+    color: var(--text-tertiary);
+    margin: 0;
 }
 
 .datepicker label {
     display: block;
     color: var(--text-primary);
+    margin: 0;
 }
 
 .datepicker input {
@@ -21,6 +27,12 @@
     background-color: var(--background-primary);
     color: var(--text-primary);
     border: 1px solid var(--button-secondary-border);
+    font-size: 14px;
+}
+
+.datepicker input:hover {
+    background-color: var(--button-secondary-hover);
+    transition: 0.25s;
 }
 
 html.light .datepicker input {
@@ -51,7 +63,7 @@ html.light .datepicker input {
 /* Calendar styling */
 .calendar-icon {
     position: absolute;
-    top: 40px;
+    top: 18px;
     right: 10px;
     color: var(--text-primary);
     background-color: transparent;
@@ -63,7 +75,7 @@ html.light .datepicker input {
     z-index: 2;
     color: var(--text-primary);
     font-family: var(--font);
-    background-color: var(--background-tertiary);
+    background-color: var(--background-primary);
     padding: 1rem;
     border-radius: 2rem;
     border: 1px solid var(--button-secondary-border);

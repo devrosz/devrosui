@@ -10,7 +10,8 @@ export default function MockupDatePicker({
     minYear=undefined,
     maxYear=undefined,
     disabledDays=[],
-    disabled=false
+    disabled=false,
+    description=""
 }) {
     const [mockupFormData, setMockupFormData] = React.useState({date: date})
 
@@ -33,6 +34,7 @@ export default function MockupDatePicker({
             maxYear={maxYear}
             disabled={disabled}
             disabledDays={disabledDays}
+            description={description}
         />
     )
 }

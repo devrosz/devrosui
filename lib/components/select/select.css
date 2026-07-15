@@ -25,6 +25,12 @@
     margin: 0.5rem 0;
 }
 
+html.light .select-button {
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+}
+
 .select-button:disabled {
     color: var(--text-tertiary);
     cursor: not-allowed;
@@ -66,7 +72,7 @@ ul.option-list button, .select-button {
     text-align: left;
     padding: 8px 12px;
     border-radius: 12px;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: normal;
 }
 
