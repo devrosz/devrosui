@@ -57,14 +57,11 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
     // Side-effect: If the current month is december, the month will be set to january
     // and the year is incremented.
     function incrementMonth() {
-        setMonth(prev => {
-            const newValue = prev + 1
-            if (newValue > 11) {
-                setYear(prev => prev + 1)
-                return 0
-            }
-            return newValue
-        })
+        const newMonth = month + 1
+        setMonth(newMonth > 11 ? 0 : newMonth)
+        if (newMonth > 11) {
+            setYear(prev => prev + 1)
+        }
     }
 
     // Selects the previous month.
