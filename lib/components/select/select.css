@@ -15,8 +15,11 @@
     margin-top: 0;
 }
 
-.select-button {
+.select-options-anchor {
     position: relative;
+}
+
+.select-button {
     background-color: var(--background-primary);
     border: 1px solid var(--button-secondary-border);
     margin: 0.5rem 0;
@@ -34,6 +37,7 @@
 ul.option-list {
     position: absolute;
     left: 0;
+    top: 50px;
     list-style: none;
     background-color: var(--background-primary);
     border: 1px solid var(--button-secondary-border);

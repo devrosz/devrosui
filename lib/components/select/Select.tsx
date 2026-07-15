@@ -80,50 +80,51 @@ export default function Select({
         <div className="select-container" style={{width: width}}>
             {label && <h5>{label}</h5>}
             {description && <p>{description}</p>}
-            <button
-                name={name}
-                id={id}
-                onClick={toggleOptions}
-                className="select-button"
-                disabled={disabled}
-            >
-                {values.length > 0 ? values.map((option, i) => {
-                    const isLast = i === values.length - 1
-                    const optionDisplay = !multiple || isLast ? option : option + ", "
-                    return (
-                        optionDisplay
-                    )
-                    }) 
-                    : typeof placeholder === "string" ? formatText(placeholder) : placeholder
-                }
-                <BiChevronDown 
-                    className="open-options-icon" 
-                    style={{transform: `rotate(${open ? 180 : 0}deg)`, transition: "0.25s"}}
-                />
-            </button>
-            <AnimatePresence>
-                {open && options && options.length > 0 ? (
-                    <motion.ul 
-                        className="option-list"
-                        style={{top: label ? "80px" : "60px"}}
-                        initial={{scale: 0.95, opacity: 0}}
-                        animate={{scale: 1, opacity: 1}}
-                        exit={{scale: 0.95, opacity: 0}}
-                        transition={{duration: 0.1}}
-                    >
-                        {options.map((option, i) => {
-                            return (
-                                <li key={"option-" + i}>
-                                    <button onClick={() => handleSelect(option)}>
-                                        {option}
-                                        {values.includes(option) && <FaCheck />}
-                                    </button>
-                                </li>
-                            )
-                        })}
-                    </motion.ul>
-                ): null}
-            </AnimatePresence>
+            <div className="select-options-anchor">
+                <button
+                    name={name}
+                    id={id}
+                    onClick={toggleOptions}
+                    className="select-button"
+                    disabled={disabled}
+                >
+                    {values.length > 0 ? values.map((option, i) => {
+                        const isLast = i === values.length - 1
+                        const optionDisplay = !multiple || isLast ? option : option + ", "
+                        return (
+                            optionDisplay
+                        )
+                        }) 
+                        : typeof placeholder === "string" ? formatText(placeholder) : placeholder
+                    }
+                    <BiChevronDown 
+                        className="open-options-icon" 
+                        style={{transform: `rotate(${open ? 180 : 0}deg)`, transition: "0.25s"}}
+                    />
+                </button>
+                <AnimatePresence>
+                    {open && options && options.length > 0 ? (
+                        <motion.ul 
+                            className="option-list"
+                            initial={{scale: 0.95, opacity: 0}}
+                            animate={{scale: 1, opacity: 1}}
+                            exit={{scale: 0.95, opacity: 0}}
+                            transition={{duration: 0.1}}
+                        >
+                            {options.map((option, i) => {
+                                return (
+                                    <li key={"option-" + i}>
+                                        <button onClick={() => handleSelect(option)}>
+                                            {option}
+                                            {values.includes(option) && <FaCheck />}
+                                        </button>
+                                    </li>
+                                )
+                            })}
+                        </motion.ul>
+                    ): null}
+                </AnimatePresence>
+            </div>
         </div>
     )
 }
