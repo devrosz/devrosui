@@ -1,0 +1,81 @@
+.select-container {
+    position: relative;
+    font-family: var(--font);
+}
+
+.select-container h5 {
+    color: var(--text-primary);
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+
+.select-container p {
+    color: var(--text-tertiary);
+    margin-top: 0;
+}
+
+.select-options-anchor {
+    position: relative;
+}
+
+.select-button {
+    background-color: var(--background-primary);
+    border: 1px solid var(--button-secondary-border);
+    margin: 0.5rem 0;
+}
+
+.select-button:disabled {
+    color: var(--text-tertiary);
+    cursor: not-allowed;
+}
+
+.open-options-icon {
+    font-size: 1.5rem;
+}
+
+ul.option-list {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    list-style: none;
+    background-color: var(--background-primary);
+    border: 1px solid var(--button-secondary-border);
+    border-radius: 1rem;
+    padding: 4px;
+    width: 100%;
+    max-height: 15rem;
+    overflow-y: auto;
+    z-index: 5;
+}
+
+.option-list::-webkit-scrollbar-thumb {
+    background: var(--button-secondary-border) 
+}
+
+.option-list::-webkit-scrollbar-track {
+    background: var(--background-tertiary);
+}
+
+ul.option-list button, .select-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+ul.option-list button {
+    background-color: transparent;
+    border: none;
+}
+
+ul.option-list button:hover, .select-button:hover {
+    background-color: var(--button-secondary-hover);
+    transition: 0.25s;
+}

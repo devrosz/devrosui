@@ -1,0 +1,7 @@
+/*
+Already included in Select component but overwritten 
+by page styling so we have to overwrite it again.
+*/
+.docs-page-content.select ul {
+    list-style: none;
+}
