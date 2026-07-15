@@ -13,6 +13,7 @@ import DatePickerCalendar from "./DatePickerCalendar"
 // - the name of the input as well as the value for the input.
 // required: boolean indicating whether filling in this input is required for submission.
 // disabled: boolean indicating whether usage of date input is disabled.
+// description: short paragraph about what is expected from the user.
 type DatePickerProps = {
     minYear?: number | undefined,
     maxYear?: number | undefined,
@@ -22,7 +23,8 @@ type DatePickerProps = {
     date: string,
     onChange: (name: string, value: string) => void,
     required?: boolean,
-    disabled?: boolean
+    disabled?: boolean,
+    description?: string
 }
 
 // Datepicker component that lets the user select a date.
@@ -42,7 +44,8 @@ export default function DatePicker({
     date="",
     onChange,
     required=true,
-    disabled=false
+    disabled=false,
+    description=""
 }: DatePickerProps) {
     const [openCalendar, setOpenCalendar] = React.useState<boolean>(false)
 
@@ -65,25 +68,28 @@ export default function DatePicker({
     return (
         <div className="datepicker">
             <label htmlFor={id}>Date</label>
-            <input
-                type="date"
-                id={id}
-                name={name}
-                value={date}
-                onChange={(e) => onChange(name, e.target.value)}
-                min={minYear}
-                max={maxYear}
-                required={required}
-                disabled={disabled}
-            />
-            <button 
-                type="button"
-                onClick={toggleCalendar}
-                className="calendar-icon"
-                disabled={disabled}
-            >
-                <LuCalendar />
-            </button>
+            {description && <p>{description}</p>}
+            <div className="datepicker-input-container">
+                <input
+                    type="date"
+                    id={id}
+                    name={name}
+                    value={date}
+                    onChange={(e) => onChange(name, e.target.value)}
+                    min={minYear}
+                    max={maxYear}
+                    required={required}
+                    disabled={disabled}
+                />
+                <button 
+                    type="button"
+                    onClick={toggleCalendar}
+                    className="calendar-icon"
+                    disabled={disabled}
+                >
+                    <LuCalendar />
+                </button>
+            </div>
             <DatePickerCalendar 
                 open={openCalendar}
                 date={date}

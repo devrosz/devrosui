@@ -103,3 +103,30 @@ export const DatepickerDisabledDays: Story = {
     },
 }
 
+export const Description: Story = {
+    args: {
+        id: "datepicker",
+        name: "date",
+        date: "",
+        description: "Select a date for an appointment",
+        onChange: () => {},
+    },
+    render: () => {
+        const [{id, name, date, description}, updateArgs] = useArgs()
+        
+        function handleChange(name: string, value: string) {
+            updateArgs({[name]: value})
+        }
+        
+        return (
+            <DatePicker
+                id={id}
+                name={name}
+                date={date}
+                onChange={handleChange}
+                description={description}
+            />
+        )
+    },
+}
+

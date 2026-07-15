@@ -28,6 +28,11 @@ export const headers = [
         level: 1
     },
     {
+        id: "description",
+        title: "Description",
+        level: 1
+    },
+    {
         id: "disabled-dates",
         title: "Disabled days",
         level: 1
@@ -133,6 +138,31 @@ export default function MyComponent() {
         `}
     />
 
+    <h4 id="description">Description</h4>
+    <OutputContainer 
+        components={[
+            <MockupDatePicker
+                description="Select a date for an appointment"
+            />
+        ]} 
+        height="20rem" 
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <DatePicker
+                id="datepicker"
+                name="date"
+                date={formData.date}
+                onChange={handleChange}
+                minYear={2026}
+                maxYear={2026}
+                description="Select a date for an appointment"
+            />
+        `}
+    />
+
     <h4 id="disabled-dates">Disabled days</h4>
     <OutputContainer 
             components={[
@@ -201,6 +231,7 @@ export default function MyComponent() {
         | ```onChange``` | ```(name: string, value: string) => void``` | - | callback function that handles input change |
         | ```required``` | ```boolean``` | ```true``` | is the date input required or not |
         | ```disabled``` | ```boolean``` | ```false``` | disables/enables date input  |
+        | ```description``` | ```string``` | ```""``` | displays a description about the date input  |
 
     </div>
 
