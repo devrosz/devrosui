@@ -163,7 +163,7 @@ export const longList: Story = {
         id: "car",
         values: [],
         onSelect: () => {},
-         options: [
+        options: [
             "BMW",
             "Audi",
             "Mercedes",
@@ -279,103 +279,41 @@ export const multiple: Story = {
     }
 }
 
-// export const StringsAndNumbers: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "BMW",
-//             2,
-//             "Mercedes",
-//             4
-//         ],
-//         label: "select",
-//         placeholder: "Select one"
-//     }
-// }
+export const Description: Story = {
+    args: {
+        name: "car",
+        id: "car",
+        values: [],
+        onSelect: () => {},
+        options: [
+            "BMW",
+            "Audi",
+            "Mercedes",
+            "Volkswagen"
+        ],
+        label: "select",
+        placeholder: "Favorite car",
+        description: "Select your favorite car brand."
+    },
+    render: () => {
+        const [{name, id, car, options, label, placeholder, description}, updateArgs] = useArgs()
 
-// export const noLabel: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "BMW",
-//             "Audi",
-//             "Mercedes",
-//             "Volkswagen"
-//         ],
-//         placeholder: "Favorite car"
-//     }
-// }
+        function handleSelect(name: string, value: (string | number)[]): void {
+            updateArgs({[name]: value})
+        }
 
-// export const longPlaceholder: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "BMW",
-//             "Audi",
-//             "Mercedes",
-//             "Volkswagen"
-//         ],
-//         label: "select",
-//         placeholder: "Choose your favorite car brand"
-//     }
-// }
-
-// export const longList: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "BMW",
-//             "Audi",
-//             "Mercedes",
-//             "Volkswagen",
-//             "Citroën",
-//             "Opel",
-//             "Ford",
-//             "Toyota",
-//             "Nissan",
-//             "Pagani",
-//             "Koeningsegg",
-//             "Ferrari",
-//             "Lamborghini",
-//             "Bugatti"
-//         ],
-//         placeholder: "Favorite car"
-//     }
-// }
-
-// export const multiple: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "Red",
-//             "Blue",
-//             "Green",
-//             "Yellow"
-//         ],
-//         placeholder: "Pick a color",
-//         multiple: true,
-//         label: "Select"
-//     }
-// }
-
-// export const disabled: Story = {
-//     args: {
-//         name: "select",
-//         id: "select",
-//         options: [
-//             "BMW",
-//             "Audi",
-//             "Mercedes",
-//             "Volkswagen"
-//         ],
-//         label: "select",
-//         placeholder: "Favorite car",
-//         disabled: true
-//     }
-// }
+        return (
+            <Select
+                id={id}
+                name={name}
+                values={car}
+                onSelect={handleSelect}
+                options={options}
+                label={label}
+                placeholder={placeholder}
+                description={description}
+            />
+        )
+    }
+}
 

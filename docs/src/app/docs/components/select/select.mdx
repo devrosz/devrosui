@@ -34,6 +34,11 @@ export const headers = [
         level: 1
     },
     {
+        id: "description",
+        title: "Description",
+        level: 1
+    },
+    {
         id: "multiple",
         title: "Multiple options",
         level: 1
@@ -160,12 +165,44 @@ export default function MyComponent() {
         `}
     />
 
+    <h4 id="description">Description</h4>
+    <OutputContainer 
+        components={[
+            <MockupSelect 
+                options={["Volkswagen","Audi","Mercedes","BMW"]} 
+                placeholder="Select one"
+                label="Select"
+                description="Select your favorite car brand"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Select
+                id="select"
+                name="select"
+                values={formData.select}
+                onSelect={handleChange}
+                options={[
+                    "Volkswagen",
+                    "Audi",
+                    "Mercedes",
+                    "BMW"
+                ]}
+                placeholder="Select one"
+                description="Select your favorite car brand"
+        `}
+    />
+
     <h4 id="multiple">Multiple</h4>
     <OutputContainer 
         components={[
             <MockupSelect 
                 options={["Red","Blue","Green","Yellow"]} 
-                placeholder="Select one"
+                placeholder="Select some"
                 multiple={true}
                 label="Select"
             />
@@ -187,7 +224,7 @@ export default function MyComponent() {
                     "Green",
                     "Yellow"
                 ]}
-                placeholder="Select one"
+                placeholder="Select some"
                 label="Select"
                 multiple={true}
         `}
@@ -239,6 +276,8 @@ export default function MyComponent() {
         | ```multiple``` | ```boolean``` | false | Enable selection of multiple options |
         | ```placeholder``` | ```string``` | - | Placeholder for inside select input |
         | ```disabled``` | ```boolean``` | ```false``` | disables/enables select input  |
+        | ```width``` | ```string```| ```15rem``` | sets the width of the input |
+        | ```description``` | ```string```| ```""``` | displays a description about the input |
 
     </div>
 

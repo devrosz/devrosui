@@ -11,7 +11,8 @@ export default function MockupSelect({
     label,
     multiple=false,
     placeholder=options[0] ?? "Select one",
-    disabled=false
+    disabled=false,
+    description=""
 }) {
     const [mockupFormData, setMockupFormData] = React.useState({[name]: []})
 
@@ -35,6 +36,7 @@ export default function MockupSelect({
             multiple={multiple}
             placeholder={placeholder}
             disabled={disabled}
+            description={description}
         />
     )
 }

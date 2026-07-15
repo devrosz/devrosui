@@ -16,6 +16,8 @@ import "./select.css"
 // multiple: allow multiple selections.
 // placeholder: placeholder for the select input.
 // disabled: disable input.
+// width: width of the select input.
+// description: short paragraph explaining what is expected from the user.
 type SelectProps = {
     name: string,
     id: string,
@@ -25,7 +27,9 @@ type SelectProps = {
     label?: string,
     multiple?: boolean,
     placeholder?: string | number,
-    disabled?: boolean
+    disabled?: boolean,
+    width?: string,
+    description?: string
 }
 
 // Component that lets the user select an option out of a list of options.
@@ -38,7 +42,9 @@ export default function Select({
     placeholder=options[0] ?? "Select an option",
     label,
     multiple=false,
-    disabled=false
+    disabled=false,
+    width="15rem",
+    description=""
 }: SelectProps) {
     const [open, setOpen] = React.useState<boolean>(false)
 
@@ -71,8 +77,9 @@ export default function Select({
     }
 
     return (
-        <div className="select-container">
+        <div className="select-container" style={{width: width}}>
             {label && <h5>{label}</h5>}
+            {description && <p>{description}</p>}
             <button
                 name={name}
                 id={id}
@@ -98,7 +105,7 @@ export default function Select({
                 {open && options && options.length > 0 ? (
                     <motion.ul 
                         className="option-list"
-                        style={{top: label ? "80px" : "50px"}}
+                        style={{top: label ? "80px" : "60px"}}
                         initial={{scale: 0.95, opacity: 0}}
                         animate={{scale: 1, opacity: 1}}
                         exit={{scale: 0.95, opacity: 0}}
