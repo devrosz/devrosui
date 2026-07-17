@@ -4,6 +4,12 @@
 
 .slider-input-container {
     position: relative;
+    margin: 8px 0;
+}
+
+.slider-container p {
+    color: var(--text-tertiary);
+    margin: 0;
 }
 
 .slider-progress {
@@ -31,6 +37,11 @@
     pointer-events: none;
 }
 
+.slider-mockup-thumb.disabled {
+    background-color: var(--button-primary-hover);
+    cursor: not-allowed;
+}
+
 .slider-container input[type="range"] {
     width: 100%;
     appearance: none;
@@ -39,12 +50,15 @@
     z-index: 0;
 }
 
+.slider-container input[type="range"]:disabled {
+    cursor: not-allowed
+}
+
 .slider-header {
     display: flex;
     justify-content: space-between;
     color: var(--text-primary);
     font-size: 14px;
-    margin-bottom: 4px;
     font-weight: 500;
 }
 
