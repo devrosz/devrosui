@@ -51,9 +51,9 @@ export default function Slider({
     name,
     min="0",
     max="100",
-    value="0",
+    value,
     setValue,
-    required=true,
+    required=false,
     disabled=false,
     step="1",
     showValue=true,
@@ -70,7 +70,7 @@ export default function Slider({
     }
 
     // Live value used to display the realtime value above the input.
-    const [liveValue, setLiveValue] = React.useState<string>(value)
+    const [liveValue, setLiveValue] = React.useState<string>(value ?? min)
 
     // Updates the realtime value while sliding.
     function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
