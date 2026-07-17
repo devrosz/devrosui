@@ -1,0 +1,314 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Slider } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "return",
+        title: "Return value",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "description",
+        title: "Description",
+        level: 1
+    },
+    {
+        id: "units",
+        title: "units",
+        level: 1
+    },
+    {
+        id: "no-label",
+        title: "No label",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "Disabled",
+        level: 1
+    },
+    {
+        id: "connect",
+        title: "Connect to parent",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const usageCode =
+`
+import { Slider } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    return (
+        <Slider 
+            id="slider"
+            name="slider"
+            min="0"
+            max="100"
+            label="Range"
+        />
+    )
+}
+`
+
+export const connectcode =
+`
+"use client"
+
+import { Slider } from "@devrosui/react"
+import React from "react"
+
+export default function MyComponent() {
+
+    const [value, setValue] = React.useState("0")
+
+    return (
+        <Slider 
+            id="slider" 
+            name="slider"
+            value={value}
+            setValue={setValue}
+            min="0"
+            max="100"
+            label="Range"
+        />
+    )
+}
+`
+
+<div className="docs-page-content select">
+    <BreadCrumbs />
+    ## Slider
+    Component that lets the user pick an amount by sliding a button.
+
+    <OutputContainer 
+        components={[
+            <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <h3 id="import">Import</h3>
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { Select } from "@devrosui/react"`}
+    />
+
+    <h3 id="usage">Usage</h3>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="return">Return value</h3>
+
+    If connected via the ```value``` prop and ```setValue``` prop, ```Slider``` returns a string
+    containing the current value.
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="description">Description</h4>
+    <OutputContainer 
+        components={[
+             <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+                description="Pick an applicable value"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+                description="Pick an applicable value"
+            />
+        `}
+    />
+
+    <h4 id="units">Units</h4>
+    <OutputContainer 
+        components={[
+            <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                step={"0.01"}
+                label="Range"
+                unit="EUR"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                step="0.01"
+                label="Range"
+                unit="EUR"
+            />
+        `}
+    />
+
+    <h4 id="no-label">No Label</h4>
+    <OutputContainer 
+        components={[
+            <Slider
+                id="slider"
+                name="slider"
+                min="0"
+                max="100" 
+            />
+        ]} 
+        height="20rem" 
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+           <Slider
+                id="slider"
+                name="slider"
+                min="0"
+                max="100" 
+            />
+        `}
+    />
+
+    <h4 id="disabled">Disabled</h4>
+    <OutputContainer 
+        components={[
+             <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+                disabled={true}
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+                disabled={disabled}
+            />
+        `}
+    />
+
+    <h4 id="connect">Connect to parent</h4>
+
+    It is possible to receive the value from ```Slider``` in the parent component
+    by providing the  ```value``` prop and ```setValue``` prop as shown below.
+    <OutputContainer 
+        components={[
+             <Slider 
+                id="slider"
+                name="slider"
+                min="0"
+                max="100"
+                label="Range"
+            />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={connectcode}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```id``` | ```string``` | - | id of slider input |
+        | ```name``` | ```string``` | - | name of slider input |
+        | ```min``` | ```string``` | ```0``` | minimum value of the input |
+        | ```max``` | ```string``` | ```100``` | maximum value of the input |
+        | ```value``` | ```string``` | ```min``` | current value of the input |
+        | ```setValue``` | ```(string) => void``` | - | callback function that updates the current value in the parent |
+        | ```label``` | ```string``` | - | Label above the range input |
+        | ```description``` | ```string```| ```""``` | displays a description about the input |
+        | ```disabled``` | ```boolean``` | ```false``` | disables/enables range input  |
+        | ```required``` | ```boolean``` | false | Forces user to fill in the input |
+        | ```unit``` | ```string``` | - | unit of the value in the range input |
+        | ```width``` | ```string```| ```15rem``` | sets the width of the input |
+        | ```step``` | ```string```| ```1``` | step size of the slider |
+        | ```showValue``` | ```boolean```| ```true``` | Toggles showing the value |
+
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/skeleton" direction="left">Skeleton</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/spinner" direction="right">Spinner</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
