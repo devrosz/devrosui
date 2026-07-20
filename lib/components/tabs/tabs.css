@@ -1,4 +1,4 @@
-.tabs-header {
+.tabs-header, .tabs-header.primary {
     border-radius: 3rem;
     font-family: var(--font);
     background-color: var(--background-tertiary);
@@ -38,4 +38,31 @@
     border-radius: 3rem;
     background-color: var(--button-secondary-hover);
     z-index: 2;
+}
+
+/* Secondary styling */
+
+.tabs-header.secondary {
+    background-color: #454545;
+    border: none;
+}
+
+.tabs-header.secondary .active-pill {
+    background-color: #646464;  
+}
+
+/* Tertiary styling */
+
+.tabs-header.tertiary {
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--button-secondary-border);
+    padding: 0;
+}
+
+.tabs-header.tertiary .active-pill {
+    border-radius: 0;
+    background-color: transparent;
+    border-bottom: 2px solid var(--background-secondary);
 }

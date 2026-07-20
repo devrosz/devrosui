@@ -124,7 +124,7 @@ export default function({tabs, type="primary"}: TabsProps) {
 
     return (
         <div className="tabs-container">
-            <div className="tabs-header">
+            <div className={"tabs-header " + (type ?? "")}>
                 {tabs.map((tab: TabType, index: number) => {
                     return getTabJSX(tab, index)
                 })}

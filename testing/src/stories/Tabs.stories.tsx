@@ -32,3 +32,25 @@ export const LocalTabsDisabled: Story = {
     }
 }
 
+export const LocalTabsSecondary: Story = {
+    args: {
+        tabs: [
+            {text: "Dashboard", component: <h3>Dashboard content</h3>},
+            {text: "Analytics", component: <h3>Analytics content</h3>},
+            {text: "Setttings", component: <h3>Settings content</h3>},
+        ],
+        type: "secondary"
+    }
+}
+
+export const LocalTabsTertiary: Story = {
+    args: {
+        tabs: [
+            {text: "Dashboard", component: <h3>Dashboard content</h3>},
+            {text: "Analytics", component: <h3>Analytics content</h3>},
+            {text: "Setttings", component: <h3>Settings content</h3>},
+        ],
+        type: "tertiary"
+    }
+}
+
