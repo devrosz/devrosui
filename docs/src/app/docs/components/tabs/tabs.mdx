@@ -1,0 +1,316 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import Link from "next/link"
+import { Tabs } from "@devrosui/react"
+import "./page.css"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "local",
+        title: "Local Tabs",
+        level: 1
+    },
+    {
+        id: "router",
+        title: "Router Tabs",
+        level: 1
+    },
+    {
+        id: "styling",
+        title: "Styling",
+        level: 0
+    },
+    {
+        id: "secondary",
+        title: "secondary",
+        level: 1
+    },
+    {
+        id: "tertiary",
+        title: "tertiary",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "disabled",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    },
+    {
+        id: "props-local-tab",
+        title: "Single local tab",
+        level: 1
+    },
+    {
+        id: "props-router-tab",
+        title: "Single router tab",
+        level: 1
+    },
+    {
+        id: "props-tabs",
+        title: "Tabs props",
+        level: 1
+    }
+]
+
+export const tabsItems = [
+    {text: "Overview", component: <h3> </h3>},
+    {text: "Analytics", component: <h3> </h3>},
+    {text: "Setttings", component: <h3> </h3>},
+]
+
+export const usageCode = 
+`
+import { Tabs } from "@devrosui/react"
+
+export default function MyComponent() {
+
+   const tabsItems = [
+        {text: "Overview", component: <h3>Overview content</h3>},
+        {text: "Analytics", component: <h3>Analytics content</h3>},
+        {text: "Setttings", component: <h3>Settings content</h3>},
+    ]
+
+    return (
+        <Tabs tabs={tabsItems} />
+    )
+}
+
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Tabs
+    Component that lets the user conditionally render pages or JSX based on which
+    tab is active.
+
+   <OutputContainer components={[<Tabs tabs={tabsItems} />]} height="20rem" />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Tabs } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+    
+    <h4 id="local">Local Tabs</h4>
+
+    Local tabs are tabs that conditionally render small JSX Elements for which creating layouts
+    is an overkill. E.g. toggle between monthly or yearly plans to render the respective pricing cards.
+
+    <OutputContainer 
+        components={[
+            <Tabs tabs={[
+                    {
+                        text: "Monthly",
+                        component: <h5>View the monthly plans</h5>,
+                        childClassName: "tabs-variants-child"
+                    },
+                    {
+                        text: "Yearly",
+                        component: <h5>View the yearly plans</h5>,
+                        childClassName: "tabs-variants-child"
+                    }
+                ]}
+            />
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Tabs tabs={[
+                    {
+                        text: "Monthly",
+                        component: <h5>View the monthly plans</h5>,
+                        childClassName: "tabs-variants-child"
+                    },
+                    {
+                        text: "Yearly",
+                        component: <h5>View the yearly plans</h5>,
+                        childClassName: "tabs-variants-child"
+                    }
+                ]}
+            />
+        `}
+    />
+
+    <h4 id="router">Router Tabs</h4>
+
+    Router tabs are tabs used in layouts where the user can switch between different pages.
+    E.g. on a dashboard page switch between analytics, settings and an overview page.
+
+
+    <OutputContainer 
+        components={[
+            <Tabs tabs={[
+                    {
+                        text: "Overview",
+                        component: <h5>Overview content</h5>,
+                        childClassName: "tabs-variants-child"
+                    },
+                    {
+                        text: "Analytics",
+                        component: <h5>Analytics content</h5>,
+                        childClassName: "tabs-variants-child"
+                    },
+                    {
+                        text: "Setttings",
+                        component: <h5>Settings content</h5>,
+                        childClassName: "tabs-variants-child"
+                    },
+                ]}
+                type="tertiary"
+            />
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+
+            function linkJSX(path, children) {
+                <Link href={path}>{children}</Link>
+            }
+
+            <Tabs tabs={[
+                    {
+                        text: "Monthly",
+                        component: <h5>View the monthly plans</h5>
+                        renderLink: linkJSX
+                    },
+                    {
+                        text: "Yearly",
+                        component: <h5>View the yearly plans</h5>
+                        renderLink: linkJSX
+                    }
+                ]}
+            />
+        `}
+    />    
+
+    <h3 id="styling">Styling</h3>
+
+    <h4 id="secondary">Secondary</h4>
+        <OutputContainer components={[<Tabs tabs={tabsItems} type="secondary" />]} height="20rem"  />
+        <CodeBlock
+            langHighlight="jsx"
+            langDisplay="JSX"
+            code={`<Tabs tabs={tabsItems} type="secondary" />`}
+        />
+
+    <h4 id="tertiary">Tertiary</h4>
+        <OutputContainer components={[<Tabs tabs={tabsItems} type="tertiary" />]} height="20rem" />
+        <CodeBlock
+            langHighlight="jsx"
+            langDisplay="JSX"
+            code={`<Tabs tabs={tabsItems} type="tertiary" />`}
+        />
+
+    <h4 id="disabled">Disabled</h4>
+        <OutputContainer components={[
+                <Tabs tabs={[
+                        {text: "Overview", component: <h3> </h3>},
+                        {text: "Analytics", component: <h3> </h3>, disabled: true},
+                        {text: "Setttings", component: <h3> </h3>},
+                    ]}
+                />
+            ]} 
+                height="20rem"
+        />
+        <CodeBlock
+            langHighlight="jsx"
+            langDisplay="JSX"
+            code={`
+                    <Tabs tabs={[
+                        {text: "Overview", component: <h3>Overview content</h3>},
+                        {text: "Analytics", component: <h3>Analytics content</h3>, disabled: true},
+                        {text: "Setttings", component: <h3>Settings content</h3>},
+                    ]}
+                />
+            `}
+        />
+
+    
+    <h3 id="props">Props</h3>
+
+    <h4 id="props-local-tab">Single local tab</h4>
+    
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```text``` | ```string``` | - | inner text of the tab button |
+        | ```component``` | ```JSX.Element``` | - | component to be rendered on this tab |
+        | ```childClassName``` | ```string``` | - | className for the rendered content of a tab |
+        | ```disabled``` | ```boolean``` | - | Disable tab button |
+    </div>
+
+    <h4 id="props-router-tab">Single router tab</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```text``` | ```string``` | - | inner text of the tab button |
+        | ```path``` | ```string``` | - | route to which the tab must go |
+        | ```renderLink``` | ```(path: string, children: JSX.Element) => JSX.Element``` | - | function that provides the link component |
+        | ```disabled``` | ```boolean``` | - | Disable tab button |
+    </div>
+
+    <h4 id="props-tabs">Tabs props</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```tabs``` | ```Local tab \| Router tab``` | - | tabs |
+        | ```type``` | ```"primary" \| "secondary" \| "tertiary"``` | ```"primary"``` | Styling of tabs |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/installation" direction="left">Installation</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/breadcrumbs" direction="right">Breadcrumbs</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

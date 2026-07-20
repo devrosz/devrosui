@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react"
+import { useId } from "react"
 import { JSX } from "react"
 import { motion } from "motion/react"
 import "./tabs.css"
@@ -51,6 +52,7 @@ type TabsProps = {
 // - These are tabs used in layouts where the user can switch between different pages.
 // - E.g. on a dashboard page, switch between analytics, settings, overview etc.
 export default function({tabs, type="primary"}: TabsProps) {
+    const id = useId()
     const [activeTab, setActiveTab] = React.useState<number>(0)
 
     // Saves tab index that is currently active and if localTabs are used,
@@ -63,7 +65,7 @@ export default function({tabs, type="primary"}: TabsProps) {
     function getAnimatedTabContent(): JSX.Element {
             return (
                 <motion.div
-                    layoutId="active-tab-indicator"
+                    layoutId={id}
                     className="active-pill"
                     transition={{
                         type: "spring",
