@@ -31,6 +31,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts",
     "src/app/docs/**/*"
-  ],
+, "src/app/dashboard"  ],
   "exclude": ["node_modules"]
 }

@@ -90,6 +90,7 @@ export default function({tabs, type="primary"}: TabsProps) {
                     className={"tab " + (isActive ? "active" : "")}
                     onClick={() => activateTab(key)}
                     disabled={tab.disabled}
+                    key={key}
                 >
                     {isActive ? getAnimatedTabContent() : null}
                     <span className="tab-text">{text}</span>
@@ -99,7 +100,7 @@ export default function({tabs, type="primary"}: TabsProps) {
         } else if (!("component" in tab) && "path" in tab) {
             return tab.disabled ? (
                 // If a tab is disabled, use plain text instead of a link component.
-                <h6 className="tab inactive">
+                <h6 className="tab inactive" key={key}>
                     {isActive ? getAnimatedTabContent() : null}
                     <span className="tab-text">{text}</span>
                 </h6>
@@ -110,6 +111,7 @@ export default function({tabs, type="primary"}: TabsProps) {
                 <button
                     className={"tab " + (isActive ? "active" : "")}
                     onClick={() => activateTab(key)}
+                    key={key}
                 >
                     {tab.renderLink(tab.path, 
                         <div>
