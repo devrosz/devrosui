@@ -23,22 +23,24 @@ import "./tabs.css"
 // - disabled: boolean that activates/deactivates the respective tab.
 // childClassName: className for the component to be rendered when using localTabs
 // to provide freedom to style the rendered component.
-type TabType = 
-| {
+
+type LocalTab = {
     text: string,
-    path: string,
-    renderLink: (path: string, children: JSX.Element) => JSX.Element,
     disabled?: boolean
-} | {
-    text: string,
     component: JSX.Element,
-    childClassName?: string,
-    disabled?: boolean
+    childClassName?: string
+}
+
+type RouterTab = {
+    text: string,
+    disabled?: boolean,
+    path: string,
+    renderLink: (path: string, children: JSX.Element) => JSX.Element
 }
 
 // tabs: array of tabs to be rendered containing meta-information about each tab.
 type TabsProps = {
-    tabs: TabType[],
+    tabs: LocalTab[] | RouterTab[],
     type?: "primary" | "secondary" | "tertiary"
 }
 
@@ -63,28 +65,26 @@ export default function({tabs, type="primary"}: TabsProps) {
 
     // Returns the JSX for the moving highlighter animation.
     function getAnimatedTabContent(): JSX.Element {
-            return (
-                <motion.div
-                    layoutId={id}
-                    className="active-pill"
-                    transition={{
-                        type: "spring",
-                        stiffness: 450,
-                        damping: 35,
-                    }}
-                />
-            )
-        }
+        return (
+            <motion.div
+                layoutId={id}
+                className="active-pill"
+                transition={{
+                    type: "spring",
+                    stiffness: 450,
+                    damping: 35,
+                }}
+            />
+        )
+    }
 
     // Returns the JSX of a single tab.
-    function getTabJSX(tab: TabType, key: number): JSX.Element | null {
-        const component = tab.component ?? null
-        const path = tab.path ?? null
+    function getTabJSX(tab: LocalTab | RouterTab, key: number): JSX.Element | null {
         const text = tab.text
         const isActive = key === activeTab
 
         // LocalTabs
-        if (component && !path) {
+        if ("component" in tab && !("path" in tab)) {
             return (
                 <button 
                     className={"tab " + (isActive ? "active" : "")}
@@ -96,7 +96,7 @@ export default function({tabs, type="primary"}: TabsProps) {
                 </button>
             )
         // RouterTabs
-        } else if (!component && path) {
+        } else if (!("component" in tab) && "path" in tab) {
             return tab.disabled ? (
                 // If a tab is disabled, use plain text instead of a link component.
                 <h6 className="tab inactive">
@@ -111,7 +111,7 @@ export default function({tabs, type="primary"}: TabsProps) {
                     className={"tab " + (isActive ? "active" : "")}
                     onClick={() => activateTab(key)}
                 >
-                    {tab.renderLink(path, 
+                    {tab.renderLink(tab.path, 
                         <div>
                             {isActive ? getAnimatedTabContent() : null}
                             <span className="tab-text">{text}</span>
@@ -127,11 +127,11 @@ export default function({tabs, type="primary"}: TabsProps) {
     return (
         <div className="tabs-container">
             <div className={"tabs-header " + (type ?? "")}>
-                {tabs.map((tab: TabType, index: number) => {
+                {tabs.map((tab: LocalTab | RouterTab, index: number) => {
                     return getTabJSX(tab, index)
                 })}
             </div>
-            {tabs[activeTab].component && 
+            {"component" in tabs[activeTab] && 
                 <div className={tabs[activeTab].childClassName ?? ""}>
                     {tabs[activeTab].component}
                 </div>
