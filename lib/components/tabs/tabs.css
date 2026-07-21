@@ -1,4 +1,5 @@
-.tabs-header, .tabs-header.primary {
+.tabs-header, .tabs-container.primary .tabs-header {
+    display: flex;
     border-radius: 3rem;
     font-family: var(--font);
     background-color: var(--background-tertiary);
@@ -16,6 +17,13 @@
     font-weight: 600;
 }
 
+.tab button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text-primary);
+}
+
 .tab-text {
     position: relative;
     z-index: 3;
@@ -25,7 +33,7 @@
     color: var(--text-primary);
 }
 
-.tab.inactive, .tab:disabled {
+.tab.disabled {
     cursor: not-allowed;
 }
 
@@ -42,18 +50,18 @@
 
 /* Secondary styling */
 
-.tabs-header.secondary {
+.tabs-container.secondary .tabs-header {
     background-color: #454545;
     border: none;
 }
 
-.tabs-header.secondary .active-pill {
+.tabs-container.secondary .active-pill {
     background-color: #646464;  
 }
 
 /* Tertiary styling */
 
-.tabs-header.tertiary {
+.tabs-container.tertiary .tabs-header {
     border-radius: 0;
     border: none;
     background-color: transparent;
@@ -61,7 +69,7 @@
     padding: 0;
 }
 
-.tabs-header.tertiary .active-pill {
+.tabs-container.tertiary .active-pill {
     border-radius: 0;
     background-color: transparent;
     border-bottom: 2px solid var(--background-secondary);

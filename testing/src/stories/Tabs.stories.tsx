@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Tabs } from "@devrosui/react"
+import { Tabs, TabsList, TabRender, Tab } from "@devrosui/react"
 
 const meta = {
     title: "Tabs",
@@ -13,44 +13,122 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const LocalTabsDev: Story = {
-    args: {
-        tabs: [
-            {text: "Dashboard", component: <h3>Dashboard content</h3>},
-            {text: "Analytics", component: <h3>Analytics content</h3>},
-            {text: "Setttings", component: <h3>Settings content</h3>},
-        ]
-    }
-}
+    render: () => {
+        return (
+            <Tabs type="local">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
 
-export const LocalTabsDisabled: Story = {
-    args: {
-        tabs: [
-            {text: "Dashboard", component: <h3>Dashboard content</h3>},
-            {text: "Analytics", component: <h3>Analytics content</h3>, disabled: true},
-            {text: "Setttings", component: <h3>Settings content</h3>},
-        ]
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        )
     }
 }
 
 export const LocalTabsSecondary: Story = {
-    args: {
-        tabs: [
-            {text: "Dashboard", component: <h3>Dashboard content</h3>},
-            {text: "Analytics", component: <h3>Analytics content</h3>},
-            {text: "Setttings", component: <h3>Settings content</h3>},
-        ],
-        type: "secondary"
+    render: () => {
+        return (
+            <Tabs type="local" styling="secondary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        )
     }
 }
 
 export const LocalTabsTertiary: Story = {
-    args: {
-        tabs: [
-            {text: "Dashboard", component: <h3>Dashboard content</h3>},
-            {text: "Analytics", component: <h3>Analytics content</h3>},
-            {text: "Setttings", component: <h3>Settings content</h3>},
-        ],
-        type: "tertiary"
+    render: () => {
+        return (
+            <Tabs type="local" styling="tertiary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        )
+    }
+}
+
+export const LocalTabsDisabled: Story = {
+    render: () => {
+        return (
+            <Tabs type="local">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2" disabled={true}>
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        )
     }
 }
 
