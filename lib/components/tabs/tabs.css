@@ -1,0 +1,86 @@
+.tabs-container {
+    width: fit-content;
+    background-color: transparent;
+}
+
+.tabs-header, .tabs-container.primary .tabs-header {
+    display: flex;
+    border-radius: 3rem;
+    font-family: var(--font);
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--button-secondary-border);
+    padding: 0.25rem;
+}
+
+.tab {
+    position: relative;
+    padding: 0.75rem 2rem;
+    border-radius: 3rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-tertiary);
+    font-weight: 600;
+}
+
+.tab button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+.tab a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.tab-text {
+    position: relative;
+    z-index: 3;
+}
+
+.tab.active {
+    color: var(--text-primary);
+}
+
+.tab.disabled {
+    cursor: not-allowed;
+}
+
+.active-pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 3rem;
+    background-color: var(--button-secondary-hover);
+    z-index: 2;
+}
+
+/* Secondary styling */
+
+.tabs-container.secondary .tabs-header {
+    background-color: #454545;
+    border: none;
+}
+
+.tabs-container.secondary .active-pill {
+    background-color: #646464;  
+}
+
+/* Tertiary styling */
+
+.tabs-container.tertiary .tabs-header {
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid var(--button-secondary-border);
+    padding: 0;
+}
+
+.tabs-container.tertiary .active-pill {
+    border-radius: 0;
+    background-color: transparent;
+    border-bottom: 2px solid var(--background-secondary);
+}

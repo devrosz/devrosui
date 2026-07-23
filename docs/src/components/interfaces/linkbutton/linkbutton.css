@@ -15,31 +15,31 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.primary {
+.link-button.primary {
     background-color: var(--background-secondary);
     color: var(--text-secondary)
 }
 
-.primary:hover {
+.link-button.primary:hover {
     background-color: var(--button-primary-hover);
     color: var(--text-secondary);
 }
 
-.secondary {
+.link-button.secondary {
     border: 1px solid var(--button-secondary-border);
     background-color: transparent;
     color: var(--text-primary)
 }
 
-.secondary:hover {
+.link-button.secondary:hover {
     background-color: var(--button-secondary-hover);
 }
 
-.tertiary {
+.link-button.tertiary {
     color: var(--text-primary);
     background-color: var(--background-tertiary);
 }
 
-.tertiary:hover {
+.link-button.tertiary:hover {
     background-color: var(--button-tertiary-hover);
 }

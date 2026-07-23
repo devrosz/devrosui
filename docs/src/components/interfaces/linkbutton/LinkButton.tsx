@@ -21,7 +21,7 @@ export default function LinkButton({
     children
 }: LinkButtonProps): JSX.Element {
     return (
-        <Link href={path} target={target} className={type + " link-button"}>
+        <Link href={path} target={target} className={"link-button " + type}>
             {children}
         </Link>
     )
