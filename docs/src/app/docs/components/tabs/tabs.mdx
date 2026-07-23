@@ -4,7 +4,7 @@ import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import Link from "next/link"
-import { Tabs } from "@devrosui/react"
+import { Tabs, TabsList, TabRender, Tab } from "@devrosui/react"
 import "./page.css"
 
 export const headers = [
@@ -59,42 +59,48 @@ export const headers = [
         level: 0
     },
     {
-        id: "props-local-tab",
-        title: "Single local tab",
-        level: 1
-    },
-    {
-        id: "props-router-tab",
-        title: "Single router tab",
-        level: 1
-    },
-    {
         id: "props-tabs",
-        title: "Tabs props",
+        title: "Tabs",
+        level: 1
+    },
+    {
+        id: "props-tabslist",
+        title: "TabsList",
+        level: 1
+    },
+    {
+        id: "props-tab",
+        title: "Tab",
+        level: 1
+    },
+    {
+        id: "props-tabrender",
+        title: "TabRender",
         level: 1
     }
 ]
 
-export const tabsItems = [
-    {text: "Overview", component: <h3> </h3>},
-    {text: "Analytics", component: <h3> </h3>},
-    {text: "Setttings", component: <h3> </h3>},
-]
-
 export const usageCode = 
 `
-import { Tabs } from "@devrosui/react"
+import { Tabs, TabsList, TabRender, Tab } from "@devrosui/react"
+import Link from "next/link" // import the link component of your JS framework (e.g. React or Next.js)
 
 export default function MyComponent() {
 
-   const tabsItems = [
-        {text: "Overview", component: <h3>Overview content</h3>},
-        {text: "Analytics", component: <h3>Analytics content</h3>},
-        {text: "Setttings", component: <h3>Settings content</h3>},
-    ]
-
-    return (
-        <Tabs tabs={tabsItems} />
+  return (
+        <Tabs type="local" initialTabId="tab-1">
+            <TabsList>
+                <Tab id="tab-1">
+                    <Link href="./overview">Overview</Link>
+                </Tab>
+                <Tab id="tab-2">
+                    <Link href="./analytics">Analytics</Link>
+                </Tab>
+                <Tab id="tab-3">
+                    <Link href="./settings">Settings</Link>
+                </Tab>
+            </TabsList>
+        </Tabs>
     )
 }
 
@@ -106,13 +112,40 @@ export default function MyComponent() {
     Component that lets the user conditionally render pages or JSX based on which
     tab is active.
 
-   <OutputContainer components={[<Tabs tabs={tabsItems} />]} height="20rem" />
+   <OutputContainer 
+    components={[
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
+        ]}
+    height="20rem" 
+/>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'import { Tabs } from "@devrosui/react"'}
+        code={'import { Tabs, TabsList, TabRender, Tab } from "@devrosui/react"'}
     />
    
    <h3 id="usage">Usage</h3>
@@ -132,19 +165,29 @@ export default function MyComponent() {
 
     <OutputContainer 
         components={[
-            <Tabs tabs={[
-                    {
-                        text: "Monthly",
-                        component: <h5>View the monthly plans</h5>,
-                        childClassName: "tabs-variants-child"
-                    },
-                    {
-                        text: "Yearly",
-                        component: <h5>View the yearly plans</h5>,
-                        childClassName: "tabs-variants-child"
-                    }
-                ]}
-            />
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
         ]}
         height="20rem"
     />
@@ -153,19 +196,29 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <Tabs tabs={[
-                    {
-                        text: "Monthly",
-                        component: <h5>View the monthly plans</h5>,
-                        childClassName: "tabs-variants-child"
-                    },
-                    {
-                        text: "Yearly",
-                        component: <h5>View the yearly plans</h5>,
-                        childClassName: "tabs-variants-child"
-                    }
-                ]}
-            />
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
         `}
     />
 
@@ -177,25 +230,29 @@ export default function MyComponent() {
 
     <OutputContainer 
         components={[
-            <Tabs tabs={[
-                    {
-                        text: "Overview",
-                        component: <h5>Overview content</h5>,
-                        childClassName: "tabs-variants-child"
-                    },
-                    {
-                        text: "Analytics",
-                        component: <h5>Analytics content</h5>,
-                        childClassName: "tabs-variants-child"
-                    },
-                    {
-                        text: "Setttings",
-                        component: <h5>Settings content</h5>,
-                        childClassName: "tabs-variants-child"
-                    },
-                ]}
-                type="tertiary"
-            />
+           <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab> 
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
         ]}
         height="20rem"
     />
@@ -204,101 +261,243 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-
-            function linkJSX(path, children) {
-                <Link href={path}>{children}</Link>
-            }
-
-            <Tabs tabs={[
-                    {
-                        text: "Monthly",
-                        component: <h5>View the monthly plans</h5>
-                        renderLink: linkJSX
-                    },
-                    {
-                        text: "Yearly",
-                        component: <h5>View the yearly plans</h5>
-                        renderLink: linkJSX
-                    }
-                ]}
-            />
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <Link href="./overview">Overview</Link>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <Link href="./analytics">Analytics</Link>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <Link href="./settings">Settings</Link>
+                    </Tab>
+                </TabsList>
+            </Tabs>
         `}
     />    
 
     <h3 id="styling">Styling</h3>
 
     <h4 id="secondary">Secondary</h4>
-        <OutputContainer components={[<Tabs tabs={tabsItems} type="secondary" />]} height="20rem"  />
-        <CodeBlock
-            langHighlight="jsx"
-            langDisplay="JSX"
-            code={`<Tabs tabs={tabsItems} type="secondary" />`}
-        />
+       <OutputContainer 
+        components={[
+            <Tabs type="local" initialTabId="tab-1" styling="secondary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Tabs type="local" initialTabId="tab-1" styling="secondary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        `}
+    />
 
     <h4 id="tertiary">Tertiary</h4>
-        <OutputContainer components={[<Tabs tabs={tabsItems} type="tertiary" />]} height="20rem" />
-        <CodeBlock
-            langHighlight="jsx"
-            langDisplay="JSX"
-            code={`<Tabs tabs={tabsItems} type="tertiary" />`}
-        />
+        <OutputContainer 
+        components={[
+            <Tabs type="local" initialTabId="tab-1" styling="tertiary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Tabs type="local" initialTabId="tab-1" styling="tertiary">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2">
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        `}
+    />
 
     <h4 id="disabled">Disabled</h4>
-        <OutputContainer components={[
-                <Tabs tabs={[
-                        {text: "Overview", component: <h3> </h3>},
-                        {text: "Analytics", component: <h3> </h3>, disabled: true},
-                        {text: "Setttings", component: <h3> </h3>},
-                    ]}
-                />
-            ]} 
-                height="20rem"
-        />
-        <CodeBlock
-            langHighlight="jsx"
-            langDisplay="JSX"
-            code={`
-                    <Tabs tabs={[
-                        {text: "Overview", component: <h3>Overview content</h3>},
-                        {text: "Analytics", component: <h3>Analytics content</h3>, disabled: true},
-                        {text: "Setttings", component: <h3>Settings content</h3>},
-                    ]}
-                />
-            `}
-        />
+       <OutputContainer 
+        components={[
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2" disabled={true}>
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5 className="tabs-children">Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5 className="tabs-children">Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5 className="tabs-children">Settings content</h5>
+                </TabRender>
+            </Tabs>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Tabs type="local" initialTabId="tab-1">
+                <TabsList>
+                    <Tab id="tab-1">
+                        <button>Overview</button>
+                    </Tab>
+                    <Tab id="tab-2" disabled={true}>
+                        <button>Analytics</button>
+                    </Tab>
+                    <Tab id="tab-3">
+                        <button>Settings</button>
+                    </Tab>
+                </TabsList>
+
+                <TabRender id="tab-1">
+                    <h5>Overview content</h5>
+                </TabRender>
+                 <TabRender id="tab-2">
+                    <h5>Analytics content</h5>
+                </TabRender>
+                 <TabRender id="tab-3">
+                    <h5>Settings content</h5>
+                </TabRender>
+            </Tabs>
+        `}
+    />
 
     
     <h3 id="props">Props</h3>
 
-    <h4 id="props-local-tab">Single local tab</h4>
+    <h4 id="props-tabs">Tabs</h4>
     
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```text``` | ```string``` | - | inner text of the tab button |
-        | ```component``` | ```JSX.Element``` | - | component to be rendered on this tab |
-        | ```childClassName``` | ```string``` | - | className for the rendered content of a tab |
-        | ```disabled``` | ```boolean``` | - | Disable tab button |
+        | ```type``` | ```"local" \| "router"``` | local | type of tabs |
+        | ```initialTabId``` | ```string``` | - | id of tab which should be active on first render |
+        | ```styling``` | ```"primary" \| "secondary" \| "tertiary"``` | - | style type of the tabs |
+        | ```children``` | ```ReactNode``` | - | Expecting ```<TabsList>``` and in case of local tabs also ```<TabRender>``` |
     </div>
 
-    <h4 id="props-router-tab">Single router tab</h4>
+    <h4 id="props-tabslist">TabsList</h4>
 
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```text``` | ```string``` | - | inner text of the tab button |
-        | ```path``` | ```string``` | - | route to which the tab must go |
-        | ```renderLink``` | ```(path: string, children: JSX.Element) => JSX.Element``` | - | function that provides the link component |
-        | ```disabled``` | ```boolean``` | - | Disable tab button |
+        | ```children``` | ```ReactNode``` | - | Expecting ```<Tabs>``` |
     </div>
 
-    <h4 id="props-tabs">Tabs props</h4>
+    <h4 id="props-tab">Tab</h4>
 
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```tabs``` | ```Local tab \| Router tab``` | - | tabs |
-        | ```type``` | ```"primary" \| "secondary" \| "tertiary"``` | ```"primary"``` | Styling of tabs |
+        | ```id``` | ```string``` | - | identifies the respective tab |
+        | ```disabled``` | ```boolean``` | ```false``` | Enables/disabled activation of tab |
+        | ```children``` | ```ReactNode``` | - | Expecting either ```<button>``` or ```<Link>```|
+    </div>
+
+     <h4 id="props-tabrender">TabRender</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```id``` | ```string``` | - | identifies the respective tab |
+        | ```children``` | ```ReactNode``` | - | Expecting the component to render when the tab of the given id is active|
     </div>
 
     <div className="docs-page-explore">

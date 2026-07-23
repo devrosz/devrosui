@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>
 export const LocalTabsDev: Story = {
     render: () => {
         return (
-            <Tabs type="local">
+            <Tabs type="local" initialTabId="tab-1">
                 <TabsList>
                     <Tab id="tab-1">
                         <button>Overview</button>
@@ -45,7 +45,7 @@ export const LocalTabsDev: Story = {
 export const LocalTabsSecondary: Story = {
     render: () => {
         return (
-            <Tabs type="local" styling="secondary">
+            <Tabs type="local" styling="secondary" initialTabId="tab-1">
                 <TabsList>
                     <Tab id="tab-1">
                         <button>Overview</button>
@@ -75,7 +75,7 @@ export const LocalTabsSecondary: Story = {
 export const LocalTabsTertiary: Story = {
     render: () => {
         return (
-            <Tabs type="local" styling="tertiary">
+            <Tabs type="local" styling="tertiary" initialTabId="tab-1">
                 <TabsList>
                     <Tab id="tab-1">
                         <button>Overview</button>
@@ -105,7 +105,7 @@ export const LocalTabsTertiary: Story = {
 export const LocalTabsDisabled: Story = {
     render: () => {
         return (
-            <Tabs type="local">
+            <Tabs type="local" initialTabId="tab-1">
                 <TabsList>
                     <Tab id="tab-1">
                         <button>Overview</button>
