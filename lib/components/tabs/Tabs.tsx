@@ -32,11 +32,17 @@ type TabProps = {
     children: ReactNode
 }
 
+// id: identifies the tab in order to render the correct component.
+// children: expecting the JSX to be rendered.
 type TabRenderProps = { 
     id: string,
     children: ReactNode
 }
 
+// Data-object that is passed from <Tabs> to all the subcomponents.
+// activeTab: tab that is currently active. Holds the id of this tab.
+// setActiveTab: callback function to update the id of the active tab.
+// layoutId: id for the layout used to make the moving pill animation work.
 type TabsContext = {
     activeTab: string,
     setActiveTab: (arg0: string) => void,
@@ -45,6 +51,7 @@ type TabsContext = {
 
 const TabsContext = createContext<null | TabsContext>(null)
 
+// Parent component which sets the user-given props and passes it to the other Tabs subcomponents.
 export function Tabs({type="local", initialTabId, styling="primary", children}: TabsProps) {
     const [activeTab, setActiveTab] = React.useState<string>(initialTabId)
     const layoutId = useId()
@@ -58,6 +65,7 @@ export function Tabs({type="local", initialTabId, styling="primary", children}: 
     )
 }
 
+// Wrapper for the tabslist.
 export function TabsList({children}: {children: ReactNode}) {
     return (
         <div className="tabs-header">
@@ -66,8 +74,15 @@ export function TabsList({children}: {children: ReactNode}) {
     )
 }
 
+// Individual tab inside the TabsList. Can update the activeTab.
 export function Tab({id, disabled=false, children}: TabProps) {
-    const { activeTab, setActiveTab, layoutId, type } = useContext(TabsContext)
+    const tabsContext = useContext(TabsContext)
+
+    if (!tabsContext) {
+        return null
+    }
+
+    const { activeTab, setActiveTab, layoutId } = tabsContext
     const isActive = id === activeTab
 
     return (
@@ -99,7 +114,14 @@ export function Tab({id, disabled=false, children}: TabProps) {
     )
 }
 
+// Component which renders the JSX of the respective tab if this tab is active.
 export function TabRender({id, children}: TabRenderProps) {
-    const { activeTab } = useContext(TabsContext)
+    const tabsContext = useContext(TabsContext)
+
+    if (!tabsContext) {
+        return null
+    }
+
+    const { activeTab } = tabsContext
     return activeTab === id ? children : null
 }
