@@ -9,17 +9,25 @@ import "./cookieconsent.css"
 // onAcceptAll: callback function for all cookies.
 // allowChoice: true if analytical cookies are present. False if only necessary cookies are used
 // so the user can only accept those.
+// position: choose whether the popup must be inline or fixed on the bottom-right corner of the screen.
 // children: paragraph text inside the cookie popup.
 type CookieConsentProps = {
     onNecessary: () => Promise<void> | void,
-    onAcceptAll: () => Promise<void> | void,
+    onAcceptAll?: () => Promise<void> | void,
     allowChoice?: boolean,
+    position: "fixed" | "relative",
     children: React.ReactNode
 }
 
 // Component that renders a disclaimer of cookies that are being used on a website.
 // The user can select to choose which cookies should be active.
-export default function CookieConsent({onNecessary, onAcceptAll, allowChoice=true, children}: CookieConsentProps) {
+export default function CookieConsent({
+    onNecessary,
+    onAcceptAll,
+    allowChoice=true,
+    position="fixed",
+    children
+}: CookieConsentProps) {
     const [open, setOpen] = React.useState(false)
 
     // Render cookie disclaimer after two seconds.
@@ -31,10 +39,13 @@ export default function CookieConsent({onNecessary, onAcceptAll, allowChoice=tru
 
     React.useEffect(() => {
         handleRenderDelay()
+        // Prevent that popup is in closed-state after visiting another page
+        // because the default state is closed.
+        return () => setOpen(prev => !prev)
     }, [])
 
     return (
-        <div className="cookie-consent-container">
+        <div className="cookie-consent-container" style={{"position": position}}>
             <AnimatePresence>
                 {open && (
                     <motion.div 
@@ -51,7 +62,7 @@ export default function CookieConsent({onNecessary, onAcceptAll, allowChoice=tru
                             <div>
                                 <button 
                                     className="secondary-button"
-                                    style={{marginBottom: "0.5rem"}}
+                                    style={{margin: "0.5rem 0"}}
                                     onClick={() => {
                                         setOpen(prev => !prev)
                                         onNecessary()
@@ -61,13 +72,22 @@ export default function CookieConsent({onNecessary, onAcceptAll, allowChoice=tru
                                 </button>
                                 <button className="primary-button" onClick={() => {
                                     setOpen(prev => !prev)
-                                    onAcceptAll()
+                                    if (onAcceptAll) {
+                                        onAcceptAll()
+                                    }
                                 }}>
                                     Accept all
                                 </button>
                             </div>
                         ) : (
-                            <button className="primary-button">
+                            <button 
+                                className="primary-button"
+                                style={{marginTop: "0.5rem"}}
+                                onClick={() => {
+                                    setOpen(prev => !prev)
+                                    onNecessary()
+                                }}
+                            >
                                 Understood
                             </button>
                         )}
