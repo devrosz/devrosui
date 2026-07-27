@@ -35,6 +35,60 @@ html.light {
   --skeleton-animate: hsl(0, 0%, 95%);
 }
 
+button {
+  font-weight: 600;
+  font-family: var(--font);
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button > * {
+  font-weight: 600;
+  font-family: var(--font);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button:hover {
+  transition: 0.3s;
+}
+
+.primary-button {
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+}
+
+.primary-button > * {
+  color: var(--text-secondary);
+}
+
+.primary-button:hover {
+  background-color: var(--button-primary-hover);
+}
+
+.secondary-button {
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--button-secondary-border)
+}
+
+.secondary-button > * {
+  color: var(--text-primary);
+}
+
+.secondary-button:hover {
+  background-color: var(--button-secondary-hover);
+}
+
 h1 {
   font-size: 64px;
   font-weight: 600;
