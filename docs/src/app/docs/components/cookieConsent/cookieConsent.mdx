@@ -1,0 +1,170 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { CookieConsent } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "necessary-only",
+        title: "Necessary cookies only",
+        level: 1
+    },
+    {
+        id: "analytical",
+        title: "Analytical cookies included",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const emptyFunc = () => {}
+
+export const exampleCode = 
+`
+import { CookieConsent } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    async function handleNecessary() {
+        try {
+            await yourOwnAPI()
+        } catch(e) {
+            console.error(e.message)
+        }
+    }
+
+    async function handleAll() {
+        try {
+            await yourOwnAPI()
+        } catch(e) {
+            console.error(e.message)
+        }
+    }
+
+    return (
+        <CookieConsent onNecessary={handleNecessary} onAcceptAll={handleAll}>
+            This website uses cookies for certain functionalities.
+            For more details about which functionalities and what data is collected,
+            please refer to our cookie policy.
+        </CookieConsent>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## CookieConsent
+    Warn the user about the use of necessary cookies and if analytical cookies are present, allow
+    the user to turn these on as well.
+
+   <OutputContainer components={[
+            <CookieConsent position="relative">
+                This website uses cookies for certain functionalities.
+                For more details about which functionalities and what data is collected,
+                please refer to our cookie policy.
+            </CookieConsent>
+        ]}
+    />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { CookieConsent } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="necessary">Necessary cookies only</h4>
+    <OutputContainer components={[
+             <CookieConsent position="relative" allowChoice={false}>
+                This website uses cookies for certain functionalities.
+                For more details about which functionalities and what data is collected,
+                please refer to our cookie policy.
+            </CookieConsent>
+        ]}
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <CookieConsent onNecessary={handleNecessary} onAcceptAll={handleAll} allowChoice={false}>
+                This website uses cookies for certain functionalities.
+                For more details about which functionalities and what data is collected,
+                please refer to our cookie policy.
+            </CookieConsent>
+        `}
+    />
+
+    <h4 id="analytical">Analytical cookies included</h4>
+    <OutputContainer components={[
+            <CookieConsent position="relative">
+                This website uses cookies for certain functionalities.
+                For more details about which functionalities and what data is collected,
+                please refer to our cookie policy.
+            </CookieConsent>
+        ]}
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <CookieConsent onNecessary={handleNecessary} onAcceptAll={handleAll} allowChoice={true}>
+                This website uses cookies for certain functionalities.
+                For more details about which functionalities and what data is collected,
+                please refer to our cookie policy.
+            </CookieConsent>
+        `}
+    />
+
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```onNecessary``` | ```() => Promise<void> \| void``` | - | Callback function for necessary cookies only. |
+        | ```onAcceptAll``` | ```() => Promise<void> \| void``` | - | Callback function for all cookies. |
+        | ```allowChoice``` | ```boolean``` | ```true``` | True if analytical cookies are present, false otherwise. |
+        | ```position``` | ```"fixed" \| "relative"``` | ```"fixed"``` | Position of the popup. |
+        | ```children``` | ```ReactNode``` | - | Paragraph text inside the cookie disclaimer. |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/close-button" direction="left">CloseButton</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/datepicker" direction="right">DatePicker</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

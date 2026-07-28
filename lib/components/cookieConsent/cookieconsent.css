@@ -1,0 +1,33 @@
+.cookie-consent-container {
+    bottom: 10px;
+    right: 10px;
+    z-index: 5;
+}
+
+.cookie-consent-content {
+    padding: 1rem;
+    max-width: 18rem;
+    color: var(--text-primary);
+    font-family: var(--font);
+    border-radius: 1rem;
+    border: 1px solid var(--button-secondary-border);
+    background-color: var(--background-tertiary);
+
+}
+
+.cookie-consent-content button {
+    width: 100%;
+    display: block;
+}
+
+.cookie-consent-content h5 {
+    margin: 0;
+}
+
+.cookie-consent-content p {
+    color: var(--text-tertiary);
+}
+
+.cookie-consent-icon {
+    font-size: 2rem;
+}
