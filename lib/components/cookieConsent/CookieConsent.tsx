@@ -12,7 +12,7 @@ import "./cookieconsent.css"
 // position: choose whether the popup must be inline or fixed on the bottom-right corner of the screen.
 // children: paragraph text inside the cookie popup.
 type CookieConsentProps = {
-    onNecessary: () => Promise<void> | void,
+    onNecessary?: () => Promise<void> | void,
     onAcceptAll?: () => Promise<void> | void,
     allowChoice?: boolean,
     position: "fixed" | "relative",
@@ -65,7 +65,9 @@ export default function CookieConsent({
                                     style={{margin: "0.5rem 0"}}
                                     onClick={() => {
                                         setOpen(prev => !prev)
-                                        onNecessary()
+                                        if (onNecessary) {
+                                            onNecessary()
+                                        }
                                     }}
                                 >
                                     Necessary only
@@ -85,7 +87,9 @@ export default function CookieConsent({
                                 style={{marginTop: "0.5rem"}}
                                 onClick={() => {
                                     setOpen(prev => !prev)
-                                    onNecessary()
+                                    if (onNecessary) {
+                                        onNecessary()
+                                    }
                                 }}
                             >
                                 Understood
