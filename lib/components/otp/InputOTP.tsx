@@ -7,7 +7,11 @@ import "./otp.css"
 type InputOTPProps = {
     label?: string,
     description?: string,
-    onSubmit?: (arg0: string) => Promise<void> | void
+    onSubmit?: (arg0: string) => Promise<void> | void,
+    autoSubmit?: boolean,
+    disabled?: boolean,
+    allowNumbers?: boolean,
+    allowLetters?: boolean,
     children: ReactNode
 }
 
@@ -15,20 +19,34 @@ type InputOTPContextType = {
     value: string,
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     handleKeyDown: (e: React.KeyboardEvent) => void,
-    maxLength: number
+    inputLength: number,
+    disabled?: boolean
 }
 
 const InputOTPContext = createContext<null | InputOTPContextType>(null)
 
-function InputOTP({label, description, onSubmit, children}: InputOTPProps) {
-    const maxLength: number = 6
+function InputOTP({
+    label,
+    description,
+    onSubmit,
+    autoSubmit=true,
+    disabled=false,
+    allowLetters=false,
+    allowNumbers=true,
+    children
+}: InputOTPProps) {
+
+    const inputLength: number = children && children instanceof Array
+        ? children.filter(child => child.type.name === "Slot").length
+        : 0
+
     const [value, setValue] = React.useState<string>("")
 
     React.useEffect(() => {
-        if (value.length === maxLength && onSubmit) {
+        if (value.length === inputLength && onSubmit && autoSubmit) {
             onSubmit(value)
         }
-    }, [value, maxLength])
+    }, [value, inputLength])
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const { value } = e.target
@@ -42,12 +60,14 @@ function InputOTP({label, description, onSubmit, children}: InputOTPProps) {
     }
 
     return (
-        <InputOTPContext.Provider value={{value, handleChange, handleKeyDown, maxLength}}>
-            <form onSubmit={onSubmit} className="input-otp-container">
+        <InputOTPContext.Provider value={{value, handleChange, handleKeyDown, inputLength, disabled}}>
+            <div className="input-otp-container">
                 {label && <label>{label}</label>}
                 {description && <p>{description}</p>}
-                {children}
-            </form>
+                <form onSubmit={onSubmit} className="input-otp-form">
+                    {children}
+                </form>
+            </div>
         </InputOTPContext.Provider>
     )
 }
@@ -60,16 +80,16 @@ function Slot({index}) {
         return null
     }
 
-    const { value, handleChange, handleKeyDown, maxLength } = context
+    const { value, handleChange, handleKeyDown, inputLength, disabled } = context
     const InputJSX = (
             <input
                 ref={inputRef}
                 type="string"
                 id={`slot-${index}`}
                 key={`slot-${index}`}
-                className={"input-otp-slot " + (value.length === index ? "focused" : "")}
+                className="input-otp-slot"
                 aria-label={`slot ${index} of the input otp`}
-                disabled={value.length !== maxLength && value.length !== index}
+                disabled={value.length !== index && index !== inputLength - 1}
                 value={value.length >= index ? value[index] : ""}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}

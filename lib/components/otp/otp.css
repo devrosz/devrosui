@@ -1,8 +1,25 @@
 .input-otp-container {
+    font-family: var(--font);
+    color: var(--text-primary);
+}
+
+.input-otp-container label {
+    margin: 0;
+}
+
+.input-otp-container p {
+    color: var(--text-tertiary);
+    margin-top: 0.5rem;
+    max-width: 80%;
+}
+
+.input-otp-form {
     display: flex;
     width: fit-content;
     height: fit-content;
     align-items: center;
+    max-width: 400px;
+    flex-wrap: wrap;
 }
 
 .input-otp-slot {
@@ -13,7 +30,7 @@
     text-align: center;
     color: var(--text-primary);
     font-size: 1.25rem;
-    margin: 0 4px;
+    margin: 0 8px 4px 0;
     border-radius: 12px;
 }
 
@@ -23,5 +40,5 @@
 
 .input-otp-separator {
     color: var(--text-tertiary);
-    margin: 0 4px;
+    margin: 0 8px 4px 0;
 }

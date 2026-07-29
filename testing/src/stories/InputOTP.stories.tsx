@@ -15,7 +15,50 @@ type Story = StoryObj<typeof meta>
 export const InputOTPDev: Story = {
     render: () => {
         return (
-            <InputOTP onSubmit={() => console.log("submitted")}>
+            <InputOTP
+                onSubmit={() => console.log("submitted")}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
+
+export const InputOTPLabel: Story = {
+    render: () => {
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("submitted")}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
+
+export const NoAutoSubmit: Story = {
+    render: () => {
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("submitted")}
+                autoSubmit={false}
+            >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
                 <InputOTP.Slot index={2} />

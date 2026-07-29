@@ -43,16 +43,6 @@ button {
   -moz-osx-font-smoothing: grayscale;
 }
 
-button > * {
-  font-weight: 600;
-  font-family: var(--font);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  font-display: swap;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 button:hover {
   transition: 0.3s;
 }
