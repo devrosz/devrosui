@@ -1,0 +1,27 @@
+.input-otp-container {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-items: center;
+}
+
+.input-otp-slot {
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--button-secondary-border);
+    width: 2.25rem;
+    height: 2.5rem;
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin: 0 4px;
+    border-radius: 12px;
+}
+
+.input-otp-slot:focus {
+    border: 2px solid var(--text-primary);
+}
+
+.input-otp-separator {
+    color: var(--text-tertiary);
+    margin: 0 4px;
+}
