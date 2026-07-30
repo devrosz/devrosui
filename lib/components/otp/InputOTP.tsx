@@ -55,6 +55,28 @@ function InputOTP({
         }
     }, [value, inputLength])
 
+    function verify(input: string): boolean | Error {
+        if (allowNumbers && !allowLetters) {
+            const numbersRegex = /^[0-9]+$/
+            if (!numbersRegex.test(input)) {
+                throw new Error("Input can only contain numbers")
+            }
+        } else if (!allowNumbers && allowLetters) {
+            const lettersRegex = /^[a-zA-Z]+$/
+            if (!lettersRegex.test(input)) {
+                throw new Error("Input can only contain letters")
+            }
+        } else if (allowNumbers && allowLetters) {
+            const numbersAndLettersRegex = /^[0-9a-zA-Z]+$/
+            if (!numbersAndLettersRegex.test(input)) {
+                throw new Error("Input can only contain numbers and letters")
+            }
+        } else {
+            throw new Error("An unexpected error occured")
+        }
+        return true
+    }
+
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setError("")
         const newInput: string = e.target.value
@@ -117,7 +139,7 @@ function Slot({index}) {
                 key={`slot-${index}`}
                 className={"input-otp-slot " + (disabled ? "disabled" : "")}
                 aria-label={`slot ${index} of the input otp`}
-                disabled={disabled || (value.length !== index && index !== inputLength - 1)}
+                disabled={disabled || value.length !== index}
                 value={value[index] ?? ""}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
