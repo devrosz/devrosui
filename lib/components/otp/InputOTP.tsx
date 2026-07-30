@@ -1,10 +1,12 @@
 "use client"
 
-import React, { ReactNode } from "react"
-import { useContext, createContext, useRef } from "react"
+import React from "react"
+import { ReactNode, useContext, createContext, useRef } from "react"
+import { AiOutlineExclamationCircle } from "react-icons/ai"
 import "./otp.css"
 
 type InputOTPProps = {
+    correctInput: string,
     label?: string,
     description?: string,
     onSubmit?: (arg0: string) => Promise<void> | void,
@@ -36,11 +38,16 @@ function InputOTP({
     children
 }: InputOTPProps) {
 
+    if (!allowNumbers && !allowLetters) {
+        throw new Error("InputOTP: you must either allow numbers or letters or both.")
+    }
+
     const inputLength: number = children && children instanceof Array
         ? children.filter(child => child.type.name === "Slot").length
         : 0
 
     const [value, setValue] = React.useState<string>("")
+    const [error, setError] = React.useState<string>("")
 
     React.useEffect(() => {
         if (value.length === inputLength && onSubmit && autoSubmit) {
@@ -49,12 +56,27 @@ function InputOTP({
     }, [value, inputLength])
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-        const { value } = e.target
-        setValue(prev => prev + value)
+        setError("")
+        const newInput: string = e.target.value
+        newInput.split("").forEach(symbol => {
+            try {
+                if (value.length > 0) {
+                    verify(value + symbol)
+                }
+                setValue(prev => prev + symbol)
+            } catch(e) {
+                if (e instanceof Error) {
+                    console.error(`InputOTP: ${e.message}`)
+                    setError(e.message)
+                }
+                return
+            }
+        })
     }
 
     function handleKeyDown(e) {
         if (e.key.toLowerCase() === "backspace") {
+            setError("")
             setValue(prev => prev.slice(0, prev.length - 1))
         }
     }
@@ -64,9 +86,15 @@ function InputOTP({
             <div className="input-otp-container">
                 {label && <label>{label}</label>}
                 {description && <p>{description}</p>}
-                <form onSubmit={onSubmit} className="input-otp-form">
+                <form onSubmit={onSubmit} className={"input-otp-form " + (error ? "error" : "")}>
                     {children}
                 </form>
+                {error && (
+                    <div className="otp-error-container">
+                        <AiOutlineExclamationCircle />
+                        <p>{error}</p>
+                    </div>
+                )}
             </div>
         </InputOTPContext.Provider>
     )
@@ -87,13 +115,12 @@ function Slot({index}) {
                 type="string"
                 id={`slot-${index}`}
                 key={`slot-${index}`}
-                className="input-otp-slot"
+                className={"input-otp-slot " + (disabled ? "disabled" : "")}
                 aria-label={`slot ${index} of the input otp`}
-                disabled={value.length !== index && index !== inputLength - 1}
-                value={value.length >= index ? value[index] : ""}
+                disabled={disabled || (value.length !== index && index !== inputLength - 1)}
+                value={value[index] ?? ""}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
-                maxLength={1} 
             />
         )
 

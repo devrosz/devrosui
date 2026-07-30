@@ -34,11 +34,30 @@
     border-radius: 12px;
 }
 
+.input-otp-slot.disabled {
+    cursor: not-allowed;
+}
+
 .input-otp-slot:focus {
     border: 2px solid var(--text-primary);
+}
+
+.input-otp-form.error > .input-otp-slot {
+    border: 2px solid red;
 }
 
 .input-otp-separator {
     color: var(--text-tertiary);
     margin: 0 8px 4px 0;
+}
+
+.otp-error-container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: red;
+}
+
+.otp-error-container p {
+    color: red;
 }

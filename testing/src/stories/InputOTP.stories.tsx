@@ -70,3 +70,71 @@ export const NoAutoSubmit: Story = {
         )
     }
 }
+
+export const Disabled: Story = {
+    render: () => {
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("submitted")}
+                autoSubmit={false}
+                disabled={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
+
+export const LettersOnly: Story = {
+    render: () => {
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("submitted")}
+                autoSubmit={false}
+                allowNumbers={false}
+                allowLetters={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
+
+export const Combination: Story = {
+    render: () => {
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("submitted")}
+                autoSubmit={false}
+                allowNumbers={true}
+                allowLetters={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
