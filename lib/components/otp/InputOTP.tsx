@@ -3,10 +3,12 @@
 import React from "react"
 import { ReactNode, useContext, createContext, useRef } from "react"
 import { AiOutlineExclamationCircle } from "react-icons/ai"
+import { motion } from "motion/react"
 import "./otp.css"
 
 type InputOTPProps = {
-    correctInput: string,
+    errorMessage?: string
+    isCorrect?: boolean,
     label?: string,
     description?: string,
     onSubmit?: (arg0: string) => Promise<void> | void,
@@ -28,6 +30,7 @@ type InputOTPContextType = {
 const InputOTPContext = createContext<null | InputOTPContextType>(null)
 
 function InputOTP({
+    errorMessage="",
     label,
     description,
     onSubmit,
@@ -51,9 +54,14 @@ function InputOTP({
 
     React.useEffect(() => {
         if (value.length === inputLength && onSubmit && autoSubmit) {
-            onSubmit(value)
+            handleSubmit(value)
         }
     }, [value, inputLength])
+
+    React.useEffect(() => {
+        setValue("")
+        setError(errorMessage)
+    }, [errorMessage])
 
     function verify(input: string): boolean | Error {
         if (allowNumbers && !allowLetters) {
@@ -103,14 +111,26 @@ function InputOTP({
         }
     }
 
+    function handleSubmit(input: string): void {
+        setValue("")
+        if (onSubmit) {
+            onSubmit(input)
+        }
+    }
+
     return (
         <InputOTPContext.Provider value={{value, handleChange, handleKeyDown, inputLength, disabled}}>
             <div className="input-otp-container">
                 {label && <label>{label}</label>}
                 {description && <p>{description}</p>}
-                <form onSubmit={onSubmit} className={"input-otp-form " + (error ? "error" : "")}>
+                <motion.form
+                    animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
+                    transition={error ? { duration: 0.4, repeat: 0 } : {}}
+                    className={"input-otp-form " + (error ? "error" : "")}
+                
+                >
                     {children}
-                </form>
+                </motion.form>
                 {error && (
                     <div className="otp-error-container">
                         <AiOutlineExclamationCircle />

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { InputOTP } from "@devrosui/react"
+import { useArgs } from "storybook/internal/preview-api"
 
 const meta = {
     title: "InputOTP",
@@ -126,6 +127,32 @@ export const Combination: Story = {
                 autoSubmit={false}
                 allowNumbers={true}
                 allowLetters={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        )
+    }
+}
+
+export const onError: Story = {
+    args: {errorMessage: ""},
+    render: () => {
+
+        const [{ errorMessage }, updateArgs] = useArgs()
+        return (
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => updateArgs({errorMessage: "Incorrect code"})}
+                allowNumbers={true}
+                allowLetters={true}
+                errorMessage={errorMessage}
             >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
