@@ -43,7 +43,7 @@
 }
 
 .input-otp-form.error > .input-otp-slot {
-    border: 2px solid red;
+    border: 2px solid var(--danger-text);
 }
 
 .input-otp-separator {
@@ -55,9 +55,11 @@
     display: flex;
     gap: 4px;
     align-items: center;
-    color: red;
+    color: var(--danger-text);
+    margin: 1rem 0;
 }
 
 .otp-error-container p {
-    color: red;
+    color: var(--danger-text);
+    margin: 0;
 }

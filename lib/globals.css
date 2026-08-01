@@ -15,6 +15,9 @@
   --skeleton-initial: hsl(0, 0%, 10%);
   --skeleton-animate: hsl(0, 0%, 8%);
 
+  --danger-text: #ae1717;
+  --danger-background: #240d0d;
+
   --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif 
 }
 
@@ -33,6 +36,8 @@ html.light {
 
   --skeleton-initial: hsl(0, 0%, 90%);
   --skeleton-animate: hsl(0, 0%, 95%);
+
+  --danger-background: rgb(255, 218, 218);
 }
 
 button {
@@ -41,7 +46,7 @@ button {
   font-display: swap;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+} 
 
 button:hover {
   transition: 0.3s;

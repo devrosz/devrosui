@@ -6,9 +6,18 @@ import { AiOutlineExclamationCircle } from "react-icons/ai"
 import { motion } from "motion/react"
 import "./otp.css"
 
+// errorMessage: error message that originates from the parent-component and
+// is supossed to display errors related to network, API-calls etc.
+// label: label for the OTP input.
+// description: additional short paragraph to describe what is expected from the user.
+// onSubmit: callback function that gets called when the input can be submitted.
+// autoSubmit: if true, onSubmit will be called when every slot has been filled in.
+// disabled: if true, prevents the user from filling in the OTP input.
+// allowNumbers: if true, allow numbers to be typed in.
+// allowLetters: if true, allow letters to be typed in.
+// children: InputOTP.Slot components and if applicable, InputOTP.Separator.
 type InputOTPProps = {
     errorMessage?: string
-    isCorrect?: boolean,
     label?: string,
     description?: string,
     onSubmit?: (arg0: string) => Promise<void> | void,
@@ -27,8 +36,14 @@ type InputOTPContextType = {
     disabled?: boolean
 }
 
+// Provides the necessary configuration settings to sub-components like InputOTP.Slot.
 const InputOTPContext = createContext<null | InputOTPContextType>(null)
 
+// Input component used for authentication or verification.
+// It consists of multiple slots where each slot takes in exactly 1 symbol.
+// Only the current slot can be filled in, i.e. if a user types in a symbol
+// in a slot, the focus automatically moves to the next slot and disables
+// the previous slot as well as the next slots.
 function InputOTP({
     errorMessage="",
     label,
@@ -41,10 +56,13 @@ function InputOTP({
     children
 }: InputOTPProps) {
 
+    // Check if either numbers or letters or both are allowed.
     if (!allowNumbers && !allowLetters) {
         throw new Error("InputOTP: you must either allow numbers or letters or both.")
     }
 
+    // Count the amount of children (which are supposed to be InputOTP.Slot components)
+    // to get the length of the input required.
     const inputLength: number = children && children instanceof Array
         ? children.filter(child => child.type.name === "Slot").length
         : 0
@@ -52,39 +70,55 @@ function InputOTP({
     const [value, setValue] = React.useState<string>("")
     const [error, setError] = React.useState<string>("")
 
+    // Autosubmit if all slots have been filled in and if autosubmit is enabled.
     React.useEffect(() => {
         if (value.length === inputLength && onSubmit && autoSubmit) {
             handleSubmit(value)
         }
     }, [value, inputLength])
 
+    // Listen to error messages that have been passed to this component.
+    // These are supposed to be error messages coming from the parent component
+    // such as API-errors, network-errors or other validation errors etc.
     React.useEffect(() => {
         setValue("")
         setError(errorMessage)
     }, [errorMessage])
 
+    // Validate input to enforce only numbers and/or letters and no other symbols.
     function verify(input: string): boolean | Error {
+        // Allow numbers only.
         if (allowNumbers && !allowLetters) {
             const numbersRegex = /^[0-9]+$/
             if (!numbersRegex.test(input)) {
                 throw new Error("Input can only contain numbers")
             }
+        // Allow letters only.
         } else if (!allowNumbers && allowLetters) {
             const lettersRegex = /^[a-zA-Z]+$/
             if (!lettersRegex.test(input)) {
                 throw new Error("Input can only contain letters")
             }
+        // Allow numbers and letters.
         } else if (allowNumbers && allowLetters) {
             const numbersAndLettersRegex = /^[0-9a-zA-Z]+$/
             if (!numbersAndLettersRegex.test(input)) {
                 throw new Error("Input can only contain numbers and letters")
             }
+        // Fallback error
         } else {
             throw new Error("An unexpected error occured")
         }
+
         return true
     }
 
+    // Resets the error and loops over the input to paste each character
+    // of the input into one slot at time.
+    // The input can either be a single symbol or a string of multiple symbols
+    // (due to autofill or copy paste).
+    // Each symbol undergoes a validation before it has been propagated.
+    // If validation fails, an error will be created and the symbol gets omitted.
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setError("")
         const newInput: string = e.target.value
@@ -104,13 +138,18 @@ function InputOTP({
         })
     }
 
-    function handleKeyDown(e) {
+    // Listen for backspace key presses to pop the last symbol
+    // of the value string and move the focus to the previous slot.
+    function handleKeyDown(e: React.KeyboardEvent) {
         if (e.key.toLowerCase() === "backspace") {
             setError("")
             setValue(prev => prev.slice(0, prev.length - 1))
         }
     }
 
+    // Wrapper function for the onSubmit callback function.
+    // This wrapper first resets the current valuestring and error
+    // before calling the onSubmit callback.
     function handleSubmit(input: string): void {
         setValue("")
         if (onSubmit) {
@@ -142,7 +181,12 @@ function InputOTP({
     )
 }
 
-function Slot({index}) {
+
+// Single slot in the input OTP.
+// Listens for input changes and calls the handleChange function.
+// Listens for key presses and calls the handleKeyDown function.
+// Moves the focus to this slot if the previous slot has been filled in.
+function Slot({index}: {index: number}) {
     const inputRef = useRef(null)
     const context = useContext(InputOTPContext)
 
@@ -166,6 +210,7 @@ function Slot({index}) {
             />
         )
 
+        // Move focus to this slot.
         React.useEffect(() => {
             if (value.length === index && inputRef && inputRef.current) {
                 inputRef.current.focus()
@@ -175,12 +220,14 @@ function Slot({index}) {
         return InputJSX
 }
 
+// Separator for codes that include a '-'.
 function Separator() {
     return (
         <span className="input-otp-separator">-</span>
     )
 }
 
+// Create sub-components.
 InputOTP.Slot = Slot
 InputOTP.Separator = Separator
 export default InputOTP
