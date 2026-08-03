@@ -1,0 +1,568 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import Link from "next/link"
+import { InputOTP } from "@devrosui/react"
+import onErrorMockup from "./onErrorMockup"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "label",
+        title: "Label",
+        level: 1
+    },
+    {
+        id: "description",
+        title: "Description",
+        level: 1
+    },
+    {
+        id: "separator",
+        title: "Separator",
+        level: 1
+    },
+    {
+        id: "auto-submit",
+        title: "Autosubmit",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "Disabled",
+        level: 1
+    },
+    {
+        id: "validation",
+        title: "Validtion",
+        level: 1
+    },
+    {
+        id: "letters",
+        title: "Letters only",
+        level: 2
+    },
+    {
+        id: "numbers",
+        title: "Numbers",
+        level: 2
+    },
+    {
+        id: "combination",
+        title: "Combination",
+        level: 1
+    },
+    {
+        id: "error",
+        title: "On Error",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    },
+    {
+        id: "props-input",
+        title: "InputOTP",
+        level: 1
+    },
+    {
+        id: "props-slot",
+        title: "Slot",
+        level: 1
+    }
+]
+
+export const usageCode = 
+`
+import { InputOTP } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    async function handleSubmit(input) {
+        try {
+            // someAPI(input)
+        } catch(e) {
+            console.error(e.message)
+        }
+    }
+
+  return (
+        <InputOTP
+            label="Verification"
+            description="We have sent a code to j***@mail.com. Enter the code below."
+            onSubmit={handleSubmit}
+        >
+            <InputOTP.Slot index={0} />
+            <InputOTP.Slot index={1} />
+            <InputOTP.Slot index={2} />
+            <InputOTP.Separator />
+            <InputOTP.Slot index={3} />
+            <InputOTP.Slot index={4} />
+            <InputOTP.Slot index={5} />
+        </InputOTP>
+    )
+}
+
+`
+
+export const onErrorCode = 
+`
+"use client"
+
+import { InputOTP } from "@devrosui/react"
+import { useState } from "react"
+
+export default function MyComponent() {
+    
+    const [error, setError ] = useState("")
+
+    async function handleSubmit(input) {
+        try {
+            // someAPI(input)
+        } catch(e) {
+            setError(e.message)
+        }
+    }
+
+
+  return (
+        <InputOTP
+            label="Verification"
+            description="We have sent a code to j***@mail.com. Enter the code below."
+            onSubmit={handleSubmit}
+            errorMessage={error}
+        >
+            <InputOTP.Slot index={0} />
+            <InputOTP.Slot index={1} />
+            <InputOTP.Slot index={2} />
+            <InputOTP.Separator />
+            <InputOTP.Slot index={3} />
+            <InputOTP.Slot index={4} />
+            <InputOTP.Slot index={5} />
+        </InputOTP>
+    )
+}
+
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## InputOTP
+    Input for authentication or verification where the user can only enter one
+    symbol at time.
+
+   <OutputContainer 
+    components={[
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+    height="20rem" 
+/>
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { InputOTP } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+    
+    <h4 id="label">Label</h4>
+
+    <OutputContainer 
+        components={[
+           <InputOTP label="Enter PIN" allowLetters={false}>
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <InputOTP label="Enter PIN">
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="description">Description</h4>
+
+    <OutputContainer 
+        components={[
+            <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        `}
+    />    
+
+    <h4 id="separator">Separator</h4>
+       <OutputContainer 
+        components={[
+            <InputOTP>
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <InputOTP>
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="auto-submit">Auto Submit</h4>
+
+    If ```autoSubmit``` is true, then the onSubmit callback will be automatically called when
+    every slot has been filled in. If ```autoSubmit``` is false, the user has to manually press
+    'Enter' to submit the code.
+
+    <OutputContainer 
+        components={[
+            <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("Submitted!)}
+                autoSubmit={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("Submitted!)}
+                autoSubmit={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="disabled">Disabled</h4>
+       <OutputContainer 
+        components={[
+            <InputOTP label="Enter PIN" disabled={true} allowLetters={false}>
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP label="Enter PIN" disabled={true}>
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Slot index={3} />
+            </InputOTP>
+        `}
+    />
+
+    <h3 id="validation">Validation</h3>
+
+    <h4 id="letters">Letters only</h4>
+    
+     <OutputContainer 
+        components={[
+            <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowNumbers={false}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowNumbers={false}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="numbers">Numbers only</h4>
+    
+    <OutputContainer 
+        components={[
+            <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowLetters={false}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowLetters={false}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="combination">Combination</h4>
+    
+     <OutputContainer 
+        components={[
+            <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowNumbers={true}
+                allowLetters={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP 
+                label="Verification"
+                description="We have sent a verification code to +31 ******27. Enter the code below."
+                allowNumbers={true}
+                allowLetters={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+
+    <h4 id="error">On Error</h4>
+
+    It is possible to pass custom errors to ```InputOTP``` like network errors, API-errors etc.
+
+     <OutputContainer 
+        components={[<onErrorMockup />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <InputOTP
+                label="Verification"
+                description="We have sent a code to j***@mail.com. Enter the code below."
+                onSubmit={() => console.log("Submitted!)}
+                autoSubmit={true}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP>
+        `}
+    />
+    
+    <h3 id="props">Props</h3>
+
+    <h4 id="props-input">InputOTP</h4>
+    
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```errorMessage``` | ```string``` | "" | Custom error message |
+        | ```label``` | ```string``` | - | Label of the input |
+        | ```description``` | ```string``` | - | Short paragraph describing what is expected from the user |
+        | ```onSubmit``` | ```(arg0: string) => Promise<void> /| void``` | - | Submit callback function |
+        | ```autoSubmit``` | ```boolean``` | true | automatically submit input after completion |
+        | ```disabled``` | ```boolean``` | false | Enables/disabled this input |
+        | ```allowNumbers``` | ```boolean``` | true | Allow numbers in the input |
+        | ```allowLetters``` | ```boolean``` | true | Allow letters in the input |
+        | ```children``` | ```ReactNode``` | - | Expects ```InputOTP.Slot``` and if applicable ```InputOTP.Separator``` |
+    </div>
+
+    <h4 id="props-slot">Slot</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```index``` | ```number``` | - | Index of this slot |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+        </div>
+    </div>
+
+</div>
+
+<TableOfContents headers={headers} />

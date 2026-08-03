@@ -38,10 +38,6 @@
     cursor: not-allowed;
 }
 
-.input-otp-slot:focus {
-    border: 2px solid var(--text-primary);
-}
-
 .input-otp-form.error > .input-otp-slot {
     border: 2px solid var(--danger-text);
 }

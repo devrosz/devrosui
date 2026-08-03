@@ -36,6 +36,10 @@ type InputOTPContextType = {
     disabled?: boolean
 }
 
+type SlotProps = {
+    index: number
+}
+
 // Provides the necessary configuration settings to sub-components like InputOTP.Slot.
 const InputOTPContext = createContext<null | InputOTPContextType>(null)
 
@@ -51,7 +55,7 @@ function InputOTP({
     onSubmit,
     autoSubmit=true,
     disabled=false,
-    allowLetters=false,
+    allowLetters=true,
     allowNumbers=true,
     children
 }: InputOTPProps) {
@@ -63,9 +67,9 @@ function InputOTP({
 
     // Count the amount of children (which are supposed to be InputOTP.Slot components)
     // to get the length of the input required.
-    const inputLength: number = children && children instanceof Array
-        ? children.filter(child => child.type.name === "Slot").length
-        : 0
+    const inputLength: number = React.Children.toArray(children).filter(child => {
+        return React.isValidElement(child) && child.type === Slot
+    }).length
 
     const [value, setValue] = React.useState<string>("")
     const [error, setError] = React.useState<string>("")
@@ -121,6 +125,12 @@ function InputOTP({
     // If validation fails, an error will be created and the symbol gets omitted.
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         setError("")
+
+        // Safeguard to prevent that focus moves pass the maximum length.
+        if (value.length === inputLength) {
+            return
+        }
+
         const newInput: string = e.target.value
         newInput.split("").forEach(symbol => {
             try {
@@ -140,10 +150,17 @@ function InputOTP({
 
     // Listen for backspace key presses to pop the last symbol
     // of the value string and move the focus to the previous slot.
+    // Listen for Enter key presses to manually submit.
     function handleKeyDown(e: React.KeyboardEvent) {
-        if (e.key.toLowerCase() === "backspace") {
+        const key = e.key.toLowerCase()
+        if (key === "backspace") {
             setError("")
             setValue(prev => prev.slice(0, prev.length - 1))
+            // Manual submit with 'Enter' key if all slots have been filled in.
+        } else if (key === "enter" && value.length === inputLength) {
+            handleSubmit(value)
+        } else {
+            return
         }
     }
 
@@ -151,6 +168,10 @@ function InputOTP({
     // This wrapper first resets the current valuestring and error
     // before calling the onSubmit callback.
     function handleSubmit(input: string): void {
+        if (value.length !== inputLength) {
+            setError("Please fill in every slot")
+            return
+        }
         setValue("")
         if (onSubmit) {
             onSubmit(input)
@@ -166,7 +187,6 @@ function InputOTP({
                     animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
                     transition={error ? { duration: 0.4, repeat: 0 } : {}}
                     className={"input-otp-form " + (error ? "error" : "")}
-                
                 >
                     {children}
                 </motion.form>
@@ -186,15 +206,17 @@ function InputOTP({
 // Listens for input changes and calls the handleChange function.
 // Listens for key presses and calls the handleKeyDown function.
 // Moves the focus to this slot if the previous slot has been filled in.
-function Slot({index}: {index: number}) {
+function Slot({index}: SlotProps) {
     const inputRef = useRef(null)
     const context = useContext(InputOTPContext)
-
+    
     if (!context) {
         return null
     }
-
+    
     const { value, handleChange, handleKeyDown, inputLength, disabled } = context
+    const enabledIndex = value.length === inputLength ? inputLength - 1 : value.length
+
     const InputJSX = (
             <input
                 ref={inputRef}
@@ -203,7 +225,7 @@ function Slot({index}: {index: number}) {
                 key={`slot-${index}`}
                 className={"input-otp-slot " + (disabled ? "disabled" : "")}
                 aria-label={`slot ${index} of the input otp`}
-                disabled={disabled || value.length !== index}
+                disabled={disabled || index !== enabledIndex}
                 value={value[index] ?? ""}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
@@ -212,10 +234,10 @@ function Slot({index}: {index: number}) {
 
         // Move focus to this slot.
         React.useEffect(() => {
-            if (value.length === index && inputRef && inputRef.current) {
+            if (enabledIndex === index && inputRef && inputRef.current) {
                 inputRef.current.focus()
             }
-        }, [value])
+        }, [value, enabledIndex])
 
         return InputJSX
 }

@@ -103,7 +103,6 @@ export const LettersOnly: Story = {
                 onSubmit={() => console.log("submitted")}
                 autoSubmit={false}
                 allowNumbers={false}
-                allowLetters={true}
             >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
@@ -125,8 +124,6 @@ export const Combination: Story = {
                 description="We have sent a code to j***@mail.com. Enter the code below."
                 onSubmit={() => console.log("submitted")}
                 autoSubmit={false}
-                allowNumbers={true}
-                allowLetters={true}
             >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
@@ -150,8 +147,6 @@ export const onError: Story = {
                 label="Verification"
                 description="We have sent a code to j***@mail.com. Enter the code below."
                 onSubmit={() => updateArgs({errorMessage: "Incorrect code"})}
-                allowNumbers={true}
-                allowLetters={true}
                 errorMessage={errorMessage}
             >
                 <InputOTP.Slot index={0} />
