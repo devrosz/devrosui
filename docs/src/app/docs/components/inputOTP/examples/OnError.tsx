@@ -3,7 +3,7 @@
 import { InputOTP } from "@devrosui/react"
 import React from "react"
 
-export default function onErrorMockup() {
+export default function OnError() {
 
     const [error, setError] = React.useState<string>("")
 

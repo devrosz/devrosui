@@ -28,6 +28,11 @@ type InputOTPProps = {
     children: ReactNode
 }
 
+type InputOTPComponent = React.FC<InputOTPProps> & {
+    Slot: React.FC<SlotProps>,
+    Separator: React.FC
+}
+
 type InputOTPContextType = {
     value: string,
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -252,4 +257,5 @@ function Separator() {
 // Create sub-components.
 InputOTP.Slot = Slot
 InputOTP.Separator = Separator
+
 export default InputOTP

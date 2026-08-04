@@ -5,7 +5,11 @@ import OutputContainer from "@/components/interfaces/outputcontainer/OutputConta
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import Link from "next/link"
 import { InputOTP } from "@devrosui/react"
-import onErrorMockup from "./onErrorMockup"
+import BasicVerification from "./examples/BasicVerification"
+import EmailVerification from "./examples/EmailVerification"
+import OnError from "./examples/OnError"
+import PhoneVerification from "./examples/PhoneVerification"
+import PINVerification from "./examples/PINVerification"
 
 export const headers = [
     {
@@ -170,20 +174,7 @@ export default function MyComponent() {
     symbol at time.
 
    <OutputContainer 
-    components={[
-            <InputOTP
-                label="Verification"
-                description="We have sent a code to j***@mail.com. Enter the code below."
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+    components={[<EmailVerification />]}
     height="20rem" 
 />
    
@@ -207,14 +198,7 @@ export default function MyComponent() {
     <h4 id="label">Label</h4>
 
     <OutputContainer 
-        components={[
-           <InputOTP label="Enter PIN" allowLetters={false}>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
-            </InputOTP>
-        ]}
+        components={[<PINVerification />]}
         height="20rem"
     />
 
@@ -234,17 +218,7 @@ export default function MyComponent() {
     <h4 id="description">Description</h4>
 
     <OutputContainer 
-        components={[
-            <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
-            </InputOTP>
-        ]}
+        components={[<PhoneVerification />]}
         height="20rem"
     />
 
@@ -266,17 +240,7 @@ export default function MyComponent() {
 
     <h4 id="separator">Separator</h4>
        <OutputContainer 
-        components={[
-            <InputOTP>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+        components={[<BasicVerification />]}
         height="20rem"
     />
 
@@ -303,22 +267,7 @@ export default function MyComponent() {
     'Enter' to submit the code.
 
     <OutputContainer 
-        components={[
-            <InputOTP
-                label="Verification"
-                description="We have sent a code to j***@mail.com. Enter the code below."
-                onSubmit={() => console.log("Submitted!)}
-                autoSubmit={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+        components={[<EmailVerification onSubmit="log" />]}
         height="20rem"
     />
 
@@ -345,14 +294,7 @@ export default function MyComponent() {
 
     <h4 id="disabled">Disabled</h4>
        <OutputContainer 
-        components={[
-            <InputOTP label="Enter PIN" disabled={true} allowLetters={false}>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
-            </InputOTP>
-        ]}
+        components={[<PINVerification disabled={true} />]}
         height="20rem"
     />
 
@@ -374,21 +316,7 @@ export default function MyComponent() {
     <h4 id="letters">Letters only</h4>
     
      <OutputContainer 
-        components={[
-            <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowNumbers={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+        components={[<PhoneVerification allowNumbers={false} />]}
         height="20rem"
     />
 
@@ -415,21 +343,7 @@ export default function MyComponent() {
     <h4 id="numbers">Numbers only</h4>
     
     <OutputContainer 
-        components={[
-            <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowLetters={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+        components={[<PhoneVerification allowLetters={false} />]}
         height="20rem"
     />
 
@@ -456,22 +370,7 @@ export default function MyComponent() {
     <h4 id="combination">Combination</h4>
     
      <OutputContainer 
-        components={[
-            <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowNumbers={true}
-                allowLetters={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
-        ]}
+        components={[<PhoneVerification />]}
         height="20rem"
     />
 
@@ -501,7 +400,7 @@ export default function MyComponent() {
     It is possible to pass custom errors to ```InputOTP``` like network errors, API-errors etc.
 
      <OutputContainer 
-        components={[<onErrorMockup />]}
+        components={[<OnError />]}
         height="20rem"
     />
 
@@ -530,27 +429,7 @@ export default function MyComponent() {
 
     <h4 id="props-input">InputOTP</h4>
     
-    <div className="docs-page-table-container">
-        | Prop | Type | Default | Description |
-        | :--- | :--- | :------ | :---------- |
-        | ```errorMessage``` | ```string``` | "" | Custom error message |
-        | ```label``` | ```string``` | - | Label of the input |
-        | ```description``` | ```string``` | - | Short paragraph describing what is expected from the user |
-        | ```onSubmit``` | ```(arg0: string) => Promise<void> /| void``` | - | Submit callback function |
-        | ```autoSubmit``` | ```boolean``` | true | automatically submit input after completion |
-        | ```disabled``` | ```boolean``` | false | Enables/disabled this input |
-        | ```allowNumbers``` | ```boolean``` | true | Allow numbers in the input |
-        | ```allowLetters``` | ```boolean``` | true | Allow letters in the input |
-        | ```children``` | ```ReactNode``` | - | Expects ```InputOTP.Slot``` and if applicable ```InputOTP.Separator``` |
-    </div>
 
-    <h4 id="props-slot">Slot</h4>
-
-    <div className="docs-page-table-container">
-        | Prop | Type | Default | Description |
-        | :--- | :--- | :------ | :---------- |
-        | ```index``` | ```number``` | - | Index of this slot |
-    </div>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
