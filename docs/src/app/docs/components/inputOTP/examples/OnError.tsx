@@ -13,11 +13,14 @@ export default function OnError() {
 
     return (
         <InputOTP
-            label="Verification"
-            description="We have sent a code to j***@mail.com. Enter the code below."
             onSubmit={handleSubmit}
             errorMessage={error}
         >
+            <InputOTP.Label>Verification</InputOTP.Label>
+            <InputOTP.Description>
+                We have sent a code to j***@mail.com.
+                Enter the code below.
+            </InputOTP.Description>
             <InputOTP.Slot index={0} />
             <InputOTP.Slot index={1} />
             <InputOTP.Slot index={2} />

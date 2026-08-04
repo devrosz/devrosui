@@ -1,15 +1,13 @@
 "use client"
 
 import React from "react"
-import { ReactNode, useContext, createContext, useRef } from "react"
+import { ReactNode, useContext, createContext, useRef, JSX } from "react"
 import { AiOutlineExclamationCircle } from "react-icons/ai"
 import { motion } from "motion/react"
 import "./otp.css"
 
 // errorMessage: error message that originates from the parent-component and
 // is supossed to display errors related to network, API-calls etc.
-// label: label for the OTP input.
-// description: additional short paragraph to describe what is expected from the user.
 // onSubmit: callback function that gets called when the input can be submitted.
 // autoSubmit: if true, onSubmit will be called when every slot has been filled in.
 // disabled: if true, prevents the user from filling in the OTP input.
@@ -18,8 +16,6 @@ import "./otp.css"
 // children: InputOTP.Slot components and if applicable, InputOTP.Separator.
 type InputOTPProps = {
     errorMessage?: string
-    label?: string,
-    description?: string,
     onSubmit?: (arg0: string) => Promise<void> | void,
     autoSubmit?: boolean,
     disabled?: boolean,
@@ -30,6 +26,8 @@ type InputOTPProps = {
 
 type InputOTPComponent = React.FC<InputOTPProps> & {
     Slot: React.FC<SlotProps>,
+    Label: React.FC<LabelProps>,
+    Description: React.FC<DescriptionProps>,
     Separator: React.FC
 }
 
@@ -39,6 +37,14 @@ type InputOTPContextType = {
     handleKeyDown: (e: React.KeyboardEvent) => void,
     inputLength: number,
     disabled?: boolean
+}
+
+type LabelProps = {
+    children: string
+}
+
+type DescriptionProps = {
+    children: string
 }
 
 type SlotProps = {
@@ -55,8 +61,6 @@ const InputOTPContext = createContext<null | InputOTPContextType>(null)
 // the previous slot as well as the next slots.
 function InputOTP({
     errorMessage="",
-    label,
-    description,
     onSubmit,
     autoSubmit=true,
     disabled=false,
@@ -186,8 +190,6 @@ function InputOTP({
     return (
         <InputOTPContext.Provider value={{value, handleChange, handleKeyDown, inputLength, disabled}}>
             <div className="input-otp-container">
-                {label && <label>{label}</label>}
-                {description && <p>{description}</p>}
                 <motion.form
                     animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
                     transition={error ? { duration: 0.4, repeat: 0 } : {}}
@@ -247,6 +249,20 @@ function Slot({index}: SlotProps) {
         return InputJSX
 }
 
+// Additional short paragraph to describe what is expected from the user.
+function Description({children}: DescriptionProps) {
+    return (
+        <p className="input-otp-description">{children}</p>
+    )
+}
+
+// Label for the OTP input.
+function Label({children}: LabelProps) {
+    return (
+        <h5 className="input-otp-label">{children}</h5>
+    )
+}
+
 // Separator for codes that include a '-'.
 function Separator() {
     return (
@@ -256,6 +272,8 @@ function Separator() {
 
 // Create sub-components.
 InputOTP.Slot = Slot
+InputOTP.Label = Label
+InputOTP.Description = Description
 InputOTP.Separator = Separator
 
 export default InputOTP
