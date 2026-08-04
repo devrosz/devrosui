@@ -109,18 +109,23 @@ export default function MyComponent() {
     }
 
   return (
-        <InputOTP
-            label="Verification"
-            description="We have sent a code to j***@mail.com. Enter the code below."
-            onSubmit={handleSubmit}
-        >
-            <InputOTP.Slot index={0} />
-            <InputOTP.Slot index={1} />
-            <InputOTP.Slot index={2} />
-            <InputOTP.Separator />
-            <InputOTP.Slot index={3} />
-            <InputOTP.Slot index={4} />
-            <InputOTP.Slot index={5} />
+        <InputOTP>
+            <InputOTP.Label>Verification</InputOTP.Label>
+            <InputOTP.Description>
+                We have sent a code to j***@mail.com. 
+                Enter the code below.
+            </InputOTP.Description>
+            <InputOTP.Form
+                onSubmit={handleSubmit}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP.Form>
         </InputOTP>
     )
 }
@@ -148,19 +153,19 @@ export default function MyComponent() {
 
 
   return (
-        <InputOTP
-            label="Verification"
-            description="We have sent a code to j***@mail.com. Enter the code below."
-            onSubmit={handleSubmit}
-            errorMessage={error}
-        >
-            <InputOTP.Slot index={0} />
-            <InputOTP.Slot index={1} />
-            <InputOTP.Slot index={2} />
-            <InputOTP.Separator />
-            <InputOTP.Slot index={3} />
-            <InputOTP.Slot index={4} />
-            <InputOTP.Slot index={5} />
+        <InputOTP>
+            <InputOTP.Form
+                onSubmit={handleSubmit}
+                errorMessage={error}
+            >
+                <InputOTP.Slot index={0} />
+                <InputOTP.Slot index={1} />
+                <InputOTP.Slot index={2} />
+                <InputOTP.Separator />
+                <InputOTP.Slot index={3} />
+                <InputOTP.Slot index={4} />
+                <InputOTP.Slot index={5} />
+            </InputOTP.Form>
         </InputOTP>
     )
 }
@@ -206,11 +211,14 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <InputOTP label="Enter PIN">
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
+            <InputOTP>
+                <InputOTP.Label>Enter PIN</InputOTP.Label>
+                <InputOTP.Form allowLetters={false}>
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Slot index={3} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -226,14 +234,18 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
+            <InputOTP>
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to j***@mail.com. 
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form>
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Slot index={3} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />    
@@ -249,13 +261,20 @@ export default function MyComponent() {
         langDisplay="JSX"
         code={`
             <InputOTP>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to j***@mail.com. 
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form>
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -275,19 +294,19 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP
-                label="Verification"
-                description="We have sent a code to j***@mail.com. Enter the code below."
-                onSubmit={() => console.log("Submitted!)}
-                autoSubmit={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("Submitted!)}
+                    autoSubmit={true}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -302,11 +321,13 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP label="Enter PIN" disabled={true}>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Slot index={3} />
+            <InputOTP>
+                <InputOTP.Form disabled={true}>
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Slot index={3} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -324,19 +345,24 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowNumbers={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
-            </InputOTP>
+            <InputOTP>
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to +31 ******27.
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form 
+                    allowNumbers={false}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
+            <InputOTP>
         `}
     />
 
@@ -351,18 +377,23 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowLetters={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to +31 ******27.
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form
+                    allowLetters={false}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -378,19 +409,24 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP 
-                label="Verification"
-                description="We have sent a verification code to +31 ******27. Enter the code below."
-                allowNumbers={true}
-                allowLetters={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to +31 ******27.
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form 
+                    allowNumbers={true}
+                    allowLetters={true}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />
@@ -408,19 +444,24 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-             <InputOTP
-                label="Verification"
-                description="We have sent a code to j***@mail.com. Enter the code below."
-                onSubmit={() => console.log("Submitted!)}
-                autoSubmit={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Label>Verification</InputOTP.Label>
+                <InputOTP.Description>
+                    We have sent a code to j***@mail.com. 
+                    Enter the code below.
+                </InputOTP.Description>
+                <InputOTP.Form
+                    onSubmit={() => console.log("Submitted!)}
+                    autoSubmit={true}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         `}
     />

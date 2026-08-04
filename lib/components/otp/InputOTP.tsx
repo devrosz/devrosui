@@ -56,6 +56,7 @@ type SlotProps = {
     index: number
 }
 
+// Wrapper for the Form element.
 function InputOTP({children}: InputOTPProps) {
     return (
         <div className="input-otp-container">
