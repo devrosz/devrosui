@@ -16,16 +16,18 @@ type Story = StoryObj<typeof meta>
 export const InputOTPDev: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -34,20 +36,22 @@ export const InputOTPDev: Story = {
 export const InputOTPLabel: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-            >
-                <InputOTP.Label>Verification</InputOTP.Label>
-                <InputOTP.Description>
-                    We have sent a code to j***@mail.com. Enter the code below.
-                </InputOTP.Description>
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                >
+                    <InputOTP.Label>Verification</InputOTP.Label>
+                    <InputOTP.Description>
+                        We have sent a code to j***@mail.com. Enter the code below.
+                    </InputOTP.Description>
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -56,17 +60,19 @@ export const InputOTPLabel: Story = {
 export const NoAutoSubmit: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-                autoSubmit={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                    autoSubmit={false}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -75,18 +81,20 @@ export const NoAutoSubmit: Story = {
 export const Disabled: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-                autoSubmit={false}
-                disabled={true}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                    autoSubmit={false}
+                    disabled={true}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -95,18 +103,20 @@ export const Disabled: Story = {
 export const LettersOnly: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-                autoSubmit={false}
-                allowNumbers={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                    autoSubmit={false}
+                    allowNumbers={false}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -115,17 +125,19 @@ export const LettersOnly: Story = {
 export const Combination: Story = {
     render: () => {
         return (
-            <InputOTP
-                onSubmit={() => console.log("submitted")}
-                autoSubmit={false}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => console.log("submitted")}
+                    autoSubmit={false}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }
@@ -137,17 +149,19 @@ export const onError: Story = {
 
         const [{ errorMessage }, updateArgs] = useArgs()
         return (
-            <InputOTP
-                onSubmit={() => updateArgs({errorMessage: "Incorrect code"})}
-                errorMessage={errorMessage}
-            >
-                <InputOTP.Slot index={0} />
-                <InputOTP.Slot index={1} />
-                <InputOTP.Slot index={2} />
-                <InputOTP.Separator />
-                <InputOTP.Slot index={3} />
-                <InputOTP.Slot index={4} />
-                <InputOTP.Slot index={5} />
+            <InputOTP>
+                <InputOTP.Form
+                    onSubmit={() => updateArgs({errorMessage: "Incorrect code"})}
+                    errorMessage={errorMessage}
+                >
+                    <InputOTP.Slot index={0} />
+                    <InputOTP.Slot index={1} />
+                    <InputOTP.Slot index={2} />
+                    <InputOTP.Separator />
+                    <InputOTP.Slot index={3} />
+                    <InputOTP.Slot index={4} />
+                    <InputOTP.Slot index={5} />
+                </InputOTP.Form>
             </InputOTP>
         )
     }

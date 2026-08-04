@@ -6,6 +6,10 @@ import { AiOutlineExclamationCircle } from "react-icons/ai"
 import { motion } from "motion/react"
 import "./otp.css"
 
+type InputOTPProps = {
+    children: ReactNode
+}
+
 // errorMessage: error message that originates from the parent-component and
 // is supossed to display errors related to network, API-calls etc.
 // onSubmit: callback function that gets called when the input can be submitted.
@@ -14,7 +18,7 @@ import "./otp.css"
 // allowNumbers: if true, allow numbers to be typed in.
 // allowLetters: if true, allow letters to be typed in.
 // children: InputOTP.Slot components and if applicable, InputOTP.Separator.
-type InputOTPProps = {
+type InputOTPPFormrops = {
     errorMessage?: string
     onSubmit?: (arg0: string) => Promise<void> | void,
     autoSubmit?: boolean,
@@ -25,6 +29,7 @@ type InputOTPProps = {
 }
 
 type InputOTPComponent = React.FC<InputOTPProps> & {
+    Form: React.FC<InputOTPPFormrops>
     Slot: React.FC<SlotProps>,
     Label: React.FC<LabelProps>,
     Description: React.FC<DescriptionProps>,
@@ -51,6 +56,14 @@ type SlotProps = {
     index: number
 }
 
+function InputOTP({children}: InputOTPProps) {
+    return (
+        <div className="input-otp-container">
+            {children}
+        </div>
+    )
+}
+
 // Provides the necessary configuration settings to sub-components like InputOTP.Slot.
 const InputOTPContext = createContext<null | InputOTPContextType>(null)
 
@@ -59,7 +72,7 @@ const InputOTPContext = createContext<null | InputOTPContextType>(null)
 // Only the current slot can be filled in, i.e. if a user types in a symbol
 // in a slot, the focus automatically moves to the next slot and disables
 // the previous slot as well as the next slots.
-function InputOTP({
+function Form({
     errorMessage="",
     onSubmit,
     autoSubmit=true,
@@ -67,7 +80,7 @@ function InputOTP({
     allowLetters=true,
     allowNumbers=true,
     children
-}: InputOTPProps) {
+}: InputOTPPFormrops) {
 
     // Check if either numbers or letters or both are allowed.
     if (!allowNumbers && !allowLetters) {
@@ -189,21 +202,19 @@ function InputOTP({
 
     return (
         <InputOTPContext.Provider value={{value, handleChange, handleKeyDown, inputLength, disabled}}>
-            <div className="input-otp-container">
-                <motion.form
-                    animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
-                    transition={error ? { duration: 0.4, repeat: 0 } : {}}
-                    className={"input-otp-form " + (error ? "error" : "")}
-                >
-                    {children}
-                </motion.form>
-                {error && (
-                    <div className="otp-error-container">
-                        <AiOutlineExclamationCircle />
-                        <p>{error}</p>
-                    </div>
-                )}
-            </div>
+            <motion.form
+                animate={error ? { x: [0, -10, 10, -10, 10, 0] } : {}}
+                transition={error ? { duration: 0.4, repeat: 0 } : {}}
+                className={"input-otp-form " + (error ? "error" : "")}
+            >
+                {children}
+            </motion.form>
+            {error && (
+                <div className="otp-error-container">
+                    <AiOutlineExclamationCircle />
+                    <p>{error}</p>
+                </div>
+            )}
         </InputOTPContext.Provider>
     )
 }
@@ -271,6 +282,7 @@ function Separator() {
 }
 
 // Create sub-components.
+InputOTP.Form = Form
 InputOTP.Slot = Slot
 InputOTP.Label = Label
 InputOTP.Description = Description
