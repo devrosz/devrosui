@@ -35,6 +35,10 @@
     border-radius: 12px;
 }
 
+.input-otp-slot:focus {
+    transition: 0.25s;
+}
+
 .input-otp-slot.disabled {
     cursor: not-allowed;
 }

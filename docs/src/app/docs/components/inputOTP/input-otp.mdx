@@ -54,7 +54,7 @@ export const headers = [
     },
     {
         id: "validation",
-        title: "Validtion",
+        title: "Validation",
         level: 1
     },
     {
@@ -83,13 +83,23 @@ export const headers = [
         level: 0
     },
     {
-        id: "props-input",
-        title: "InputOTP",
+        id: "props-form",
+        title: "InputOTP.Form",
         level: 1
     },
     {
         id: "props-slot",
-        title: "Slot",
+        title: "InputOTP.Slot",
+        level: 1
+    },
+    {
+        id: "props-label",
+        title: "InputOTP.Label",
+        level: 1
+    },
+    {
+        id: "props-description",
+        title: "InputOTP.Description",
         level: 1
     }
 ]
@@ -466,11 +476,45 @@ export default function MyComponent() {
         `}
     />
     
-    <h3 id="props">Props</h3>
+    <h3 id="props">Props</h3>   
 
-    <h4 id="props-input">InputOTP</h4>
+    <h4 id="props-form">InputOTP.Form</h4>
     
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```errorMessage``` | ```string``` | - | Custom error message |
+        | ```onSubmit``` | ```(string) => Promise<void> \| void``` | - | Callback function that fires on completion |
+        | ```autoSubmit``` | ```boolean``` | true | Automatically calls ```onSubmit``` on completion |
+        | ```disabled``` | ```boolean``` | false | Prohibits user from filling in the input |
+        | ```allowNumbers``` | ```boolean``` | true | Allow input value to contain numbers |
+        | ```allowLetters``` | ```boolean``` | true | Allow input value to contain letters |
+        | ```children``` | ```ReactNode``` | - | Expecting ```<InputOTP.Slot>``` and in if applicable also ```<InputOTP.Separator>``` |
+    </div>
 
+    <h4 id="props-slot">InputOTP.Slot</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```index``` | ```number``` | - | Which slot in the sequence |
+    </div>
+
+    <h4 id="props-label">InputOTP.Label</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Label text |
+    </div>
+
+    <h4 id="props-description">InputOTP.Description</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Description text|
+    </div>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
