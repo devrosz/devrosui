@@ -157,7 +157,7 @@ function Form({
         const newInput: string = e.target.value
         newInput.split("").forEach(symbol => {
             try {
-                if (value.length > 0) {
+                if (symbol) {
                     verify(value + symbol)
                 }
                 setValue(prev => prev + symbol)
@@ -226,7 +226,7 @@ function Form({
 // Listens for key presses and calls the handleKeyDown function.
 // Moves the focus to this slot if the previous slot has been filled in.
 function Slot({index}: SlotProps) {
-    const inputRef = useRef(null)
+    const inputRef: React.RefObject<null | HTMLInputElement> = useRef(null)
     const context = useContext(InputOTPContext)
     
     if (!context) {
@@ -235,6 +235,13 @@ function Slot({index}: SlotProps) {
     
     const { value, handleChange, handleKeyDown, inputLength, disabled } = context
     const enabledIndex = value.length === inputLength ? inputLength - 1 : value.length
+
+    // Move focus to this slot.
+    React.useEffect(() => {
+        if (enabledIndex === index && inputRef && inputRef.current) {
+            inputRef.current.focus()
+        }
+    }, [value, enabledIndex])
 
     const InputJSX = (
             <input
@@ -250,13 +257,6 @@ function Slot({index}: SlotProps) {
                 onKeyDown={handleKeyDown}
             />
         )
-
-        // Move focus to this slot.
-        React.useEffect(() => {
-            if (enabledIndex === index && inputRef && inputRef.current) {
-                inputRef.current.focus()
-            }
-        }, [value, enabledIndex])
 
         return InputJSX
 }

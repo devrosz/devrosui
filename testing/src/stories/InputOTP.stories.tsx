@@ -14,6 +14,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const InputOTPDev: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -34,6 +36,8 @@ export const InputOTPDev: Story = {
 }
 
 export const InputOTPLabel: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -58,6 +62,8 @@ export const InputOTPLabel: Story = {
 }
 
 export const NoAutoSubmit: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -79,6 +85,8 @@ export const NoAutoSubmit: Story = {
 }
 
 export const Disabled: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -101,6 +109,8 @@ export const Disabled: Story = {
 }
 
 export const LettersOnly: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -123,6 +133,8 @@ export const LettersOnly: Story = {
 }
 
 export const Combination: Story = {
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
         return (
             <InputOTP>
@@ -144,7 +156,8 @@ export const Combination: Story = {
 }
 
 export const onError: Story = {
-    args: {errorMessage: ""},
+    // Placeholder for <InputOTP> children to satisfy typing.
+    args: {children: ""},
     render: () => {
 
         const [{ errorMessage }, updateArgs] = useArgs()
