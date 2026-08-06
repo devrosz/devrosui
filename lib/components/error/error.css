@@ -19,14 +19,9 @@
 }
 
 .error-container.danger {
-    color: #ae1717;
-    background-color: #240d0d;
+    color: var(--danger-text);
+    background-color: var(--danger-background);
     border: none;
-}
-
-html.light .error-container.danger {
-    background-color: rgb(255, 218, 218);
-    color: #ae1717;
 }
 
 .error-icon {
