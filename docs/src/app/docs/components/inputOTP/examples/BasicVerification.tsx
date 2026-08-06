@@ -5,7 +5,7 @@ import { InputOTP } from "@devrosui/react"
 export default function BasicVerification() {
     return (
         <InputOTP>
-            <InputOTP.Form>
+            <InputOTP.Form inputLength={6}>
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
                 <InputOTP.Slot index={2} />

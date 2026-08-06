@@ -3,7 +3,7 @@
 import React from "react"
 import { ReactNode, useContext, createContext, useRef, JSX } from "react"
 import { AiOutlineExclamationCircle } from "react-icons/ai"
-import { motion } from "motion/react"
+import { motion, AnimatePresence } from "motion/react"
 import "./otp.css"
 
 type InputOTPProps = {
@@ -19,7 +19,8 @@ type InputOTPProps = {
 // allowLetters: if true, allow letters to be typed in.
 // children: InputOTP.Slot components and if applicable, InputOTP.Separator.
 type InputOTPPFormrops = {
-    errorMessage?: string
+    inputLength: number,
+    errorMessage?: {message: string, key: string} | null,
     onSubmit?: (arg0: string) => Promise<void> | void,
     autoSubmit?: boolean,
     disabled?: boolean,
@@ -74,7 +75,8 @@ const InputOTPContext = createContext<null | InputOTPContextType>(null)
 // in a slot, the focus automatically moves to the next slot and disables
 // the previous slot as well as the next slots.
 function Form({
-    errorMessage="",
+    inputLength,
+    errorMessage=null,
     onSubmit,
     autoSubmit=true,
     disabled=false,
@@ -88,11 +90,9 @@ function Form({
         throw new Error("InputOTP: you must either allow numbers or letters or both.")
     }
 
-    // Count the amount of children (which are supposed to be InputOTP.Slot components)
-    // to get the length of the input required.
-    const inputLength: number = React.Children.toArray(children).filter(child => {
-        return React.isValidElement(child) && child.type === Slot
-    }).length
+    if (!inputLength) {
+        throw new Error("InputOTP: you must define the inputLength")
+    }
 
     const [value, setValue] = React.useState<string>("")
     const [error, setError] = React.useState<string>("")
@@ -103,13 +103,17 @@ function Form({
             handleSubmit(value)
         }
     }, [value, inputLength])
-
+    
+    
     // Listen to error messages that have been passed to this component.
     // These are supposed to be error messages coming from the parent component
     // such as API-errors, network-errors or other validation errors etc.
     React.useEffect(() => {
         setValue("")
-        setError(errorMessage)
+        if (errorMessage) {
+            console.log(errorMessage)
+            setError(errorMessage.message)
+        }
     }, [errorMessage])
 
     // Validate input to enforce only numbers and/or letters and no other symbols.

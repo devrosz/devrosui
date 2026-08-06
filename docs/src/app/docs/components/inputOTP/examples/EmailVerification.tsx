@@ -11,6 +11,7 @@ export default function EmailVerification({onSubmit=null, autoSubmit=true}) {
                 Enter the code below.
             </InputOTP.Description>
             <InputOTP.Form
+                    inputLength={6}
                     onSubmit={onSubmit === "log" ? () => console.log("Submitted!") : () => {}}
                     autoSubmit={autoSubmit}
                 >

@@ -11,6 +11,7 @@ export default function PhoneVerification({allowNumbers=true, allowLetters=true}
                 Enter the code below.
             </InputOTP.Description>
             <InputOTP.Form 
+                    inputLength={4}
                     allowLetters={allowLetters}
                     allowNumbers={allowNumbers}
                 >

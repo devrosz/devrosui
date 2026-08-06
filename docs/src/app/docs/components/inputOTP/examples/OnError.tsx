@@ -2,13 +2,23 @@
 
 import { InputOTP } from "@devrosui/react"
 import React from "react"
+import { useId } from "react"
+
+type ErrorObj = {
+    message: string,
+    key: string
+}
 
 export default function OnError() {
 
-    const [error, setError] = React.useState<string>("")
+    const [error, setError] = React.useState<ErrorObj | null>(null)
+    const errorkey = useId()
 
     function handleSubmit() {
-        setError("An unexpected error has occured. Please try again later")
+        setError({
+            message: "An unexpected error has occured. Please try again later",
+            key: errorkey
+        })
     }
 
     return (
@@ -19,6 +29,7 @@ export default function OnError() {
                 Enter the code below.
             </InputOTP.Description>
             <InputOTP.Form
+                inputLength={6}
                 onSubmit={handleSubmit}
                 errorMessage={error}
             >

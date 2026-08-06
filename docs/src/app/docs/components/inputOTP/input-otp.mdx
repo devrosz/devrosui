@@ -127,6 +127,7 @@ export default function MyComponent() {
             </InputOTP.Description>
             <InputOTP.Form
                 onSubmit={handleSubmit}
+                inputLength={6}
             >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
@@ -147,26 +148,30 @@ export const onErrorCode =
 "use client"
 
 import { InputOTP } from "@devrosui/react"
-import { useState } from "react"
+import { useState, useId } from "react"
 
 export default function MyComponent() {
     
-    const [error, setError ] = useState("")
+    const [error, setError ] = useState(null)
+    const errorKey = useId()
 
     async function handleSubmit(input) {
         try {
             // someAPI(input)
         } catch(e) {
-            setError(e.message)
+            setError({
+                message: e.message,
+                key: errorKey
+            })
         }
     }
-
 
   return (
         <InputOTP>
             <InputOTP.Form
                 onSubmit={handleSubmit}
                 errorMessage={error}
+                inputLength={6}
             >
                 <InputOTP.Slot index={0} />
                 <InputOTP.Slot index={1} />
@@ -223,7 +228,10 @@ export default function MyComponent() {
         code={`
             <InputOTP>
                 <InputOTP.Label>Enter PIN</InputOTP.Label>
-                <InputOTP.Form allowLetters={false}>
+                <InputOTP.Form 
+                    allowLetters={false}
+                    inputLength={6}
+                >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
                     <InputOTP.Slot index={2} />
@@ -250,7 +258,7 @@ export default function MyComponent() {
                     We have sent a code to j***@mail.com. 
                     Enter the code below.
                 </InputOTP.Description>
-                <InputOTP.Form>
+                <InputOTP.Form inputLength={6}>
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
                     <InputOTP.Slot index={2} />
@@ -276,7 +284,7 @@ export default function MyComponent() {
                     We have sent a code to j***@mail.com. 
                     Enter the code below.
                 </InputOTP.Description>
-                <InputOTP.Form>
+                <InputOTP.Form inputLength={6}>
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
                     <InputOTP.Slot index={2} />
@@ -308,6 +316,7 @@ export default function MyComponent() {
                 <InputOTP.Form
                     onSubmit={() => console.log("Submitted!)}
                     autoSubmit={true}
+                    inputLength={6}
                 >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
@@ -332,7 +341,10 @@ export default function MyComponent() {
         langDisplay="JSX"
         code={`
             <InputOTP>
-                <InputOTP.Form disabled={true}>
+                <InputOTP.Form 
+                    disabled={true}
+                    inputLength={6}
+                >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
                     <InputOTP.Slot index={2} />
@@ -363,6 +375,7 @@ export default function MyComponent() {
                 </InputOTP.Description>
                 <InputOTP.Form 
                     allowNumbers={false}
+                    inputLength={6}
                 >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
@@ -395,6 +408,7 @@ export default function MyComponent() {
                 </InputOTP.Description>
                 <InputOTP.Form
                     allowLetters={false}
+                    inputLength={6}
                 >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
@@ -428,6 +442,7 @@ export default function MyComponent() {
                 <InputOTP.Form 
                     allowNumbers={true}
                     allowLetters={true}
+                    inputLength={6}
                 >
                     <InputOTP.Slot index={0} />
                     <InputOTP.Slot index={1} />
@@ -444,6 +459,8 @@ export default function MyComponent() {
     <h4 id="error">On Error</h4>
 
     It is possible to pass custom errors to ```InputOTP``` like network errors, API-errors etc.
+    The ```key``` value is mandatory and must be different for each time an error occurs in order
+    to trigger a re-render which will display the error again. The ```message``` value can be the same.
 
      <OutputContainer 
         components={[<OnError />]}
@@ -453,27 +470,7 @@ export default function MyComponent() {
     <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
-        code={`
-            <InputOTP>
-                <InputOTP.Label>Verification</InputOTP.Label>
-                <InputOTP.Description>
-                    We have sent a code to j***@mail.com. 
-                    Enter the code below.
-                </InputOTP.Description>
-                <InputOTP.Form
-                    onSubmit={() => console.log("Submitted!)}
-                    autoSubmit={true}
-                >
-                    <InputOTP.Slot index={0} />
-                    <InputOTP.Slot index={1} />
-                    <InputOTP.Slot index={2} />
-                    <InputOTP.Separator />
-                    <InputOTP.Slot index={3} />
-                    <InputOTP.Slot index={4} />
-                    <InputOTP.Slot index={5} />
-                </InputOTP.Form>
-            </InputOTP>
-        `}
+        code={onErrorCode}
     />
     
     <h3 id="props">Props</h3>   
@@ -483,7 +480,8 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```errorMessage``` | ```string``` | - | Custom error message |
+        | ```inputLength``` | ```number``` | - | Amount of slots |
+        | ```errorMessage``` | ```{message: string, key: string}``` | - | Custom error message |
         | ```onSubmit``` | ```(string) => Promise<void> \| void``` | - | Callback function that fires on completion |
         | ```autoSubmit``` | ```boolean``` | true | Automatically calls ```onSubmit``` on completion |
         | ```disabled``` | ```boolean``` | false | Prohibits user from filling in the input |

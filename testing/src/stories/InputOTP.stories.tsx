@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { InputOTP } from "@devrosui/react"
 import { useArgs } from "storybook/internal/preview-api"
+import { useId } from "react"
 
 const meta = {
     title: "InputOTP",
@@ -20,6 +21,7 @@ export const InputOTPDev: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                 >
                     <InputOTP.Slot index={0} />
@@ -42,6 +44,7 @@ export const InputOTPLabel: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                 >
                     <InputOTP.Label>Verification</InputOTP.Label>
@@ -68,6 +71,7 @@ export const NoAutoSubmit: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                     autoSubmit={false}
                 >
@@ -91,6 +95,7 @@ export const Disabled: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                     autoSubmit={false}
                     disabled={true}
@@ -115,6 +120,7 @@ export const LettersOnly: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                     autoSubmit={false}
                     allowNumbers={false}
@@ -139,6 +145,7 @@ export const Combination: Story = {
         return (
             <InputOTP>
                 <InputOTP.Form
+                    inputLength={6}
                     onSubmit={() => console.log("submitted")}
                     autoSubmit={false}
                 >
@@ -161,10 +168,15 @@ export const onError: Story = {
     render: () => {
 
         const [{ errorMessage }, updateArgs] = useArgs()
+        const errorKey = useId()
+
         return (
             <InputOTP>
                 <InputOTP.Form
-                    onSubmit={() => updateArgs({errorMessage: "Incorrect code"})}
+                    inputLength={6}
+                    onSubmit={() => updateArgs(
+                        {errorMessage: {message: "Incorrect code", key: errorKey}}
+                    )}
                     errorMessage={errorMessage}
                 >
                     <InputOTP.Slot index={0} />
