@@ -1,0 +1,95 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import ChildExample from "./ChildExample"
+import { Popup } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const exampleCode = 
+`
+"use client"
+
+import React from "react"
+import { Popup } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    const [open, setOpen] = React.useState(false)
+
+    function toggle() {
+        setOpen(prev => !prev)
+    }
+
+    return (
+        <Popup open={open}>
+            <div className="popup-example">
+                <h5>Are you sure you want to delete your account?</h5>
+                <p>This action cannot be undone</p>
+                <button onClick={toggle} className="tertiary-button">Cancel</button>
+                <button onClick={toggle} className="danger-button">Delete account</button>
+            </div>
+        </Popup>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Popup
+    Warn the user about the use of necessary cookies and if analytical cookies are present, allow
+    the user to turn these on as well.
+
+   <OutputContainer components={[<ChildExample />]} height="20rem" />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Popup } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```open``` | ```boolean``` | false | Open state of the popup |
+        | ```children``` | ```JSX.Element``` | - | Component to appear in the popup |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/close-button" direction="left">CloseButton</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/datepicker" direction="right">DatePicker</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

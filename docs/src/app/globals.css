@@ -14,6 +14,10 @@
 
   --skeleton-initial: hsl(0, 0%, 10%);
   --skeleton-animate: hsl(0, 0%, 8%);
+
+  --danger-text: #ae1717;
+  --danger-background: #240d0d;
+  --danger-background-hover: #2e1111;
 }
 
 html.light {
@@ -28,9 +32,13 @@ html.light {
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
   --button-secondary-border: #e0dede;
+  --button-tertiary-hover: #e7e7e7;
 
   --skeleton-initial: hsl(0, 0%, 90%);
   --skeleton-animate: hsl(0, 0%, 95%);
+
+  --danger-background: rgb(255, 218, 218);
+  --danger-background-hover: rgb(246, 209, 209);
 }
 
 html,
@@ -105,6 +113,9 @@ button {
   font-weight: 600;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-display: swap;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -146,6 +157,24 @@ button:hover {
 
 .secondary-button:hover {
   background-color: var(--button-secondary-hover);
+}
+
+.tertiary-button {
+  background-color: var(--button-secondary-hover);
+  color: var(--text-primary);
+}
+
+.tertiary-button:hover {
+  background-color: var(--button-tertiary-hover);
+}
+
+.danger-button {
+  background-color: var(--danger-background);
+  color: var(--danger-text);
+}
+
+.danger-button:hover {
+  background-color: var(--danger-background-hover);
 }
 
 .tag-container {

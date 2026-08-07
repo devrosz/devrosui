@@ -33,6 +33,7 @@ html.light {
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
   --button-secondary-border: #e0dede;
+  --button-tertiary-hover: #e7e7e7;
 
   --skeleton-initial: hsl(0, 0%, 90%);
   --skeleton-animate: hsl(0, 0%, 95%);
