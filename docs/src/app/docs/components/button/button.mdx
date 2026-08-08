@@ -1,0 +1,223 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Button } from "@devrosui/react"
+import { AiOutlinePlus } from "react-icons/ai"
+import { TbSend } from "react-icons/tb";
+import { MdOutlineEmail } from "react-icons/md"
+import { FaRegTrashAlt } from "react-icons/fa"
+import { TbDots } from "react-icons/tb"
+import { IoSettingsOutline } from "react-icons/io5";
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "colours",
+        title: "Colours",
+        level: 1
+    },
+    {
+        id: "icons-text",
+        title: "Icons and text",
+        level: 1
+    },
+    {
+        id: "icons",
+        title: "Icons only",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const exampleCode = 
+`
+import { Button } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    return (
+        <Button>Click me</Button>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Button
+    Rounded button component with multiple variants.
+
+   <OutputContainer components={[
+        <Button>Click me</Button>
+    ]}
+    height="20rem" 
+   />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Button } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+   <h3 id="variants">Variants</h3>
+
+   <h4 id="colours">Colours</h4>
+
+    <OutputContainer components={[
+        <Button>Primary</Button>,
+        <Button style="secondary">Secondary</Button>,
+        <Button style="tertiary">Tertiary</Button>,
+        <Button style="danger">Danger</Button>,
+    ]}
+    height="20rem" 
+   />
+
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Button style="primary">Primary</Button>
+            <Button style="secondary">Secondary</Button>
+            <Button style="tertiary">Tertiary</Button>
+            <Button style="danger">Danger</Button>
+        `}
+    />
+
+    <h4 id="icons-text">Icons and text</h4>
+
+    <OutputContainer components={[
+         <Button style="primary">
+            <TbSend style={{fontSize: "1.25rem"}} />
+            Send
+        </Button>,
+        <Button style="secondary">
+            <AiOutlinePlus style={{fontSize: "1.25rem"}} />
+            Add
+        </Button>,
+        <Button style="tertiary">
+            <MdOutlineEmail style={{fontSize: "1.25rem"}} />
+            Email
+        </Button>,
+        <Button style="danger">
+            <FaRegTrashAlt style={{fontSize: "1rem"}} />
+            Delete
+        </Button>
+    ]}
+    height="20rem" 
+   />
+
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+           <Button style="primary">
+                <TbSend style={{fontSize: "1.25rem"}} />
+                Send
+            </Button>
+
+            <Button style="secondary">
+                <AiOutlinePlus style={{fontSize: "1.25rem"}} />
+                Add
+            </Button>
+
+            <Button style="tertiary">
+                <MdOutlineEmail style={{fontSize: "1.25rem"}} />
+                Email
+            </Button>
+
+            <Button style="danger">
+                <FaRegTrashAlt style={{fontSize: "1rem"}} />
+                Delete
+            </Button>
+        `}
+    />
+
+    <h4 id="icons">Icons only</h4>
+
+    <OutputContainer components={[
+        <Button style="primary">
+            <TbSend style={{fontSize: "1.25rem"}} />
+        </Button>,
+        <Button style="secondary">
+            <IoSettingsOutline style={{fontSize: "1.25rem"}} />
+        </Button>,
+        <Button style="tertiary">
+            <TbDots style={{fontSize: "1.25rem"}} />
+        </Button>,
+        <Button style="danger">
+            <FaRegTrashAlt style={{fontSize: "1rem"}} />
+        </Button>
+    ]}
+    height="20rem" 
+   />
+
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Button style="primary">
+                <TbSend style={{fontSize: "1.25rem"}} />
+            </Button>
+
+            <Button style="secondary">
+                <IoSettingsOutline style={{fontSize: "1.25rem"}} />
+            </Button>
+
+            <Button style="tertiary">
+                <TbDots style={{fontSize: "1.25rem"}} />
+            </Button>
+
+            <Button style="danger">
+                <FaRegTrashAlt style={{fontSize: "1rem"}} />
+            </Button>
+        `}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```style``` | ```"primary" \| "secondary" \| "tertiary" \| "danger"``` | "primary" | visual styling |
+        | ```disabled``` | ```boolean``` | false | allows button to be clicked |
+        | ```onClick``` | ```() => void``` | - | callback function when button is clicked |
+        | ```children``` | ```string \| JSX.Element``` | - | inner text |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/close-button" direction="left">CloseButton</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/datepicker" direction="right">DatePicker</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
