@@ -24,10 +24,7 @@
   transition: 0.3s;
 }
 
-.custom-button:active {
-  transform: scale(0.95);
-}
-
+/* Primary */
 .custom-button.primary {
   background-color: var(--background-secondary);
   color: var(--text-secondary);
@@ -41,6 +38,7 @@
   background-color: var(--button-primary-hover);
 }
 
+/* Secondary */
 .custom-button.secondary {
   background-color: transparent;
   color: var(--text-primary);
@@ -55,6 +53,7 @@
   background-color: var(--button-secondary-hover);
 }
 
+/* Tertiary */
 .custom-button.tertiary {
   background-color: var(--button-secondary-hover);
   color: var(--text-primary);
@@ -64,6 +63,7 @@
   background-color: var(--button-tertiary-hover);
 }
 
+/* Danger */
 .custom-button.danger {
   background-color: var(--danger-background);
   color: var(--danger-text);
@@ -73,13 +73,46 @@
   background-color: var(--danger-background-hover);
 }
 
+/* ---- Click animation ---- */
+.custom-button:active {
+  transform: scale(0.95);
+}
+
 .custom-button:focus:not(:active) {
-  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 10%, transparent 10%);
-  background-position: 50% 50%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 0 0;
-  
+  background-size: 0;
   animation: ripple 0.25s;
+}
+
+/* Dark mode ripple colours */
+.custom-button.primary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 10%, transparent 10%);
+}
+
+.custom-button.secondary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #1f1f1f 10%, transparent 10%);
+}
+
+.custom-button.tertiary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #101010 10%, transparent 10%);
+}
+
+.custom-button.danger:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #240d0d 10%, transparent 10%);
+}
+
+/* Light mode ripple colours */
+html.light .custom-button.secondary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #e8e8e8 10%, transparent 10%);
+}
+
+html.light .custom-button.tertiary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #2222 10%, transparent 10%);
+}
+
+html.light .custom-button.danger:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, rgb(240, 189, 189) 10%, transparent 10%);
 }
 
 @keyframes ripple {
