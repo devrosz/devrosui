@@ -1,30 +1,125 @@
-.storybook-button {
-  display: inline-block;
-  cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.custom-button {
+  font-weight: 600;
+  font-family: var(--font);
+  font-display: swap;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
-.storybook-button--primary {
-  background-color: #555ab9;
-  color: white;
+
+.custom-button > * {
+  font-weight: 600;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+
+.custom-button:hover {
+  transition: 0.3s;
+}
+
+/* Primary */
+.custom-button.primary {
+  background-color: var(--background-secondary);
+  color: var(--text-secondary);
+}
+
+.custom-button.primary > * {
+  color: var(--text-secondary);
+}
+
+.custom-button.primary:hover {
+  background-color: var(--button-primary-hover);
+}
+
+/* Secondary */
+.custom-button.secondary {
   background-color: transparent;
-  color: #333;
+  color: var(--text-primary);
+  border: 1px solid var(--button-secondary-border)
 }
-.storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
+
+.custom-button.secondary > * {
+  color: var(--text-primary);
 }
-.storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
+
+.custom-button.secondary:hover {
+  background-color: var(--button-secondary-hover);
 }
-.storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+
+/* Tertiary */
+.custom-button.tertiary {
+  background-color: var(--button-secondary-hover);
+  color: var(--text-primary);
+}
+
+.custom-button.tertiary:hover {
+  background-color: var(--button-tertiary-hover);
+}
+
+/* Danger */
+.custom-button.danger {
+  background-color: var(--danger-background);
+  color: var(--danger-text);
+}
+
+.custom-button.danger:hover {
+  background-color: var(--danger-background-hover);
+}
+
+/* ---- Click animation ---- */
+.custom-button:active {
+  transform: scale(0.95);
+}
+
+.custom-button:focus:not(:active) {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 0;
+  animation: ripple 0.25s;
+}
+
+/* Dark mode ripple colours */
+.custom-button.primary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.3) 10%, transparent 10%);
+}
+
+.custom-button.secondary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #1f1f1f 10%, transparent 10%);
+}
+
+.custom-button.tertiary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #101010 10%, transparent 10%);
+}
+
+.custom-button.danger:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #240d0d 10%, transparent 10%);
+}
+
+/* Light mode ripple colours */
+html.light .custom-button.secondary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #e8e8e8 10%, transparent 10%);
+}
+
+html.light .custom-button.tertiary:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, #2222 10%, transparent 10%);
+}
+
+html.light .custom-button.danger:focus:not(:active) {
+  background-image: radial-gradient(circle at 50% 50%, rgb(240, 189, 189) 10%, transparent 10%);
+}
+
+@keyframes ripple {
+  from {
+    background-size: 0 0;
+  }
+  to {
+    background-size: 1000% 1000%;
+  }
 }

@@ -3,6 +3,7 @@
 import React from "react"
 import { MdOutlineCookie } from "react-icons/md"
 import { AnimatePresence, motion } from "motion/react"
+import { Button } from "@devrosui/react"
 import "./cookieconsent.css"
 
 // onNecessary: callback function for necessary cookies only.
@@ -60,8 +61,8 @@ export default function CookieConsent({
                         <p>{children}</p>
                         { allowChoice ? (
                             <div>
-                                <button 
-                                    className="secondary-button"
+                                <Button 
+                                    variant="secondary"
                                     style={{margin: "0.5rem 0"}}
                                     onClick={() => {
                                         setOpen(prev => !prev)
@@ -71,19 +72,19 @@ export default function CookieConsent({
                                     }}
                                 >
                                     Necessary only
-                                </button>
-                                <button className="primary-button" onClick={() => {
+                                </Button>
+                                <Button variant="primary" onClick={() => {
                                     setOpen(prev => !prev)
                                     if (onAcceptAll) {
                                         onAcceptAll()
                                     }
                                 }}>
                                     Accept all
-                                </button>
+                                </Button>
                             </div>
                         ) : (
-                            <button 
-                                className="primary-button"
+                            <Button 
+                                variant="primary"
                                 style={{marginTop: "0.5rem"}}
                                 onClick={() => {
                                     setOpen(prev => !prev)
@@ -93,7 +94,7 @@ export default function CookieConsent({
                                 }}
                             >
                                 Understood
-                            </button>
+                            </Button>
                         )}
                     </motion.div>
                 )}
