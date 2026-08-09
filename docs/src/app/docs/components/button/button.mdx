@@ -89,9 +89,9 @@ export default function MyComponent() {
 
     <OutputContainer components={[
         <Button>Primary</Button>,
-        <Button style="secondary">Secondary</Button>,
-        <Button style="tertiary">Tertiary</Button>,
-        <Button style="danger">Danger</Button>,
+        <Button variant="secondary">Secondary</Button>,
+        <Button variant="tertiary">Tertiary</Button>,
+        <Button variant="danger">Danger</Button>,
     ]}
     height="20rem" 
    />
@@ -100,30 +100,30 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <Button style="primary">Primary</Button>
-            <Button style="secondary">Secondary</Button>
-            <Button style="tertiary">Tertiary</Button>
-            <Button style="danger">Danger</Button>
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="tertiary">Tertiary</Button>
+            <Button variant="danger">Danger</Button>
         `}
     />
 
     <h4 id="icons-text">Icons and text</h4>
 
     <OutputContainer components={[
-         <Button style="primary">
-            <TbSend style={{fontSize: "1.25rem"}} />
+         <Button variant="primary">
+            <TbSend variant={{fontSize: "1.25rem"}} />
             Send
         </Button>,
-        <Button style="secondary">
-            <AiOutlinePlus style={{fontSize: "1.25rem"}} />
+        <Button variant="secondary">
+            <AiOutlinePlus variant={{fontSize: "1.25rem"}} />
             Add
         </Button>,
-        <Button style="tertiary">
-            <MdOutlineEmail style={{fontSize: "1.25rem"}} />
+        <Button variant="tertiary">
+            <MdOutlineEmail variant={{fontSize: "1.25rem"}} />
             Email
         </Button>,
-        <Button style="danger">
-            <FaRegTrashAlt style={{fontSize: "1rem"}} />
+        <Button variant="danger">
+            <FaRegTrashAlt variant={{fontSize: "1rem"}} />
             Delete
         </Button>
     ]}
@@ -134,23 +134,23 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-           <Button style="primary">
-                <TbSend style={{fontSize: "1.25rem"}} />
+           <Button variant="primary">
+                <TbSend variant={{fontSize: "1.25rem"}} />
                 Send
             </Button>
 
-            <Button style="secondary">
-                <AiOutlinePlus style={{fontSize: "1.25rem"}} />
+            <Button variant="secondary">
+                <AiOutlinePlus variant={{fontSize: "1.25rem"}} />
                 Add
             </Button>
 
-            <Button style="tertiary">
-                <MdOutlineEmail style={{fontSize: "1.25rem"}} />
+            <Button variant="tertiary">
+                <MdOutlineEmail variant={{fontSize: "1.25rem"}} />
                 Email
             </Button>
 
-            <Button style="danger">
-                <FaRegTrashAlt style={{fontSize: "1rem"}} />
+            <Button variant="danger">
+                <FaRegTrashAlt variant={{fontSize: "1rem"}} />
                 Delete
             </Button>
         `}
@@ -159,17 +159,17 @@ export default function MyComponent() {
     <h4 id="icons">Icons only</h4>
 
     <OutputContainer components={[
-        <Button style="primary">
-            <TbSend style={{fontSize: "1.25rem"}} />
+        <Button variant="primary">
+            <TbSend variant={{fontSize: "1.25rem"}} />
         </Button>,
-        <Button style="secondary">
-            <IoSettingsOutline style={{fontSize: "1.25rem"}} />
+        <Button variant="secondary">
+            <IoSettingsOutline variant={{fontSize: "1.25rem"}} />
         </Button>,
-        <Button style="tertiary">
-            <TbDots style={{fontSize: "1.25rem"}} />
+        <Button variant="tertiary">
+            <TbDots variant={{fontSize: "1.25rem"}} />
         </Button>,
-        <Button style="danger">
-            <FaRegTrashAlt style={{fontSize: "1rem"}} />
+        <Button variant="danger">
+            <FaRegTrashAlt variant={{fontSize: "1rem"}} />
         </Button>
     ]}
     height="20rem" 
@@ -179,20 +179,20 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <Button style="primary">
-                <TbSend style={{fontSize: "1.25rem"}} />
+            <Button variant="primary">
+                <TbSend variant={{fontSize: "1.25rem"}} />
             </Button>
 
-            <Button style="secondary">
-                <IoSettingsOutline style={{fontSize: "1.25rem"}} />
+            <Button variant="secondary">
+                <IoSettingsOutline variant={{fontSize: "1.25rem"}} />
             </Button>
 
-            <Button style="tertiary">
-                <TbDots style={{fontSize: "1.25rem"}} />
+            <Button variant="tertiary">
+                <TbDots variant={{fontSize: "1.25rem"}} />
             </Button>
 
-            <Button style="danger">
-                <FaRegTrashAlt style={{fontSize: "1rem"}} />
+            <Button variant="danger">
+                <FaRegTrashAlt variant={{fontSize: "1rem"}} />
             </Button>
         `}
     />
@@ -202,7 +202,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```style``` | ```"primary" \| "secondary" \| "tertiary" \| "danger"``` | "primary" | visual styling |
+        | ```variant``` | ```"primary" \| "secondary" \| "tertiary" \| "danger"``` | "primary" | visual styling |
         | ```disabled``` | ```boolean``` | false | allows button to be clicked |
         | ```onClick``` | ```() => void``` | - | callback function when button is clicked |
         | ```children``` | ```string \| JSX.Element``` | - | inner text |
