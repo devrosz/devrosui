@@ -5,6 +5,7 @@
 
 .dropdown-list {
     position: absolute;
+    top: 48px;
     z-index: 5;
     list-style: none;
     background-color: var(--background-primary);
@@ -14,14 +15,14 @@
     border-radius: 1rem;
 }
 
-.dropdown-option {
+.dropdown-item {
     margin: 4px 0;
 }
 
-.dropdown-option button {
-    display: grid;
-    grid-template-columns: 1.5rem 4rem auto;
-    grid-template-rows: 1;
+.dropdown-item button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background-color: transparent;
     color: var(--text-primary);
     padding: 0;
@@ -33,11 +34,12 @@
     font-size: 14px;
 }
 
-.dropdown-option button:hover {
+.dropdown-item button:hover {
     background-color: var(--button-secondary-hover);
 }
 
 .dropdown-header {
+    cursor: pointer;
     background-color: var(--background-primary);
     color: var(--text-primary);
     padding: 0.5rem 1rem;
@@ -48,6 +50,6 @@
 }
 
 /* Danger styling */
-.dropdown-option.danger button {
+.dropdown-item.danger button {
     color: var(--danger-text);
 }

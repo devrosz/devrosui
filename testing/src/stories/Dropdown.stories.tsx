@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Dropdown } from "@devrosui/react"
 import { AiOutlineEdit } from "react-icons/ai"
-import { FiSave } from "react-icons/fi";
+import { FiSave } from "react-icons/fi"
 import { IoCopyOutline } from "react-icons/io5"
 import { RiDeleteBinLine } from "react-icons/ri"
 
@@ -17,7 +17,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const DropdownDev: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
         <Dropdown>
@@ -25,18 +25,18 @@ export const DropdownDev: Story = {
                 Actions
             </Dropdown.Header>
             <Dropdown.List>
-                <Dropdown.Option onClick={() => console.log('edit')}>
+                <Dropdown.Item>
                     Edit file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('rename')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                    Save file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('copy')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                     Copy file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('delete')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                     Delete file
-                </Dropdown.Option>
+                </Dropdown.Item>
             </Dropdown.List>
         </Dropdown>
         )
@@ -44,7 +44,7 @@ export const DropdownDev: Story = {
 }
 
 export const DropdownDanger: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
         <Dropdown>
@@ -52,18 +52,18 @@ export const DropdownDanger: Story = {
                 Actions
             </Dropdown.Header>
             <Dropdown.List>
-                <Dropdown.Option onClick={() => console.log('edit')}>
+                <Dropdown.Item>
                     Edit file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('rename')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                    Save file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('copy')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                     Copy file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('delete')} isDangerous={true}>
+                </Dropdown.Item>
+                <Dropdown.Item isDangerous={true}>
                     Delete file
-                </Dropdown.Option>
+                </Dropdown.Item>
             </Dropdown.List>
         </Dropdown>
         )
@@ -71,7 +71,7 @@ export const DropdownDanger: Story = {
 }
 
 export const DropdownIcons: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
         <Dropdown>
@@ -79,22 +79,22 @@ export const DropdownIcons: Story = {
                 Actions
             </Dropdown.Header>
             <Dropdown.List>
-                <Dropdown.Option onClick={() => console.log('edit')}>
+                <Dropdown.Item>
                     <AiOutlineEdit />
                     Edit file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('rename')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                     <FiSave />
                    Save file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('copy')}>
+                </Dropdown.Item>
+                <Dropdown.Item>
                     <IoCopyOutline />
                     Copy file
-                </Dropdown.Option>
-                <Dropdown.Option onClick={() => console.log('delete')} isDangerous={true}>
+                </Dropdown.Item>
+                <Dropdown.Item isDangerous={true}>
                     <RiDeleteBinLine />
                     Delete file
-                </Dropdown.Option>
+                </Dropdown.Item>
             </Dropdown.List>
         </Dropdown>
         )

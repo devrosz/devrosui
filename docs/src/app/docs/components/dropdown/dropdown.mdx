@@ -1,0 +1,241 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import Link from "next/link"
+import { Dropdown } from "@devrosui/react"
+import Basic from "./examples/Basic"
+import Danger from "./examples/Danger"
+import Icons from "./examples/Icons"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "danger",
+        title: "Dangerous items",
+        level: 1
+    },
+    {
+        id: "icons",
+        title: "Icons",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    },
+    {
+        id: "props-dropdown",
+        title: "Dropdown",
+        level: 1
+    },
+    {
+        id: "props-header",
+        title: "Dropdown.Header",
+        level: 1
+    },
+    {
+        id: "props-list",
+        title: "Dropdown.List",
+        level: 1
+    },
+    {
+        id: "props-item",
+        title: "Dropdown.Item",
+        level: 1
+    }
+]
+
+export const usageCode = 
+`
+import { Dropdown } from "@devrosui/react"
+
+export default function MyComponent() {
+
+  return (
+        <Dropdown>
+            <Dropdown.Header>
+                Actions
+            </Dropdown.Header>
+            <Dropdown.List>
+                <Dropdown.Item>
+                    Edit file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                   Save file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    Copy file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    Delete file
+                </Dropdown.Item>
+            </Dropdown.List>
+        </Dropdown>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Dropdown
+    Clickable button that renders a popup containing a list of available actions.
+
+   <OutputContainer 
+    components={[<Basic />]}
+    height="20rem" 
+/>
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Dropdown } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+    
+    <h4 id="danger">Dangerous items</h4>
+
+    <OutputContainer 
+        components={[<Danger />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Dropdown>
+                <Dropdown.Header>
+                    Actions
+                </Dropdown.Header>
+                <Dropdown.List>
+                    <Dropdown.Item>
+                        Edit file
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Save file
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        Copy file
+                    </Dropdown.Item>
+                    <Dropdown.Item isDangerous={true}>
+                        Delete file
+                    </Dropdown.Item>
+                </Dropdown.List>
+            </Dropdown>
+        `}
+    />
+
+    <h4 id="icons">Icons</h4>
+
+    <OutputContainer 
+        components={[<Icons />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Dropdown>
+                <Dropdown.Header>
+                    Actions
+                </Dropdown.Header>
+                <Dropdown.List>
+                    <Dropdown.Item>
+                        <AiOutlineEdit />
+                        Edit file
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <FiSave />
+                        Save file
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <IoCopyOutline />
+                        Copy file
+                    </Dropdown.Item>
+                    <Dropdown.Item isDangerous={true}>
+                        <RiDeleteBinLine />
+                        Delete file
+                    </Dropdown.Item>
+                </Dropdown.List>
+            </Dropdown>
+        `}
+    />    
+
+    <h3 id="props">Props</h3>   
+
+    <h4 id="props-dropdown">Dropdown</h4>
+    
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```ReactNode``` | - | Expecting ```<Dropdown.Header>``` followed by ```<Dropdown.List>``` |
+    </div>
+
+    <h4 id="props-header">Dropdown.Header</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string \| JSX.Element``` | - | Inner text of the button or a custom component inside the button |
+    </div>
+
+    <h4 id="props-list">Dropdown.List</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```ReactNode``` | - | Expecting a list of ```<Dropdown.Item>``` |
+    </div>
+
+    <h4 id="props-item">Dropdown.Item</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```onClick``` | ```() => void``` | - | Callback function of the respective action |
+        | ```isDangerous``` | ```boolean``` | false | Hints if an action is dangerous |
+        | ```children``` | ```string \| JSX.Element``` | - | Inner text of the action button |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+        </div>
+    </div>
+
+</div>
+
+<TableOfContents headers={headers} />

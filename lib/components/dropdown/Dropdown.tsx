@@ -1,6 +1,7 @@
 "use client"
 
-import React, { JSX } from "react"
+import React from "react"
+import { JSX, useId } from "react"
 import { createContext, useContext } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import "./dropdown.css"
@@ -8,7 +9,7 @@ import "./dropdown.css"
 // onClick: callback function that gets invoked when the option is clicked.
 // isDangerous: hints that this option is dangerous.
 // children: can be either a string or a custom component.
-type OptionProps = {
+type ItemProps = {
     onClick?: () => void,
     isDangerous?: boolean,
     children: string | JSX.Element
@@ -47,7 +48,7 @@ export function Header({children}: {children: string | JSX.Element}) {
     const dropDownContext = useContext(DropdownContext)
 
     if (!dropDownContext) {
-        console.error("InputOTP.Header: context is undefined")
+        console.error("Dropdown.Header: context is undefined")
         return
     }
 
@@ -62,13 +63,12 @@ export function Header({children}: {children: string | JSX.Element}) {
     )
 }
 
-// Option list that renders when the open state is set to 'true'.
-// Contains
+// Item list that renders when the open state is set to 'true'.
 export function List({children}: {children: React.ReactNode}) {
     const dropDownContext = useContext(DropdownContext)
 
     if (!dropDownContext) {
-        console.error("InputOTP.Header: context is undefined")
+        console.error("Dropdown.List: context is undefined")
         return
     }
 
@@ -92,17 +92,18 @@ export function List({children}: {children: React.ReactNode}) {
     )
 }
 
-// Option that fires the onClick callback if applicable and closes the list popup.
-export function Option({onClick, isDangerous=false, children}: OptionProps) {
+// Item that fires the onClick callback if applicable and closes the list popup.
+export function Item({onClick, isDangerous=false, children}: ItemProps) {
     const dropDownContext = useContext(DropdownContext)
 
     if (!dropDownContext) {
-        console.error("InputOTP.Header: context is undefined")
+        console.error("Dropdown.Item: context is undefined")
         return
     }
 
     const { open, toggle } = dropDownContext
-
+    const key = useId()
+    console.log(key)
 
     function handleClick() {
         toggle()
@@ -110,7 +111,10 @@ export function Option({onClick, isDangerous=false, children}: OptionProps) {
     }
 
     return (
-        <li className={"dropdown-option " + (isDangerous ? "danger" : "")}>
+        <li 
+            className={"dropdown-item " + (isDangerous ? "danger" : "")}
+            key={key}
+        >
             <button onClick={handleClick}>{children}</button>
         </li>
     )
@@ -119,7 +123,7 @@ export function Option({onClick, isDangerous=false, children}: OptionProps) {
 // Define subcomponents.
 Dropdown.Header = Header
 Dropdown.List = List
-Dropdown.Option = Option
+Dropdown.Item = Item
 
 export default Dropdown
 
