@@ -1,11 +1,19 @@
+.switch-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font);
+    color: var(--text-primary);
+}
+
 .switch-track {
     border: none;
     color: transparent;
     border-radius: 10rem;
     padding: 3px;
     background-color: var(--background-tertiary);
-    width: 72px;
-    height: 40px;
+    width: 56px;
+    height: 32px;
 }
 
 .switch-track.active {
@@ -14,10 +22,24 @@
 
 .switch-thumb {
     content: "";
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 3rem;
     background-color: #fafafa;
     border: none;
     transition: 0.25s ease-out;
+}
+
+.switch-meta {
+    max-width: 300px;
+}
+
+.switch-label {
+    font-weight: normal;
+    margin: 0;
+}
+
+.switch-description {
+    color: var(--text-tertiary);
+    margin: 0;
 }
