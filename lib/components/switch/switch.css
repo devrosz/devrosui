@@ -1,0 +1,23 @@
+.switch-track {
+    border: none;
+    color: transparent;
+    border-radius: 10rem;
+    padding: 3px;
+    background-color: var(--background-tertiary);
+    width: 72px;
+    height: 40px;
+}
+
+.switch-track.active {
+    background-color: lab(54.5335% 3.31545 -66.5298);
+}
+
+.switch-thumb {
+    content: "";
+    width: 32px;
+    height: 32px;
+    border-radius: 3rem;
+    background-color: #fafafa;
+    border: none;
+    transition: 0.25s ease-out;
+}
