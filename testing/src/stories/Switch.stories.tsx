@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Switch } from "@devrosui/react"
 import { useArgs } from "storybook/internal/preview-api"
-import { LuSun, LuMoon } from "react-icons/lu"
 
 const meta = {
     title: "Switch",
