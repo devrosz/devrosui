@@ -29,7 +29,7 @@ export function ThemeProvider({children}: {children: React.ReactNode}) {
     )
 }
 
-// Returs the theme context containing the current theme
+// Returns the theme context containing the current theme
 // and toggle function.
 export function useTheme() {
     const context = React.useContext(ThemeContext)

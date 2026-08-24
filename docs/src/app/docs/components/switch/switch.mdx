@@ -1,0 +1,335 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import Link from "next/link"
+import { Switch } from "@devrosui/react"
+import Basic from "./examples/Basic"
+import Description from "./examples/Description"
+import Icons from "./examples/Icons"
+import Label from "./examples/Label"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "label",
+        title: "Label",
+        level: 1
+    },
+    {
+        id: "description",
+        title: "Description",
+        level: 1
+    },
+    {
+        id: "icons",
+        title: "Icons",
+        level: 1
+    },
+    {
+        id: "initial",
+        title: "Initial state",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "Disabled",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    },
+    {
+        id: "props-switch",
+        title: "Switch",
+        level: 1
+    },
+    {
+        id: "props-track",
+        title: "Switch.Track",
+        level: 1
+    },
+    {
+        id: "props-thumb",
+        title: "Switch.Thumb",
+        level: 1
+    },
+    {
+        id: "props-meta",
+        title: "Switch.Meta",
+        level: 1
+    },
+    {
+        id: "props-Label",
+        title: "Switch.Label",
+        level: 1
+    },
+    {
+        id: "props-description",
+        title: "Switch.Description",
+        level: 1
+    }
+]
+
+export const usageCode = 
+`
+import { Switch } from "@devrosui/react"
+
+export default function MyComponent() {
+
+  return (
+        <Switch>
+            <Switch.Track>
+                <Switch.Thumb />
+            </Switch.Track>
+        </Switch>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Switch
+    Slidable button that toggles between two-states.
+
+   <OutputContainer 
+    components={[<Basic />]}
+    height="20rem" 
+/>
+   
+   <h3 id="import">Import</h3>
+
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Switch } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    <h3 id="variants">Variants</h3>
+    
+    <h4 id="label">Label</h4>
+
+    <OutputContainer 
+        components={[<Label />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Switch>
+                <Switch.Track>
+                    <Switch.Thumb />
+                </Switch.Track>
+                <Switch.Meta>
+                    <Switch.Label>
+                        Toggle theme
+                    </Switch.Label>
+                </Switch.Meta>
+            </Switch>
+        `}
+    />
+
+    <h4 id="description">Description</h4>
+
+    <OutputContainer 
+        components={[<Description />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+           <Switch>
+                <Switch.Track>
+                    <Switch.Thumb />
+                </Switch.Track>
+                <Switch.Meta>
+                    <Switch.Label>
+                        Toggle theme
+                    </Switch.Label>
+                    <Switch.Description>
+                        Change the colour-scheme of the website.
+                    </Switch.Description>
+                </Switch.Meta>
+            </Switch>
+        `}
+    />
+
+    <h4 id="icons">Icons</h4>
+
+    <OutputContainer 
+        components={[<Icons />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Switch onActive={toggleTheme} onDeactive={toggleTheme} isActive={theme === "dark"}>
+                <Switch.Track>
+                    <Switch.Thumb>
+                        {theme === "dark" ? <LuMoon /> : <LuSun />}
+                    </Switch.Thumb>
+                </Switch.Track>
+                <Switch.Meta>
+                    <Switch.Label>
+                        Toggle theme
+                    </Switch.Label>
+                </Switch.Meta>
+            </Switch>
+        `}
+    />
+
+    <h4 id="initial">Initial value</h4>
+
+    <OutputContainer 
+        components={[<Description isActive={true} />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+           <Switch isActive={true} >
+                <Switch.Track>
+                    <Switch.Thumb />
+                </Switch.Track>
+                <Switch.Meta>
+                    <Switch.Label>
+                        Notifications
+                    </Switch.Label>
+                    <Switch.Description>
+                        Receive emails about the latest updates.
+                    </Switch.Description>
+                </Switch.Meta>
+            </Switch>
+        `}
+    />
+
+    <h4 id="disabled">Disabled</h4>
+
+    <OutputContainer 
+        components={[<Description disabled={true} />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+           <Switch disabled={true} >
+                <Switch.Track>
+                    <Switch.Thumb />
+                </Switch.Track>
+                <Switch.Meta>
+                    <Switch.Label>
+                        Notifications
+                    </Switch.Label>
+                    <Switch.Description>
+                        Receive emails about the latest updates.
+                    </Switch.Description>
+                </Switch.Meta>
+            </Switch>
+        `}
+    />
+
+    <h3 id="props">Props</h3>   
+
+    <h4 id="props-switch">Switch</h4>
+    
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```isActive``` | ```boolean``` | false | Initial state of the switch |
+        | ```onActive``` | ```() => Promise<void> \| void``` | - | Callback function when switch is on |
+        | ```onDeactive``` | ```() -> Promise<void> \| void``` | - | Callback function when switch is off |
+        | ```disabled``` | ```boolean``` | false | Prevents the user from toggling the switch |
+        | ```children``` | ```JSX.Element``` | - | Expecting ```<Switch.Track>``` and if applicable ```<Switch.Meta>``` |
+    </div>
+
+    <h4 id="props-track">Switch.Track</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```JSX.Element``` | - | Expecting ```<Switch.Thumb>``` |
+    </div>
+
+    <h4 id="props-thumb">Switch.Thumb</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```JSX.Element``` | - | In case of icons, ```children``` must be the icon component |
+    </div>
+
+    <h4 id="props-meta">Switch.Meta</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```JSX.Element``` | - | Expecting either ```<Switch.Label>``` and/or ```<Switch.Description>``` |
+    </div>
+
+    <h4 id="props-label">Switch.Label</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Title of the switch input |
+    </div>
+
+    <h4 id="props-description">Switch.Description</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Extra information about the switch input |
+    </div>
+
+    
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+        </div>
+    </div>
+
+</div>
+
+<TableOfContents headers={headers} />
