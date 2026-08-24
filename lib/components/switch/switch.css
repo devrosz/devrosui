@@ -14,6 +14,7 @@
     background-color: var(--background-tertiary);
     width: 56px;
     height: 32px;
+    margin-right: 1px;
 }
 
 .switch-track:disabled {
