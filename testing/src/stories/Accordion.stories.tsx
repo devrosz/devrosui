@@ -15,11 +15,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Chevron: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
             <Accordion width="35rem">
-                <Accordion.Item itemId="1">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -28,7 +28,7 @@ export const Chevron: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="2">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -37,7 +37,7 @@ export const Chevron: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="3">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -52,11 +52,11 @@ export const Chevron: Story = {
 }
 
 export const ChevronEmpty: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
-            <Accordion width="35rem" background="emtpy">
-                <Accordion.Item itemId="1">
+            <Accordion width="35rem" background="empty">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -65,7 +65,7 @@ export const ChevronEmpty: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="2">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -74,7 +74,7 @@ export const ChevronEmpty: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="3">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -89,11 +89,11 @@ export const ChevronEmpty: Story = {
 }
 
 export const Plus: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
             <Accordion width="35rem" toggleIcon="plus">
-                <Accordion.Item itemId="1">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -102,7 +102,7 @@ export const Plus: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="2">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -111,7 +111,7 @@ export const Plus: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="3">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -126,11 +126,11 @@ export const Plus: Story = {
 }
 
 export const PlusEmpty: Story = {
-    args: {},
+    args: {children: ""},
     render: () => {
         return (
             <Accordion width="35rem" toggleIcon="plus" background="empty">
-                <Accordion.Item itemId="1">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -139,7 +139,7 @@ export const PlusEmpty: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="2">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 
@@ -148,7 +148,7 @@ export const PlusEmpty: Story = {
                         voluptatem voluptatibus qui vero corporis non autem impedit.
                     </Accordion.Content>
                 </Accordion.Item>
-                <Accordion.Item itemId="3">
+                <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>
                         Lorem ipsum dolor sit amet. 

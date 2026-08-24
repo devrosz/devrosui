@@ -3,7 +3,7 @@
 import React from "react"
 import { ReactNode } from "react"
 import { motion } from "motion/react"
-import { createContext, useContext } from "react"
+import { createContext, useContext, useId } from "react"
 import ToggleButton from "./ToggleButton"
 import "./accordion.css"
 
@@ -15,14 +15,6 @@ type AccordionProps = {
     background?: "filled" | "empty",
     toggleIcon?: "plus" | "chevron",
     width?: string,
-    children: ReactNode
-}
-
-// itemId: unique identifier of the accordion item; will be used as key for accessing
-// open state and toggling state.
-// children: expecting <Accordion.Header> and <Accordion.Content>
-type ItemProps = {
-    itemId: string,
     children: ReactNode
 }
 
@@ -39,9 +31,9 @@ type AccordionContextType = {
     toggleIcon: "chevron" | "plus"
 }
 
-// itemId: unique identifier for an item.
+// itemKey: unique identifier for an item.
 type ItemContextType = {
-    itemId: string
+    itemKey: string
 }
 
 // Contains meta-data of the whole Accordion component.
@@ -98,7 +90,7 @@ export function Accordion({
 
 // Single collapsable accordion item that displays the header and collapses the content
 // on click.
-export function Item({itemId, children}: ItemProps) {
+export function Item({children}: {children: ReactNode}) {
     const context = useContext(AccordionContext)
 
     if (!context) {
@@ -107,13 +99,14 @@ export function Item({itemId, children}: ItemProps) {
     }
 
     const { toggle, background } = context
+    const itemKey = useId()
 
     return (
-        <AccordionItemContext.Provider value={{itemId}}>
+        <AccordionItemContext.Provider value={{itemKey}}>
             <li 
                 className={"accordion-item-container " + background}
-                key={itemId}
-                onClick={(e) => toggle(itemId)}
+                key={itemKey}
+                onClick={(e) => toggle(itemKey)}
             >
                 {children}
             </li>
@@ -133,13 +126,13 @@ export function Header({children}: {children: string}) {
     }
 
     const { toggle, getToggleStatus, toggleIcon } = accordionContext
-    const { itemId } = itemContext
+    const { itemKey } = itemContext
 
     return (
         <div className="accordion-header-container">
             <h5>{children}</h5>
             <ToggleButton 
-                entry={itemId}
+                entry={itemKey}
                 getStatus={getToggleStatus}
                 toggleStatus={toggle}
                 icon={toggleIcon}
@@ -159,13 +152,13 @@ export function Content({children}: {children: string}) {
     }
 
     const { getToggleStatus } = accordionContext
-    const { itemId } = itemContext
+    const { itemKey } = itemContext
 
     return (
         <motion.div
             className="accordion-item-content"
             initial={false}
-            animate={{height: getToggleStatus(itemId) ? "auto" : 0}}
+            animate={{height: getToggleStatus(itemKey) ? "auto" : 0}}
             transition={{duration: 0.25, ease: "easeInOut"}}
             style={{overflow: "hidden"}}
         >
