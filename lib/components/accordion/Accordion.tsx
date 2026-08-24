@@ -1,130 +1,63 @@
 "use client"
 
 import React from "react"
-import { JSX } from "react"
+import { ReactNode } from "react"
 import { motion } from "motion/react"
 import { createContext, useContext } from "react"
 import ToggleButton from "./ToggleButton"
 import "./accordion.css"
 
-// export type AccordionProps = {
-//     items: AccordionItem[],
-//     background?: "filled" | "empty",
-//     toggleIcon?: "plus" | "chevron",
-//     width?: string
-// }
+// background: whether the background of an item should be filled or empty.
+// toggleIcon: icon to be displayed as toggle button.
+// width: width of accordion section.
+// children: expecting one or more <Accordion.Item> components.
+type AccordionProps = {
+    background?: "filled" | "empty",
+    toggleIcon?: "plus" | "chevron",
+    width?: string,
+    children: ReactNode
+}
 
-// type AccordionItem = {
-//     header: string,
-//     text: string
-// }
+// itemId: unique identifier of the accordion item; will be used as key for accessing
+// open state and toggling state.
+// children: expecting <Accordion.Header> and <Accordion.Content>
+type ItemProps = {
+    itemId: string,
+    children: ReactNode
+}
 
-// // Placeholder if no items were specified.
-// // This still means that items is a mandatory prop, but
-// // defaultItem just servers as a error fallback.
-// const defaultItem = [{
-//     header: "Add items",
-//     text: "Add an item by passing the prop 'items' in the form: [{header, text}]."
-// }]
+// open: open state of a specific item.
+// toggle: toggles open state of a given item identified by its key.
+// getToggleStatus: returns the open state of an item.
+// background: background filling of items.
+// toggleIcon: icon inside toggle button.
+type AccordionContextType = {
+    open: Record<string, boolean>,
+    toggle: (key: string) => void,
+    getToggleStatus: (key: string) => boolean,
+    background: "empty" | "filled"
+    toggleIcon: "chevron" | "plus"
+}
 
-// // Component that renders an accordion.
-// // items: header + text to fill items in accordion.
-// // background: whether the background of an item should be filled or empty.
-// // toggleIcon: icon to be displayed as toggle button.
-// // width: width of accordion section.
-// export default function Accordion({
-//     items=defaultItem,
-//     background="filled",
-//     toggleIcon="chevron",
-//     width="100%"
-// }: AccordionProps): JSX.Element {
+// itemId: unique identifier for an item.
+type ItemContextType = {
+    itemId: string
+}
 
-//     // Manual typechecking for non-TS users.
-//     if (background != "filled" && background != "empty") {
-//         throw new Error("Accordion: background value can only be 'filled' or 'empty'")
-//     }
+// Contains meta-data of the whole Accordion component.
+const AccordionContext = createContext<null | AccordionContextType>(null)
 
-//     if (toggleIcon != "chevron" && toggleIcon != "plus") {
-//         throw new Error("Accordion: toggleIcon value can only be 'chevron' or 'plus'.")
-//     }
-    
-//     const [open, setOpen] = React.useState<Record<string, boolean>>({})
+// Contains the meta-data about an Accordion.Item.
+const AccordionItemContext = createContext<null | ItemContextType>(null)
 
-//     // Toggles the open state of a given item
-//     // key: identifier to point which specific item in the accordion
-//     // needs to be toggled.
-//     function toggle(key: string): void {
-//         setOpen(prev => (
-//             {
-//                 ...prev,
-//                 [key]: !prev[key]
-//             }
-//         ))
-//     }
-
-//     // Returns whether an item identified by the given key
-//     // is open or not.
-//     function getToggleStatus(key: string): boolean {
-//         return open[key]
-//     }
-
-//     return (
-//         <ul className="accordion" style={{width: width}}>
-//             {items.map((item, i) => {
-//                 const { header, text } = item
-
-//                 // Manual type-checking for non-TS users.
-//                 if (typeof(header) != "string" && typeof(header) != "number") {
-//                     throw new Error("Accordion: headers in items array can only be of type string or number")
-//                 }
-
-//                 if (typeof(text) != "string" && typeof(text) != "number") {
-//                     throw new Error("Accordion: text in items array can only be of type string or number")
-//                 }
-
-//                 const itemKey = "item-" + i
-//                 const className = 
-//                     "accordion-item-container " + background
-//                 return (
-//                     <li 
-//                         className={className}
-//                         key={itemKey}
-//                         onClick={(e) => toggle(itemKey)}
-//                     >
-//                         <div className="accordion-header-container">
-//                             <h5>{header}</h5>
-//                             <ToggleButton 
-//                                 entry={itemKey}
-//                                 getStatus={getToggleStatus}
-//                                 toggleStatus={toggle}
-//                                 icon={toggleIcon}
-//                             />
-//                         </div>
-//                         <motion.div
-//                             className="accordion-item-content"
-//                             initial={false}
-//                             animate={{height: getToggleStatus(itemKey) ? "auto" : 0}}
-//                             transition={{duration: 0.25, ease: "easeInOut"}}
-//                             style={{overflow: "hidden"}}
-//                         >
-//                             <p>{text}</p>
-//                         </motion.div>
-//                     </li>
-//                 )
-//             })}
-//         </ul>
-//     )
-// }
-
-const AccordionContext = createContext(null)
-const AccordionItemContext = createContext(null)
-
+// Wrapper for the Accordion component.
+// Contains the main logic of callback functions.
 export function Accordion({
     background="filled",
     toggleIcon="chevron",
     width="100%",
     children
-}) {
+}: AccordionProps) {
 
     const [open, setOpen] = React.useState<Record<string, boolean>>({})
 
@@ -146,7 +79,7 @@ export function Accordion({
         return open[key]
     }
 
-    const contextValue = {
+    const contextValue: AccordionContextType = {
         open,
         toggle,
         getToggleStatus,
@@ -163,7 +96,9 @@ export function Accordion({
     )
 }
 
-export function Item({itemId, children}) {
+// Single collapsable accordion item that displays the header and collapses the content
+// on click.
+export function Item({itemId, children}: ItemProps) {
     const context = useContext(AccordionContext)
 
     if (!context) {
@@ -186,7 +121,8 @@ export function Item({itemId, children}) {
     )
 }
 
-export function Header({children}) {
+// Header of an accordion item.
+export function Header({children}: {children: string}) {
 
     const accordionContext = useContext(AccordionContext)
     const itemContext = useContext(AccordionItemContext)
@@ -212,7 +148,8 @@ export function Header({children}) {
     )
 }
 
-export function Content({children}) {
+// Collapsable content of an item.
+export function Content({children}: {children: string}) {
     const accordionContext = useContext(AccordionContext)
     const itemContext = useContext(AccordionItemContext)
 
@@ -237,6 +174,7 @@ export function Content({children}) {
     )
 }
 
+// Define subcomponents.
 Accordion.Item = Item
 Accordion.Header = Header
 Accordion.Content = Content
