@@ -1,0 +1,163 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Skeleton } from "@devrosui/react"
+import Avatar from "./examples/Avatar"
+import Card from "./examples/Card"
+import Paragraph from "./examples/Paragraph"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "avatar",
+        title: "Avatar",
+        level: 1
+    },
+    {
+        id: "card",
+        title: "Card",
+        level: 1
+    },
+    {
+        id: "paragraph",
+        title: "Paragraph",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+
+export const exampleCode = 
+`
+import { Skeleton } from "@devrosui/react"
+
+export default function MyComponent() {
+
+    return (
+        <div>
+            <Skeleton />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+        </div>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Skeleton
+    Placeholder for page elements with an animated gradient background.
+
+   <OutputContainer components={[<Card />]} height="20rem" />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Skeleton } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="avatar">Avatar</h4>
+    <OutputContainer
+        components={[<Avatar />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
+                <Skeleton height="45px" width="45px" borderRadius="100%" />
+                <div>
+                    <Skeleton height="20px" />
+                    <Skeleton height="20px" width="80px" />
+                </div>
+            </div>
+        `}
+    />
+
+    <h4 id="card">Card</h4>
+    <OutputContainer
+        components={[<Card />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <div className="skeleton-card">
+                <Skeleton />
+                <Skeleton height="20px" />
+                <Skeleton height="20px" />
+                <Skeleton height="20px" />
+            </div>
+        `}
+    />
+
+    <h4 id="paragraph">Paragraph</h4>
+    <OutputContainer
+        components={[<Paragraph />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <div>
+                <Skeleton height="20px" />
+                <Skeleton height="20px" />
+                <Skeleton height="20px" width="80px" />
+            </div>
+        `}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```height``` | ```string``` | ```"100px"``` | Height of the skeleton |
+        | ```width``` | ```string``` | ```"200px"``` | Width of the skeleton |
+        | ```borderRadius``` | ```string``` | ```"16px"``` | Border radius of the skeleton |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/dropdown" direction="left">Dropdown</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/inputotp" direction="right">InputOTP</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

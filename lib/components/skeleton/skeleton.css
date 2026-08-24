@@ -1,0 +1,15 @@
+.skeleton {
+  animation: skeleton-loading 0.75s ease-out infinite alternate;
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 0.25rem;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--skeleton-initial);
+  }
+  100% {
+    background-color: var(--skeleton-animate);
+  }
+}
