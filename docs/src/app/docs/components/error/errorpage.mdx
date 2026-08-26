@@ -38,18 +38,13 @@ export const headers = [
     }
 ]
 
-
-export const exampleMessage = "An unexpected error occured. Please try again later."
 export const exampleCode = 
 `
 import { Error } from "@devrosui/react"
 
 export default function MyComponent() {
-
-    const message = "An unexpected error occured. Please try again later."
-
     return (
-        <Error message={message} />
+        <Error>An unexpected error occured. Please try again later.</Error>
     )
 }
 `
@@ -59,7 +54,12 @@ export default function MyComponent() {
     ## Error
     Displays an error message.
 
-   <OutputContainer components={[<Error message={exampleMessage} />]} height="20rem" />
+   <OutputContainer 
+        components={[
+            <Error>An unexpected error occured. Please try again later.</Error>
+        ]} 
+        height="20rem" 
+    />
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -75,25 +75,27 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="warning">Warning</h4>
-    <OutputContainer
-        components={[<Error message={exampleMessage} />]}
-        height="20rem"
+    <OutputContainer 
+        components={[
+            <Error>An unexpected error occured. Please try again later.</Error>
+        ]} 
+        height="20rem" 
     />
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'<Error message={message} type="warning" />'}
+        code={'<Error type="warning">An unexpected error occured. Please try again later.</Error>'}
     />
 
     <h4 id="danger">Danger</h4>
     <OutputContainer
-        components={[<Error message={exampleMessage} type="danger" />]}
+        components={[<Error type="danger">An unexpected error occured. Please try again later.</Error>]}
         height="20rem"
     />
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'<Error message={message} type="danger" />'}
+        code={'<Error type="danger">An unexpected error occured. Please try again later.</Error>'}
     />
 
     <h3 id="props">Props</h3>
@@ -101,9 +103,9 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```message``` | ```string``` | - | Message to be displayed |
         | ```type``` | ```"warning" \| "danger"``` | ```"warning"``` | Background color |
         | ```width``` | ```string``` | ```"100%"``` | Width of the error container |
+        | ```children``` | ```string``` | - | Message to be displayed |
     </div>
 
     <div className="docs-page-explore">

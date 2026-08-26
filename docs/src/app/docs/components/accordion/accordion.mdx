@@ -4,6 +4,7 @@ import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import { Accordion } from "@devrosui/react"
+import AccordionWrapper from "./AccordionWrapper"
 import "./page.css"
 
 export const headers = [
@@ -41,39 +42,26 @@ export const headers = [
         id: "props",
         title: "Props",
         level: 0
-    }
-]
-
-export const accordionItems = [
+    },
     {
-        header: "Item 1",
-        text:
-        `
-            Lorem ipsum dolor sit amet. 
-            Eum necessitatibus modi ex culpa quis sit provident provident
-            non minima internos. Ut quia dolores eos numquam obcaecati aut
-            voluptatem voluptatibus qui vero corporis non autem impedit.
-        `
+        id: "props-accordion",
+        title: "Accordion",
+        level: 1
     },
-     {
-        header: "Item 2",
-        text:
-        `
-            Lorem ipsum dolor sit amet. 
-            Eum necessitatibus modi ex culpa quis sit provident provident
-            non minima internos. Ut quia dolores eos numquam obcaecati aut
-            voluptatem voluptatibus qui vero corporis non autem impedit.
-        `
+    {
+        id: "props-item",
+        title: "Accordion.Item",
+        level: 1
     },
-     {
-        header: "Item 3",
-        text:
-        `
-            Lorem ipsum dolor sit amet. 
-            Eum necessitatibus modi ex culpa quis sit provident provident
-            non minima internos. Ut quia dolores eos numquam obcaecati aut
-            voluptatem voluptatibus qui vero corporis non autem impedit.
-        `
+    {
+        id: "props-header",
+        title: "Accordion.Header",
+        level: 1
+    },
+    {
+        id: "props-content",
+        title: "Accordion.Content",
+        level: 1
     }
 ]
 
@@ -84,22 +72,36 @@ export const usageDefaultCode =
 import { Accordion } from "@devrosui/react"
 
 export default function MyComponent() {
-
-    // Populate the accordion by passing an array containing objects
-    // with the keys 'header' and 'text'.
-    const accordionItems = [
-        {
-            header: "Lorem ipsum"
-            text: "Eum necessitatibus modi ex culpa quis sit provident."
-        },
-        {
-            header: "Lorem ipsum"
-            text: "Eum necessitatibus modi ex culpa quis sit provident."
-        }
-    ]
-
     return (
-        <Accordion items={accordionItems} />
+        <Accordion width="35rem">
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+        </Accordion>
     )
 }
 
@@ -107,110 +109,171 @@ export default function MyComponent() {
 
 export const chevronEmptyCode = 
 `
-import { Accordion } from "@devrosui/react"
-
-export default function myComponent() {
-
-    return (
-        <Accordion items={accordionItems} background="empty" />
-    )
-}
-
+    <Accordion width="35rem" background="empty">
+        <Accordion.Item>
+            <Accordion.Header>Item 1</Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+                Eum necessitatibus modi ex culpa quis sit provident provident
+                non minima internos. Ut quia dolores eos numquam obcaecati aut
+                voluptatem voluptatibus qui vero corporis non autem impedit.
+            </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+    </Accordion>
 `
 
 export const plusCode = 
 `
-import { Accordion } from "@devrosui/react"
-
-export default function myComponent() {
-
-    return (
-        <Accordion items={accordionItems} toggleIcon="plus" />
-    )
-}
+    <Accordion width="35rem" toggleIcon="plus">
+        <Accordion.Item>
+            <Accordion.Header>Item 1</Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+                Eum necessitatibus modi ex culpa quis sit provident provident
+                non minima internos. Ut quia dolores eos numquam obcaecati aut
+                voluptatem voluptatibus qui vero corporis non autem impedit.
+            </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+    </Accordion>
 
 `
 
 export const plusEmptyCode = 
 `
-import { Accordion } from "@devrosui/react"
-
-export default function myComponent() {
-
-    return (
-        <Accordion
-            items={accordionItems}
-            toggleIcon="plus"
-            background="empty"
-        />
-    )
-}
-
+    <Accordion width="35rem" toggleIcon="plus" background="empty">
+        <Accordion.Item>
+            <Accordion.Header>Item 1</Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+                Eum necessitatibus modi ex culpa quis sit provident provident
+                non minima internos. Ut quia dolores eos numquam obcaecati aut
+                voluptatem voluptatibus qui vero corporis non autem impedit.
+            </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+    </Accordion>
 `
-
-export function getAccordion(variant) {
-    const isFilled = !variant.toLowerCase().includes("empty")
-    const hasChevron = variant.toLowerCase().includes("chevron")
-
-    return (
-        <div className="accordion-container">
-            <Accordion
-                items={accordionItems}
-                background={isFilled ? "filled" : "empty"}
-                toggleIcon={hasChevron ? "chevron" : "plus"}
-            />
-        </div>
-    )
-}
 
 <div className="docs-page-content">
     <BreadCrumbs />
     ## Accordion
     Collapsable element that initially shows a header and shows the full text on collapse.
 
-   <OutputContainer components={[getAccordion("chevron")]} />
+   <OutputContainer components={[<AccordionWrapper />]} />
    
    <h3 id="import">Import</h3>
    <CodeBlock 
-    langHighlight="jsx"
-    langDisplay="JSX"
-    code={'import { Accordion } from "@devrosui/react"'}
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Accordion } from "@devrosui/react"'}
     />
    
    <h3 id="usage">Usage</h3>
-
-   As shown below, you can populate the Accordion component by passing an array containing
-   objects with the keys 'header' and 'text'. The header text will be visible at all time and
-   the text will become visible on toggle.
 
    <CodeBlock langHighlight="jsx" langDisplay="JSX" code={usageDefaultCode} />
 
     <h3 id="variants">Variants</h3>
 
-    You can also choose between different styles by passing props as shown in the
-    code examples below.
-
     <h4 id="chevron-empty">Chevron Empty</h4>
-        <OutputContainer components={[getAccordion("chevron-empty")]} />
+        <OutputContainer components={[<AccordionWrapper background="empty" />]} />
         <CodeBlock langHighlight="jsx" langDisplay="JSX" code={chevronEmptyCode} />
 
     <h4 id="plus">Plus</h4>
-        <OutputContainer components={[getAccordion("plus")]} />
+        <OutputContainer components={[<AccordionWrapper toggleIcon="plus" />]} />
         <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusCode} />
 
     <h4 id="plus-empty">Plus Empty</h4>
-        <OutputContainer components={[getAccordion("plus-empty")]} />
+        <OutputContainer components={[<AccordionWrapper toggleIcon="plus" background="empty" />]} />
         <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusEmptyCode} />
     
     <h3 id="props">Props</h3>
 
+    <h4 id="props-accordion">Accordion</h4>
+
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```items``` | ```[{header: string, text: string}]``` | - | Items that the accordion contains |
         | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
         | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
         | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
+        | ```children``` | ```ReactNode``` | - | Expecting one or more ```<Accordion.Item>``` components |
+    </div>
+
+    <h4 id="props-item">Item</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```ReactNode``` | - | Expecting ```<Accordion.Header>``` |
+    </div>
+
+    <h4 id="props-header">Header</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Header text of an item |
+    </div>
+
+    <h4 id="props-content">Content</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```children``` | ```string``` | - | Paragraph text of an item |
     </div>
 
     <div className="docs-page-explore">
