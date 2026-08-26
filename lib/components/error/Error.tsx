@@ -2,19 +2,19 @@ import { AiOutlineExclamationCircle } from "react-icons/ai"
 import "./error.css"
 
 type ErrorProps = {
-    message: string,
     type?: "warning" | "danger",
-    width?: string
+    width?: string,
+    children: string
 }
 
-export default function Error({type="warning", message="Error", width="100%"}: ErrorProps) {
+export default function Error({type="warning", width="100%", children}: ErrorProps) {
     return (
         <div 
             className={"error-container " + type}
             style={{width: width}}
         >
             <AiOutlineExclamationCircle className="error-icon" />
-            <h6>{message}</h6>
+            <h6>{children}</h6>
         </div>
     )
 }

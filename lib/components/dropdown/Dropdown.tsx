@@ -103,7 +103,6 @@ export function Item({onClick, isDangerous=false, children}: ItemProps) {
 
     const { open, toggle } = dropDownContext
     const key = useId()
-    console.log(key)
 
     function handleClick() {
         toggle()
