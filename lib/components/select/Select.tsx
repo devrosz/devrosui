@@ -22,7 +22,7 @@ type SelectProps = {
     name: string,
     id: string,
     values: (string | number)[],
-    onSelect: (name: string, value: string | (string | number)[]) => void,
+    onSelect: (arg0: string, arg1: string | (string | number)[]) => void,
     options: (string | number)[],
     label?: string,
     multiple?: boolean,
@@ -94,7 +94,7 @@ export default function Select({
                         return (
                             optionDisplay
                         )
-                        }) 
+                        })
                         : typeof placeholder === "string" ? formatText(placeholder) : placeholder
                     }
                     <BiChevronDown 

@@ -16,7 +16,7 @@ type CookieConsentProps = {
     onNecessary?: () => Promise<void> | void,
     onAcceptAll?: () => Promise<void> | void,
     allowChoice?: boolean,
-    position: "fixed" | "relative",
+    position?: "fixed" | "relative",
     children: React.ReactNode
 }
 

@@ -99,7 +99,7 @@ function Form({
 
     // Autosubmit if all slots have been filled in and if autosubmit is enabled.
     React.useEffect(() => {
-        if (value.length === inputLength && onSubmit && autoSubmit) {
+        if (value.length === inputLength && autoSubmit) {
             handleSubmit(value)
         }
     }, [value, inputLength])

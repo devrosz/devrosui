@@ -1,4 +1,5 @@
 .input-otp-container {
+    text-align: left;
     font-family: var(--font);
     color: var(--text-primary);
 }

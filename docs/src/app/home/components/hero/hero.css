@@ -13,7 +13,7 @@
     font-weight: normal;
 }
 
-.hero p {
+.hero-description {
     max-width: 60%;
     margin: 0 auto;
 }
@@ -24,4 +24,21 @@
     align-items: center;
     gap: 1rem;
     margin: 2rem auto;
+}
+
+.components-demo-container {
+    margin: 5rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.components-demo-column > * {
+    margin-bottom: 2rem;
+}
+
+.demo-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
