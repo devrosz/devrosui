@@ -1,7 +1,7 @@
 
 "use client"
 
-import { Select } from "@devrosui/react"
+import { Select, } from "@devrosui/react"
 import React from "react"
 
 export default function WrapperSelect() {
