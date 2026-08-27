@@ -1,5 +1,7 @@
 "use client"
 
+import HeroDemo from "./HeroDemo"
+import HeroDemoMobile from "./HeroDemoMobile"
 import LinkButton from "../../../../components/interfaces/linkbutton/LinkButton"
 import "./hero.css"
 
@@ -18,6 +20,8 @@ export default function Hero() {
                     View components
                 </LinkButton>
             </div>
+            <HeroDemo />
+            <HeroDemoMobile />
         </section>
             
     )

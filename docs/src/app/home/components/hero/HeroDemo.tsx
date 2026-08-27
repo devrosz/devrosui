@@ -10,7 +10,7 @@ import { Slider,
         Button } 
 from "@devrosui/react"
 
-export default function HeroDown() {
+export default function HeroDemo() {
     return (
         <section className="hero-demo">
             <div className="hero-demo-col">
@@ -92,10 +92,12 @@ export default function HeroDown() {
 
                 <Error>An unexpected error has occured</Error>
 
-                <Button variant="primary">Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="tertiary">Tertiary</Button>
-                <Button variant="danger">Danger</Button>
+                <div className="hero-demo-buttons">
+                    <Button variant="primary">Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="tertiary">Tertiary</Button>
+                    <Button variant="danger">Danger</Button>
+                </div>
 
             </div>
             <div className="hero-demo-col">

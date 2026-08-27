@@ -12,12 +12,9 @@ from "@devrosui/react"
 
 export default function HeroDemoMobile() {
     return (
-        <section className="hero-demo-mobile">
-            <div className="hero-demo-select">
-                <WrapperSelect />     
-            </div>
-
-            <div className="hero-demo-slider">
+        <section className="hero-demo mobile">
+            <div className="hero-demo-col">
+                <WrapperSelect />  
                 <Slider 
                     id="slider"
                     name="slider"
@@ -27,9 +24,7 @@ export default function HeroDemoMobile() {
                     label="Price"
                     unit="EUR"
                 />
-            </div>
 
-            <div className="hero-demo-tabs">
                 <Tabs type="local" initialTabId="tab-1">
                     <Tabs.TabsList>
                         <Tabs.Tab id="tab-1">
@@ -40,16 +35,12 @@ export default function HeroDemoMobile() {
                         </Tabs.Tab>
                     </Tabs.TabsList>
                 </Tabs>
-            </div>
 
-            <div className="hero-demo-cookie">
-                <CookieConsent position="relative" onNecessary={() => {}} onAcceptAll={() => {}}>
+                 <CookieConsent position="relative" onNecessary={() => {}} onAcceptAll={() => {}}>
                     Lorem ipsum dolor sit amet. Aut laborum nisi quo sequi laboriosam et odit omnis.
                     Est atque eius et sint magnam 33 tempore magnam.
                 </CookieConsent>
-            </div> 
 
-            <div className="hero-demo-otp">
                 <InputOTP>
                     <InputOTP.Label>Verification</InputOTP.Label>
                     <InputOTP.Description>
@@ -66,9 +57,11 @@ export default function HeroDemoMobile() {
                         <InputOTP.Slot index={5} />
                     </InputOTP.Form>
                 </InputOTP>
-            </div>
+                <Error>An unexpected error has occured</Error>
 
-            <div className="hero-demo-accordion">
+            </div>
+            <div className="hero-demo-col">
+
                 <Accordion>
                     <Accordion.Item>
                         <Accordion.Header>Question one</Accordion.Header>
@@ -98,29 +91,21 @@ export default function HeroDemoMobile() {
                         </Accordion.Content>
                     </Accordion.Item>
                 </Accordion>
-            </div>
 
-            <div className="hero-demo-error">
-                <Error>An unexpected error has occured</Error>
-            </div>
-
-            <div className="hero-demo-buttons">
-                <Button variant="primary">Primary</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="tertiary">Tertiary</Button>
-                <Button variant="danger">Danger</Button>
-            </div>
-
-            <div className="hero-demo-popup">
                 <MockupPopup />
-            </div>
 
-            <div className="hero-demo-skeleton">
                 <div className="skeleton-card">
                     <Skeleton width="100%" />
                     <Skeleton height="20px" width="100%" />
                     <Skeleton height="20px" width="100%" />
                     <Skeleton height="20px" width="100%" />
+                </div>
+
+                <div className="hero-demo-buttons">
+                    <Button variant="primary">Primary</Button>
+                    <Button variant="secondary">Secondary</Button>
+                    <Button variant="tertiary">Tertiary</Button>
+                    <Button variant="danger">Danger</Button>
                 </div>
             </div>
         </section>
