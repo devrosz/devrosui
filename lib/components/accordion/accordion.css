@@ -58,3 +58,10 @@
 .accordion-toggle-icon {
     color: var(--text-primary);
 }
+
+html.light .accordion-item-container.filled {
+    background-color: var(--background-primary);
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+}

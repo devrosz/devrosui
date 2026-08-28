@@ -7,7 +7,7 @@ export default function Introduction() {
     const codeInstallation = "npm install @devrosui/react"
     const codeUsage = 
 `
-import { Switch } from “@devrosui”
+import { Switch } from “@devrosui/react”
 
 <Switch>
     <Switch.Track>

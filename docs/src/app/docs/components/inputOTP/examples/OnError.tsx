@@ -43,5 +43,4 @@ export default function OnError() {
             </InputOTP.Form>
         </InputOTP>
     )
-
 }

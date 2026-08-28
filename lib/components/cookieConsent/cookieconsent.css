@@ -32,3 +32,10 @@
 .cookie-consent-icon {
     font-size: 2rem;
 }
+
+html.light .cookie-consent-content {
+    background-color: var(--background-primary);
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+}
