@@ -34,7 +34,7 @@ html.light .feature-icon {
     text-transform: capitalize;
 }
 
-.feature-container h6 {
+.feature-container h5 {
     font-weight: normal;
     max-width: 65%;
     margin: 0 auto;

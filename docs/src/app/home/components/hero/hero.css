@@ -27,7 +27,7 @@
 }
 
 .hero-demo {
-    margin: 5rem auto;
+    margin: 5rem auto 0 auto;
     display: grid;
     gap: 3rem;
     grid-template-columns: repeat(3, 1fr);

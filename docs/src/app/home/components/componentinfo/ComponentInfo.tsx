@@ -1,21 +1,72 @@
+"use client"
+
+// components
 import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
-import { Accordion } from "@devrosui/react"
+import { Accordion, CookieConsent, Skeleton } from "@devrosui/react"
+import MockupPopup from "@/components/interfaces/mockup-popup/MockupPopup"
+
 import "./componentinfo.css"
 
 export default function ComponentInfo() {
 
-    const codeDemo1: string = '<Accordion background="filled" toggleIcon="chevron" />'
-    const codeDemo2: string = '<Accordion background="empty" toggleIcon="plus" />'
+    const codeDemo1: string = 
+    `
+    <Accordion background="filled" toggleIcon="chevron">
+        <Accordion.Item>
+            <Accordion.Header>Item 1</Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+            </Accordion.Content>
+        </Accordion.Item>
+    </Accordion>
+    `
+    const codeDemo2: string =
+        `
+    <Accordion background="empty" toggleIcon="plus">
+        <Accordion.Item>
+            <Accordion.Header>Item 1</Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+            </Accordion.Content>
+        </Accordion.Item>
+    </Accordion>
+    `
 
-    const accordionItem = [{
-        header: "Question one",
-        text: "Lorem ipsum dolor sit amet. Aut laborum nisi quo sequi laboriosam et odit omnis."
-    }]
+    function AccordionWrapper(background: "filled" | "empty", toggleIcon: "chevron" | "plus") {
+        return (     
+            <Accordion background={background} toggleIcon={toggleIcon}>
+                <Accordion.Item>
+                    <Accordion.Header>Item 1</Accordion.Header>
+                    <Accordion.Content>
+                        Lorem ipsum dolor sit amet. 
+                        Eum necessitatibus modi ex culpa quis sit provident provident
+                        non minima internos.
+                    </Accordion.Content>
+                </Accordion.Item>
+            </Accordion>
 
-    const placeholder = () => (
-        <p>TBA</p>
-    )
+        )
+    }
+
+    function CookieConsentWrapper() {
+        return (
+             <CookieConsent position="relative" onNecessary={() => {}} onAcceptAll={() => {}}>
+                Lorem ipsum dolor sit amet. Aut laborum nisi quo sequi laboriosam et odit omnis.
+            </CookieConsent>
+        )
+    }
+
+    function SkeletonWrapper() {
+        return (
+           <div className="skeleton-card">
+                <Skeleton width="17rem" />
+                <Skeleton height="20px" width="100%" />
+                <Skeleton height="20px" width="100%" />
+                <Skeleton height="20px" width="100%" />
+            </div>
+        )
+    }
 
     return (
         <section className="component-info">
@@ -31,14 +82,14 @@ export default function ComponentInfo() {
                     <div>
                         <CodeBlock langHighlight="JSX" code={codeDemo1} />
                         <OutputContainer
-                            components={[<Accordion items={accordionItem} />]}
+                            components={[AccordionWrapper("filled", "chevron")]}
                             height="10rem"
                         />
                     </div>
                     <div>
                         <CodeBlock langHighlight="JSX" code={codeDemo2} />
                         <OutputContainer
-                            components={[<Accordion items={accordionItem} background="empty" toggleIcon="plus" />]}
+                            components={[AccordionWrapper("empty", "plus")]}
                             height="10rem" 
                         />
                     </div>
@@ -54,9 +105,15 @@ export default function ComponentInfo() {
                 </div> 
                 <div className="component-theme-info-content">
                     <OutputContainer 
-                        components={[placeholder(), placeholder(), placeholder()]}
+                        components={[
+                            <div className="component-theme-info-components">
+                                {CookieConsentWrapper()}
+                                {SkeletonWrapper()}
+                                <MockupPopup width="18rem" />
+                            </div>
+                        ]}
                         addThemeToggle={true} 
-                        height="20rem"
+                        height="30rem"
                     />
                 </div>
             </div>

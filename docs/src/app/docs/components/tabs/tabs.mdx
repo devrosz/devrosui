@@ -5,6 +5,7 @@ import OutputContainer from "@/components/interfaces/outputcontainer/OutputConta
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import Link from "next/link"
 import { Tabs } from "@devrosui/react"
+import WrapperTabs from "./WrapperTabs"
 import "./page.css"
 
 export const headers = [
@@ -114,29 +115,7 @@ export default function MyComponent() {
 
    <OutputContainer 
     components={[
-            <Tabs type="local" initialTabId="tab-1">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2">
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab>
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+            <WrapperTabs />
         ]}
     height="20rem" 
 />
@@ -165,29 +144,7 @@ export default function MyComponent() {
 
     <OutputContainer 
         components={[
-            <Tabs type="local" initialTabId="tab-1">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2">
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab>
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+           <WrapperTabs />
         ]}
         height="20rem"
     />
@@ -230,29 +187,7 @@ export default function MyComponent() {
 
     <OutputContainer 
         components={[
-           <Tabs type="local" initialTabId="tab-1">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2">
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab> 
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+          <WrapperTabs />
         ]}
         height="20rem"
     />
@@ -261,7 +196,7 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <Tabs type="local" initialTabId="tab-1">
+            <Tabs type="router" initialTabId="tab-1">
                 <Tabs.TabsList>
                     <Tabs.Tab id="tab-1">
                         <Link href="./overview">Overview</Link>
@@ -282,29 +217,7 @@ export default function MyComponent() {
     <h4 id="secondary">Secondary</h4>
        <OutputContainer 
         components={[
-            <Tabs type="local" initialTabId="tab-1" styling="secondary">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2">
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab>
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+           <WrapperTabs styling="secondary" />
         ]}
         height="20rem"
     />
@@ -342,29 +255,7 @@ export default function MyComponent() {
     <h4 id="tertiary">Tertiary</h4>
         <OutputContainer 
         components={[
-            <Tabs type="local" initialTabId="tab-1" styling="tertiary">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2">
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab>
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+           <WrapperTabs styling="tertiary" />
         ]}
         height="20rem"
     />
@@ -402,29 +293,7 @@ export default function MyComponent() {
     <h4 id="disabled">Disabled</h4>
        <OutputContainer 
         components={[
-            <Tabs type="local" initialTabId="tab-1">
-                <Tabs.TabsList>
-                    <Tabs.Tab id="tab-1">
-                        <button>Overview</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-2" disabled={true}>
-                        <button>Analytics</button>
-                    </Tabs.Tab>
-                    <Tabs.Tab id="tab-3">
-                        <button>Settings</button>
-                    </Tabs.Tab>
-                </Tabs.TabsList>
-
-                <Tabs.TabRender id="tab-1">
-                    <h5 className="tabs-children">Overview content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-2">
-                    <h5 className="tabs-children">Analytics content</h5>
-                </Tabs.TabRender>
-                 <Tabs.TabRender id="tab-3">
-                    <h5 className="tabs-children">Settings content</h5>
-                </Tabs.TabRender>
-            </Tabs>
+           <WrapperTabs showDisabled={true} />
         ]}
         height="20rem"
     />

@@ -8,8 +8,12 @@ export default function WrapperSelect() {
 
     const [selection, setSelection] = React.useState<string[]>([])
 
-    function handleChange(_: string, value: string) {
-        setSelection([value])
+    function handleChange(_: string, value: string | (string | number)[]) {
+        if (typeof value === "string" || typeof value === "number") {
+            setSelection([value])
+        } else if (value instanceof Array) {
+            setSelection(value)
+        }
     }
 
     return (

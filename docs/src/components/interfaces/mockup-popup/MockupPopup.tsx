@@ -7,7 +7,7 @@ import "./mockup-popup.css"
 
 // Popup component that is rendered relatively for demo purpose only inside the hero
 // section.
-export default function MockupPopup() {
+export default function MockupPopup({width="100%"}) {
      const [open, setOpen] = React.useState<boolean>(true)
     
     function toggle() {
@@ -22,6 +22,7 @@ export default function MockupPopup() {
                         initial={{opacity: 0, y: 25}}
                         animate={{opacity: 1, y: 0}}
                         exit={{opacity: 0, y: 25}}
+                        style={{width: width}}
 
                     >
                         <div className="popup-example-content">

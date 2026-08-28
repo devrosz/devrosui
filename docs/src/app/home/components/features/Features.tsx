@@ -41,7 +41,7 @@ export default function Features() {
                         <div className="feature-icon">
                             {icon}
                         </div>
-                        <h6><span>{feature}</span>. {description}</h6>
+                        <h5><span>{feature}</span>. {description}</h5>
                     </div>
                 )
             })}

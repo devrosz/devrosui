@@ -4,7 +4,6 @@
 }
 
 .accordion-item-container {
-    border: 1px solid var(--button-secondary-border);
     text-align: left;
     color: var(--text-primary);
     padding: 1rem;
@@ -20,6 +19,7 @@
 }
 
 .accordion-item-container.filled {
+    border: 1px solid var(--button-secondary-border);
     background-color: var(--background-tertiary);
     border-radius: 1rem;
 }
