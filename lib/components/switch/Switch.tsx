@@ -14,7 +14,7 @@ type SwitchProps = {
     onActive?: () => Promise<void> | void,
     onDeactive?: () => Promise<void> | void,
     disabled?: boolean
-    children: JSX.Element
+    children: JSX.Element | JSX.Element[]
 }
 
 // active: holds the state of the toggle.

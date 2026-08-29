@@ -4,15 +4,26 @@ import "./introduction.css"
 
 export default function Introduction() {
 
-    const codeInstallation = "npm install @devrosui react-icons motion"
+    const codeInstallation = "npm install @devrosui/react"
     const codeUsage = 
-    `import { Spinner } from “@devrosui”
+`
+import { Switch } from “@devrosui/react”
 
-<button type="submit" className="primary-button">
-    {isSubmitted && !submitSucces ? <Spinner /> : null}
-    {submitSucces ? <FaCheck /> : null}
-    {!isSubmitted && !submitSucces ? "Send" : null}
-</button>`
+<Switch>
+    <Switch.Track>
+        <Switch.Thumb />
+    </Switch.Track>
+    <Switch.Meta>
+        <Switch.Label>
+            Notifications
+        </Switch.Label>
+        <Switch.Description>
+            Receive emails about the latest updates.
+        </Switch.Description>
+    </Switch.Meta>
+</Switch>
+
+`
 
     return (
         <section className="introduction">

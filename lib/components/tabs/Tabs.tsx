@@ -52,7 +52,7 @@ type TabsContext = {
 const TabsContext = createContext<null | TabsContext>(null)
 
 // Parent component which sets the user-given props and passes it to the other Tabs subcomponents.
-export function Tabs({type="local", initialTabId, styling="primary", children}: TabsProps) {
+function Tabs({type="local", initialTabId, styling="primary", children}: TabsProps) {
     const [activeTab, setActiveTab] = React.useState<string>(initialTabId)
     const layoutId = useId()
 
@@ -66,7 +66,7 @@ export function Tabs({type="local", initialTabId, styling="primary", children}: 
 }
 
 // Wrapper for the tabslist.
-export function TabsList({children}: {children: ReactNode}) {
+function TabsList({children}: {children: ReactNode}) {
     return (
         <div className="tabs-header">
             {children}
@@ -75,7 +75,7 @@ export function TabsList({children}: {children: ReactNode}) {
 }
 
 // Individual tab inside the TabsList. Can update the activeTab.
-export function Tab({id, disabled=false, children}: TabProps) {
+function Tab({id, disabled=false, children}: TabProps) {
     const tabsContext = useContext(TabsContext)
 
     if (!tabsContext) {
@@ -115,7 +115,7 @@ export function Tab({id, disabled=false, children}: TabProps) {
 }
 
 // Component which renders the JSX of the respective tab if this tab is active.
-export function TabRender({id, children}: TabRenderProps) {
+function TabRender({id, children}: TabRenderProps) {
     const tabsContext = useContext(TabsContext)
 
     if (!tabsContext) {
@@ -125,3 +125,10 @@ export function TabRender({id, children}: TabRenderProps) {
     const { activeTab } = tabsContext
     return activeTab === id ? children : null
 }
+
+// Define subcomponents
+Tabs.Tab = Tab
+Tabs.TabsList = TabsList
+Tabs.TabRender = TabRender
+
+export default Tabs

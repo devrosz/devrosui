@@ -40,6 +40,7 @@ html.light {
   --skeleton-animate: hsl(0, 0%, 95%);
 
   --danger-background: rgb(255, 218, 218);
+  --danger-background-hover: rgb(246, 209, 209);
 }
 
 h1 {
@@ -72,7 +73,7 @@ h6 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (max-width: 1200px) {

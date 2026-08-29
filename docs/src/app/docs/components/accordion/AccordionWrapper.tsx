@@ -12,7 +12,7 @@ export default function AccordionWrapper({
     toggleIcon="chevron",
 }: AccordionWrapperProps) {
     return (
-            <Accordion width="35rem" background={background} toggleIcon={toggleIcon}>
+            <Accordion width="20rem" background={background} toggleIcon={toggleIcon}>
                 <Accordion.Item>
                     <Accordion.Header>Item 1</Accordion.Header>
                     <Accordion.Content>

@@ -48,8 +48,8 @@ export default function CodeBlock({
                     ? "vitesse-light" 
                     : "vitesse-black",
                     colorReplacements: {
-                        "ffffff": "efefef",
-                        "000": "090909"
+                        "#000": "#090909",
+                        "#ffffff": "#efefef"
                     }
                 })
 

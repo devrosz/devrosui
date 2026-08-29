@@ -1,5 +1,10 @@
+"use client"
+
 import { motion } from "motion/react"
 import { componentPages } from "@/app/docs/layout"
+import { useTheme } from "@/lib/ThemeProvider"
+import { IoLogoGithub } from "react-icons/io"
+import ThemeToggle from "@/components/interfaces/themetoggle/ThemeToggle"
 import Link from "next/link"
 import "./navbar.css"
 
@@ -33,6 +38,8 @@ function ToggleLink({path, toggleMenu, children}: ToggleLinkProps) {
 // Imports the component names from the documentation page layout.
 export default function MobileNav({open, toggle}: MobileNavProps) {
 
+    const { toggleTheme } = useTheme()
+
     return (
          <motion.ul
             className="toggle-menu"
@@ -41,6 +48,15 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
             transition={{duration: 0.5, ease: "easeInOut"}}
             style={{overflowX: "hidden", overflowY: "scroll"}}
         >
+            <li key="mobile-actions">
+                <h6>User actions</h6>
+                <div className="mobile-actions-container">
+                    <ThemeToggle toggleFunction={toggleTheme} />
+                    <Link href="https://github.com/devrosz/devrosui" className="github-link-btn">
+                        <IoLogoGithub style={{height: 25, width: 25}} />
+                    </Link>
+                </div>
+            </li>
             <li key="mobile-nav-pages">
                 <h6>Pages</h6>
             </li>

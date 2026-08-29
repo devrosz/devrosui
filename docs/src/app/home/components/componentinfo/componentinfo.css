@@ -28,6 +28,13 @@
     margin-top: 3rem;
 }
 
+.component-theme-info-components {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
 @media (max-width: 900px) {
     .component-style-info-content {
         display: block;

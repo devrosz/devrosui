@@ -63,11 +63,12 @@ html.light .datepicker input {
 /* Calendar styling */
 .calendar-icon {
     position: absolute;
-    top: 18px;
-    right: 10px;
+    top: 20px;
+    right: 12px;
     color: var(--text-primary);
     background-color: transparent;
-    border: none
+    border: none;
+    padding: 0;
 }
 
 .calendar-container {

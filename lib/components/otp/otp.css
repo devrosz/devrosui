@@ -1,4 +1,5 @@
 .input-otp-container {
+    text-align: left;
     font-family: var(--font);
     color: var(--text-primary);
 }
@@ -63,4 +64,11 @@
 .otp-error-container p {
     color: var(--danger-text);
     margin: 0;
+}
+
+html.light .input-otp-slot {
+    background-color: var(--background-primary);
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
 }

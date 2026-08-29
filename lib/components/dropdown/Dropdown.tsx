@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { JSX, useId } from "react"
+import { JSX, ReactNode, useId } from "react"
 import { createContext, useContext } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import "./dropdown.css"
@@ -12,7 +12,7 @@ import "./dropdown.css"
 type ItemProps = {
     onClick?: () => void,
     isDangerous?: boolean,
-    children: string | JSX.Element
+    children: ReactNode
 }
 
 // open: openstate of the option list.

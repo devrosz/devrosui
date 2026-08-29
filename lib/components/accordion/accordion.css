@@ -4,6 +4,7 @@
 }
 
 .accordion-item-container {
+    text-align: left;
     color: var(--text-primary);
     padding: 1rem;
     width: 100%;
@@ -18,6 +19,7 @@
 }
 
 .accordion-item-container.filled {
+    border: 1px solid var(--button-secondary-border);
     background-color: var(--background-tertiary);
     border-radius: 1rem;
 }
@@ -55,4 +57,11 @@
 
 .accordion-toggle-icon {
     color: var(--text-primary);
+}
+
+html.light .accordion-item-container.filled {
+    background-color: var(--background-primary);
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
 }

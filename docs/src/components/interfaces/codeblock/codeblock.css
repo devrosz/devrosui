@@ -11,7 +11,7 @@
 
 .codeblock-content {
     position: relative;
-    background-color: var(--background-primary);
+    background-color: var(--background-tertiary);
     border: 1px solid var(--button-secondary-border);
     border-radius: 1rem;
     margin: 1rem auto;

@@ -18,7 +18,7 @@
     justify-content: end;
     height: 22px;
     background-color: var(--button-secondary-hover);
-    top: 2px;
+    top: 1px;
     left: 0;
     border-radius: 3rem;
     max-width: 100%;
@@ -27,11 +27,11 @@
 }
 
 .slider-mockup-thumb {
-    width: 24px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 1rem;
     cursor: pointer;
-    margin: 3px;
+    margin: 1px;
     z-index: 2;
     background-color: var(--background-secondary);
     pointer-events: none;
@@ -72,11 +72,11 @@
     appearance: none;
     -webkit-appearance: none;
     background: transparent;
-    width: 24px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 1rem;
     cursor: pointer;
-    margin: 3px;
+    margin: 1px;
     z-index: 2;
 }
 
@@ -91,13 +91,17 @@
     appearance: none;
     -webkit-appearance: none;
     background: transparent;
-    width: 24px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
     border-radius: 1rem;
     cursor: pointer;
-    margin: 3px;
+    margin: 1px;
 }
 
 .slider-container input[type="range"]::-moz-range-progress {
     background: var(--button-secondary-hover);
+}
+
+html.light .slider-mockup-thumb {
+    background-color: var(--background-primary);
 }

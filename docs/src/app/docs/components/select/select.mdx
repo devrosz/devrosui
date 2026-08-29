@@ -64,7 +64,7 @@ import React from "react"
 
 export default function MyComponent() {
 
-    const [formDate, setFormData] = React.useState({
+    const [formData, setFormData] = React.useState({
         carBrand: "",
         ... // add more fields according to your form.
     })
@@ -82,7 +82,7 @@ export default function MyComponent() {
         <Select 
             id="car-brand" 
             name="carBrand"
-            values={formDate.carBrand}
+            values={formData.carBrand}
             onSelect={handleChange}
             options={[
                 "Volkswagen",
@@ -128,7 +128,23 @@ export default function MyComponent() {
     />
 
     Note that the field name in ```formData``` that holds the value of the ```Select``` component
-    needs to be the same as the name that is given to the ```Select``` component.
+    needs to be the same as the name that is given to the ```Select``` component like you are used to
+    when creating controlled inputs.
+
+    If the ```Select``` input is not part of a form and you only need the value, you can ignore the ```name```
+    parameter in ```handleChange``` as shown below:
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            const [selection, setSelection] = React.useState([])
+
+            function handleChange(_, value) {
+                setSelection([value])
+            }
+        `}
+    />
 
     <h3 id="return">Return value</h3>
 
@@ -162,6 +178,7 @@ export default function MyComponent() {
                     "BMW"
                 ]}
                 placeholder="Select one"
+            />
         `}
     />
 
@@ -194,6 +211,7 @@ export default function MyComponent() {
                 ]}
                 placeholder="Select one"
                 description="Select your favorite car brand"
+            />
         `}
     />
 
@@ -227,6 +245,7 @@ export default function MyComponent() {
                 placeholder="Select some"
                 label="Select"
                 multiple={true}
+            />
         `}
     />
 
@@ -259,6 +278,7 @@ export default function MyComponent() {
                 ]}
                 placeholder="Select one"
                 disabled={true}
+            />
         `}
     />
 

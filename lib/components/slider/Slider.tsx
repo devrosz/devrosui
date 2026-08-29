@@ -106,7 +106,7 @@ export default function Slider({
                 <div 
                     className="slider-progress"
                     // Math.max(..., 12) to compensate for thumb width.
-                    style={{width: `${Math.max(calcProgress(), 12)}%`}}>
+                    style={{width: `${Math.max(calcProgress(), 10)}%`}}>
                     {/* Mockup thumb */}
                     <div 
                         className={"slider-mockup-thumb " + (disabled ? "disabled" : "")}>

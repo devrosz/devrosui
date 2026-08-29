@@ -10,9 +10,8 @@ header {
 .nav-container {
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 12;
     width: 100%;
-    max-width: 1700px;
     padding: 12px 0;
     background: var(--background-primary);
 }
@@ -98,6 +97,18 @@ header {
     max-width: 90%;
     text-align: left;
     list-style: none;
+}
+
+.mobile-actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.github-link-btn {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    padding: 8px;
+    margin-bottom: 4px;
 }
 
 @media (max-width: 770px) {
