@@ -15,6 +15,11 @@
     width: 100%;
 }
 
+.docs-nav {
+    position: fixed;
+    overflow-y: auto;
+}
+
 .docs-nav ul {
     list-style: none;
 }

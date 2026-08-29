@@ -2,6 +2,10 @@
 
 import "./navbar.css"
 
+// Hooks
+import { usePathname } from "next/navigation"
+import { useTheme } from "@/lib/ThemeProvider"
+
 // Components
 import React from "react"
 import Link from "next/link"
@@ -15,16 +19,23 @@ import ThemeToggle from "../../interfaces/themetoggle/ThemeToggle"
 import { IoLogoGithub } from "react-icons/io"
 
 // Utils
-import { useTheme } from "@/lib/ThemeProvider"
+import { pages } from "@/lib/pages"
 
 export default function Navbar() {
-
+    
+    const currentPath = usePathname()
     const [open, setOpen] = React.useState<boolean>(false)
     const themeContext = useTheme()
 
     // Toggles open state of mobile navigation.
     function handleToggle() {
         setOpen(prevOpen => !prevOpen)
+    }
+
+    // Checks if a given path is active.
+    function checkIsActive(path: string): boolean {
+        const pathParsed = path.trim().toLowerCase()
+        return currentPath === pathParsed
     }
 
     return (
@@ -35,9 +46,15 @@ export default function Navbar() {
                         <Logo />
                         <nav className="nav-menu">
                             <ul>
-                                <Link className="navlink" href="/">Home</Link>
-                                <Link className="navlink" href="/docs/components/accordion">Components</Link>
-                                <Link className="navlink" href="/docs/getting-started/prerequisites">Documentation</Link>
+                                {pages.map(page => {
+                                    const { path, title } = page
+                                    const className = "navlink " + (checkIsActive(path) ? "active" : "")
+                                    return (
+                                        <li>
+                                            <Link className={className} href={path} key={title}>{title}</Link>
+                                        </li>
+                                    )
+                                })}
                             </ul>
                         </nav>
                     </div>
