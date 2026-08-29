@@ -1,4 +1,4 @@
-import { CgDarkMode } from "react-icons/cg"
+import { BsHighlights } from "react-icons/bs";
 import Tooltip from "../tooltip/Tooltip"
 import "./themetoggle.css"
 
@@ -12,7 +12,7 @@ export default function ThemeToggle({toggleFunction}: ThemeToggleProps) {
     return (
             <Tooltip tip="Theme" position="bottom">
                 <button className="themetoggle-button" onClick={toggleFunction}>
-                    <CgDarkMode className="themetoggle-icon" />
+                    <BsHighlights className="themetoggle-icon" />
                 </button>
             </Tooltip>
     )

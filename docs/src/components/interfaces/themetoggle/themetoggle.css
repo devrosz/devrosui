@@ -14,5 +14,16 @@
 }
 
 .themetoggle-icon {
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+
+.mobile-theme-toggle-overlay {
+    position: relative;
+}
+
+.mobile-theme-toggle-button {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    background-color: transparent;
 }

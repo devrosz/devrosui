@@ -42,7 +42,7 @@ export default function Navbar() {
                         </nav>
                     </div>
                     <div className="nav-btns">
-                        <LinkButton type="secondary" path="https://github.com/devrosz" target="_blank">
+                        <LinkButton type="secondary" path="https://github.com/devrosz/devrosui" target="_blank">
                             <IoLogoGithub style={{height: 25, width: 25}} />
                             Github
                         </LinkButton>

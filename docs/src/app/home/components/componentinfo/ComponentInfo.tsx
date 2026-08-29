@@ -113,7 +113,7 @@ export default function ComponentInfo() {
                             </div>
                         ]}
                         addThemeToggle={true} 
-                        height="30rem"
+                        height="auto"
                     />
                 </div>
             </div>
