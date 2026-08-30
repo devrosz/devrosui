@@ -282,10 +282,10 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | - | id of slider input |
-        | ```name``` | ```string``` | - | name of slider input |
-        | ```min``` | ```string``` | ```0``` | minimum value of the input |
-        | ```max``` | ```string``` | ```100``` | maximum value of the input |
+        | ```id*``` | ```string``` | - | id of slider input |
+        | ```name*``` | ```string``` | - | name of slider input |
+        | ```min*``` | ```string``` | ```0``` | minimum value of the input |
+        | ```max*``` | ```string``` | ```100``` | maximum value of the input |
         | ```value``` | ```string``` | ```min``` | current value of the input |
         | ```setValue``` | ```(string) => void``` | - | callback function that updates the current value in the parent |
         | ```label``` | ```string``` | - | Label above the range input |
@@ -296,8 +296,9 @@ export default function MyComponent() {
         | ```width``` | ```string```| ```15rem``` | sets the width of the input |
         | ```step``` | ```string```| ```1``` | step size of the slider |
         | ```showValue``` | ```boolean```| ```true``` | Toggles showing the value |
-
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">

@@ -287,19 +287,20 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | ```select``` | id of select input |
-        | ```name``` | ```string``` | ```select``` | name of select input |
-        | ```values``` | ```(string \| number)[]``` | ```[]``` | array of selected option(s) |
-        | ```onSelect``` | ```(name: string, value: string \| (string \| number)[]) => void``` | - | callback function that handles select change |
-        | ```options``` | ```(string \| number)[]``` | ```[]``` | array of options to choose from |
+        | ```id*``` | ```string``` | ```select``` | id of select input |
+        | ```name*``` | ```string``` | ```select``` | name of select input |
+        | ```values*``` | ```(string \| number)[]``` | ```[]``` | array of selected option(s) |
+        | ```onSelect*``` | ```(name: string, value: string \| (string \| number)[]) => void``` | - | callback function that handles select change |
+        | ```options*``` | ```(string \| number)[]``` | ```[]``` | array of options to choose from |
         | ```label``` | ```string``` | - | Label above the select input |
         | ```multiple``` | ```boolean``` | false | Enable selection of multiple options |
         | ```placeholder``` | ```string``` | - | Placeholder for inside select input |
         | ```disabled``` | ```boolean``` | ```false``` | disables/enables select input  |
         | ```width``` | ```string```| ```15rem``` | sets the width of the input |
         | ```description``` | ```string```| ```""``` | displays a description about the input |
-
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
