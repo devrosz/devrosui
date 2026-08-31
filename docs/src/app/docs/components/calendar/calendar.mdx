@@ -4,7 +4,6 @@ import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
 import { Calendar } from "@devrosui/react"
-import MockupCalendar from "./MockupCalendar"
 
 export const headers = [
     {
@@ -72,9 +71,9 @@ export default function MyComponent() {
 
     <OutputContainer 
         components={[
-            <MockupCalendar/>
+            <Calendar/>
         ]} 
-        height="20rem" 
+        height="22rem" 
     />
 
     <h3 id="import">Import</h3>
@@ -105,12 +104,12 @@ export default function MyComponent() {
     <h4 id="year-limits">Year limits</h4>
     <OutputContainer 
         components={[
-            <MockupCalendar
+            <Calendar
                 minYear={2026}
                 maxYear={2026}
             />
         ]} 
-        height="20rem" 
+        height="22rem" 
     />
      <CodeBlock
         langHighlight="jsx"
@@ -126,8 +125,9 @@ export default function MyComponent() {
     <h4 id="disabled-dates">Disabled days</h4>
     <OutputContainer 
             components={[
-                <MockupCalendar
-                    date={new Date("2026-07-04")}
+                <Calendar
+                    minYear={2026}
+                    maxYear={2026}
                     disabledDays={[
                         new Date("2026-07-03"),
                         new Date("2026-07-06"),
@@ -136,7 +136,7 @@ export default function MyComponent() {
                     ]}
                 />
             ]} 
-            height="20rem" 
+            height="22rem" 
         />
         <CodeBlock
             langHighlight="jsx"
@@ -172,7 +172,7 @@ export default function MyComponent() {
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/cookie-consent" direction="right">CookieConsent</ArrowLink>
+            <ArrowLink path="/docs/components/cookieConsent" direction="right">CookieConsent</ArrowLink>
         </div>
     </div>
 </div>

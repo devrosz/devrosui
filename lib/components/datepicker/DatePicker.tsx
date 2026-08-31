@@ -92,7 +92,7 @@ export default function DatePicker({
                 <button 
                     type="button"
                     onClick={toggleCalendar}
-                    className="calendar-icon"
+                    className="dp-calendar-icon"
                     disabled={disabled}
                 >
                     <LuCalendar />

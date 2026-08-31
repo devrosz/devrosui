@@ -249,26 +249,26 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
         <AnimatePresence>
             {open ? (
                 <motion.div 
-                    className="calendar-container"
+                    className="dp-calendar-container"
                     initial={{y: -10, opacity: 0}}
                     animate={{y: 0, opacity: 1}}
                     exit={{y: -10, opacity: 0}}
                     transition={{duration: 0.2}}
                 >
-                    <div className="calendar-header">
+                    <div className="dp-calendar-header">
                             <h6>{getMonthNameLocale(month) + " " + year}</h6>
-                        <div className="calendar-buttons">
+                        <div className="dp-calendar-buttons">
                             <button 
                                 onClick={decrementMonth} 
                                 disabled={minYear != null && year <= minYear && month == 0}
-                                className="calendar-set-month-button"
+                                className="dp-calendar-set-month-button"
                             >
                                 <FaChevronLeft />
                             </button>
                             <button 
                                 onClick={incrementMonth}
                                 disabled={maxYear != null && year >= maxYear && month == 11}
-                                className="calendar-set-month-button"
+                                className="dp-calendar-set-month-button"
                             >
                                 <FaChevronRight />
                             </button>
