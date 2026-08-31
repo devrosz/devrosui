@@ -22,7 +22,7 @@ type SelectProps = {
     name: string,
     id: string,
     values: (string | number)[],
-    onSelect: (arg0: string, arg1: string | (string | number)[]) => void,
+    onSelect: (arg0: string, arg1: (string | number)[]) => void,
     options: (string | number)[],
     label?: string,
     multiple?: boolean,

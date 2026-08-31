@@ -1,5 +1,9 @@
-import { ToggleMenuProps } from "@/app/types"
 import "./menu.css"
+
+type ToggleMenuProps = {
+    open: boolean,
+    handleToggle: () => void
+}
 
 export default function Menu({open, handleToggle}: ToggleMenuProps) {
 
