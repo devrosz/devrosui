@@ -225,10 +225,20 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
             const calculatedValue = (fourthWeek[6] + i + 1) % (daysCurrentMonth + 1)
             return calculatedValue <= 7 ? calculatedValue + 1 : calculatedValue
         })
+        
+        // Handle situation where the last day(s) of a month have not yet passed in the fifth week.
+        if (Math.max(...fifthWeek) !== daysCurrentMonth) {
+            const sixthWeek = [...Array(7).keys()].map(i => {
+                const calculatedValue = (fifthWeek[6] + i + 1) %(daysCurrentMonth + 1)
+                return calculatedValue <= 7 ? calculatedValue + 1 : calculatedValue
+            })
+            return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek, sixthWeek]
+        }
         return [firstWeek, secondWeek, thirdWeek, fourthWeek, fifthWeek]
     }
 
-    // Constructs a date string in the format yyyy-mm-dd.
+    // Constructs a date string in the format yyyy-mm-dd because only this format is
+    // accepted by the browser's date input field.
     function parseDate(year: number, month: number, day: number) {
         const dayOfMonthFormatted = day < 10 ? `0${day}` : day
         const monthFormatted = month < 10 ? `0${month}` : month
@@ -278,7 +288,7 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
                                             // Give the days from another month a different color.
                                             const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
                                             const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
-                                            const isFromNextMonth = i == 4 && day >= 1 && day <= 7
+                                            const isFromNextMonth = i >= 4 && day >= 1 && day <= 7
                                             // Account for situation where e.g. calendar is at july and july ends on a friday,
                                             // but user selects the saturday of this week (so 1st of august), then the correct
                                             // month should be passed to the handleSelect.

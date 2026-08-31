@@ -54,11 +54,19 @@ export default function DatePicker({
         setOpenCalendar(prev => !prev)
     }
 
+    // Validates the date format accepting only YYYY-MM-DD because this format
+    // is accepted by the browser's date input field.
+    // Returns true on success, false otherwise.
+    function validateDate(date: string) {
+        const dateRegex = /^\d{4,}-(0?[1-9]|1[0-2])-(0?[0-9]|[1-2][0-9]|3[0-1])$/
+        return dateRegex.test(date)
+    }
+
     // Receives the selected date from the calendar UI and updates
     // the value in the date input.
     // Side-effect: also closes the Calendar UI.
     function handleCalendarSelect(value: string): void {
-        if (!value || typeof value != "string") {
+        if (!value || typeof value != "string" || !validateDate(value)) {
             throw new Error("Datepicker: invalid date")
         }
         onChange(name, value)

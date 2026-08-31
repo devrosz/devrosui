@@ -77,7 +77,8 @@
     padding-left: 1rem;
 }
 
-.docs-page-content > li {
+.docs-page-content > ol li,
+.docs-page-content > ul li {
     color: var(--text-tertiary);
     margin: 1rem auto;
 }
