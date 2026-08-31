@@ -3,7 +3,6 @@
 import React from "react"
 import { FaChevronLeft } from "react-icons/fa6"
 import { FaChevronRight } from "react-icons/fa6"
-import { motion } from "motion/react"
 import "./calendar.css"
 
 // onSelect: callback function to pass selected date to the parent.
@@ -248,13 +247,7 @@ export default function DatePickerCalendar({onSelect, minYear, maxYear, disabled
     }
 
     return (
-        <motion.div 
-            className="calendar-container"
-            initial={{y: -10, opacity: 0}}
-            animate={{y: 0, opacity: 1}}
-            exit={{y: -10, opacity: 0}}
-            transition={{duration: 0.2}}
-        >
+        <div className="calendar-container">
             <div className="calendar-header">
                     <h6>{getMonthNameLocale(month) + " " + year}</h6>
                 <div className="calendar-buttons">
@@ -322,6 +315,6 @@ export default function DatePickerCalendar({onSelect, minYear, maxYear, disabled
                     })}
                 </tbody>
             </table>
-        </motion.div>
+        </div>
     )
 }

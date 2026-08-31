@@ -1,0 +1,180 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Calendar } from "@devrosui/react"
+import MockupCalendar from "./MockupCalendar"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "return",
+        title: "Return value",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "year-limits",
+        title: "Year limits",
+        level: 1
+    },
+    {
+        id: "disabled-dates",
+        title: "Disabled days",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+export const usageCode =
+`
+"use client"
+
+import { Calendar } from "@devrosui/react"
+import React from "react"
+
+export default function MyComponent() {
+
+    const [date, setDate] = React.useState(new Date())
+
+    function handleChange(value) {
+       setDate(value)
+    }
+
+    return (
+        <Calendar onSelect={handleChange} />
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Calendar
+    Component that lets the user select a date via an interactive agenda-view.
+
+    <OutputContainer 
+        components={[
+            <MockupCalendar/>
+        ]} 
+        height="20rem" 
+    />
+
+    <h3 id="import">Import</h3>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`import { Calendar } from "@devrosui/react"`}
+    />
+
+    <h3 id="usage">Usage</h3>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={usageCode}
+    />
+
+    Note that the ```onSelect``` callback is optional and should only be used when you need
+    the parent component to get the selected value from ```Calendar```.
+
+    <h3 id="return">Return value</h3>
+
+    The datestring in the format ```yyyy-mm-dd```.
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="year-limits">Year limits</h4>
+    <OutputContainer 
+        components={[
+            <MockupCalendar
+                minYear={2026}
+                maxYear={2026}
+            />
+        ]} 
+        height="20rem" 
+    />
+     <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+             <Calendar
+                minYear={2026}
+                maxYear={2026}
+            />
+        `}
+    />
+
+    <h4 id="disabled-dates">Disabled days</h4>
+    <OutputContainer 
+            components={[
+                <MockupCalendar
+                    date={new Date("2026-07-04")}
+                    disabledDays={[
+                        new Date("2026-07-03"),
+                        new Date("2026-07-06"),
+                        new Date("2026-07-15"),
+                        new Date("2026-07-06")
+                    ]}
+                />
+            ]} 
+            height="20rem" 
+        />
+        <CodeBlock
+            langHighlight="jsx"
+            langDisplay="JSX"
+            code={`
+                <Calendar
+                    disabledDays={[
+                        new Date("2026-07-03"),
+                        new Date("2026-07-06"),
+                        new Date("2026-07-15"),
+                        new Date("2026-07-06")
+                    ]}
+                />
+            `}
+        />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```onSelect*``` | ```(name: string, value: string) => void``` | - | callback function that handles input change |
+        | ```minYear``` | ```number``` | - | minimum years value |
+        | ```maxYear``` | ```number``` | - | maximum years value |
+        | ```disabledDays``` | ```Date[]``` | - | days that cannot be selected |
+
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/button" direction="left">Button</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/cookie-consent" direction="right">CookieConsent</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
