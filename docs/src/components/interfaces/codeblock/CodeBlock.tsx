@@ -45,11 +45,14 @@ export default function CodeBlock({
                 const html = await codeToHtml(code, {
                     lang: langHighlight.trim().toLowerCase(),
                     theme: themeContext.theme === "light" 
-                    ? "vitesse-light" 
-                    : "vitesse-black",
+                    ? "github-light" 
+                    : "dark-plus",
                     colorReplacements: {
-                        "#000": "#090909",
-                        "#ffffff": "#efefef"
+                        "#000": "090909",
+                        "#24292e": "#090909",
+                        "#1e1e1e": "090909",
+                        "#ffffff": "efefef",
+                        "#fff": "#efefef"
                     }
                 })
 
@@ -62,7 +65,8 @@ export default function CodeBlock({
                     e instanceof Error 
                     ? e.message
                     : "An unexpected error has occured"
-                setError(errorMsg)
+                console.error(errorMsg)
+                setError("Code unavailable")
             }
         }
        highlightCode()

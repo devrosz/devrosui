@@ -18,6 +18,11 @@ export const headers = [
         level: 0
     },
     {
+        id: "return",
+        title: "Return value",
+        level: 0
+    },
+    {
         id: "variants",
         title: "Variants",
         level: 0
@@ -108,6 +113,11 @@ export default function MyComponent() {
         langDisplay="JSX"
         code={usageCode}
     />
+
+    <h3 id="return">Return value</h3>
+
+    ```(name: string, value: string)``` where the name is the given name
+    of the ```Datepicker``` input and the datestring is in the format ```yyyy-mm-dd```.
 
     <h3 id="variants">Variants</h3>
 

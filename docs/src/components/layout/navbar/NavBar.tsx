@@ -50,7 +50,7 @@ export default function Navbar() {
                                     const { path, title } = page
                                     const className = "navlink " + (checkIsActive(path) ? "active" : "")
                                     return (
-                                        <li>
+                                        <li key={path}>
                                             <Link className={className} href={path} key={title}>{title}</Link>
                                         </li>
                                     )

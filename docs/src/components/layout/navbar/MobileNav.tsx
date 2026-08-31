@@ -35,25 +35,6 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
         return currentPath === pathParsed
     }
 
-    // Represents a link component which closes the mobile navigation
-    // when a link has been pressed for better UX.
-    // path: path to the page
-    // toggleMenu: toggle function to close mobile navigation.
-    // children: inner text of link component.
-    function ToggleLink({path, toggleMenu, children}: ToggleLinkProps) {
-        return (
-            <li 
-                onClick={() => toggleMenu()}
-                key={path}
-                className={checkIsActive(path) ? "active" : ""}
-            >
-                <Link href={path}>
-                    {children}
-                </Link>
-            </li>
-        )
-    }
-
     return (
         <motion.ul
             className="toggle-menu"
@@ -80,7 +61,17 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
             </li>
             {pages.map(page => {
                 const { title, path } = page
-                return <ToggleLink path={path} toggleMenu={toggle}>{title}</ToggleLink>
+                return (
+                    <li 
+                        onClick={() => toggle()}
+                        key={path}
+                        className={checkIsActive(path) ? "active" : ""}
+                    >
+                        <Link href={path}>
+                            {title}
+                        </Link>
+                    </li>
+                )
             })}
             
             {/* Documentation pages */}
@@ -91,7 +82,17 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
                     </li>
                         {pages.map((page) => {
                             const { title, path } = page
-                           return <ToggleLink path={path} toggleMenu={toggle}>{title}</ToggleLink>
+                            return (
+                                <li 
+                                    onClick={() => toggle()}
+                                    key={path}
+                                    className={checkIsActive(path) ? "active" : ""}
+                                >
+                                    <Link href={path}>
+                                        {title}
+                                    </Link>
+                                </li>
+                            )
                         })}
                 </React.Fragment>
             ))}
