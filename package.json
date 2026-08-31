@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/devrosz/devrosui/issues"
   },
-  "homepage": "https://github.com/devrosz/devrosui#readme",
-  "dependencies": {
-    "remark-gfm": "^4.0.1"
-  }
+  "homepage": "https://github.com/devrosz/devrosui#readme"
 }
