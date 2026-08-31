@@ -16,10 +16,10 @@ import "./slider.css"
 type SliderProps = {
     id: string,
     name: string,
-    min: string,
-    max: string,
-    value?: string, // optional because it is only necessary if the user wants the parent to get the value.
-    setValue?: (arg0: string) => void, // optional because it is only necessary if the user wants the parent to get the value.
+    min: number,
+    max: number,
+    value?: number, // optional because it is only necessary if the user wants the parent to get the value.
+    setValue?: (arg0: number) => void, // optional because it is only necessary if the user wants the parent to get the value.
     required?: boolean,
     disabled?: boolean,
     step?: string,
@@ -49,8 +49,8 @@ type SliderProps = {
 export default function Slider({
     id,
     name,
-    min="0",
-    max="100",
+    min=0,
+    max=100,
     value,
     setValue,
     required=false,
@@ -70,7 +70,7 @@ export default function Slider({
     }
 
     // Live value used to display the realtime value above the input.
-    const [liveValue, setLiveValue] = React.useState<string>(value ?? min)
+    const [liveValue, setLiveValue] = React.useState<string>(value ? `${value}` : `${min}`)
 
     // Updates the realtime value while sliding.
     function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -85,8 +85,9 @@ export default function Slider({
     // Sends the current value of the range input to the parent when the user
     // stopped sliding.
     function handlePointerUp() {
-        if (setValue) {
-            setValue(liveValue)
+        const newValue: number = Number(liveValue)
+        if (setValue && newValue >= min && newValue <= max) {
+            setValue(newValue)
         }
     }
 

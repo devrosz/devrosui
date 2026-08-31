@@ -480,14 +480,14 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```inputLength``` | ```number``` | - | Amount of slots |
+        | ```inputLength*``` | ```number``` | - | Amount of slots |
         | ```errorMessage``` | ```{message: string, key: string}``` | - | Custom error message |
         | ```onSubmit``` | ```(string) => Promise<void> \| void``` | - | Callback function that fires on completion |
         | ```autoSubmit``` | ```boolean``` | true | Automatically calls ```onSubmit``` on completion |
         | ```disabled``` | ```boolean``` | false | Prohibits user from filling in the input |
         | ```allowNumbers``` | ```boolean``` | true | Allow input value to contain numbers |
         | ```allowLetters``` | ```boolean``` | true | Allow input value to contain letters |
-        | ```children``` | ```ReactNode``` | - | Expecting ```<InputOTP.Slot>``` and in if applicable also ```<InputOTP.Separator>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<InputOTP.Slot>``` and in if applicable also ```<InputOTP.Separator>``` |
     </div>
 
     <h4 id="props-slot">InputOTP.Slot</h4>
@@ -495,7 +495,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```index``` | ```number``` | - | Which slot in the sequence |
+        | ```index*``` | ```number``` | - | Which slot in the sequence |
     </div>
 
     <h4 id="props-label">InputOTP.Label</h4>
@@ -503,7 +503,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Label text |
+        | ```children*``` | ```string``` | - | Label text |
     </div>
 
     <h4 id="props-description">InputOTP.Description</h4>
@@ -511,17 +511,19 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Description text|
+        | ```children*``` | ```string``` | - | Description text|
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+            <ArrowLink path="/docs/components/error" direction="left">Error</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+            <ArrowLink path="/docs/components/popup" direction="right">Popup</ArrowLink>
         </div>
     </div>
 

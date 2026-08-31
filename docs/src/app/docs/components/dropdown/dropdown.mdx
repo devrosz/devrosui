@@ -196,7 +196,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```ReactNode``` | - | Expecting ```<Dropdown.Header>``` followed by ```<Dropdown.List>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<Dropdown.Header>``` followed by ```<Dropdown.List>``` |
     </div>
 
     <h4 id="props-header">Dropdown.Header</h4>
@@ -204,7 +204,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string \| JSX.Element``` | - | Inner text of the button or a custom component inside the button |
+        | ```children*``` | ```string \| JSX.Element``` | - | Inner text of the button or a custom component inside the button |
     </div>
 
     <h4 id="props-list">Dropdown.List</h4>
@@ -212,7 +212,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```ReactNode``` | - | Expecting a list of ```<Dropdown.Item>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting a list of ```<Dropdown.Item>``` |
     </div>
 
     <h4 id="props-item">Dropdown.Item</h4>
@@ -222,17 +222,19 @@ export default function MyComponent() {
         | :--- | :--- | :------ | :---------- |
         | ```onClick``` | ```() => void``` | - | Callback function of the respective action |
         | ```isDangerous``` | ```boolean``` | false | Hints if an action is dangerous |
-        | ```children``` | ```string \| JSX.Element``` | - | Inner text of the action button |
+        | ```children*``` | ```string \| JSX.Element``` | - | Inner text of the action button |
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+            <ArrowLink path="/docs/components/datepicker" direction="left">Datepicker</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+            <ArrowLink path="/docs/components/error" direction="right">Error</ArrowLink>
         </div>
     </div>
 

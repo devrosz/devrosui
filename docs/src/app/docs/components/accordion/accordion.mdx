@@ -249,7 +249,7 @@ export const plusEmptyCode =
         | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
         | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
         | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
-        | ```children``` | ```ReactNode``` | - | Expecting one or more ```<Accordion.Item>``` components |
+        | ```children*``` | ```ReactNode``` | - | Expecting one or more ```<Accordion.Item>``` components |
     </div>
 
     <h4 id="props-item">Item</h4>
@@ -257,7 +257,7 @@ export const plusEmptyCode =
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```ReactNode``` | - | Expecting ```<Accordion.Header>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<Accordion.Header>``` |
     </div>
 
     <h4 id="props-header">Header</h4>
@@ -265,7 +265,7 @@ export const plusEmptyCode =
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Header text of an item |
+        | ```children*``` | ```string``` | - | Header text of an item |
     </div>
 
     <h4 id="props-content">Content</h4>
@@ -273,8 +273,11 @@ export const plusEmptyCode =
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Paragraph text of an item |
+        | ```children*``` | ```string``` | - | Paragraph text of an item |
     </div>
+
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">

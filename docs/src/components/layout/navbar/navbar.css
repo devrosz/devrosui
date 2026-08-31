@@ -51,6 +51,10 @@ header {
     border-radius: 32px;
 }
 
+.navlink.active {
+    color: var(--text-primary);
+}
+
 .navlink:hover {
     color: var(--text-primary);
 }
@@ -60,6 +64,10 @@ header {
     margin: 1rem 0;
     font-size: 14px;
     text-transform: capitalize;
+}
+
+.toggle-menu li.active {
+    color: var(--text-primary);
 }
 
 .toggle-menu h6 {
@@ -99,7 +107,7 @@ header {
     list-style: none;
 }
 
-.mobile-actions-container {
+.user-actions-container {
     display: flex;
     align-items: center;
 }

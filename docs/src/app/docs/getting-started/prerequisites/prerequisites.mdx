@@ -107,8 +107,9 @@ function toggleTheme(): void {
     <h3 id="globals">Global stylesheet</h3>
 
     In order to give the components correct styling, you need to import the global stylesheet **once**
-    in your app.
-    - In ```main.jsx``` or ```App.jsx```, write the following:
+    in your app.  
+
+    In ```main.jsx``` or ```App.jsx```, write the following:
 
     <CodeBlock
         langHighlight="jsx"
@@ -117,7 +118,7 @@ function toggleTheme(): void {
         code={`import "@devrosui/react/globals.css"`}
     />
 
-    - Now you can use components in any file as shown below:
+    Now you can use components in any file as shown below:
 
     <CodeBlock
         langHighlight="jsx"
@@ -132,24 +133,15 @@ function toggleTheme(): void {
     the theme of the whole app also changes to light-mode. This means that you don't have to
     manually implement this for every component yourself. However, this requires you to follow
     our implementation of a theme toggle so the internal theme toggles in the components will
-    be compatible with the theme toggle of your app.
-
-    - In your root CSS file, write the following: 
-
-    <CodeBlock 
-        langHighlight="css"
-        langDisplay="CSS"
-        code={themeCode}
-    />
-
-    You can now toggle between dark and light mode by simply adding the class name 'light' to
-    the HTML document.
+    be compatible with the theme toggle of your app. Our theme toggle implementation is as follows:
 
     <CodeBlock
         langDisplay="JSX"
         langHighlight="jsx"
         code={toggleThemeCode}
     />
+
+    This implementation simply toggles the ```light``` className to the html document.
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">

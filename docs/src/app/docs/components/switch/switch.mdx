@@ -274,7 +274,7 @@ export default function MyComponent() {
         | ```onActive``` | ```() => Promise<void> \| void``` | - | Callback function when switch is on |
         | ```onDeactive``` | ```() -> Promise<void> \| void``` | - | Callback function when switch is off |
         | ```disabled``` | ```boolean``` | false | Prevents the user from toggling the switch |
-        | ```children``` | ```JSX.Element``` | - | Expecting ```<Switch.Track>``` and if applicable ```<Switch.Meta>``` |
+        | ```children*``` | ```JSX.Element``` | - | Expecting ```<Switch.Track>``` and if applicable ```<Switch.Meta>``` |
     </div>
 
     <h4 id="props-track">Switch.Track</h4>
@@ -282,7 +282,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```JSX.Element``` | - | Expecting ```<Switch.Thumb>``` |
+        | ```children*``` | ```JSX.Element``` | - | Expecting ```<Switch.Thumb>``` |
     </div>
 
     <h4 id="props-thumb">Switch.Thumb</h4>
@@ -298,7 +298,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```JSX.Element``` | - | Expecting either ```<Switch.Label>``` and/or ```<Switch.Description>``` |
+        | ```children*``` | ```JSX.Element``` | - | Expecting either ```<Switch.Label>``` and/or ```<Switch.Description>``` |
     </div>
 
     <h4 id="props-label">Switch.Label</h4>
@@ -306,7 +306,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Title of the switch input |
+        | ```children*``` | ```string``` | - | Title of the switch input |
     </div>
 
     <h4 id="props-description">Switch.Description</h4>
@@ -314,19 +314,19 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```string``` | - | Extra information about the switch input |
+        | ```children*``` | ```string``` | - | Extra information about the switch input |
     </div>
 
-    
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
+            <ArrowLink path="/docs/components/slider" direction="left">Slider</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
+            <ArrowLink path="/docs/components/tabs" direction="right">Tabs</ArrowLink>
         </div>
     </div>
 

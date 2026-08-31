@@ -147,8 +147,9 @@ export default function MyComponent() {
     />
 
     <h3 id="return">Return value</h3>
-
-    The select component returns an array of the selected option(s).
+    
+    ```(name: string, value: string | (string | number)[]) where the ```name``` value represents
+    the given name of the ```Select``` input and the ```value``` the chosen value out of the options.
 
     <h3 id="variants">Variants</h3>
 
@@ -287,28 +288,29 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | ```select``` | id of select input |
-        | ```name``` | ```string``` | ```select``` | name of select input |
-        | ```values``` | ```(string \| number)[]``` | ```[]``` | array of selected option(s) |
-        | ```onSelect``` | ```(name: string, value: string \| (string \| number)[]) => void``` | - | callback function that handles select change |
-        | ```options``` | ```(string \| number)[]``` | ```[]``` | array of options to choose from |
+        | ```id*``` | ```string``` | ```select``` | id of select input |
+        | ```name*``` | ```string``` | ```select``` | name of select input |
+        | ```values*``` | ```(string \| number)[]``` | ```[]``` | array of selected option(s) |
+        | ```onSelect*``` | ```(name: string, value: string \| (string \| number)[]) => void``` | - | callback function that handles select change |
+        | ```options*``` | ```(string \| number)[]``` | ```[]``` | array of options to choose from |
         | ```label``` | ```string``` | - | Label above the select input |
         | ```multiple``` | ```boolean``` | false | Enable selection of multiple options |
         | ```placeholder``` | ```string``` | - | Placeholder for inside select input |
         | ```disabled``` | ```boolean``` | ```false``` | disables/enables select input  |
         | ```width``` | ```string```| ```15rem``` | sets the width of the input |
         | ```description``` | ```string```| ```""``` | displays a description about the input |
-
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/cookie-consent" direction="left">CookieConsent</ArrowLink>
+            <ArrowLink path="/docs/components/popup" direction="left">Popup</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/drawer" direction="right">Drawer</ArrowLink>
+            <ArrowLink path="/docs/components/skeleton" direction="right">Skeleton</ArrowLink>
         </div>
     </div>
 </div>

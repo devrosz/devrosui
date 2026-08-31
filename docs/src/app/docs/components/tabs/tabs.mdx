@@ -336,10 +336,10 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```type``` | ```"local" \| "router"``` | local | type of tabs |
-        | ```initialTabId``` | ```string``` | - | id of tab which should be active on first render |
+        | ```type*``` | ```"local" \| "router"``` | local | type of tabs |
+        | ```initialTabId*``` | ```string``` | - | id of tab which should be active on first render |
         | ```styling``` | ```"primary" \| "secondary" \| "tertiary"``` | - | style type of the tabs |
-        | ```children``` | ```ReactNode``` | - | Expecting ```<Tabs.TabsList>``` and in case of local tabs also ```<Tabs.TabRender>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<Tabs.TabsList>``` and in case of local tabs also ```<Tabs.TabRender>``` |
     </div>
 
     <h4 id="props-Tabs.TabsList">Tabs.TabsList</h4>
@@ -347,7 +347,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```children``` | ```ReactNode``` | - | Expecting ```<Tabs>``` |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<Tabs>``` |
     </div>
 
     <h4 id="props-tab">Tab</h4>
@@ -355,9 +355,9 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | - | identifies the respective tab |
+        | ```id*``` | ```string``` | - | identifies the respective tab |
         | ```disabled``` | ```boolean``` | ```false``` | Enables/disabled activation of tab |
-        | ```children``` | ```ReactNode``` | - | Expecting either ```<button>``` or ```<Link>```|
+        | ```children*``` | ```ReactNode``` | - | Expecting either ```<button>``` or ```<Link>```|
     </div>
 
      <h4 id="props-Tabs.TabRender">Tabs.TabRender</h4>
@@ -365,18 +365,16 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | - | identifies the respective tab |
-        | ```children``` | ```ReactNode``` | - | Expecting the component to render when the tab of the given id is active|
+        | ```id*``` | ```string``` | - | identifies the respective tab |
+        | ```children*``` | ```ReactNode``` | - | Expecting the component to render when the tab of the given id is active|
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
             <ArrowLink path="/docs/components/switch" direction="left">Switch</ArrowLink>
-        </div>
-        <div className="docs-page-explore-link">
-            <h6>Next</h6>
-            <ArrowLink path="/docs/components/toast" direction="right">Toast</ArrowLink>
         </div>
     </div>
 </div>

@@ -52,6 +52,11 @@ export const headers = [
         level: 1
     },
     {
+        id: "return",
+        title: "Returns",
+        level: 0
+    },
+    {
         id: "props",
         title: "Props",
         level: 0
@@ -135,7 +140,7 @@ export default function MyComponent() {
 
     <h3 id="return">Return value</h3>
 
-    If connected via the ```value``` prop and ```setValue``` prop, ```Slider``` returns a string
+    If connected via the ```value``` prop and ```setValue``` prop, ```Slider``` returns a number
     containing the current value.
 
     <h3 id="variants">Variants</h3>
@@ -282,12 +287,12 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```id``` | ```string``` | - | id of slider input |
-        | ```name``` | ```string``` | - | name of slider input |
-        | ```min``` | ```string``` | ```0``` | minimum value of the input |
-        | ```max``` | ```string``` | ```100``` | maximum value of the input |
-        | ```value``` | ```string``` | ```min``` | current value of the input |
-        | ```setValue``` | ```(string) => void``` | - | callback function that updates the current value in the parent |
+        | ```id*``` | ```string``` | - | id of slider input |
+        | ```name*``` | ```string``` | - | name of slider input |
+        | ```min*``` | ```number``` | ```0``` | minimum value of the input |
+        | ```max*``` | ```number``` | ```100``` | maximum value of the input |
+        | ```value``` | ```number``` | ```min``` | current value of the input |
+        | ```setValue``` | ```(number) => void``` | - | callback function that updates the current value in the parent |
         | ```label``` | ```string``` | - | Label above the range input |
         | ```description``` | ```string```| ```""``` | displays a description about the input |
         | ```disabled``` | ```boolean``` | ```false``` | disables/enables range input  |
@@ -296,8 +301,9 @@ export default function MyComponent() {
         | ```width``` | ```string```| ```15rem``` | sets the width of the input |
         | ```step``` | ```string```| ```1``` | step size of the slider |
         | ```showValue``` | ```boolean```| ```true``` | Toggles showing the value |
-
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
@@ -306,7 +312,7 @@ export default function MyComponent() {
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/spinner" direction="right">Spinner</ArrowLink>
+            <ArrowLink path="/docs/components/switch" direction="right">Switch</ArrowLink>
         </div>
     </div>
 </div>

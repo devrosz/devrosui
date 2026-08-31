@@ -205,17 +205,19 @@ export default function MyComponent() {
         | ```variant``` | ```"primary" \| "secondary" \| "tertiary" \| "danger"``` | "primary" | visual styling |
         | ```disabled``` | ```boolean``` | false | allows button to be clicked |
         | ```onClick``` | ```() => void``` | - | callback function when button is clicked |
-        | ```children``` | ```string \| JSX.Element``` | - | inner text |
+        | ```children*``` | ```string \| JSX.Element``` | - | inner text |
     </div>
+
+    <h6>*: mandatory props</h6>
 
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/close-button" direction="left">CloseButton</ArrowLink>
+            <ArrowLink path="/docs/components/breadcrumbs" direction="left">BreadCrumbs</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>
-            <ArrowLink path="/docs/components/datepicker" direction="right">DatePicker</ArrowLink>
+            <ArrowLink path="/docs/components/calendar" direction="right">Calendar</ArrowLink>
         </div>
     </div>
 </div>

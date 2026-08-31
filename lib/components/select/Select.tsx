@@ -56,6 +56,12 @@ export default function Select({
     // Saves the currently selected option(s) and uses the callback function to pass
     // it to the parent component.
     function handleSelect(selection: string | number): void {
+
+        // Safe guard to check if selection belongs to options.
+        if (!options.includes(selection)) {
+            throw new Error(`Select: the chosen selection '${selection}' is not part of the options list`)
+        }
+
         // Concat option to selected options list if not present yet,
         // otherwise remove it.
         if (multiple) {
