@@ -3,35 +3,27 @@
 import React from "react"
 import { FaChevronLeft } from "react-icons/fa6"
 import { FaChevronRight } from "react-icons/fa6"
-import { motion, AnimatePresence } from "motion/react"
-import "./datepicker.css"
+import "./calendar.css"
 
-// Open: open state of the calendar UI.
-// date: current selected date.
-// onSelect: callback function to pass selected date to Datepicker.
+// onSelect: callback function to pass selected date to the parent.
 // minYear: minimum year that can be set.
 // maxYear: maximum year that can be set.
 // disabledDays: array of Date objects representing dates that cannot be selected.
-type DatePickerCalendarProps = {
-    open: boolean,
-    date: string,
-    onSelect: (value: string) => void,
+type CalendarProps = {
+    onSelect?: (value: string) => void,
     minYear?: number | null,
     maxYear?: number | null,
     disabledDays?: Date[] | null
 }
 
 // Calendar component where the user can select a certain date.
-// Receives the currently selected date as string and marks this date.
-// If no date is selected, the current date will be marked.
-// During populating the calendar dates and handling selection, this date will be
-// turned from string -> Date object.
-// On selection, the Date object will be turned into a string again and passed to the Datepicker.
-export default function DatePickerCalendar({open, date, onSelect, minYear, maxYear, disabledDays}: DatePickerCalendarProps) {
+// Unlinke Datepicker, this Calendar component doesn't have a separate input field
+// and is always in an open state.
+export default function DatePickerCalendar({onSelect, minYear, maxYear, disabledDays}: CalendarProps) {
     const currentDate: Date = new Date()
+    const [selected, setSelected] = React.useState<Date>(currentDate)
     const [year, setYear] = React.useState<number>(currentDate.getFullYear())
     const [month, setMonth] = React.useState<number>(currentDate.getMonth()) // Zero-indexed.
-    const selected: Date = date ? new Date(date) : currentDate
     
     // Object representing the months of the year with the amount
     // of days per month.
@@ -52,6 +44,15 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
         "december": 31 
     }
     const monthNames: string[] = Object.keys(months)
+
+    // Updates the selected date and if applicable, use the callback
+    // to send the selected date to the parent component.
+    function handleSelect(date: string) {
+        setSelected(new Date(date))
+        if (onSelect) {
+            onSelect(date)
+        }
+    }
 
     // Selects next month.
     // Side-effect: If the current month is december, the month will be set to january
@@ -246,85 +247,74 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
     }
 
     return (
-        <AnimatePresence>
-            {open ? (
-                <motion.div 
-                    className="dp-calendar-container"
-                    initial={{y: -10, opacity: 0}}
-                    animate={{y: 0, opacity: 1}}
-                    exit={{y: -10, opacity: 0}}
-                    transition={{duration: 0.2}}
-                >
-                    <div className="dp-calendar-header">
-                            <h6>{getMonthNameLocale(month) + " " + year}</h6>
-                        <div className="dp-calendar-buttons">
-                            <button 
-                                onClick={decrementMonth} 
-                                disabled={minYear != null && year <= minYear && month == 0}
-                                className="dp-calendar-set-month-button"
-                            >
-                                <FaChevronLeft />
-                            </button>
-                            <button 
-                                onClick={incrementMonth}
-                                disabled={maxYear != null && year >= maxYear && month == 11}
-                                className="dp-calendar-set-month-button"
-                            >
-                                <FaChevronRight />
-                            </button>
-                        </div>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                {getDayNames().map(day => <td key={day}>{day}</td>)}
+        <div className="calendar-container">
+            <div className="calendar-header">
+                    <h6>{getMonthNameLocale(month) + " " + year}</h6>
+                <div className="calendar-buttons">
+                    <button 
+                        onClick={decrementMonth} 
+                        disabled={minYear != null && year <= minYear && month == 0}
+                        className="calendar-set-month-button"
+                    >
+                        <FaChevronLeft />
+                    </button>
+                    <button 
+                        onClick={incrementMonth}
+                        disabled={maxYear != null && year >= maxYear && month == 11}
+                        className="calendar-set-month-button"
+                    >
+                        <FaChevronRight />
+                    </button>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        {getDayNames().map(day => <td key={day}>{day}</td>)}
+                    </tr>
+                </thead>
+                <tbody>
+                    {populateMonth(year, month).map((week, i) => {
+                        return (
+                            <tr key={i}>
+                                {week.map(day => {
+                                    // Give the days from another month a different color.
+                                    const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
+                                    const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
+                                    const isFromNextMonth = i >= 4 && day >= 1 && day <= 7
+                                    // Account for situation where e.g. calendar is at july and july ends on a friday,
+                                    // but user selects the saturday of this week (so 1st of august), then the correct
+                                    // month should be passed to the handleSelect.
+                                    // Is zero-indexed.
+                                    const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
+                                    
+                                    // Get selected date properties to mark the selected date if applicable.
+                                    const selectedYear = selected.getFullYear()
+                                    const selectedMonth = selected.getMonth()
+                                    const selectedDay = selected.getDate()
+                                    const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
+                                    
+                                    // Check if date is already taken.
+                                    const dateString = parseDate(year, monthOfThisDay + 1, day)
+                                    const isInDisabled = disabledDays != null && disabledDays.length > 0 && checkDayIsDisabled(year, monthOfThisDay, day)
+
+                                    return (
+                                        <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>
+                                            <button 
+                                                className="day-button"
+                                                disabled={isFromPrevMonth || isFromNextMonth || isInDisabled}
+                                                onClick={() => handleSelect(dateString)}
+                                            >
+                                                {day}
+                                            </button>
+                                        </td>
+                                    )
+                                })}
                             </tr>
-                        </thead>
-                        <tbody>
-                            {populateMonth(year, month).map((week, i) => {
-                                return (
-                                    <tr key={i}>
-                                        {week.map(day => {
-                                            // Give the days from another month a different color.
-                                            const daysPrevMonth = months[monthNames[month == 0 ? 11 : month - 1]]
-                                            const isFromPrevMonth = i == 0 && day <= daysPrevMonth && day > 7
-                                            const isFromNextMonth = i >= 4 && day >= 1 && day <= 7
-                                            // Account for situation where e.g. calendar is at july and july ends on a friday,
-                                            // but user selects the saturday of this week (so 1st of august), then the correct
-                                            // month should be passed to the handleSelect.
-                                            // Is zero-indexed.
-                                            const monthOfThisDay = !isFromPrevMonth && !isFromNextMonth ? month : (isFromPrevMonth ? month - 1 : month + 1)
-                                            
-                                            // Get selected date properties to mark the selected date if applicable.
-                                            const selectedYear = selected.getFullYear()
-                                            const selectedMonth = selected.getMonth()
-                                            const selectedDay = selected.getDate()
-                                            const isSelected = selectedYear === year && selectedMonth === monthOfThisDay && selectedDay === day
-                                            
-                                            // Check if date is already taken.
-                                            const dateString = parseDate(year, monthOfThisDay + 1, day)
-                                            const isInDisabled = disabledDays != null && disabledDays.length > 0 && checkDayIsDisabled(year, monthOfThisDay, day)
-
-                                            return (
-                                                <td key={day} className={"day-number " + (isSelected ? "selected" : "") + (isInDisabled ? "taken" : "")}>
-                                                    <button 
-                                                        className="day-button"
-                                                        disabled={isFromPrevMonth || isFromNextMonth || isInDisabled}
-                                                        onClick={() => onSelect(dateString)}
-                                                    >
-                                                        {day}
-                                                    </button>
-                                                </td>
-                                            )
-                                        })}
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>
-                </motion.div>
-
-            ) : null}
-        </AnimatePresence>
+                        )
+                    })}
+                </tbody>
+            </table>
+        </div>
     )
 }

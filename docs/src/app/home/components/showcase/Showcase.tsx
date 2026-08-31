@@ -3,7 +3,7 @@
 import { JSX } from "react"
 
 // components
-import { Dropdown, Switch } from "@devrosui/react"
+import { Calendar, Dropdown, Switch } from "@devrosui/react"
 import MockupDatePicker from "@/app/docs/components/datepicker/MockupDatePicker"
 import LinkButton from "@/components/interfaces/linkbutton/LinkButton"
 import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
@@ -68,9 +68,9 @@ export default function Showcase() {
 
     const demos: Demo[] = [
         {
-            name: "datepicker",
-            path: "docs/components/datepicker",
-            component: <MockupDatePicker />
+            name: "calendar",
+            path: "docs/components/calendar",
+            component: <Calendar />
         },
         {
             name: "dropdown",

@@ -61,7 +61,7 @@ html.light .datepicker input {
 }
 
 /* Calendar styling */
-.calendar-icon {
+.dp-calendar-icon {
     position: absolute;
     top: 20px;
     right: 12px;
@@ -71,7 +71,7 @@ html.light .datepicker input {
     padding: 0;
 }
 
-.calendar-container {
+.dp-calendar-container {
     position: absolute;
     z-index: 2;
     color: var(--text-primary);
@@ -82,20 +82,20 @@ html.light .datepicker input {
     border: 1px solid var(--button-secondary-border);
 }
 
-.calendar-header {
+.dp-calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 0.5rem;
 }
 
-.calendar-header h6 {
+.dp-calendar-header h6 {
     margin: 0;
     margin-bottom: 1rem;
 }
 
 /* Default days styling */
-.calendar-set-month-button, .day-button {
+.dp-calendar-set-month-button, .day-button {
     background-color: transparent;
     border: none;
     color: var(--text-primary);
@@ -113,15 +113,15 @@ html.light .datepicker input {
     border-radius: 2rem;
 }
 
-.calendar-set-month-button {
+.dp-calendar-set-month-button {
     font-size: 0.75rem;
 }
 
-.calendar-set-month-button:disabled {
+.dp-calendar-set-month-button:disabled {
     color: var(--text-tertiary);
 }
 
-.calendar-set-month-button:hover, .day-number:hover {
+.dp-calendar-set-month-button:hover, .day-number:hover {
     background-color: var(--button-secondary-hover);
 }
 
@@ -144,11 +144,11 @@ html.light .datepicker input {
     background-color: var(--button-secondary-hover);
 }
 
-.calendar-container table thead tr td {
+.dp-calendar-container table thead tr td {
     font-size: 1rem;
 }
 
-.calendar-container table td {
+.dp-calendar-container table td {
     text-align: center;
 }
 
@@ -157,13 +157,13 @@ html.light .datepicker input {
 }
 
 @media (max-width: 450px) {
-    .calendar-set-month-button, .day-button {
+    .dp-calendar-set-month-button, .day-button {
         padding: 0.5rem 0.65rem;
     }
 }
 
 @media (max-width: 400px) {
-    .calendar-set-month-button, .day-button {
+    .dp-calendar-set-month-button, .day-button {
         padding: 0.4rem 0.5rem;
     }
 }
