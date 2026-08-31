@@ -45,7 +45,7 @@ export default function CodeBlock({
                 const html = await codeToHtml(code, {
                     lang: langHighlight.trim().toLowerCase(),
                     theme: themeContext.theme === "light" 
-                    ? "github-light" 
+                    ? "light-plus" 
                     : "dark-plus",
                     colorReplacements: {
                         "#000": "090909",
