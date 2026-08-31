@@ -18,8 +18,8 @@ export default function HeroDemo() {
                 <Slider 
                     id="slider"
                     name="slider"
-                    min="0"
-                    max="100"
+                    min={0}
+                    max={100}
                     step="0.01"
                     label="Price"
                     unit="EUR"
@@ -36,7 +36,7 @@ export default function HeroDemo() {
                     </Tabs.TabsList>
                 </Tabs>
 
-                 <CookieConsent position="relative" onNecessary={() => {}} onAcceptAll={() => {}}>
+                <CookieConsent position="relative" onNecessary={() => {}} onAcceptAll={() => {}}>
                     Lorem ipsum dolor sit amet. Aut laborum nisi quo sequi laboriosam et odit omnis.
                     Est atque eius et sint magnam 33 tempore magnam.
                 </CookieConsent>

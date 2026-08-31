@@ -18,8 +18,8 @@ export default function HeroDemoMobile() {
                 <Slider 
                     id="slider"
                     name="slider"
-                    min="0"
-                    max="100"
+                    min={0}
+                    max={100}
                     step="0.01"
                     label="Price"
                     unit="EUR"

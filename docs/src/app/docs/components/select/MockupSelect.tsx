@@ -3,6 +3,20 @@
 import { Select } from "@devrosui/react"
 import React from "react"
 
+type MockupSelectProps = {
+    name: string,
+    options: (string | number)[],
+    label?: string,
+    multiple?: boolean,
+    placeholder?: string | number,
+    disabled?: boolean,
+    description?: string
+}
+
+type MockupFormData = {
+    [key: string]: (string | number)[]
+}
+
 // Mockup component that extracts the React-logic from the MDX file of Select to
 // make the code example work.
 export default function MockupSelect({
@@ -13,10 +27,10 @@ export default function MockupSelect({
     placeholder=options[0] ?? "Select one",
     disabled=false,
     description=""
-}) {
-    const [mockupFormData, setMockupFormData] = React.useState({[name]: []})
+}: MockupSelectProps) {
+    const [mockupFormData, setMockupFormData] = React.useState<MockupFormData>({[name]: []})
 
-    function mockupHandleChange(name: string, value: string | (string | number)[]) {
+    function mockupHandleChange(name: string, value: (string | number)[]) {
         setMockupFormData(prev => {
             return {
                 ...prev,
