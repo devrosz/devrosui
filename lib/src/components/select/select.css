@@ -4,6 +4,10 @@
     font-family: var(--font);
 }
 
+.select-container, .select-container > * {
+    font-family: var(--font);
+}
+
 .select-container h5 {
     color: var(--text-primary);
     margin: 0;
