@@ -20,9 +20,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
-      "@devrosui/react": ["./index.ts"]
+      "@devrosui/react": ["./src/index.ts"]
     }
   },
-  "include": ["./components"],
+  "include": ["./src/components"],
   "exclude": []
 }
