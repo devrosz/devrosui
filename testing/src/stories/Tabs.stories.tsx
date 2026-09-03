@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Tabs } from "@devrosui/react"
-
 const meta = {
     title: "Tabs",
     component: Tabs,

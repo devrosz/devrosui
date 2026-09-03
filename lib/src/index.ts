@@ -1,4 +1,8 @@
 import "./globals.css"
+
+// This npm package delivers the font face for Geist.
+import "@fontsource/geist"
+
 export { default as Accordion } from "./components/accordion/Accordion"
 export { default as Button } from "./components/button/Button"
 export { default as BreadCrumbs } from "./components/breadcrumbs/BreadCrumbs"
