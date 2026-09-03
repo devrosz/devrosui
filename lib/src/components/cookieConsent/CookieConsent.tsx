@@ -3,7 +3,7 @@
 import React from "react"
 import { MdOutlineCookie } from "react-icons/md"
 import { AnimatePresence, motion } from "motion/react"
-import { Button } from "@devrosui/react"
+import { Button } from "../../index"
 import "./cookieconsent.css"
 
 // onNecessary: callback function for necessary cookies only.
