@@ -7,13 +7,7 @@ export default defineConfig({
     react(),
     dts(),
     esmExternalRequirePlugin({
-      external: [
-        /^react($|\/)/,
-        /^react-dom($|\/)/,
-        /^motion($|\/)/,
-        /^react-icons($|\/)/,
-        /^@fontsource\/geist($|\/)/,
-      ],
+      external: ["react","react-dom"],
     }),
   ],
 
@@ -21,19 +15,9 @@ export default defineConfig({
     lib: {
       entry: "./src/index.ts",
       fileName: "index",
-      formats: ["es", "cjs"],
-      name: "@devrosui/react",
+      formats: ["es"],
+      name: "DevrosUI",
       cssFileName: "style",
-    },
-
-    rolldownOptions: {
-      external: [
-        /^react($|\/)/,
-        /^react-dom($|\/)/,
-        /^motion($|\/)/,
-        /^react-icons($|\/)/,
-        /^@fontsource\/geist($|\/)/,
-      ],
     },
   },
 })
