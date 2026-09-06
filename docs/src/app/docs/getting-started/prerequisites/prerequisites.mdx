@@ -10,18 +10,13 @@ export const headers = [
         level: 0
     },
     {
-        id: "apps",
-        title: "Next.js and React.js",
+        id: "manual",
+        title: "Manual installations",
         level: 1
     },
     {
-        id: "motion",
-        title: "Motion",
-        level: 1
-    },
-    {
-        id: "react-icons",
-        title: "react icons",
+        id: "auto",
+        title: "Automatic installations",
         level: 1
     },
     {
@@ -87,22 +82,16 @@ function toggleTheme(): void {
 
     <h3 id="dependencies">Dependencies</h3>
 
-    <h4 id="apps">1. Next.js and React.js</h4>  
+    <h4 id="manual">Manual installations</h4>  
+    
+    DevrosUI is a React component library, but doesn't have the React bundle included in the npm package.
+    Therefore, you must have ```react``` and ```react-dom``` installed in your project
+    You can refer to the official documentation for installing a [React app](https://react.dev/learn/installation).
 
-    DevrosUI is a React component library that can be used within React apps and Next.js apps.
-    In order to use DevrosUI, you need to have already created your React app or Next.js app.
-    You can refer to the official documentation for installing a [React app](https://react.dev/learn/installation)
-    or for installing a [Next.js app](https://nextjs.org/docs/app/getting-started/installation).
+    <h4 id="auto">Automatic installations</h4>
 
-    <h4 id="motion">2. Motion</h4>  
-
-    DevrosUI also uses [Motion](https://motion.dev/) to implement animations in the components.
-    Make sure to install Motion along with DevrosUI.
-
-    <h4 id="react-icons">3. React icons</h4>  
-
-    Some components use icons from the react-icons library so it is also necessary to install
-    the react-icons library. You can do this via their official documentation site [here](https://react-icons.github.io/react-icons/).
+    DevrosUI also uses ```react-icons```, ```motion``` and ```@fontsource/geist```.
+    When installing DevrosUI, these packs will be included in the installation.
 
     <h3 id="globals">Global stylesheet</h3>
 

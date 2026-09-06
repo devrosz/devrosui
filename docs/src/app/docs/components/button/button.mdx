@@ -88,10 +88,20 @@ export default function MyComponent() {
    <h4 id="colours">Colours</h4>
 
     <OutputContainer components={[
-        <Button>Primary</Button>,
-        <Button variant="secondary">Secondary</Button>,
-        <Button variant="tertiary">Tertiary</Button>,
-        <Button variant="danger">Danger</Button>,
+        <div 
+            style={{
+                "display": "flex",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem"
+            }}
+        >
+            <Button>Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="tertiary">Tertiary</Button>
+            <Button variant="danger">Danger</Button>
+        </div>
     ]}
     height="20rem" 
    />
@@ -110,22 +120,32 @@ export default function MyComponent() {
     <h4 id="icons-text">Icons and text</h4>
 
     <OutputContainer components={[
-         <Button variant="primary">
-            <TbSend variant={{fontSize: "1.25rem"}} />
-            Send
-        </Button>,
-        <Button variant="secondary">
-            <AiOutlinePlus variant={{fontSize: "1.25rem"}} />
-            Add
-        </Button>,
-        <Button variant="tertiary">
-            <MdOutlineEmail variant={{fontSize: "1.25rem"}} />
-            Email
-        </Button>,
-        <Button variant="danger">
-            <FaRegTrashAlt variant={{fontSize: "1rem"}} />
-            Delete
-        </Button>
+        <div 
+            style={{
+                "display": "flex",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem"
+            }}
+        >
+            <Button variant="primary">
+                <TbSend variant={{fontSize: "1.25rem"}} />
+                Send
+            </Button>
+            <Button variant="secondary">
+                <AiOutlinePlus variant={{fontSize: "1.25rem"}} />
+                Add
+            </Button>
+            <Button variant="tertiary">
+                <MdOutlineEmail variant={{fontSize: "1.25rem"}} />
+                Email
+            </Button>
+            <Button variant="danger">
+                <FaRegTrashAlt variant={{fontSize: "1rem"}} />
+                Delete
+            </Button>
+        </div>
     ]}
     height="20rem" 
    />
@@ -159,18 +179,28 @@ export default function MyComponent() {
     <h4 id="icons">Icons only</h4>
 
     <OutputContainer components={[
-        <Button variant="primary">
-            <TbSend variant={{fontSize: "1.25rem"}} />
-        </Button>,
-        <Button variant="secondary">
-            <IoSettingsOutline variant={{fontSize: "1.25rem"}} />
-        </Button>,
-        <Button variant="tertiary">
-            <TbDots variant={{fontSize: "1.25rem"}} />
-        </Button>,
-        <Button variant="danger">
-            <FaRegTrashAlt variant={{fontSize: "1rem"}} />
-        </Button>
+        <div 
+            style={{
+                "display": "flex",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem"
+            }}
+        >
+            <Button variant="primary">
+                <TbSend variant={{fontSize: "1.25rem"}} />
+            </Button>
+            <Button variant="secondary">
+                <IoSettingsOutline variant={{fontSize: "1.25rem"}} />
+            </Button>
+            <Button variant="tertiary">
+                <TbDots variant={{fontSize: "1.25rem"}} />
+            </Button>
+            <Button variant="danger">
+                <FaRegTrashAlt variant={{fontSize: "1rem"}} />
+            </Button>
+        </div>
     ]}
     height="20rem" 
    />
