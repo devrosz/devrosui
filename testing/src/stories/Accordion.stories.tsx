@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { Accordion } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "Accordion",

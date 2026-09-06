@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { CookieConsent } from "@devrosui/react"
 import { useArgs } from "storybook/internal/preview-api"
+import { CookieConsent } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "CookieConsent",

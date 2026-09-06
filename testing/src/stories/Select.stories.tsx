@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { useArgs } from "storybook/internal/preview-api"
 import { Select } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "Select",
