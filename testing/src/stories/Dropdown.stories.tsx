@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { Dropdown } from "@devrosui/react"
+import "@devrosui/react/style.css"
+
 import { AiOutlineEdit } from "react-icons/ai"
 import { FiSave } from "react-icons/fi"
 import { IoCopyOutline } from "react-icons/io5"

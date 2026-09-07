@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { DatePicker } from "@devrosui/react"
 import { useArgs } from "storybook/internal/preview-api"
+import { DatePicker } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "Datepicker",

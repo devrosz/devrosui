@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 import { Error } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "Error",
@@ -15,13 +16,13 @@ type Story = StoryObj<typeof meta>
 
 export const ErrorWarning: Story = {
     args: {
-        message: "This is an error message."
+        children: "This is an error message."
     }
 }
 
 export const ErrorDanger: Story = {
     args: {
-        message: "This is an error message",
+        children: "This is an error message",
         type: "danger"
     }
 }

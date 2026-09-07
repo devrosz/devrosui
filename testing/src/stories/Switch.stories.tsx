@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
-import { Switch } from "@devrosui/react"
 import { useArgs } from "storybook/internal/preview-api"
+import { Switch } from "@devrosui/react"
+import "@devrosui/react/style.css"
 
 const meta = {
     title: "Switch",
@@ -18,7 +19,8 @@ export const SwitchDev: Story = {
         onActive: () => console.log("active"),
         onDeactive: () => console.log("deactive"),
         disabled: false,
-        children: ""
+        // Putting placeholder p-tags just to satisfy type of Switch.
+        children: <p>Placeholder</p>
     },
     render: () => {
         const [{onActive, onDeactive, disabled}] = useArgs()
@@ -34,7 +36,7 @@ export const SwitchDev: Story = {
 }
 
 export const SwitchLabel: Story = {
-    args: {disabled: false, children: ""},
+    args: {disabled: false, children: <p>Placeholder</p>},
     render: () => {
         const [{disabled}] = useArgs()
 
@@ -54,7 +56,7 @@ export const SwitchLabel: Story = {
 }
 
 export const SwitchDescription: Story = {
-    args: {disabled: false, children: ""},
+    args: {disabled: false, children: <p>Placeholder</p>},
     render: () => {
         const [{disabled}] = useArgs()
 
@@ -82,7 +84,7 @@ export const SwitchInitial: Story = {
         onDeactive: () => console.log("deactive"),
         disabled: false,
         isActive: true,
-        children: ""
+        children: <p>Placeholder</p>
     },
     render: () => {
         const [{isActive, onActive, onDeactive, disabled}] = useArgs()

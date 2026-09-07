@@ -69,6 +69,7 @@ function Track({children}: {children: JSX.Element}) {
             disabled={disabled}
             className={"switch-track " + (active ? "active" : "")}
             onClick={handleClick}
+            aria-label="Toggle switch"
         >
             {children}
         </button>

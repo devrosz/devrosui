@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import { InputOTP } from "@devrosui/react"
+import "@devrosui/react/style.css"
 import { useArgs } from "storybook/internal/preview-api"
 import { useId } from "react"
 

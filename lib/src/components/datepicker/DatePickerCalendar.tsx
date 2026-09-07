@@ -258,17 +258,19 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
                     <div className="dp-calendar-header">
                             <h6>{getMonthNameLocale(month) + " " + year}</h6>
                         <div className="dp-calendar-buttons">
-                            <button 
+                            <button
                                 onClick={decrementMonth} 
                                 disabled={minYear != null && year <= minYear && month == 0}
                                 className="dp-calendar-set-month-button"
+                                aria-label="Select previous month"
                             >
                                 <FaChevronLeft />
                             </button>
-                            <button 
+                            <button
                                 onClick={incrementMonth}
                                 disabled={maxYear != null && year >= maxYear && month == 11}
                                 className="dp-calendar-set-month-button"
+                                aria-label="Select next month"
                             >
                                 <FaChevronRight />
                             </button>

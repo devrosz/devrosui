@@ -89,11 +89,12 @@ export default function DatePicker({
                     required={required}
                     disabled={disabled}
                 />
-                <button 
+                <button
                     type="button"
                     onClick={toggleCalendar}
                     className="dp-calendar-icon"
                     disabled={disabled}
+                    aria-label="Open caledar"
                 >
                     <LuCalendar />
                 </button>
