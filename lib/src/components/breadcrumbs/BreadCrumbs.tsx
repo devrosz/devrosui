@@ -25,7 +25,7 @@ export default function BreadCrumbs({path=defaultPath, delimiter=">"}: BreadCrum
     const pathParsed = path.split("/")
     return (
         <div className="breadcrumbs">
-            {pathParsed.map((dir, i) => {
+            {path && pathParsed.map((dir, i) => {
                 // Navigate to specific crumb in the given path.
                 const outDir = "../"
                 const currentPath = outDir.repeat(pathParsed.length - 1 - i)
@@ -36,7 +36,7 @@ export default function BreadCrumbs({path=defaultPath, delimiter=">"}: BreadCrum
                         <a href={currentPath}>
                             <h6>{dir}</h6>
                         </a>
-                        {!isLast ? <h6>{delimiter}</h6> : null}
+                        {!isLast && delimiter ? <h6 aria-label="delimiter">{delimiter}</h6> : null}
                     </div>
                 )
             })
