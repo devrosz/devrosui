@@ -20,15 +20,15 @@ export const SliderDev: Story = {
         id:"slider",
         name: "slider",
         label: "Range",
-        min: "0",
-        max: "100",
-        value: "0",
+        min: 0,
+        max: 100,
+        value: 0,
         setValue: () => {}
     },
     render: () => {
         const [{id, name, label, min, max, value, setValue}, updateArgs] = useArgs()
 
-        function handleSlide(newValue: string): void {
+        function handleSlide(newValue: number): void {
             updateArgs({value: newValue})
         }
 
@@ -51,16 +51,16 @@ export const Description: Story = {
         id:"slider",
         name: "slider",
         label: "Range",
-        min: "0",
-        max: "100",
-        value: "0",
+        min: 0,
+        max: 100,
+        value: 0,
         setValue: () => {},
         description: "Choose an applicable value."
     },
     render: () => {
         const [{id, name, label, min, max, value, setValue, description}, updateArgs] = useArgs()
 
-        function handleSlide(newValue: string): void {
+        function handleSlide(newValue: number): void {
             updateArgs({value: newValue})
         }
 
@@ -84,10 +84,10 @@ export const Price: Story = {
         id:"price",
         name: "price",
         label: "Price",
-        min: "0",
-        max: "100",
+        min: 0,
+        max: 100,
         step: "0.01",
-        value: "0",
+        value: 0,
         setValue: () => {},
         unit: "EUR",
 
@@ -95,7 +95,7 @@ export const Price: Story = {
     render: () => {
         const [{id, name, label, min, max, value, setValue, step, unit}, updateArgs] = useArgs()
 
-        function handleSlide(newValue: string): void {
+        function handleSlide(newValue: number): void {
             updateArgs({value: newValue})
         }
 
@@ -120,16 +120,16 @@ export const NoValue: Story = {
         id:"slider",
         name: "slider",
         label: "Range",
-        min: "0",
-        max: "100",
-        value: "0",
+        min: 0,
+        max: 100,
+        value: 0,
         setValue: () => {},
         showValue: false
     },
     render: () => {
         const [{id, name, label, min, max, value, setValue, showValue}, updateArgs] = useArgs()
 
-        function handleSlide(newValue: string): void {
+        function handleSlide(newValue: number): void {
             updateArgs({value: newValue})
         }
 
@@ -153,16 +153,16 @@ export const Disabled: Story = {
         id:"slider",
         name: "slider",
         label: "Range",
-        min: "0",
-        max: "100",
-        value: "0",
+        min: 0,
+        max: 100,
+        value: 0,
         setValue: () => {},
         disabled: true
     },
     render: () => {
         const [{id, name, label, min, max, value, setValue, disabled}, updateArgs] = useArgs()
 
-        function handleSlide(newValue: string): void {
+        function handleSlide(newValue: number): void {
             updateArgs({value: newValue})
         }
 

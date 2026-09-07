@@ -14,6 +14,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const LocalTabsDev: Story = {
+    args: {
+        type: "local",
+        initialTabId: "tab-1",
+        children: ""
+    },
     render: () => {
         return (
             <Tabs type="local" initialTabId="tab-1">
@@ -44,6 +49,11 @@ export const LocalTabsDev: Story = {
 }
 
 export const LocalTabsSecondary: Story = {
+    args: {
+        type: "local",
+        initialTabId: "tab-1",
+        children: ""
+    },
     render: () => {
         return (
             <Tabs type="local" styling="secondary" initialTabId="tab-1">
@@ -74,6 +84,11 @@ export const LocalTabsSecondary: Story = {
 }
 
 export const LocalTabsTertiary: Story = {
+    args: {
+        type: "local",
+        initialTabId: "tab-1",
+        children: ""
+    },
     render: () => {
         return (
             <Tabs type="local" styling="tertiary" initialTabId="tab-1">
@@ -104,6 +119,11 @@ export const LocalTabsTertiary: Story = {
 }
 
 export const LocalTabsDisabled: Story = {
+    args: {
+        type: "local",
+        initialTabId: "tab-1",
+        children: ""
+    },
     render: () => {
         return (
             <Tabs type="local" initialTabId="tab-1">
