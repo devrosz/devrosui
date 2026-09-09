@@ -1,0 +1,6 @@
+DevrosUI makes use of the following third-party dependencies with their associated licence:
+
+```react-shiki``` - Copyright (c) 2026 Bassim Shahidy
+```motion``` - Copyright (c) 2024 Motion B.V.
+```@fontsource/geist``` - Copyright (c) 2023 Vercel, in collaboration with basement.studio
+```react-icons``` - Copyright 2018 kamijin_fanta <kamijin@live.jp>
