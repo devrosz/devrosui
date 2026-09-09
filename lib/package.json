@@ -17,7 +17,7 @@
     "./style.css": "./dist/style.css"
   },
   "author": "Devros",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "vite build"
   },
