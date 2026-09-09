@@ -6,7 +6,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "/dist"
+    "/dist",
+    "./THIRD-PARTY-NOTICES.txt"
   ],
   "exports": {
     ".": {
@@ -16,7 +17,7 @@
     "./style.css": "./dist/style.css"
   },
   "author": "Devros",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "build": "vite build"
   },
