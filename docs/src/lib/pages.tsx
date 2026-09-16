@@ -18,6 +18,7 @@ export const docsPages = {
         {title: "dropdown", path: "/docs/components/dropdown"},
         {title: "error", path: "/docs/components/error"},
         {title: "inputOTP", path: "/docs/components/inputOTP"},
+        {title: "panel", path: "/docs/components/panel"},
         {title: "popup", path: "/docs/components/popup"},
         {title: "select", path: "/docs/components/select"},
         {title: "skeleton", path: "/docs/components/skeleton"},
