@@ -31,6 +31,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                 {pages.map((page) => {
                                     const { title, path } = page
                                     const isActive = currentPath === path
+                                    const isNew = Object.keys(page).includes("isNew") && page.isNew
 
                                     return (
                                         <li
@@ -45,6 +46,8 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                                 title={title}
                                                 path={path}
                                             />
+                                            {/* Additional tags providing status-updates about the component */}
+                                            {isNew && <span className="component-tag new">New</span>}
                                         </li>
                                     )
                                 })}

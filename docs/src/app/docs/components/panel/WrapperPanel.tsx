@@ -2,7 +2,6 @@
 
 import { Panel } from "@devrosui/react"
 import { LuSun, LuMoon } from "react-icons/lu"
-import { useTheme } from "@/lib/ThemeProvider"
 
 export default function WrapperPanel({
     style="primary",
