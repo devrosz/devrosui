@@ -45,7 +45,13 @@ function toggleTheme(): void {
 This implementation simply adds the class 'light' to the HTML document.
 
 ## Documentation and demos
-devrosui.roshanbansie.nl
+https://devrosui.roshanbansie.nl
 
 ## About me
 I am a Computer Science student that develops full-stack applications using primarily Next.js, React, CSS, Typescript, SQL and Express.js. I like the style of my websites to be modern-looking with a black/white theme and little accent colours. I created DevrosUI as a hobby-project to gain more experience in creating reuseable components and as an utility to create consistency across my products when it comes down to style.
+
+## Patch notes v1.1.1
+
+### Accordion
+- added the possibility to use custom headers inside ```<Accordion.Header>```
+- added ```minWidth``` and ```maxWidth``` params

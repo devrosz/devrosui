@@ -23,7 +23,7 @@ export const docsPages: DocsPagesObj = {
         {title: "installation", path: "/docs/getting-started/installation"},
     ],
     "Components": [
-        {title: "accordion", path: "/docs/components/accordion"},
+        {title: "accordion", path: "/docs/components/accordion", isUpdated: true},
         {title: "breadcrumbs", path: "/docs/components/breadcrumbs"},
         {title: "button", path: "/docs/components/button"},
         {title: "calendar", path: "/docs/components/calendar"},

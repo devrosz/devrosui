@@ -28,7 +28,7 @@
 .docs-nav li {
     padding: 6px;
     border-radius: 8px;
-    width: 8rem;
+    width: 9rem;
     margin: 3px 0;
 }
 
@@ -148,14 +148,22 @@
     overflow-x: auto;
 }
 
-.component-tag.new {
+.component-tag {
     padding: 4px 8px;
     border-radius: 1rem;
     font-size: 11px;
     font-weight: 600;
+    margin-left: 8px;
+}
+
+.component-tag.new {
     background-color: rgba(22, 35, 69, 0.726);
     color: rgb(20, 157, 255);
-    margin-left: 8px;
+}
+
+.component-tag.updated {
+    background-color: var(--background-tertiary);
+    color: var(--text-tertiary);
 }
 
 @media (max-width: 900px) {
