@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { ReactNode } from "react"
+import { ReactNode, JSX } from "react"
 import { motion } from "motion/react"
 import { createContext, useContext, useId } from "react"
 import ToggleButton from "./ToggleButton"
@@ -15,6 +15,8 @@ type AccordionProps = {
     background?: "filled" | "empty",
     toggleIcon?: "plus" | "chevron",
     width?: string,
+    minWidth?: string,
+    maxWidth?: string,
     children: ReactNode
 }
 
@@ -48,6 +50,8 @@ export function Accordion({
     background="filled",
     toggleIcon="chevron",
     width="100%",
+    minWidth="auto",
+    maxWidth="auto",
     children
 }: AccordionProps) {
 
@@ -81,7 +85,14 @@ export function Accordion({
 
     return (
         <AccordionContext.Provider value={contextValue}>
-            <ul className="accordion" style={{width: width}}>
+            <ul 
+                className="accordion"
+                style={{
+                    width: width,
+                    minWidth: minWidth,
+                    maxWidth: maxWidth
+                }}
+            >
                 {children}
             </ul>
         </AccordionContext.Provider>
@@ -115,7 +126,7 @@ export function Item({children}: {children: ReactNode}) {
 }
 
 // Header of an accordion item.
-export function Header({children}: {children: string}) {
+export function Header({children}: {children: string | JSX.Element}) {
 
     const accordionContext = useContext(AccordionContext)
     const itemContext = useContext(AccordionItemContext)
@@ -130,7 +141,11 @@ export function Header({children}: {children: string}) {
 
     return (
         <div className="accordion-header-container">
-            <h5>{children}</h5>
+            {/* 
+                Allow user to choose their own heading. 
+                If no heading is specified, the default h5 will be used.
+            */}
+            { typeof(children) === "string" ? <h5>{children}</h5> : children}
             <ToggleButton 
                 entry={itemKey}
                 getStatus={getToggleStatus}

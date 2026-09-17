@@ -39,9 +39,14 @@
     justify-content: space-between;
 }
 
-.accordion-header-container h5 {
+.accordion-header-container h1,
+.accordion-header-container h2,
+.accordion-header-container h3,
+.accordion-header-container h4,
+.accordion-header-container h5,
+.accordion-header-container h6 {
     color: var(--text-primary);
-    margin: 0;
+    margin: auto 0;
     font-weight: normal;
 }
 
