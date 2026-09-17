@@ -1,0 +1,97 @@
+.panel-container {
+    width: fit-content;
+    background-color: transparent;
+    display: flex;
+    border-radius: 3rem;
+    font-family: var(--font);
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--button-secondary-border);
+    padding: 0.25rem;
+}
+
+.mode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem 2rem;
+    border-radius: 3rem;
+    border: none;
+    background-color: transparent;
+    color: var(--text-tertiary);
+    font-weight: 600;
+}
+
+.mode button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+.mode a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.mode-text {
+    position: relative;
+    z-index: 3;
+}
+
+.mode.active {
+    color: var(--text-primary);
+}
+
+.mode.disabled {
+    cursor: not-allowed;
+}
+
+.active-pill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 3rem;
+    background-color: var(--button-secondary-hover);
+    z-index: 2;
+}
+
+/* Primary styling light mode */
+html.light .panel-container.primary .mode {
+    background-color: var(--background-primary);
+    border: none
+}
+
+html.light .panel-container.primary {
+    background-color: var(--background-primary);
+    box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+    -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
+}
+
+html.light .panel-container.primary .active-pill {
+    background-color: var(--button-secondary-hover);
+}
+
+/* Secondary styling */
+
+.panel-container.secondary {
+    background-color: #454545;
+    border: none;
+}
+
+.panel-container.secondary .active-pill {
+    background-color: #646464;  
+}
+
+html.light .panel-container.secondary {
+    background-color: var(--background-tertiary);
+    border: 1px solid var(--button-secondary-border);
+}
+
+html.light .panel-container.secondary .active-pill {
+    background-color: var(--button-secondary-hover);
+}

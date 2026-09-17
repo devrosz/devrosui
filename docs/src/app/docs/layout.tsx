@@ -31,6 +31,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                 {pages.map((page) => {
                                     const { title, path } = page
                                     const isActive = currentPath === path
+                                    const isNew = Object.keys(page).includes("isNew") && page.isNew
 
                                     return (
                                         <li
@@ -45,6 +46,8 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                                 title={title}
                                                 path={path}
                                             />
+                                            {/* Additional tags providing status-updates about the component */}
+                                            {isNew && <span className="component-tag new">New</span>}
                                         </li>
                                     )
                                 })}
@@ -60,36 +63,3 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
     )
 
 }
-
-{/* <h6>Getting started</h6> */}
-{/* <ul>
-    {gettingStartedPages.map(page => {
-        const path = "/docs/getting-started/" + page
-        const isActive = currentPath === `/docs/getting-started/${page}` 
-            || (page === "prerequisites" && currentPath === "/docs")
-        
-        return (
-            <li 
-                className={isActive ? "active-docs-link" : "docs-link-item"}
-                key={page + "-nav-button"}
-            >
-                <DocsNavBtns title={page} path={path} />
-            </li>
-        )
-    })}
-</ul>
-<h6>Components</h6>
-<ul>
-    {componentPages.map(page => {
-        const path = "/docs/components/" + page
-        const isActive = currentPath === `/docs/components/${page}`
-        return (
-            <li 
-                className={isActive ? "active-docs-link" : "docs-link-item"}
-                key={page + "-nav-button"}
-            >
-                <DocsNavBtns title={page} path={path} />
-            </li>
-        )
-    })}
-</ul> */}

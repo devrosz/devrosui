@@ -1,0 +1,178 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import WrapperPanel from "./WrapperPanel"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "secondary",
+        title: "Secondary",
+        level: 1
+    },
+    {
+        id: "disabled",
+        title: "Disabled",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    },
+    {
+        id: "props-panel",
+        title: "Panel",
+        level: 1
+    },
+    {
+        id: "props-mode",
+        title: "Panel.Mode",
+        level: 1
+    }
+]
+
+export const exampleCode = 
+`
+"use client"
+
+import { Panel } from "@devrosui/react"
+
+export default function MyComponent() {
+    return (
+        <Panel styling={style} initialMode="mode-1">
+            <Panel.Mode handleClick={() => console.log("function 1")} id="mode-1">
+                <LuMoon />
+            </Panel.Mode>
+            <Panel.Mode handleClick={() => console.log("function 2")} id="mode-2">
+                <LuSun />
+            </Panel.Mode>
+        </Panel>
+    )
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Panel
+    Panel consisting of buttons that can activate different modes of a page or component.
+
+   <OutputContainer 
+        components={[
+            <WrapperPanel />
+        ]} 
+        height="20rem" 
+    />
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Panel } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="secondary">Secondary</h4>
+    <OutputContainer 
+        components={[
+            <WrapperPanel style="secondary" />
+        ]} 
+        height="20rem" 
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Panel styling="secondary" initialMode="mode-1">
+                <Panel.Mode id="mode-1">
+                    <LuMoon />
+                </Panel.Mode>
+                <Panel.Mode id="mode-2">
+                    <LuSun />
+                </Panel.Mode>
+            </Panel>
+            `
+        }
+    />
+
+    <h4 id="disabled">Disabled</h4>
+    <OutputContainer
+        components={[<WrapperPanel disabled={true} />]}
+        height="20rem"
+    />
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={
+            `
+            <Panel styling="secondary" initialMode="mode-1">
+                <Panel.Mode id="mode-1">
+                    <LuMoon />
+                </Panel.Mode>
+                <Panel.Mode disabled={true} id="mode-2">
+                    <LuSun />
+                </Panel.Mode>
+            </Panel>
+            `
+        }
+    />
+
+    <h3 id="props">Props</h3>
+
+    <h4 id="props-panel">Panel</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```initialMode*``` | ```string``` | - | id of mode which should be active on first render |
+        | ```styling``` | ```"primary" \| "secondary"``` | - | style type of the mode buttons |
+        | ```children*``` | ```ReactNode``` | - | Expecting ```<Panel.Mode>``` |
+    </div>
+
+    <h4 id="props-mode">Panel.Mode</h4>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```id*``` | ```string``` | - | id of the mode |
+        | ```handleClick``` | ```any ``` | - | onClick handler for the mode button |
+        | ```disabled``` | ``` boolean``` | - | disables the mode button from activaation |
+        | ```children*``` | ```ReactNode``` | - | Expecting a string or component(s) |
+    </div>
+
+    <h6>*: mandatory props</h6>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/inputOTP" direction="left">InputOTP</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/popup" direction="right">Popup</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />
