@@ -3,7 +3,7 @@ import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
 import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
 import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
 import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
-import { Error } from "@devrosui/react"
+import { ErrorMessage } from "@devrosui/react"
 
 export const headers = [
     {
@@ -40,23 +40,23 @@ export const headers = [
 
 export const exampleCode = 
 `
-import { Error } from "@devrosui/react"
+import { ErrorMessage } from "@devrosui/react"
 
 export default function MyComponent() {
     return (
-        <Error>An unexpected error occured. Please try again later.</Error>
+        <ErrorMessage>An unexpected error occured. Please try again later.</ErrorMessage>
     )
 }
 `
 
 <div className="docs-page-content">
     <BreadCrumbs />
-    ## Error
+    ## ErrorMessage
     Displays an error message.
 
    <OutputContainer 
         components={[
-            <Error>An unexpected error occured. Please try again later.</Error>
+            <ErrorMessage>An unexpected error occured. Please try again later.</ErrorMessage>
         ]} 
         height="20rem" 
     />
@@ -65,7 +65,7 @@ export default function MyComponent() {
    <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'import { Error } from "@devrosui/react"'}
+        code={'import { ErrorMessage } from "@devrosui/react"'}
     />
    
    <h3 id="usage">Usage</h3>
@@ -77,25 +77,25 @@ export default function MyComponent() {
     <h4 id="warning">Warning</h4>
     <OutputContainer 
         components={[
-            <Error>An unexpected error occured. Please try again later.</Error>
+            <ErrorMessage>An unexpected error occured. Please try again later.</ErrorMessage>
         ]} 
         height="20rem" 
     />
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'<Error type="warning">An unexpected error occured. Please try again later.</Error>'}
+        code={'<ErrorMessage type="warning">An unexpected error occured. Please try again later.</ErrorMessage>'}
     />
 
     <h4 id="danger">Danger</h4>
     <OutputContainer
-        components={[<Error type="danger">An unexpected error occured. Please try again later.</Error>]}
+        components={[<ErrorMessage type="danger">An unexpected error occured. Please try again later.</ErrorMessage>]}
         height="20rem"
     />
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
-        code={'<Error type="danger">An unexpected error occured. Please try again later.</Error>'}
+        code={'<ErrorMessage type="danger">An unexpected error occured. Please try again later.</ErrorMessage>'}
     />
 
     <h3 id="props">Props</h3>
@@ -104,7 +104,7 @@ export default function MyComponent() {
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
         | ```type``` | ```"warning" \| "danger"``` | ```"warning"``` | Background color |
-        | ```width``` | ```string``` | ```"100%"``` | Width of the error container |
+        | ```width``` | ```string``` | ```"100%"``` | Width of the ErrorMessage container |
         | ```children*``` | ```string``` | - | Message to be displayed |
 
     <h6>*: mandatory props</h6>

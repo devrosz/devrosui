@@ -5,7 +5,7 @@ import { Slider,
         CookieConsent,
         InputOTP,
         Accordion,
-        Error,
+        ErrorMessage,
         Skeleton,
         Button } 
 from "@devrosui/react"
@@ -57,7 +57,7 @@ export default function HeroDemoMobile() {
                         <InputOTP.Slot index={5} />
                     </InputOTP.Form>
                 </InputOTP>
-                <Error>An unexpected error has occured</Error>
+                <ErrorMessage>An unexpected error has occured</ErrorMessage>
 
             </div>
             <div className="hero-demo-col">

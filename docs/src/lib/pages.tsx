@@ -30,7 +30,7 @@ export const docsPages: DocsPagesObj = {
         {title: "cookieConsent", path: "/docs/components/cookieConsent"},
         {title: "datepicker", path: "/docs/components/datepicker"},
         {title: "dropdown", path: "/docs/components/dropdown"},
-        {title: "error", path: "/docs/components/error"},
+        {title: "errorMessage", path: "/docs/components/errorMessage", isUpdated: true},
         {title: "inputOTP", path: "/docs/components/inputOTP"},
         {title: "panel", path: "/docs/components/panel", isNew: true},
         {title: "popup", path: "/docs/components/popup"},
