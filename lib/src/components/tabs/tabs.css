@@ -110,3 +110,9 @@ html.light .tabs-container.secondary .active-pill {
     background-color: transparent;
     border-bottom: 2px solid var(--background-secondary);
 }
+
+@media (max-width: 530px) {
+    .tab {
+        padding: 0.5rem 1rem;
+    }
+}

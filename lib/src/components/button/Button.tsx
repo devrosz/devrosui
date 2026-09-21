@@ -10,7 +10,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   variant?: "primary" | "secondary" | "tertiary" | "danger",
   disabled?: boolean,
   onClick?: () => void,
-  children: string | JSX.Element
+  children: string | JSX.Element | (string | JSX.Element)[]
 }
 
 // Rounded button component with multiple variants.

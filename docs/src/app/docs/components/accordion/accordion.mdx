@@ -39,6 +39,11 @@ export const headers = [
         level: 1
     },
     {
+        id: "headers",
+        title: "Custom Headers",
+        level: 1
+    },
+    {
         id: "props",
         title: "Props",
         level: 0
@@ -84,7 +89,7 @@ export default function MyComponent() {
                 </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 2</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -93,7 +98,7 @@ export default function MyComponent() {
                 </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 3</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -120,7 +125,7 @@ export const chevronEmptyCode =
             </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 2</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -129,7 +134,7 @@ export const chevronEmptyCode =
                 </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 3</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -153,7 +158,7 @@ export const plusCode =
             </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 2</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -162,7 +167,7 @@ export const plusCode =
                 </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 3</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -176,7 +181,7 @@ export const plusCode =
 
 export const plusEmptyCode = 
 `
-    <Accordion width="35rem" toggleIcon="plus" background="empty">
+    <Accordion width="35rem" background="empty">
         <Accordion.Item>
             <Accordion.Header>Item 1</Accordion.Header>
             <Accordion.Content>
@@ -187,7 +192,7 @@ export const plusEmptyCode =
             </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 2</Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -196,7 +201,46 @@ export const plusEmptyCode =
                 </Accordion.Content>
             </Accordion.Item>
             <Accordion.Item>
-                <Accordion.Header>Item 1</Accordion.Header>
+                <Accordion.Header>Item 3</Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+    </Accordion>
+`
+
+export const customHeaderCode = 
+`
+    <Accordion width="35rem" toggleIcon="plus" background="empty">
+        <Accordion.Item>
+            <Accordion.Header>
+                <h3>Item 1</h3>
+            </Accordion.Header>
+            <Accordion.Content>
+                Lorem ipsum dolor sit amet. 
+                Eum necessitatibus modi ex culpa quis sit provident provident
+                non minima internos. Ut quia dolores eos numquam obcaecati aut
+                voluptatem voluptatibus qui vero corporis non autem impedit.
+            </Accordion.Content>
+        </Accordion.Item>
+        <Accordion.Item>
+                <Accordion.Header>
+                    <h3>Item 2</h3>
+                </Accordion.Header>
+                <Accordion.Content>
+                    Lorem ipsum dolor sit amet. 
+                    Eum necessitatibus modi ex culpa quis sit provident provident
+                    non minima internos. Ut quia dolores eos numquam obcaecati aut
+                    voluptatem voluptatibus qui vero corporis non autem impedit.
+                </Accordion.Content>
+            </Accordion.Item>
+            <Accordion.Item>
+                <Accordion.Header>
+                    <h3>Item 3</h3>
+                </Accordion.Header>
                 <Accordion.Content>
                     Lorem ipsum dolor sit amet. 
                     Eum necessitatibus modi ex culpa quis sit provident provident
@@ -228,16 +272,21 @@ export const plusEmptyCode =
     <h3 id="variants">Variants</h3>
 
     <h4 id="chevron-empty">Chevron Empty</h4>
-        <OutputContainer components={[<AccordionWrapper background="empty" />]} />
-        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={chevronEmptyCode} />
+    <OutputContainer components={[<AccordionWrapper background="empty" />]} />
+    <CodeBlock langHighlight="jsx" langDisplay="JSX" code={chevronEmptyCode} />
 
     <h4 id="plus">Plus</h4>
-        <OutputContainer components={[<AccordionWrapper toggleIcon="plus" />]} />
-        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusCode} />
+    <OutputContainer components={[<AccordionWrapper toggleIcon="plus" />]} />
+    <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusCode} />
 
     <h4 id="plus-empty">Plus Empty</h4>
-        <OutputContainer components={[<AccordionWrapper toggleIcon="plus" background="empty" />]} />
-        <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusEmptyCode} />
+    <OutputContainer components={[<AccordionWrapper toggleIcon="plus" background="empty" />]} />
+    <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusEmptyCode} />
+
+    <h4 id="headers">Custom Headers</h4>
+    
+    <OutputContainer components={[<AccordionWrapper background="empty" customHeader={true} />]} />
+    <CodeBlock langHighlight="jsx" langDisplay="JSX" code={customHeaderCode} />
     
     <h3 id="props">Props</h3>
 
@@ -249,6 +298,8 @@ export const plusEmptyCode =
         | ```background``` | ```"filled" \| "empty"``` | ```"filled"``` | Enable/disable transparant background |
         | ```toggleIcon``` | ```"plus" \| "chevron"``` | ```"chevron"``` | Icon that toggles the collapsing text |
         | ```width``` | ```string``` | ```"100%"``` | Width of the accordion items |
+        | ```minWidth``` | ```string``` | ```"auto"``` | Minimum width of the accordion items |
+        | ```maxWidth``` | ```string``` | ```"auto"``` | Maximum width of the accordion items |
         | ```children*``` | ```ReactNode``` | - | Expecting one or more ```<Accordion.Item>``` components |
     </div>
 

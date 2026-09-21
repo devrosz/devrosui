@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
-import { Error } from "@devrosui/react"
+import { ErrorMessage } from "@devrosui/react"
 import "@devrosui/react/style.css"
 
 const meta = {
     title: "Error",
-    component: Error,
+    component: ErrorMessage,
     parameters: {
         layout: "centered"
     }
-} satisfies Meta<typeof Error>
+} satisfies Meta<typeof ErrorMessage>
 
 export default meta
 type Story = StoryObj<typeof meta>

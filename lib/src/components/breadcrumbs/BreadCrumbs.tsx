@@ -33,7 +33,7 @@ export default function BreadCrumbs({path=defaultPath, delimiter=">"}: BreadCrum
 
                 return (
                     <div className={isLast ? "crumb-active" : "crumb"} key={dir}>
-                        <a href={currentPath}>
+                        <a href={currentPath + dir}>
                             <h6>{dir}</h6>
                         </a>
                         {!isLast && delimiter ? <h6 aria-label="delimiter">{delimiter}</h6> : null}

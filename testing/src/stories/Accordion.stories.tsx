@@ -162,3 +162,46 @@ export const PlusEmpty: Story = {
         )
     }
 }
+
+export const CustomHeaders: Story = {
+    args: {children: ""},
+    render: () => {
+        return (
+            <Accordion width="35rem">
+                <Accordion.Item>
+                    <Accordion.Header>
+                        <h3>Item 1</h3>
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        Lorem ipsum dolor sit amet. 
+                        Eum necessitatibus modi ex culpa quis sit provident provident
+                        non minima internos. Ut quia dolores eos numquam obcaecati aut
+                        voluptatem voluptatibus qui vero corporis non autem impedit.
+                    </Accordion.Content>
+                </Accordion.Item>
+                <Accordion.Item>
+                    <Accordion.Header>
+                        <h3>Item 1</h3>
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        Lorem ipsum dolor sit amet. 
+                        Eum necessitatibus modi ex culpa quis sit provident provident
+                        non minima internos. Ut quia dolores eos numquam obcaecati aut
+                        voluptatem voluptatibus qui vero corporis non autem impedit.
+                    </Accordion.Content>
+                </Accordion.Item>
+                <Accordion.Item>
+                    <Accordion.Header>
+                        <h3>Item 1</h3>
+                    </Accordion.Header>
+                    <Accordion.Content>
+                        Lorem ipsum dolor sit amet. 
+                        Eum necessitatibus modi ex culpa quis sit provident provident
+                        non minima internos. Ut quia dolores eos numquam obcaecati aut
+                        voluptatem voluptatibus qui vero corporis non autem impedit.
+                    </Accordion.Content>
+                </Accordion.Item>
+            </Accordion>
+        )
+    }
+}

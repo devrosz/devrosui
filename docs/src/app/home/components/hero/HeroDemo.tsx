@@ -5,7 +5,7 @@ import { Slider,
         CookieConsent,
         InputOTP,
         Accordion,
-        Error,
+        ErrorMessage,
         Skeleton,
         Button } 
 from "@devrosui/react"
@@ -90,7 +90,7 @@ export default function HeroDemo() {
                     </Accordion.Item>
                 </Accordion>
 
-                <Error>An unexpected error has occured</Error>
+                <ErrorMessage>An unexpected error has occured</ErrorMessage>
 
                 <div className="hero-demo-buttons">
                     <Button variant="primary">Primary</Button>

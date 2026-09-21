@@ -5,6 +5,7 @@ import Link from "next/link"
 import { JSX } from "react"
 import { usePathname } from "next/navigation"
 import { docsPages } from "@/lib/pages"
+import Tag from "@/components/interfaces/tags/Tags"
 import "./layout.css"
 
 // Returns the JSX element of a documentation page link.
@@ -32,6 +33,7 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                     const { title, path } = page
                                     const isActive = currentPath === path
                                     const isNew = Object.keys(page).includes("isNew") && page.isNew
+                                    const isUpdated = Object.keys(page).includes("isUpdated") && page.isUpdated
 
                                     return (
                                         <li
@@ -47,7 +49,8 @@ export default function DocsLayout({children}: {children: React.ReactNode}) {
                                                 path={path}
                                             />
                                             {/* Additional tags providing status-updates about the component */}
-                                            {isNew && <span className="component-tag new">New</span>}
+                                            {isNew && <Tag type="new">New</Tag>}
+                                            {isUpdated && <Tag type="updated">Updated</Tag>}
                                         </li>
                                     )
                                 })}
