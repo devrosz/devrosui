@@ -86,25 +86,25 @@ header {
     height: 30px;
 }
 
-/* Represents the open state of the mobile nav. */
-.toggle-open {
-    transition: ease-in-out 0.5s;
-    background-color: var(--background-primary);
-}
-
 .toggle-menu-btn {
     color: var(--text-primary);
     font-size: 1.25rem;
     display: none;
 }
 
-.toggle-menu  {
+.toggle-menu-container  {
+    overscroll-behavior-y: contain;
     display: none;
     padding: 0;
     margin: 0 auto;
     max-width: 90%;
     text-align: left;
     list-style: none;
+}
+
+.toggle-menu {
+    max-height: 90%;
+    overflow-y: auto;
 }
 
 .user-actions-container {
@@ -120,7 +120,7 @@ header {
 }
 
 @media (max-width: 770px) {
-    .toggle-menu, .toggle-menu-btn {
+    .toggle-menu-container, .toggle-menu-btn {
         display: block;
     }
     .nav-container {
