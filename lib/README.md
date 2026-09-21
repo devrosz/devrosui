@@ -72,3 +72,8 @@ JS native ```Error``` object
 
 ### Breadcrumbs
 - fixed routing when clicking on crumbs
+
+## Patch notes v1.1.2
+
+### Datepicker
+- fixes layout bug where date input field was collapsed and empty on Safari
