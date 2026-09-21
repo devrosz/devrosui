@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation"
 import { IoLogoGithub } from "react-icons/io"
 import ThemeToggle from "@/components/interfaces/themetoggle/ThemeToggle"
 import Link from "next/link"
+import Tag from "@/components/interfaces/tags/Tags"
 import "./navbar.css"
 
 type ToggleLinkProps = {
@@ -84,6 +85,9 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
                         </li>
                             {pages.map((page) => {
                                 const { title, path } = page
+                                const isNew = Object.keys(page).includes("isNew") && page.isNew
+                                const isUpdated = Object.keys(page).includes("isUpdated") && page.isUpdated
+
                                 return (
                                     <li 
                                         onClick={() => toggle()}
@@ -93,6 +97,9 @@ export default function MobileNav({open, toggle}: MobileNavProps) {
                                         <Link href={path}>
                                             {title}
                                         </Link>
+                                        {/* Additional tags providing status-updates about the component */}
+                                        {isNew && <Tag type="new">New</Tag>}
+                                        {isUpdated && <Tag type="updated">Updated</Tag>}
                                     </li>
                                 )
                             })}

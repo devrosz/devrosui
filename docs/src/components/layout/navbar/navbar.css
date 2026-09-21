@@ -119,7 +119,7 @@ header {
     margin-bottom: 4px;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 900px) {
     .toggle-menu-container, .toggle-menu-btn {
         display: block;
     }
