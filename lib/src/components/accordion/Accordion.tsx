@@ -157,7 +157,7 @@ export function Header({children}: {children: string | JSX.Element}) {
 }
 
 // Collapsable content of an item.
-export function Content({children}: {children: string}) {
+export function Content({children}: {children: string | JSX.Element}) {
     const accordionContext = useContext(AccordionContext)
     const itemContext = useContext(AccordionItemContext)
 

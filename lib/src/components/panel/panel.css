@@ -15,12 +15,18 @@
     justify-content: center;
     cursor: pointer;
     position: relative;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 3rem;
     border: none;
     background-color: transparent;
     color: var(--text-tertiary);
     font-weight: 600;
+}
+
+.mode-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mode button {

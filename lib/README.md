@@ -50,30 +50,46 @@ https://devrosui.roshanbansie.nl
 ## About me
 I am a Computer Science student that develops full-stack applications using primarily Next.js, React, CSS, Typescript, SQL and Express.js. I like the style of my websites to be modern-looking with a black/white theme and little accent colours. I created DevrosUI as a hobby-project to gain more experience in creating reuseable components and as an utility to create consistency across my products when it comes down to style.
 
-## Patch notes v1.1.0
+## Feedback
+Create an issue with an applicable tag if you find any bugs or if you want to request a feature
+
+## Patch notes
+
+### v1.1.0
 
 Added the new component ```Panel```
 
-## Patch notes v1.1.1
+### v1.1.1
 
-### Accordion
+#### Accordion
 - added the possibility to use custom headers inside ```<Accordion.Header>```
 - added ```minWidth``` and ```maxWidth``` params
 
-### Error
+#### Error
 - renamed the ```Error``` component to ```ErrorMessage``` becaused it collided with the
 JS native ```Error``` object
 
-### Tabs
+#### Tabs
 - improved responsiveness on mobile
 
-### Button
+#### Button
 - changed typing to allow multiple children
 
-### Breadcrumbs
+#### Breadcrumbs
 - fixed routing when clicking on crumbs
 
-## Patch notes v1.1.2
+### v1.1.2
 
-### Datepicker
-- fixes layout bug where date input field was collapsed and empty on Safari
+#### Datepicker
+- fixed layout bug where date input field was collapsed on Safari
+
+### v1.1.3
+
+#### Button
+- applied center-aligned text
+
+#### Accordion
+- allowed JSX elements inside ```Accordion.Content```
+
+#### Panel
+- reduced padding
