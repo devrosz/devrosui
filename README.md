@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevrosUI
+This mono-repo is a React component library. Its main purpose is to create consistency in my products by abstracting away frequently used UI-components and style them according to my taste.
 
-## Getting Started
+## Live demo
+https://devrosui.roshanbansie.nl
 
-First, run the development server:
+## NPM package page
+https://npmjs.com/package/@devrosui/react
 
+## Features
+- Documentation site which describes the features and usage of the React component library
+- Implementation of ```@devrosui/react```
+- Testing environment for ```@devrosui/react```
+
+## Tech stack
+
+### Frontend
+- Next.js
+- React
+- Typescript
+- CSS
+
+### Testing
+- Storybook
+
+## Architecture
+This mono-repo consists of three main directories: ```/docs```,  ```/lib``` and ```/testing```
+
+### ```/docs```
+- Contains the Next.js documentation website
+
+### ```/lib```
+- Contains the actual ```@devrosui/react``` package with the implementation of the React components and their styling
+- Each component has its own folder consisting of a ```.tsx``` file and a ```.css``` file
+
+### ```/testing```
+- Contains the Storybook environment
+- In this directory, the components of ```/lib``` are being tested
+
+Inside ```/docs``` and ```testing``` the components of ```/lib``` are imported via the path alias
+as defined inside the ```tsconfig.json``` of the respective directory and enforced via NPM linking
+as defined inside the root ```package.json``` under ```workspaces``` to mimic real installation and usage
+of the package.
+
+## Workflows
+
+### Run documentation site on localhost
 ```bash
+cd ./docs
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Build ```@devrosui/react``` package
+```bash
+cd ./lib
+npm run build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Pack ```@devrosui/react``` into a ```.tgz``` folder
+```bash
+cd ./lib
+npm pack
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Open Storybook
+```bash
+cd ./testing
+npm run storybook
+```
 
-## Learn More
+### Add new component
 
-To learn more about Next.js, take a look at the following resources:
+1. Create a separate folder in ```/lib/src/components``` with the name of the component as folder name
+2. Write the implementation in a ```.tsx``` file and the styling in a ```.css``` file (use the CSS variables defined in ```/lib/src/globals.css```
+3. Export the component from ```/lib/src/index.ts```
+4. Write a story of the component in ```/testing/src/stories```
+5. Test the functionalities, styling and responsiveness of the component
+6. Add the component to ```/docs/lib/pages.tsx``` with the extra ```isNew``` key
+7. Write the documentation page of the component in the same format as the other pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Update component
+1. Change the necessary files
+2. Test the functionalities, styling and responsiveness of the component
+3. Add the ```isUpdated``` key in ```/docs/lib/pages.tsx```
+4. Update the respective documentation page if applicable
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Publish new version to NPM
+1. Navigate to the ```/lib``` directory
+2. Write the changes into the ```README.md``` under "Patch notes" with the new version to be published
+3. Delete the old ```.tgz``` folder of the package
+4. Change the version in ```package.json``` according to guideline below:
 
-## Deploy on Vercel
+    | Example | When to use |
+    | :------ | :---------- |
+    | 1.0.0 -> 1.0.1 | Bug fixes |
+    | 1.0.0 -> 1.1.0 | New features |
+    | 1.0.0 -> 2.0.0 | Breaking changes |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+6. Build the package
+   ```bash
+   npm build
+   ```
+7. Pack the package
+   ```bash
+   npm pack
+   ```
+8. Login to NPM
+   ```bash
+   npm login
+   ```
+9. Publish the package
+   ```bash
+   npm publish --access public
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+- It may happen that you change the source of a component in ```/lib``` but the change isn't visible in Storybook or the documentation website.
+  In such case, you should rebuild the package because the entry of ```/lib``` is ```/dist``` as defined in ```/lib/package.json```
+- Each directory has its own dependencies. No dependency must be installed at root level
+
+## Feedback
+Create an issue with an applicable tag if you find any bugs or if you want to request a feature
