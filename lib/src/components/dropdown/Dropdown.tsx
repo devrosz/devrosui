@@ -6,6 +6,15 @@ import { createContext, useContext } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import "./dropdown.css"
 
+type Orientation = "top" | "bottom"
+type Alignment = "left" | "right"
+
+type DropdownProps = {
+    children: React.ReactNode
+    orientation?: Orientation,
+    alignment?: Alignment
+}
+
 // onClick: callback function that gets invoked when the option is clicked.
 // isDangerous: hints that this option is dangerous.
 // children: can be either a string or a custom component.
@@ -19,14 +28,16 @@ type ItemProps = {
 // toggle: callback function to toggle the open state.
 type DropdownContextType = {
     open: boolean,
-    toggle: () => void
+    toggle: () => void,
+    orientation: Orientation,
+    alignment: Alignment
 }
 
 const DropdownContext = createContext<DropdownContextType | null>(null)
 
 // Wrapper container of the dropdown.
 // Passes the DropdownContext to the children.
-export function Dropdown({children}: {children: React.ReactNode}) {
+export function Dropdown({orientation="bottom", alignment="left", children}: DropdownProps) {
     const [open, setOpen] = React.useState<boolean>(false)
 
     function toggle() {
@@ -34,8 +45,8 @@ export function Dropdown({children}: {children: React.ReactNode}) {
     }
 
     return (
-        <DropdownContext.Provider value={{open, toggle}}>
-            <div className="dropdown-container">
+        <DropdownContext.Provider value={{open, toggle, orientation, alignment}}>
+            <div className="dropdown-container" style={{alignItems: alignment === "left" ? "baseline" : "end"}}>
                 {children}
             </div>
         </DropdownContext.Provider>
@@ -72,13 +83,14 @@ export function List({children}: {children: React.ReactNode}) {
         return
     }
 
-    const { open, toggle } = dropDownContext
+    const { open, orientation } = dropDownContext
+    const className = `dropdown-list ${orientation}` 
 
     return (
         <AnimatePresence>
             {open ? (
                 <motion.ul 
-                    className="dropdown-list"
+                    className={className}  
                     initial={{scale: 0.9, opacity: 0}}
                     animate={{scale: 1, opacity: 1}}
                     exit={{scale: 0.9, opacity: 0}}

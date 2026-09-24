@@ -102,3 +102,65 @@ export const DropdownIcons: Story = {
         )
     }
 }
+
+export const DropdownOrientation: Story = {
+    args: {children: ""},
+    render: () => {
+        return (
+        <Dropdown orientation="top">
+            <Dropdown.Header>
+                Actions
+            </Dropdown.Header>
+            <Dropdown.List>
+                <Dropdown.Item>
+                    <AiOutlineEdit />
+                    Edit file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    <FiSave />
+                   Save file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    <IoCopyOutline />
+                    Copy file
+                </Dropdown.Item>
+                <Dropdown.Item isDangerous={true}>
+                    <RiDeleteBinLine />
+                    Delete file
+                </Dropdown.Item>
+            </Dropdown.List>
+        </Dropdown>
+        )
+    }
+}
+
+export const DropdownAlignment: Story = {
+    args: {children: ""},
+    render: () => {
+        return (
+        <Dropdown alignment="right">
+            <Dropdown.Header>
+                Actions
+            </Dropdown.Header>
+            <Dropdown.List>
+                <Dropdown.Item>
+                    <AiOutlineEdit />
+                    Edit file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    <FiSave />
+                   Save file
+                </Dropdown.Item>
+                <Dropdown.Item>
+                    <IoCopyOutline />
+                    Copy file
+                </Dropdown.Item>
+                <Dropdown.Item isDangerous={true}>
+                    <RiDeleteBinLine />
+                    Delete file
+                </Dropdown.Item>
+            </Dropdown.List>
+        </Dropdown>
+        )
+    }
+}

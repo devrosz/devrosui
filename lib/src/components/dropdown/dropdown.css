@@ -1,10 +1,15 @@
 .dropdown-container {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    /* Fallback for when alignment isn't defined in TSX */
+    align-items: baseline;
     font-family: var(--font);
 }
 
 .dropdown-list {
     position: absolute;
+    /* Fallback for when alignment isn't defined in the classname */
     top: 48px;
     z-index: 5;
     list-style: none;
@@ -13,6 +18,14 @@
     padding: 0.5rem;
     width: 10rem;
     border-radius: 1rem;
+}
+
+.dropdown-list.bottom {
+    top: 48px;
+}
+
+.dropdown-list.top {
+    top: -200px;
 }
 
 .dropdown-item {
