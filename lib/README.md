@@ -98,3 +98,6 @@ JS native ```Error``` object
 
 #### Dropdown
 - added ```orientation``` and ```alignment``` params to control the position of the actions list
+
+#### Accordion
+- Fixed nested elements inside p-tag error
