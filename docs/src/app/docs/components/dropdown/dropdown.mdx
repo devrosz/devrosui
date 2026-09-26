@@ -8,6 +8,7 @@ import { Dropdown } from "@devrosui/react"
 import Basic from "./examples/Basic"
 import Danger from "./examples/Danger"
 import Icons from "./examples/Icons"
+import Position from "./examples/Position"
 
 export const headers = [
     {
@@ -33,6 +34,16 @@ export const headers = [
     {
         id: "icons",
         title: "Icons",
+        level: 1
+    },
+    {
+        id: "orientation",
+        title: "Orientation",
+        level: 1
+    },
+    {
+        id: "alignment",
+        title: "Alignment",
         level: 1
     },
     {
@@ -189,6 +200,72 @@ export default function MyComponent() {
         `}
     />    
 
+    <h4 id="orientation">Orientation</h4>
+
+    <OutputContainer 
+        components={[<Position orientation="top" />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Dropdown orientation="top" >
+                <Dropdown.Header>
+                    Actions
+                </Dropdown.Header>
+                <Dropdown.List>
+                    <Dropdown.Item>
+                        <IoText />
+                        Letter size
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <FaGlasses />
+                    Anti-dyslectic
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <GiStripedSun />
+                        Toggle theme
+                    </Dropdown.Item>
+                </Dropdown.List>
+            </Dropdown>
+        `}
+    />
+
+    <h4 id="alignment">Alignment</h4>
+
+    <OutputContainer 
+        components={[<Position alignment="right" />]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Dropdown alignment="right" >
+                <Dropdown.Header>
+                    Actions
+                </Dropdown.Header>
+                <Dropdown.List>
+                    <Dropdown.Item>
+                        <IoText />
+                        Letter size
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <FaGlasses />
+                    Anti-dyslectic
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <GiStripedSun />
+                        Toggle theme
+                    </Dropdown.Item>
+                </Dropdown.List>
+            </Dropdown>
+        `}
+    />    
+
     <h3 id="props">Props</h3>   
 
     <h4 id="props-dropdown">Dropdown</h4>
@@ -196,6 +273,8 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
+        | ```orientation``` | ```"top" \| "bottom"``` | ```"top"``` | Position of actions list relative to the toggle button |
+        | ```alignment``` | ```"left" \| "right"``` | ```"left"``` | Alignment of actions list relative to the toggle button |
         | ```children*``` | ```ReactNode``` | - | Expecting ```<Dropdown.Header>``` followed by ```<Dropdown.List>``` |
     </div>
 

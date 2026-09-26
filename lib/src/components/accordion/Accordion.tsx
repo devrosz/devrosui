@@ -177,7 +177,8 @@ export function Content({children}: {children: string | JSX.Element}) {
             transition={{duration: 0.25, ease: "easeInOut"}}
             style={{overflow: "hidden"}}
         >
-            <p>{children}</p>
+            {/* Allow user to use JSX  in the Accordon content */}
+            { typeof children === "string" ? <p>{children}</p> : children }
         </motion.div>
     )
 }

@@ -1,4 +1,4 @@
-import { BsHighlights } from "react-icons/bs";
+import { BsHighlights } from "react-icons/bs"
 import Tooltip from "../tooltip/Tooltip"
 import "./themetoggle.css"
 

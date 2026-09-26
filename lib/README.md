@@ -93,3 +93,11 @@ JS native ```Error``` object
 
 #### Panel
 - reduced padding
+
+### v1.1.4
+
+#### Dropdown
+- added ```orientation``` and ```alignment``` params to control the position of the actions list
+
+#### Accordion
+- Fixed nested elements inside p-tag error
