@@ -27,7 +27,7 @@ export default function Position({orientation="bottom", alignment="left"}: Posit
                 </Dropdown.Item>
                 <Dropdown.Item>
                     <FaGlasses />
-                   Anti-dyslectic
+                    Anti-dyslectic
                 </Dropdown.Item>
                 <Dropdown.Item onClick={toggleTheme}>
                     <BsHighlights />
