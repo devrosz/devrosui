@@ -17,7 +17,7 @@ export default function Position({orientation="bottom", alignment="left"}: Posit
     const { toggleTheme } = useTheme()
     return (
          <Dropdown orientation={orientation} alignment={alignment}>
-            <Dropdown.Header>
+            <Dropdown.Header borderRadius="3rem">
                 <IoAccessibility />
             </Dropdown.Header>
             <Dropdown.List>
@@ -27,7 +27,7 @@ export default function Position({orientation="bottom", alignment="left"}: Posit
                 </Dropdown.Item>
                 <Dropdown.Item>
                     <FaGlasses />
-                   Anti-dyslectic
+                    Anti-dyslectic
                 </Dropdown.Item>
                 <Dropdown.Item onClick={toggleTheme}>
                     <BsHighlights />

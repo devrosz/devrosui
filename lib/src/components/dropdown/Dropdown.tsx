@@ -9,10 +9,18 @@ import "./dropdown.css"
 type Orientation = "top" | "bottom"
 type Alignment = "left" | "right"
 
+// orientation: position of the option list.
+// alignment: alignment of the dropdown header in contrast to the list.
 type DropdownProps = {
     children: React.ReactNode
     orientation?: Orientation,
     alignment?: Alignment
+}
+
+// borderRadius: border radius of the dropdown header.
+type DropdownHeaderProps = {
+    children: string | JSX.Element,
+    borderRadius?: string
 }
 
 // onClick: callback function that gets invoked when the option is clicked.
@@ -54,7 +62,7 @@ export function Dropdown({orientation="bottom", alignment="left", children}: Dro
 }
 
 // Clickable button that allows the option list to popup.
-export function Header({children}: {children: string | JSX.Element}) {
+export function Header({children, borderRadius="0.5rem"}: DropdownHeaderProps) {
 
     const dropDownContext = useContext(DropdownContext)
 
@@ -63,11 +71,12 @@ export function Header({children}: {children: string | JSX.Element}) {
         return
     }
 
-    const { open, toggle } = dropDownContext
+    const { toggle } = dropDownContext
 
     return (
         <button
             className="dropdown-header"
+            style={{borderRadius: borderRadius}}
             onClick={toggle}
         >{children}
         </button>

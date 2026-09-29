@@ -101,3 +101,8 @@ JS native ```Error``` object
 
 #### Accordion
 - Fixed nested elements inside p-tag error
+
+### v1.1.5
+
+#### Dropdown
+- added ```borderRadius``` param to ```<Dropdown.Header>```

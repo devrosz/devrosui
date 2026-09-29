@@ -211,8 +211,8 @@ export default function MyComponent() {
         langHighlight="jsx"
         langDisplay="JSX"
         code={`
-            <Dropdown orientation="top" >
-                <Dropdown.Header>
+            <Dropdown orientation="top">
+                <Dropdown.Header borderRadius="3rem">
                     Actions
                 </Dropdown.Header>
                 <Dropdown.List>
@@ -222,10 +222,10 @@ export default function MyComponent() {
                     </Dropdown.Item>
                     <Dropdown.Item>
                         <FaGlasses />
-                    Anti-dyslectic
+                        Anti-dyslectic
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <GiStripedSun />
+                        <BsHighlights />
                         Toggle theme
                     </Dropdown.Item>
                 </Dropdown.List>
@@ -245,7 +245,7 @@ export default function MyComponent() {
         langDisplay="JSX"
         code={`
             <Dropdown alignment="right" >
-                <Dropdown.Header>
+                <Dropdown.Header borderRadius="3rem">
                     Actions
                 </Dropdown.Header>
                 <Dropdown.List>
@@ -255,10 +255,10 @@ export default function MyComponent() {
                     </Dropdown.Item>
                     <Dropdown.Item>
                         <FaGlasses />
-                    Anti-dyslectic
+                        Anti-dyslectic
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <GiStripedSun />
+                        <BsHighlights />
                         Toggle theme
                     </Dropdown.Item>
                 </Dropdown.List>
@@ -273,7 +273,7 @@ export default function MyComponent() {
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
-        | ```orientation``` | ```"top" \| "bottom"``` | ```"top"``` | Position of actions list relative to the toggle button |
+        | ```orientation``` | ```"top" \| "bottom"``` | ```"bottom"``` | Position of actions list relative to the toggle button |
         | ```alignment``` | ```"left" \| "right"``` | ```"left"``` | Alignment of actions list relative to the toggle button |
         | ```children*``` | ```ReactNode``` | - | Expecting ```<Dropdown.Header>``` followed by ```<Dropdown.List>``` |
     </div>
@@ -284,6 +284,7 @@ export default function MyComponent() {
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
         | ```children*``` | ```string \| JSX.Element``` | - | Inner text of the button or a custom component inside the button |
+        | ```borderRadius``` | ```string``` | ```"0.5rem"``` | Border radius of the toggle button |
     </div>
 
     <h4 id="props-list">Dropdown.List</h4>
