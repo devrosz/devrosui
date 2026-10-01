@@ -21,10 +21,18 @@ export const PanelDev: Story = {
     render: () => {
         return (
             <Panel initialMode="mode-1">
-                <Panel.Mode handleClick={() => console.log("function 1")} id="mode-1">
+                <Panel.Mode
+                    ariaLabel="Toggle dark mode"
+                    handleClick={() => console.log("function 1")} 
+                    id="mode-1"
+                >
                     Dark mode
                 </Panel.Mode>
-                <Panel.Mode handleClick={() => console.log("function 2")} id="mode-2">
+                <Panel.Mode 
+                    ariaLabel="Toggle light mode"
+                    handleClick={() => console.log("function 2")} 
+                    id="mode-2"
+                >
                     Light mode
                 </Panel.Mode>
             </Panel>
@@ -40,10 +48,18 @@ export const PanelSecondary: Story = {
     render: () => {
         return (
             <Panel styling="secondary" initialMode="mode-1">
-                <Panel.Mode handleClick={() => console.log("function 1")} id="mode-1">
+                <Panel.Mode
+                    ariaLabel="Toggle dark mode"
+                    handleClick={() => console.log("function 1")}
+                    id="mode-1"
+                >
                     Dark mode
                 </Panel.Mode>
-                <Panel.Mode handleClick={() => console.log("function 2")} id="mode-2">
+                <Panel.Mode
+                    ariaLabel="Toggle light mode"
+                    handleClick={() => console.log("function 2")}
+                    id="mode-2"
+                >
                     Light mode
                 </Panel.Mode>
             </Panel>
@@ -59,10 +75,19 @@ export const PanelDisabled: Story = {
     render: () => {
         return (
             <Panel styling="secondary" initialMode="mode-1">
-                <Panel.Mode handleClick={() => console.log("function 1")} id="mode-1">
+                <Panel.Mode
+                    ariaLabel="Toggle dark mode"
+                    handleClick={() => console.log("function 1")} 
+                    id="mode-1"
+                >
                     Dark mode
                 </Panel.Mode>
-                <Panel.Mode handleClick={() => console.log("function 2")} id="mode-2" disabled={true}>
+                <Panel.Mode
+                    ariaLabel="Toggle light mode"
+                    handleClick={() => console.log("function 2")}
+                    id="mode-2"
+                    disabled={true}
+                >
                     Light mode
                 </Panel.Mode>
             </Panel>

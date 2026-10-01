@@ -106,3 +106,6 @@ JS native ```Error``` object
 
 #### Dropdown
 - added ```borderRadius``` param to ```<Dropdown.Header>```
+
+### v1.1.6
+- added descriptive names for icon-only buttons

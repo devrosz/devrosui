@@ -13,10 +13,10 @@ export default function WrapperPanel({
     
     return (
             <Panel styling={style} initialMode="mode-1">
-                <Panel.Mode id="mode-1">
+                <Panel.Mode ariaLabel="Toggle dark mode" id="mode-1">
                     <LuMoon style={{fontSize: "1.5rem"}} />
                 </Panel.Mode>
-                <Panel.Mode disabled={disabled} id="mode-2">
+                <Panel.Mode ariaLabel="Toggle light mode" disabled={disabled} id="mode-2">
                     <LuSun style={{fontSize: "1.5rem"}} />
                 </Panel.Mode>
             </Panel>

@@ -39,6 +39,7 @@ export default function CopyButton({code}: CopyButtonProps) {
         <div className="copy-button-container">
             <Tooltip tip={isCopied ? "" : "Copy"}>
                 <button
+                    aria-label="Copy code"
                     className="copy-button"
                     onClick={copy}
                     disabled={isCopied}

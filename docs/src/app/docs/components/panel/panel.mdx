@@ -57,10 +57,18 @@ import { Panel } from "@devrosui/react"
 export default function MyComponent() {
     return (
         <Panel styling={style} initialMode="mode-1">
-            <Panel.Mode handleClick={() => console.log("function 1")} id="mode-1">
+            <Panel.Mode
+                ariaLabel="Toggle dark mode"
+                handleClick={() => console.log("function 1")}
+                id="mode-1"
+            >
                 <LuMoon />
             </Panel.Mode>
-            <Panel.Mode handleClick={() => console.log("function 2")} id="mode-2">
+            <Panel.Mode
+                ariaLabel="Toggle light mode"
+                handleClick={() => console.log("function 2")}
+                id="mode-2"
+            >
                 <LuSun />
             </Panel.Mode>
         </Panel>
@@ -105,10 +113,10 @@ export default function MyComponent() {
         langDisplay="JSX"
         code={`
             <Panel styling="secondary" initialMode="mode-1">
-                <Panel.Mode id="mode-1">
+                <Panel.Mode ariaLabel="Toggle dark mode" id="mode-1">
                     <LuMoon />
                 </Panel.Mode>
-                <Panel.Mode id="mode-2">
+                <Panel.Mode ariaLabel="Toggle light mode" id="mode-2">
                     <LuSun />
                 </Panel.Mode>
             </Panel>
@@ -127,10 +135,10 @@ export default function MyComponent() {
         code={
             `
             <Panel styling="secondary" initialMode="mode-1">
-                <Panel.Mode id="mode-1">
+                <Panel.Mode ariaLabel="Toggle dark mode" id="mode-1">
                     <LuMoon />
                 </Panel.Mode>
-                <Panel.Mode disabled={true} id="mode-2">
+                <Panel.Mode ariaLabel="Toggle light mode" disabled={true} id="mode-2">
                     <LuSun />
                 </Panel.Mode>
             </Panel>
@@ -157,6 +165,7 @@ export default function MyComponent() {
         | :--- | :--- | :------ | :---------- |
         | ```id*``` | ```string``` | - | id of the mode |
         | ```handleClick``` | ```any ``` | - | onClick handler for the mode button |
+        | ```ariaLabel``` | ```string ``` | - | Label for the mode's purpose to aid screen readers |
         | ```disabled``` | ``` boolean``` | - | disables the mode button from activaation |
         | ```children*``` | ```ReactNode``` | - | Expecting a string or component(s) |
     </div>
