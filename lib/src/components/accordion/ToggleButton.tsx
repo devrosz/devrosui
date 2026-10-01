@@ -34,7 +34,7 @@ export default function ToggleButton({
     }
 
     return icon === "plus" ? (
-        <button 
+        <button
             onClick={(e) => handleClick(entry, e)}
             aria-label={"collapse content button-" + entry}
         >

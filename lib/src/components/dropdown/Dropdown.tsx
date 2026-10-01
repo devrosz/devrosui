@@ -75,6 +75,7 @@ export function Header({children, borderRadius="0.5rem"}: DropdownHeaderProps) {
 
     return (
         <button
+            aria-label="Toggle popover"
             className="dropdown-header"
             style={{borderRadius: borderRadius}}
             onClick={toggle}

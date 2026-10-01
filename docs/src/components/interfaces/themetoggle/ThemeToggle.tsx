@@ -14,7 +14,7 @@ export default function ThemeToggle({toggleFunction}: ThemeToggleProps) {
                 <button 
                     className="themetoggle-button"
                     onClick={toggleFunction}
-                    name="Theme toggle"
+                    aria-label="Theme toggle"
                 >
                     <BsHighlights className="themetoggle-icon" />
                 </button>

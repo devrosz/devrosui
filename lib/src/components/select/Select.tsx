@@ -88,6 +88,7 @@ export default function Select({
             {description && <p>{description}</p>}
             <div className="select-options-anchor">
                 <button
+                    aria-label="Open option list"
                     name={name}
                     id={id}
                     onClick={toggleOptions}

@@ -21,6 +21,7 @@ type ModeProps = {
     id: string,
     disabled?: boolean,
     handleClick?: any,
+    ariaLabel: string,
     children: ReactNode
 }
 
@@ -52,7 +53,7 @@ function Panel({initialMode, styling="primary", children}: PanelProps) {
 }
 
 // Individual mode inside the Panel. Can update the activeMode.
-function Mode({id, disabled=false, handleClick, children}: ModeProps) {
+function Mode({id, disabled=false, handleClick, ariaLabel, children}: ModeProps) {
     const panelContext = useContext(PanelContext)
 
     if (!panelContext) {
@@ -63,7 +64,8 @@ function Mode({id, disabled=false, handleClick, children}: ModeProps) {
     const isActive = id === activeMode
 
     return (
-        <div
+        <button
+            aria-label={ariaLabel}
             className={"mode " + (isActive ? "active" : "") + (disabled ? "disabled" : "")}
             onClick={() => {
                 if (!disabled) {
@@ -90,7 +92,7 @@ function Mode({id, disabled=false, handleClick, children}: ModeProps) {
             <span className="mode-text">
                 {children}
             </span>
-        </div>
+        </button>
     )
 }
 
