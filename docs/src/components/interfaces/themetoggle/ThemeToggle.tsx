@@ -11,7 +11,11 @@ export default function ThemeToggle({toggleFunction}: ThemeToggleProps) {
 
     return (
             <Tooltip tip="Theme" position="bottom">
-                <button className="themetoggle-button" onClick={toggleFunction}>
+                <button 
+                    className="themetoggle-button"
+                    onClick={toggleFunction}
+                    name="Theme toggle"
+                >
                     <BsHighlights className="themetoggle-icon" />
                 </button>
             </Tooltip>

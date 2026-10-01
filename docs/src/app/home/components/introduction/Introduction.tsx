@@ -31,16 +31,13 @@ import { Switch } from “@devrosui/react”
                 <div className="introduction-text">
                     <h2>Get started within minutes</h2>
                     <p>
-                        Lorem ipsum dolor sit amet.
-                        Sed ullam quas ut voluptas sapiente qui ullam dolores
-                        sed ipsum nihil et quis impedit
-                        Ut explicabo reiciendis est perspiciatis eius
-                        sed dolores accusantium ut alias quod hic minus nihil et
-                        magnam numquam qui galisum inventore. 
+                        You can start right now by reading the prerequisites and
+                        installation page before going through the component
+                        documentation pages.
                     </p>
                     <div className="docs-link-container">
                         <ArrowLink path="/docs/getting-started">
-                            Learn more
+                            Read prerequisites
                         </ArrowLink>
                     </div>
                 </div>

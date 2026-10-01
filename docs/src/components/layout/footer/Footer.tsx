@@ -8,7 +8,7 @@ import "./footer.css"
 type SocialType = {
     name: string,
     icon: JSX.Element,
-    path: string
+    path: string,
 }
 
 export default function Footer() {
@@ -31,9 +31,10 @@ export default function Footer() {
         }
     ]
 
-    function SocialLinkBtn(path: string, key: string, icon: JSX.Element) {
+    function SocialLinkBtn(path: string, key: string, icon: JSX.Element, name: string) {
         return (
             <Link
+                aria-label={name}
                 href={path}
                 target="_blank"
                 className="social-link-button"
@@ -53,8 +54,10 @@ export default function Footer() {
                         const path = social.path
                         const icon = social.icon
                         const key = "social-" + i
+                        const name = social.name
+
                         return (
-                            SocialLinkBtn(path, key, icon)
+                            SocialLinkBtn(path, key, icon, name)
                         )
                     })}
                 </div>

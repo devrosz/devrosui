@@ -6,7 +6,7 @@ export default function Logo() {
     return (
         <Link href="/" className="logo-container">
             <img 
-                src="/assets/devrosui_logo.jpg"  
+                src="/assets/devrosui_logo.webp"  
                 alt="devrosui logo" 
 
                 className="logo-img"

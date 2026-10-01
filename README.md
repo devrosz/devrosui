@@ -71,12 +71,13 @@ npm run storybook
 ### Add new component
 
 1. Create a separate folder in ```/lib/src/components``` with the name of the component as folder name
-2. Write the implementation in a ```.tsx``` file and the styling in a ```.css``` file (use the CSS variables defined in ```/lib/src/globals.css```
-3. Export the component from ```/lib/src/index.ts```
-4. Write a story of the component in ```/testing/src/stories```
-5. Test the functionalities, styling and responsiveness of the component
-6. Add the component to ```/docs/lib/pages.tsx``` with the extra ```isNew``` key
-7. Write the documentation page of the component in the same format as the other pages
+2. Write the implementation in a ```.tsx``` file and the styling in a ```.css``` file 
+3. Use the CSS variables defined in ```/lib/src/globals.css```
+4. Export the component from ```/lib/src/index.ts```
+5. Write a story of the component in ```/testing/src/stories```
+6. Test the functionalities, styling and responsiveness of the component
+7. Add the component to ```/docs/lib/pages.tsx``` with the extra ```isNew``` key
+8. Write the documentation page of the component in the same format as the other pages
 
 ### Update component
 1. Change the necessary files
