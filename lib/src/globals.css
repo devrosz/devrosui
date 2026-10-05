@@ -1,53 +1,53 @@
 :root {
-  --background-primary: #000000;
-  --background-secondary: #fafafa;
-  --background-tertiary: #090909;
+  --devrosui-background-primary: #000000;
+  --devrosui-background-secondary: #fafafa;
+  --devrosui-background-tertiary: #090909;
 
-  --text-primary: #ededed;
-  --text-secondary: #000;
-  --text-tertiary: #818181;
+  --devrosui-text-primary: #ededed;
+  --devrosui-text-secondary: #000;
+  --devrosui-text-tertiary: #818181;
 
-  --button-primary-hover: #ccc;
-  --button-secondary-hover: #1a1a1a;
-  --button-tertiary-hover: #131313;
-  --button-secondary-border: #1a1a1a;
+  --devrosui-button-primary-hover: #ccc;
+  --devrosui-button-secondary-hover: #1a1a1a;
+  --devrosui-button-tertiary-hover: #131313;
+  --devrosui-button-secondary-border: #1a1a1a;
 
-  --skeleton-initial: hsl(0, 0%, 10%);
-  --skeleton-animate: hsl(0, 0%, 8%);
+  --devrosui-skeleton-initial: hsl(0, 0%, 10%);
+  --devrosui-skeleton-animate: hsl(0, 0%, 8%);
 
-  --danger-text: #ae1717;
-  --danger-background: #240d0d;
-  --danger-background-hover: #2e1111;
+  --devrosui-danger-text: #ae1717;
+  --devrosui-danger-background: #240d0d;
+  --devrosui-danger-background-hover: #2e1111;
 
-  --font: "Geist", sans-serif;
+  --devrosui-font: "Geist", sans-serif;
 }
 
 html.light {
-  --background-primary: #fafafa;
-  --background-secondary: #000;
-  --background-tertiary: #efefef;
+  --devrosui-background-primary: #fafafa;
+  --devrosui-background-secondary: #000;
+  --devrosui-background-tertiary: #efefef;
 
-  --text-primary: #000;
-  --text-secondary: #ededed;
-  --text-tertiary: #666;  
+  --devrosui-text-primary: #000;
+  --devrosui-text-secondary: #ededed;
+  --devrosui-text-tertiary: #666;  
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #e0dede;
-  --button-tertiary-hover: #e7e7e7;
+  --devrosui-button-primary-hover: #383838;
+  --devrosui-button-secondary-hover: #f2f2f2;
+  --devrosui-button-secondary-border: #e0dede;
+  --devrosui-button-tertiary-hover: #e7e7e7;
 
-  --skeleton-initial: hsl(0, 0%, 90%);
-  --skeleton-animate: hsl(0, 0%, 95%);
+  --devrosui-skeleton-initial: hsl(0, 0%, 90%);
+  --devrosui-skeleton-animate: hsl(0, 0%, 95%);
 
-  --danger-background: rgb(255, 218, 218);
-  --danger-background-hover: rgb(246, 209, 209);
+  --devrosui-danger-background: rgb(255, 218, 218);
+  --devrosui-danger-background-hover: rgb(246, 209, 209);
 }
 
 h1 {
   font-size: 64px;
   font-weight: 600;
   text-wrap: balance;
-  color: var(--text-primary);
+  color: var(--devrosui-text-primary);
   margin: 2rem 0;
 }
 

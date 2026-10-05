@@ -1,22 +1,22 @@
 .select-container {
     text-align: left;
     position: relative;
-    font-family: var(--font);
+    font-family: var(--devrosui-font);
 }
 
 .select-container, .select-container > * {
-    font-family: var(--font);
+    font-family: var(--devrosui-font);
 }
 
 .select-container h5 {
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
     margin: 0;
     text-transform: capitalize;
     font-weight: normal;
 }
 
 .select-container p {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
     margin-top: 0;
 }
 
@@ -25,8 +25,8 @@
 }
 
 .select-button {
-    background-color: var(--background-primary);
-    border: 1px solid var(--button-secondary-border);
+    background-color: var(--devrosui-background-primary);
+    border: 1px solid var(--devrosui-button-secondary-border);
     margin: 0.5rem 0;
 }
 
@@ -37,7 +37,7 @@ html.light .select-button {
 }
 
 .select-button:disabled {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
     cursor: not-allowed;
 }
 
@@ -50,8 +50,8 @@ ul.option-list {
     left: 0;
     top: 50px;
     list-style: none;
-    background-color: var(--background-primary);
-    border: 1px solid var(--button-secondary-border);
+    background-color: var(--devrosui-background-primary);
+    border: 1px solid var(--devrosui-button-secondary-border);
     border-radius: 1rem;
     padding: 4px;
     width: 100%;
@@ -61,18 +61,18 @@ ul.option-list {
 }
 
 .option-list::-webkit-scrollbar-thumb {
-    background: var(--button-secondary-border) 
+    background: var(--devrosui-button-secondary-border) 
 }
 
 .option-list::-webkit-scrollbar-track {
-    background: var(--background-tertiary);
+    background: var(--devrosui-background-tertiary);
 }
 
 ul.option-list button, .select-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
     width: 100%;
     text-align: left;
     padding: 8px 12px;
@@ -87,6 +87,6 @@ ul.option-list button {
 }
 
 ul.option-list button:hover, .select-button:hover {
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
     transition: 0.25s;
 }

@@ -1,7 +1,7 @@
 .input-otp-container {
     text-align: left;
-    font-family: var(--font);
-    color: var(--text-primary);
+    font-family: var(--devrosui-font);
+    color: var(--devrosui-text-primary);
 }
 
 .input-otp-label {
@@ -10,7 +10,7 @@
 }
 
 .input-otp-description {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
     line-height: normal;
 }
 
@@ -25,13 +25,13 @@
 }
 
 .input-otp-slot {
-    background-color: var(--background-tertiary);
-    border: 1px solid var(--button-secondary-border);
+    background-color: var(--devrosui-background-tertiary);
+    border: 1px solid var(--devrosui-button-secondary-border);
     width: 2.25rem;
     height: 2.5rem;
     text-align: center;
     font-size: 1.25rem;
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
     margin: 0 8px 4px 0;
     border-radius: 12px;
 }
@@ -45,11 +45,11 @@
 }
 
 .input-otp-form.error > .input-otp-slot {
-    border: 2px solid var(--danger-text);
+    border: 2px solid var(--devrosui-danger-text);
 }
 
 .input-otp-separator {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
     margin: 0 8px 4px 0;
 }
 
@@ -57,17 +57,17 @@
     display: flex;
     gap: 4px;
     align-items: center;
-    color: var(--danger-text);
+    color: var(--devrosui-danger-text);
     margin: 1rem 0;
 }
 
 .otp-error-container p {
-    color: var(--danger-text);
+    color: var(--devrosui-danger-text);
     margin: 0;
 }
 
 html.light .input-otp-slot {
-    background-color: var(--background-primary);
+    background-color: var(--devrosui-background-primary);
     box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
     -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
     -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
