@@ -109,3 +109,10 @@ JS native ```Error``` object
 
 ### v1.1.6
 - added descriptive names for icon-only buttons
+
+### v2.1.6
+- fixed issue where ```@devrosui/react``` typography styling overrode the typography of the consumer's app
+
+### v2.1.7
+- allowed user to pass their own key to ```<Accordion.Item>``` to prevent key-issues
+when rendering ```<Accordion.Item>``` inside the ```.map``` method.
