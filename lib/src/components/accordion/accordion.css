@@ -32,6 +32,7 @@
 
 .accordion-item-content p {
     color: var(--devrosui-text-tertiary);
+    font-size: var(--devrosui-size-p);
 }
 
 .accordion-header-container {
@@ -48,6 +49,30 @@
     color: var(--devrosui-text-primary);
     margin: auto 0;
     font-weight: normal;
+}
+
+.accordion-header-container h1 {
+    font-size: var(--devrosui-size-h1);
+}
+
+.accordion-header-container h2 {
+    font-size: var(--devrosui-size-h2);
+}
+
+.accordion-header-container h3 {
+    font-size: var(--devrosui-size-h3);
+}
+
+.accordion-header-container h4 {
+    font-size: var(--devrosui-size-h4);
+}
+
+.accordion-header-container h5 {
+    font-size: var(--devrosui-size-h5);
+}
+
+.accordion-header-container h6 {
+    font-size: var(--devrosui-size-h6);
 }
 
 .accordion-header-container button {

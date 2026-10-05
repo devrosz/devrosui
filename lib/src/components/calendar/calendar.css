@@ -18,6 +18,7 @@
 .calendar-header h6 {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: var(--devrosui-size-h6);
 }
 
 /* Default days styling */

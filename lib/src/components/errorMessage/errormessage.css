@@ -12,6 +12,7 @@
 .error-container h6 {
     font-weight: normal;
     margin: 0;
+    font-size: var(--devrosui-size-h6);
 }
 
 .error-container.warning {

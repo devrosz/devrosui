@@ -1,3 +1,4 @@
+/* Theme colours */
 :root {
   --devrosui-background-primary: #000000;
   --devrosui-background-secondary: #fafafa;
@@ -43,71 +44,33 @@ html.light {
   --devrosui-danger-background-hover: rgb(246, 209, 209);
 }
 
-h1 {
-  font-size: 64px;
-  font-weight: 600;
-  text-wrap: balance;
-  color: var(--devrosui-text-primary);
-  margin: 2rem 0;
-}
-
-h2 {
-  font-size: 40px;
-  margin: 1rem 0;
-}
-
-h3 {
-  font-size: 32px;
-}
-
-h4 {
-  font-size: 24px;
-}
-
-h5 {
-  font-size: 16px;
-}
-
-h6 {
-  font-size: 14px;
-}
-
-p {
-  font-size: 16px;
+/* Typography */
+:root {
+  --devrosui-size-h1: 64px;
+  --devrosui-size-h2: 40px;
+  --devrosui-size-h3: 32px;
+  --devrosui-size-h4: 24px;
+  --devrosui-size-h5: 16px;
+  --devrosui-size-h6: 14px;
+  --devrosui-size-p: 16px;
+  --devrosui-size-label: 16px;
+  --devrosui-size-input: 14px;
 }
 
 @media (max-width: 1200px) {
-  h1 {
-    font-size: 40px;
-  }
-  h2 {
-    font-size: 35px;
-  }
-  h3 {
-    font-size: 25px;
+  :root {
+    --devrosui-size-h1: 40px;
+    --devrosui-size-h2: 36px;
+    --devrosui-size-h3: 26px;
   }
 }
 
 @media (max-width: 450px) {
-  h1 {
-    font-size: 30px;
-  }
-  h2 {
-    font-size: 25px;
-  }
-  h3 {
-    font-size: 20px;
-  }
-  h4 {
-    font-size: 16px;
-  }
-  p {
-    font-size: 13px;
-  }
-  main > * {
-    margin: 2rem auto;
-  }
-  body {
-    margin: 0 1rem;
+  :root {
+    --devrosui-size-h1: 32px;
+    --devrosui-size-h2: 26px;
+    --devrosui-size-h3: 20px;
+    --devrosui-size-h4: 16px;
+    --devrosui-size-p: 14px;
   }
 }

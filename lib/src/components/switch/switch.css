@@ -51,11 +51,13 @@
 
 .switch-label {
     font-weight: normal;
+    font-size: var(--devrosui-size-label);
     margin: 0;
 }
 
 .switch-description {
     color: var(--devrosui-text-tertiary);
+    font-size: var(--devrosui-size-p);
     margin: 0;
 }
 

@@ -10,12 +10,14 @@
 
 .datepicker-input-container p {
     color: var(--devrosui-text-tertiary);
+    font-size: var(--devrosui-size-p);
     margin: 0;
 }
 
 .datepicker label {
     display: block;
     color: var(--devrosui-text-primary);
+    font-size: var(--devrosui-size-label);
     margin: 0;
 }
 
@@ -35,7 +37,7 @@
     background-color: var(--devrosui-background-primary);
     color: var(--devrosui-text-primary);
     border: 1px solid var(--devrosui-button-secondary-border);
-    font-size: 14px;
+    font-size: var(--devrosui-size-input);
 }
 
 .datepicker input:hover {
@@ -100,6 +102,7 @@ html.light .datepicker input {
 .dp-calendar-header h6 {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: var(--devrosui-size-h6);
 }
 
 /* Default days styling */
