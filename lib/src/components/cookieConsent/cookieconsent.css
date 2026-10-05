@@ -23,10 +23,12 @@
 
 .cookie-consent-content h5 {
     margin: 0;
+    font-size: var(--devrosui-size-h5);
 }
 
 .cookie-consent-content p {
     color: var(--text-tertiary);
+    font-size: var(--devrosui-size-p);
 }
 
 .cookie-consent-icon {

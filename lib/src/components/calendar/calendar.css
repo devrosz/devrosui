@@ -1,11 +1,11 @@
 .calendar-container {
     position: relative;
-    color: var(--text-primary);
-    font-family: var(--font);
-    background-color: var(--background-primary);
+    color: var(--devrosui-text-primary);
+    font-family: var(--devrosui-font);
+    background-color: var(--devrosui-background-primary);
     padding: 1rem;
     border-radius: 2rem;
-    border: 1px solid var(--button-secondary-border);
+    border: 1px solid var(--devrosui-button-secondary-border);
 }
 
 .calendar-header {
@@ -18,14 +18,15 @@
 .calendar-header h6 {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: var(--devrosui-size-h6);
 }
 
 /* Default days styling */
 .calendar-set-month-button, .day-button {
     background-color: transparent;
     border: none;
-    color: var(--text-primary);
-    font-family: var(--font);
+    color: var(--devrosui-text-primary);
+    font-family: var(--devrosui-font);
     border-radius: 2rem;
     font-weight: 600;
     padding: 0.4rem 0.6rem;
@@ -44,30 +45,30 @@
 }
 
 .calendar-set-month-button:disabled {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
 }
 
 .calendar-set-month-button:hover, .day-number:hover {
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
 }
 
 /* Selected days style */
 .day-number.selected .day-button {
-    color: var(--text-secondary);
+    color: var(--devrosui-text-secondary);
 }
 
 .day-number.selected {
-    background-color: var(--background-secondary);
+    background-color: var(--devrosui-background-secondary);
 }
 
 .day-number.selected:hover {
-    background-color: var(--button-primary-hover);
-    color: var(--text-secondary);
+    background-color: var(--devrosui-button-primary-hover);
+    color: var(--devrosui-text-secondary);
 }
 
 /* Taken days style */
 .day-number.taken {
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
 }
 
 .calendar-container table thead tr td {
@@ -79,7 +80,7 @@
 }
 
 .day-button:disabled {
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
 }
 
 @media (max-width: 450px) {

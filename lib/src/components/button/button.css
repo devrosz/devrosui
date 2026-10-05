@@ -1,6 +1,6 @@
 .custom-button {
   font-weight: 600;
-  font-family: var(--font);
+  font-family: var(--devrosui-font);
   font-display: swap;
   border: none;
   padding: 0.5rem 1rem;
@@ -15,7 +15,7 @@
 
 .custom-button > * {
   font-weight: 600;
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--devrosui-font-geist-sans), system-ui, sans-serif;
   font-display: swap;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,54 +27,54 @@
 
 /* Primary */
 .custom-button.primary {
-  background-color: var(--background-secondary);
-  color: var(--text-secondary);
+  background-color: var(--devrosui-background-secondary);
+  color: var(--devrosui-text-secondary);
 }
 
 .custom-button.primary > * {
-  color: var(--text-secondary);
+  color: var(--devrosui-text-secondary);
 }
 
 .custom-button.primary:hover {
-  background-color: var(--button-primary-hover);
+  background-color: var(--devrosui-button-primary-hover);
 }
 
 /* Secondary */
 .custom-button.secondary {
   background-color: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--button-secondary-border)
+  color: var(--devrosui-text-primary);
+  border: 1px solid var(--devrosui-button-secondary-border)
 }
 
 .custom-button.secondary > * {
-  color: var(--text-primary);
+  color: var(--devrosui-text-primary);
 }
 
 .custom-button.secondary:hover {
-  background-color: var(--button-secondary-hover);
+  background-color: var(--devrosui-button-secondary-hover);
 }
 
 /* Tertiary */
 .custom-button.tertiary {
-  background-color: var(--button-secondary-hover);
-  color: var(--text-primary);
+  background-color: var(--devrosui-button-secondary-hover);
+  color: var(--devrosui-text-primary);
 }
 
 .custom-button.tertiary:hover {
-  background-color: var(--button-tertiary-hover);
+  background-color: var(--devrosui-button-tertiary-hover);
 }
 
 /* Danger */
 .custom-button.danger {
-  background-color: var(--danger-background);
-  color: var(--danger-text);
+  background-color: var(--devrosui-danger-background);
+  color: var(--devrosui-danger-text);
 }
 
 .custom-button.danger:hover {
-  background-color: var(--danger-background-hover);
+  background-color: var(--devrosui-danger-background-hover);
 }
 
-/* ---- Click animation ---- */
+/* --devrosui---devrosui- Click animation --devrosui---devrosui- */
 .custom-button:active {
   transform: scale(0.95);
 }

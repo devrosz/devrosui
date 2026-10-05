@@ -287,7 +287,7 @@ export const customHeaderCode =
     
     <OutputContainer components={[<AccordionWrapper background="empty" customHeader={true} />]} />
     <CodeBlock langHighlight="jsx" langDisplay="JSX" code={customHeaderCode} />
-    
+
     <h3 id="props">Props</h3>
 
     <h4 id="props-accordion">Accordion</h4>
@@ -309,6 +309,7 @@ export const customHeaderCode =
         | Prop | Type | Default | Description |
         | :--- | :--- | :------ | :---------- |
         | ```children*``` | ```ReactNode``` | - | Expecting ```<Accordion.Header>``` |
+        | ```itemKey``` | ```string``` | ```useId()``` | Unique identifier for this item |
     </div>
 
     <h4 id="props-header">Header</h4>

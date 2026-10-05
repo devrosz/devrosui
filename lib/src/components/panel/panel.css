@@ -3,9 +3,9 @@
     background-color: transparent;
     display: flex;
     border-radius: 3rem;
-    font-family: var(--font);
-    background-color: var(--background-tertiary);
-    border: 1px solid var(--button-secondary-border);
+    font-family: var(--devrosui-font);
+    background-color: var(--devrosui-background-tertiary);
+    border: 1px solid var(--devrosui-button-secondary-border);
     padding: 0.25rem;
 }
 
@@ -19,7 +19,7 @@
     border-radius: 3rem;
     border: none;
     background-color: transparent;
-    color: var(--text-tertiary);
+    color: var(--devrosui-text-tertiary);
     font-weight: 600;
 }
 
@@ -33,12 +33,12 @@
     background-color: transparent;
     border: none;
     padding: 0;
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
 }
 
 .mode a {
     text-decoration: none;
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
 }
 
 .mode-text {
@@ -47,7 +47,7 @@
 }
 
 .mode.active {
-    color: var(--text-primary);
+    color: var(--devrosui-text-primary);
 }
 
 .mode.disabled {
@@ -61,25 +61,25 @@
     height: 100%;
     width: 100%;
     border-radius: 3rem;
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
     z-index: 2;
 }
 
 /* Primary styling light mode */
 html.light .panel-container.primary .mode {
-    background-color: var(--background-primary);
+    background-color: var(--devrosui-background-primary);
     border: none
 }
 
 html.light .panel-container.primary {
-    background-color: var(--background-primary);
+    background-color: var(--devrosui-background-primary);
     box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
     -webkit-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
     -moz-box-shadow: 1px 5px 19px 0px rgba(207,207,207,0.75);
 }
 
 html.light .panel-container.primary .active-pill {
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
 }
 
 /* Secondary styling */
@@ -94,10 +94,10 @@ html.light .panel-container.primary .active-pill {
 }
 
 html.light .panel-container.secondary {
-    background-color: var(--background-tertiary);
-    border: 1px solid var(--button-secondary-border);
+    background-color: var(--devrosui-background-tertiary);
+    border: 1px solid var(--devrosui-button-secondary-border);
 }
 
 html.light .panel-container.secondary .active-pill {
-    background-color: var(--button-secondary-hover);
+    background-color: var(--devrosui-button-secondary-hover);
 }

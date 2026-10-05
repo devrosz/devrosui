@@ -7,9 +7,10 @@
 
 @keyframes skeleton-loading {
   0% {
-    background-color: var(--skeleton-initial);
+    background-color: var(--devrosui-skeleton-initial);
   }
+
   100% {
-    background-color: var(--skeleton-animate);
+    background-color: var(--devrosui-skeleton-animate);
   }
 }

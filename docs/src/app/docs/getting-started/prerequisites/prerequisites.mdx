@@ -20,46 +20,47 @@ export const headers = [
         level: 1
     },
     {
-        id: "globals",
-        title: "Global stylesheet",
+        id: "styling",
+        title: "Styling",
         level: 0
+    },
+    {
+        id: "import",
+        title: "Import styles",
+        level: 1
+    },
+    {
+        id: "theme",
+        title: "Theme colours",
+        level: 1
     },
     {
         id: "themetoggle",
         title: "theme toggle",
-        level: 0
+        level: 1
     }
 ]
 export const themeCode = 
 `
-:root {
-    --background-primary: #000000;
-    --background-secondary: #fafafa;
-    --background-tertiary: #090909;
+  --devrosui-background-primary
+  --devrosui-background-secondary
+  --devrosui-background-tertiary
 
-    --text-primary: #ededed;
-    --text-secondary: #000;
-    --text-tertiary: #818181;
+  --devrosui-text-primary
+  --devrosui-text-secondary
+  --devrosui-text-tertiary
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-tertiary-hover: #131313;
-    --button-secondary-border: #1a1a1a;
-}
+  --devrosui-button-primary-hover
+  --devrosui-button-secondary-hover
+  --devrosui-button-tertiary-hover
+  --devrosui-button-secondary-border
 
-html.light {
-    --background-primary: #fafafa;
-    --background-secondary: #000;
-    --background-tertiary: #efefef;
+  --devrosui-skeleton-initial
+  --devrosui-skeleton-animate
 
-    --text-primary: #000;
-    --text-secondary: #ededed;
-    --text-tertiary: #666;  
-
-    --button-primary-hover: #383838;
-    --button-secondary-hover: #f2f2f2;
-    --button-secondary-border: #e0dede;
-}
+  --devrosui-danger-text
+  --devrosui-danger-background
+  --devrosui-danger-background-hover
 `
 
 export const toggleThemeCode =
@@ -93,7 +94,9 @@ function toggleTheme(): void {
     DevrosUI also uses ```react-icons```, ```motion``` and ```@fontsource/geist```.
     When installing DevrosUI, these packs will be included in the installation.
 
-    <h3 id="globals">Global stylesheet</h3>
+    <h3 id="styling">Styling</h3>
+
+    <h4 id="import">Import styles</h4>
 
     In order to give the components correct styling, you need to import the global stylesheet **once**
     in your app.  
@@ -115,7 +118,27 @@ function toggleTheme(): void {
         code={`import { Calendar } from "@devrosui/react"`}
     />
 
-    <h3 id="themetoggle">Theme toggle</h3>
+    <h4 id="theme">Theme colours</h4>
+
+    ```@devrosui/react``` uses its own tokens to define the theme colours of the components.
+    It is possible to override these colours and map them to your own colours to let the components
+    use the colours of the consumer app. Below is a list of tokens ```@devrosui/react``` uses for its theme colours:
+
+    <CodeBlock
+        langDisplay="CSS"
+        langHighlight="css"
+        code={themeCode}
+    />
+
+    If you want to map a token to another color, simply do the following:
+
+    <CodeBlock
+        langDisplay="CSS"
+        langHighlight="css"
+        code={`--devrosui-background-primary: "#101010"`}
+    />
+
+    <h4 id="themetoggle">Theme toggle</h4>
 
     As mentioned in the homepage, all components are compatible with dark and light modes.
     That is, the components follow a dark-theme by default, but change to a light-mode if
