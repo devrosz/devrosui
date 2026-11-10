@@ -57,3 +57,10 @@ export const Disabled: Story = {
     disabled: true
   },
 };
+
+export const ClassName: Story = {
+  args: {
+    className: "test-custom",
+    children: "custom"
+  },
+};
