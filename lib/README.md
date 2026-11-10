@@ -116,3 +116,6 @@ JS native ```Error``` object
 ### v2.1.7
 - allowed user to pass their own key to ```<Accordion.Item>``` to prevent key-issues
 when rendering ```<Accordion.Item>``` inside the ```.map``` method.
+
+### v2.1.8
+- allowed user to pass ```className``` prop to the ```<Button>``` component so the user can apply custom styling on top of the in-library styling.

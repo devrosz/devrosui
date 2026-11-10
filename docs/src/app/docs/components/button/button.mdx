@@ -43,6 +43,11 @@ export const headers = [
         level: 1
     },
     {
+        id: "custom",
+        title: "Custom styling",
+        level: 1
+    },
+    {
         id: "props",
         title: "Props",
         level: 0
@@ -227,7 +232,28 @@ export default function MyComponent() {
         `}
     />
 
+    <h4 id="custom">Custom styling</h4>
+
+    <OutputContainer
+        components={[
+            <Button style={{width: "200px"}}>Login</Button>
+        ]}
+        height="20rem"
+    />
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            // In CSS .login-btn has the property of width: 200px;
+            <Button className="login-btn">Login</Button>
+        `}
+    />
+
     <h3 id="props">Props</h3>
+
+    Any other prop that can be passed to the native ```<button>``` component can also be passed to this ```<Button>``` component.
+    Below is a list of common props which you can pass.
 
     <div className="docs-page-table-container">
         | Prop | Type | Default | Description |

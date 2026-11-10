@@ -7,6 +7,7 @@ import './button.css'
 // onClick: callback function when button is clicked.
 // children: can be plain text, an icon or a combination of both.
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
+  className?: string,
   variant?: "primary" | "secondary" | "tertiary" | "danger",
   disabled?: boolean,
   onClick?: () => void,
@@ -15,6 +16,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 
 // Rounded button component with multiple variants.
 export default function Button({
+    className,
     variant="primary",
     disabled=false, 
     onClick,
@@ -23,7 +25,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-        className={"custom-button " + variant}
+        className={"custom-button " + variant + (className ? ` ${className}` : "")}
         disabled={disabled}
         onClick={onClick}
         {...props}
