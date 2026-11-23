@@ -80,6 +80,11 @@
   transform: scale(0.95);
 }
 
+/* Don't do click animation when button is disabled */
+.custom-button:disabled:active {
+  transform: none;
+}
+
 .custom-button:focus:not(:active) {
   background-position: center;
   background-repeat: no-repeat;
