@@ -122,3 +122,6 @@ when rendering ```<Accordion.Item>``` inside the ```.map``` method.
 
 ### v2.1.9
 - prevent the click animation on ```<Button>``` when the button is disabled.
+
+### v2.2.9
+- added loading spinner component.
