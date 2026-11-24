@@ -32,6 +32,7 @@ export const docsPages: DocsPagesObj = {
         {title: "dropdown", path: "/docs/components/dropdown"},
         {title: "errorMessage", path: "/docs/components/errorMessage"},
         {title: "inputOTP", path: "/docs/components/inputOTP"},
+        {title: "LoadingBar", path: "/docs/components/loadingBar", isNew: true},
         {title: "panel", path: "/docs/components/panel", isNew: true},
         {title: "popup", path: "/docs/components/popup"},
         {title: "select", path: "/docs/components/select"},
