@@ -57,7 +57,9 @@ export default function MyComponent() {
     ## Popup
     Wrapper component that displays its childs in a popup fashion.
 
-   <OutputContainer components={[<ChildExample />]} height="20rem" />
+    <OutputContainer height="20rem">
+        <ChildExample />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 

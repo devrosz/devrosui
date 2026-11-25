@@ -81,12 +81,9 @@ export default function MyComponent() {
     ## Panel
     Panel consisting of buttons that can activate different modes of a page or component.
 
-   <OutputContainer 
-        components={[
-            <WrapperPanel />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <WrapperPanel />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -102,12 +99,9 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="secondary">Secondary</h4>
-    <OutputContainer 
-        components={[
-            <WrapperPanel style="secondary" />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <WrapperPanel style="secondary" />
+    </OutputContainer>
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
@@ -125,10 +119,9 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled">Disabled</h4>
-    <OutputContainer
-        components={[<WrapperPanel disabled={true} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperPanel disabled={true} />
+    </OutputContainer>
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"

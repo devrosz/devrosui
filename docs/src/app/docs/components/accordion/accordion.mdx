@@ -256,7 +256,9 @@ export const customHeaderCode =
     ## Accordion
     Collapsable element that initially shows a header and shows the full text on collapse.
 
-   <OutputContainer components={[<AccordionWrapper />]} />
+    <OutputContainer>
+        <AccordionWrapper />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -272,20 +274,28 @@ export const customHeaderCode =
     <h3 id="variants">Variants</h3>
 
     <h4 id="chevron-empty">Chevron Empty</h4>
-    <OutputContainer components={[<AccordionWrapper background="empty" />]} />
+    <OutputContainer>
+        <AccordionWrapper background="empty" />
+    </OutputContainer>
     <CodeBlock langHighlight="jsx" langDisplay="JSX" code={chevronEmptyCode} />
 
     <h4 id="plus">Plus</h4>
-    <OutputContainer components={[<AccordionWrapper toggleIcon="plus" />]} />
+    <OutputContainer>
+        <AccordionWrapper toggleIcon="plus" />
+    </OutputContainer>
     <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusCode} />
 
     <h4 id="plus-empty">Plus Empty</h4>
-    <OutputContainer components={[<AccordionWrapper toggleIcon="plus" background="empty" />]} />
+    <OutputContainer>
+        <AccordionWrapper toggleIcon="plus" background="empty" />
+    </OutputContainer>
     <CodeBlock langHighlight="jsx" langDisplay="JSX" code={plusEmptyCode} />
 
     <h4 id="headers">Custom Headers</h4>
     
-    <OutputContainer components={[<AccordionWrapper background="empty" customHeader={true} />]} />
+    <OutputContainer>
+        <AccordionWrapper background="empty" customHeader={true} />
+    </OutputContainer>
     <CodeBlock langHighlight="jsx" langDisplay="JSX" code={customHeaderCode} />
 
     <h3 id="props">Props</h3>

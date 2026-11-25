@@ -53,7 +53,9 @@ export default function MyComponent() {
     ## Loading bar
     Bar that displays loading progress.
 
-   <OutputContainer components={[<LoadingBarWrapper />]} height="20rem" />
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -69,10 +71,9 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="max-width">Max width</h4>
-    <OutputContainer
-        components={[<LoadingBarWrapper maxWidth="500px" />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper maxWidth="500px" />
+    </OutputContainer>
 
     <CodeBlock 
         langHighlight="jsx"
@@ -81,10 +82,9 @@ export default function MyComponent() {
     />
 
     <h4 id="thickness">Thickness</h4>
-    <OutputContainer
-        components={[<LoadingBarWrapper thickness="10px" />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper thickness="10px" />
+    </OutputContainer>
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"

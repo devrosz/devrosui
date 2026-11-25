@@ -93,12 +93,9 @@ export default function MyComponent() {
     ## DatePicker
     Component that lets the user select a date.
 
-    <OutputContainer 
-        components={[
-            <MockupDatePicker/>
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupDatePicker />
+    </OutputContainer>
     <h3 id="import">Import</h3>
     <CodeBlock
         langHighlight="jsx"
@@ -124,15 +121,12 @@ export default function MyComponent() {
     You can also add additional props to extend the functionalities of the datepicker.
 
     <h4 id="year-limits">Year limits</h4>
-    <OutputContainer 
-        components={[
-            <MockupDatePicker
-                minYear={2026}
-                maxYear={2026}
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupDatePicker
+            minYear={2026}
+            maxYear={2026}
+        />
+    </OutputContainer>
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -149,14 +143,11 @@ export default function MyComponent() {
     />
 
     <h4 id="description">Description</h4>
-    <OutputContainer 
-        components={[
-            <MockupDatePicker
-                description="Select a date for an appointment"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+         <MockupDatePicker
+            description="Select a date for an appointment"
+        />
+    </OutputContainer>
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -174,49 +165,41 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled-dates">Disabled days</h4>
-    <OutputContainer 
-            components={[
-                <MockupDatePicker
-                    date={new Date("2026-07-04")}
-                    disabledDays={[
-                        new Date("2026-07-03"),
-                        new Date("2026-07-06"),
-                        new Date("2026-07-15"),
-                        new Date("2026-07-06")
-                    ]}
-                />
-            ]} 
-            height="20rem" 
+    <OutputContainer height="20rem">
+        <MockupDatePicker
+            date={new Date("2026-07-04")}
+            disabledDays={[
+                new Date("2026-07-03"),
+                new Date("2026-07-06"),
+                new Date("2026-07-15"),
+                new Date("2026-07-06")
+            ]}
         />
-        <CodeBlock
-            langHighlight="jsx"
-            langDisplay="JSX"
-            code={`
-                <DatePicker
-                    id="datepicker"
-                    name="date"
-                    date={formData.date}
-                    onChange={handleChange}
-                    disabledDays={[
-                        new Date("2026-07-03"),
-                        new Date("2026-07-06"),
-                        new Date("2026-07-15"),
-                        new Date("2026-07-06")
-                    ]}
-                />
-            `}
-        />
+    </OutputContainer>
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <DatePicker
+                id="datepicker"
+                name="date"
+                date={formData.date}
+                onChange={handleChange}
+                disabledDays={[
+                    new Date("2026-07-03"),
+                    new Date("2026-07-06"),
+                    new Date("2026-07-15"),
+                    new Date("2026-07-06")
+                ]}
+            />
+        `}
+    />
 
     <h4 id="disabled-input">Disabled input</h4>
-    <OutputContainer 
-        components={[
-            <MockupDatePicker
-                disabled={true}
-            />
-        ]} 
-        height="20rem" 
-    />
-     <CodeBlock
+    <OutputContainer height="20rem">
+        <MockupDatePicker disabled={true} />
+    </OutputContainer>
+    <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
         code={`

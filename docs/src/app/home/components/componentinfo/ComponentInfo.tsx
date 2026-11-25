@@ -81,17 +81,15 @@ export default function ComponentInfo() {
                 <div className="component-style-info-content">
                     <div>
                         <CodeBlock langHighlight="JSX" code={codeDemo1} />
-                        <OutputContainer
-                            components={[AccordionWrapper("filled", "chevron")]}
-                            height="10rem"
-                        />
+                        <OutputContainer height="10rem">
+                            {AccordionWrapper("filled", "chevron")}
+                        </OutputContainer>
                     </div>
                     <div>
                         <CodeBlock langHighlight="JSX" code={codeDemo2} />
-                        <OutputContainer
-                            components={[AccordionWrapper("empty", "plus")]}
-                            height="10rem" 
-                        />
+                        <OutputContainer height="10rem">
+                            {AccordionWrapper("empty", "plus")}
+                        </OutputContainer>
                     </div>
                 </div>
             </div>
@@ -104,17 +102,13 @@ export default function ComponentInfo() {
                     </p>
                 </div> 
                 <div className="component-theme-info-content">
-                    <OutputContainer 
-                        components={[
+                    <OutputContainer addThemeToggle={true} height="auto">
                             <div className="component-theme-info-components">
                                 {CookieConsentWrapper()}
                                 {SkeletonWrapper()}
                                 <MockupPopup width="18rem" />
                             </div>
-                        ]}
-                        addThemeToggle={true} 
-                        height="auto"
-                    />
+                    </OutputContainer>
                 </div>
             </div>
         </section>

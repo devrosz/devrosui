@@ -193,10 +193,9 @@ export default function MyComponent() {
     Input for authentication or verification where the user can only enter one
     symbol at time.
 
-   <OutputContainer 
-    components={[<EmailVerification />]}
-    height="20rem" 
-/>
+    <OutputContainer height="20rem">
+        <EmailVerification />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -217,10 +216,9 @@ export default function MyComponent() {
     
     <h4 id="label">Label</h4>
 
-    <OutputContainer 
-        components={[<PINVerification />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PINVerification />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -243,10 +241,9 @@ export default function MyComponent() {
 
     <h4 id="description">Description</h4>
 
-    <OutputContainer 
-        components={[<PhoneVerification />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PhoneVerification />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -269,10 +266,9 @@ export default function MyComponent() {
     />    
 
     <h4 id="separator">Separator</h4>
-       <OutputContainer 
-        components={[<BasicVerification />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <BasicVerification />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -303,10 +299,9 @@ export default function MyComponent() {
     every slot has been filled in. If ```autoSubmit``` is false, the user has to manually press
     'Enter' to submit the code.
 
-    <OutputContainer 
-        components={[<EmailVerification onSubmit="log" />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <EmailVerification onSubmit="log" />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -314,7 +309,7 @@ export default function MyComponent() {
         code={`
             <InputOTP>
                 <InputOTP.Form
-                    onSubmit={() => console.log("Submitted!)}
+                    onSubmit={() => console.log("Submitted!")}
                     autoSubmit={true}
                     inputLength={6}
                 >
@@ -331,10 +326,9 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled">Disabled</h4>
-       <OutputContainer 
-        components={[<PINVerification disabled={true} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PINVerification disabled={true} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -358,10 +352,9 @@ export default function MyComponent() {
 
     <h4 id="letters">Letters only</h4>
     
-     <OutputContainer 
-        components={[<PhoneVerification allowNumbers={false} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PhoneVerification allowNumbers={false} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -391,10 +384,9 @@ export default function MyComponent() {
 
     <h4 id="numbers">Numbers only</h4>
     
-    <OutputContainer 
-        components={[<PhoneVerification allowLetters={false} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PhoneVerification allowLetters={false} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -424,10 +416,9 @@ export default function MyComponent() {
 
     <h4 id="combination">Combination</h4>
     
-     <OutputContainer 
-        components={[<PhoneVerification />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <PhoneVerification />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -462,10 +453,9 @@ export default function MyComponent() {
     The ```key``` value is mandatory and must be different for each time an error occurs in order
     to trigger a re-render which will display the error again. The ```message``` value can be the same.
 
-     <OutputContainer 
-        components={[<OnError />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <OnError />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
