@@ -113,12 +113,9 @@ export default function MyComponent() {
     Component that lets the user conditionally render pages or JSX based on which
     tab is active.
 
-   <OutputContainer 
-    components={[
-            <WrapperTabs />
-        ]}
-    height="20rem" 
-/>
+    <OutputContainer height="20rem">
+        <WrapperTabs />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -142,12 +139,9 @@ export default function MyComponent() {
     Local tabs are tabs that conditionally render small JSX Elements for which creating layouts
     is an overkill. E.g. toggle between monthly or yearly plans to render the respective pricing cards.
 
-    <OutputContainer 
-        components={[
-           <WrapperTabs />
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperTabs />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -185,12 +179,9 @@ export default function MyComponent() {
     E.g. on a dashboard page switch between analytics, settings and an overview page.
 
 
-    <OutputContainer 
-        components={[
-          <WrapperTabs />
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperTabs />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -215,12 +206,9 @@ export default function MyComponent() {
     <h3 id="styling">Styling</h3>
 
     <h4 id="secondary">Secondary</h4>
-       <OutputContainer 
-        components={[
-           <WrapperTabs styling="secondary" />
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperTabs styling="secondary" />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -253,12 +241,9 @@ export default function MyComponent() {
     />
 
     <h4 id="tertiary">Tertiary</h4>
-        <OutputContainer 
-        components={[
-           <WrapperTabs styling="tertiary" />
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperTabs styling="tertiary" />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -291,12 +276,9 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled">Disabled</h4>
-       <OutputContainer 
-        components={[
-           <WrapperTabs showDisabled={true} />
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <WrapperTabs showDisabled={true} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
