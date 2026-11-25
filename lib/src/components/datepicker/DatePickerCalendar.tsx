@@ -214,6 +214,12 @@ export default function DatePickerCalendar({open, date, onSelect, minYear, maxYe
         const fourthWeek = [...Array(7).keys()].map(i => {
             return thirdWeek[6] + i + 1
         })
+
+        // Return when month only has four weeks.
+        if (Math.max(...fourthWeek) === daysCurrentMonth) {
+            return [firstWeek, secondWeek, thirdWeek, fourthWeek]
+        }
+
         const fifthWeek = [...Array(7).keys()].map(i => {
             // We detect if a day belongs to next month by modulo daysCurrentMonth + 1
             // such that e.g. 31 % 32 = 31 and 32 % 32 = 0.

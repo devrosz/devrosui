@@ -6,18 +6,11 @@ import "./spinner.css"
 type SpinnerProps = {
     color?: "primary" | "secondary" | "tertiary",
     size?: string,
-    key?: string
 }
 
 // Loading spinner that spins infinitely.
-export default function Spinner({color="primary", size="1.5rem", key}: SpinnerProps) {
-    return key ? (
-        <RiLoader5Line
-            key={key}
-            className={`spinner ${color}`}
-            style={{fontSize: size}}
-        />
-    ) : (
+export default function Spinner({color="primary", size="1.5rem"}: SpinnerProps) {
+    return (
         <RiLoader5Line
             className={`spinner ${color}`}
             style={{fontSize: size}}

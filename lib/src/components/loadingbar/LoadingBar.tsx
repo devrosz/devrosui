@@ -26,6 +26,8 @@ export default function LoadingBar({
     return (
         <div
             className={`loading-bar ${color}`}
+            role="progressbar"
+            aria-label="progress-bar"
             style={{
                 width: maxWidth,
                 height: thickness
@@ -33,6 +35,8 @@ export default function LoadingBar({
         >
             <div
                 className={`loading-bar-progress ${color}`}
+                role="progressbar"
+                aria-label="progress-value"
                 style={{
                     width: `calc(${maxWidth} * ${progress})`,
                     height: thickness,
