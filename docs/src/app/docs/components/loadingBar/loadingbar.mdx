@@ -1,0 +1,119 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import LoadingBarWrapper from "./LoadingBarWrapper"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "max-width",
+        title: "Max width",
+        level: 1
+    },
+    {
+        id: "thickness",
+        title: "Thickness",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+
+export const exampleCode = 
+`
+import { LoadingBar } from "@devrosui/react"
+
+export default function MyComponent() {
+    return <LoadingBar progress={0.5} />
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Loading bar
+    Bar that displays loading progress.
+
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper />
+    </OutputContainer>
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { LoadingBar } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="max-width">Max width</h4>
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper maxWidth="500px" />
+    </OutputContainer>
+
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`<LoadingBar progress={0.5} maxWidth="500px" />`}
+    />
+
+    <h4 id="thickness">Thickness</h4>
+    <OutputContainer height="20rem">
+        <LoadingBarWrapper thickness="10px" />
+    </OutputContainer>
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`<LoadingBar progress={0.5} thickness="10px" />`}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```progress*``` | ```number<0.0, 1.0>``` | ```0``` | Fraction of bar that is filled |
+        | ```maxWidth``` | ```string``` | ```"200px"``` | Width of the loading bar |
+        | ```color``` | ```"primary" \| "secondary"``` | ```"primary"``` | Color of the loading bar |
+        | ```thickness``` | ```string``` | ```"5px"``` | Thickness of the loading bar |
+    </div>
+
+    <h6>*: mandatory props</h6>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/components/inputOTP" direction="left">InputOTP</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/panel" direction="right">Panel</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

@@ -12,6 +12,7 @@
   align-items: center;
   text-align: center;
   gap: 4px;
+  cursor: pointer;
 }
 
 .custom-button > * {
@@ -78,6 +79,11 @@
 /* --devrosui---devrosui- Click animation --devrosui---devrosui- */
 .custom-button:active {
   transform: scale(0.95);
+}
+
+/* Don't do click animation when button is disabled */
+.custom-button:disabled:active {
+  transform: none;
 }
 
 .custom-button:focus:not(:active) {

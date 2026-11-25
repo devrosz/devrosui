@@ -69,12 +69,9 @@ export default function MyComponent() {
     ## Calendar
     Component that lets the user select a date via an interactive agenda-view.
 
-    <OutputContainer 
-        components={[
-            <Calendar/>
-        ]} 
-        height="22rem" 
-    />
+    <OutputContainer height="20rem">
+        <Calendar />
+    </OutputContainer>
 
     <h3 id="import">Import</h3>
 
@@ -102,15 +99,10 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="year-limits">Year limits</h4>
-    <OutputContainer 
-        components={[
-            <Calendar
-                minYear={2026}
-                maxYear={2026}
-            />
-        ]} 
-        height="22rem" 
-    />
+    <OutputContainer height="22rem" >
+        <Calendar minYear={2026} maxYear={2026} />
+    </OutputContainer>
+
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -123,35 +115,33 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled-dates">Disabled days</h4>
-    <OutputContainer 
-            components={[
-                <Calendar
-                    minYear={2026}
-                    maxYear={2026}
-                    disabledDays={[
-                        new Date("2026-07-03"),
-                        new Date("2026-07-06"),
-                        new Date("2026-07-15"),
-                        new Date("2026-07-06")
-                    ]}
-                />
-            ]} 
-            height="22rem" 
+    <OutputContainer height="22rem">
+        <Calendar
+            minYear={2026}
+            maxYear={2026}
+            disabledDays={[
+                new Date("2026-07-03"),
+                new Date("2026-07-06"),
+                new Date("2026-07-15"),
+                new Date("2026-07-06")
+            ]}
         />
-        <CodeBlock
-            langHighlight="jsx"
-            langDisplay="JSX"
-            code={`
-                <Calendar
-                    disabledDays={[
-                        new Date("2026-07-03"),
-                        new Date("2026-07-06"),
-                        new Date("2026-07-15"),
-                        new Date("2026-07-06")
-                    ]}
-                />
-            `}
-        />
+    </OutputContainer>
+
+    <CodeBlock
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Calendar
+                disabledDays={[
+                    new Date("2026-07-03"),
+                    new Date("2026-07-06"),
+                    new Date("2026-07-15"),
+                    new Date("2026-07-06")
+                ]}
+            />
+        `}
+    />
 
     <h3 id="props">Props</h3>
 

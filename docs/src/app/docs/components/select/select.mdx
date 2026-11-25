@@ -102,16 +102,13 @@ export default function MyComponent() {
     ## Select
     Component that lets the user select an option from a list of options.
 
-    <OutputContainer 
-        components={[
-            <MockupSelect 
-                options={["Volkswagen","Audi","Mercedes","BMW"]} 
-                placeholder="Select one"
-                label="select"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupSelect 
+            options={["Volkswagen","Audi","Mercedes","BMW"]} 
+            placeholder="Select one"
+            label="select"
+        />
+    </OutputContainer>
     <h3 id="import">Import</h3>
     <CodeBlock
         langHighlight="jsx"
@@ -154,15 +151,12 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="no-label">No Label</h4>
-    <OutputContainer 
-        components={[
-            <MockupSelect 
-                options={["Volkswagen","Audi","Mercedes","BMW"]} 
-                placeholder="Select one"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupSelect 
+            options={["Volkswagen","Audi","Mercedes","BMW"]} 
+            placeholder="Select one"
+        />
+    </OutputContainer>
     <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -184,17 +178,14 @@ export default function MyComponent() {
     />
 
     <h4 id="description">Description</h4>
-    <OutputContainer 
-        components={[
-            <MockupSelect 
-                options={["Volkswagen","Audi","Mercedes","BMW"]} 
-                placeholder="Select one"
-                label="Select"
-                description="Select your favorite car brand"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupSelect 
+            options={["Volkswagen","Audi","Mercedes","BMW"]} 
+            placeholder="Select one"
+            label="Select"
+            description="Select your favorite car brand"
+        />
+    </OutputContainer>
     <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -217,17 +208,14 @@ export default function MyComponent() {
     />
 
     <h4 id="multiple">Multiple</h4>
-    <OutputContainer 
-        components={[
-            <MockupSelect 
-                options={["Red","Blue","Green","Yellow"]} 
-                placeholder="Select some"
-                multiple={true}
-                label="Select"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupSelect 
+            options={["Red","Blue","Green","Yellow"]} 
+            placeholder="Select some"
+            multiple={true}
+            label="Select"
+        />
+    </OutputContainer>
     <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -251,17 +239,14 @@ export default function MyComponent() {
     />
 
     <h4 id="disabled">Disabled</h4>
-    <OutputContainer 
-        components={[
-            <MockupSelect 
-                options={["Volkswagen","Audi","Mercedes","BMW"]} 
-                placeholder="Select one"
-                disabled={true}
-                label="Select"
-            />
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <MockupSelect 
+            options={["Volkswagen","Audi","Mercedes","BMW"]} 
+            placeholder="Select one"
+            disabled={true}
+            label="Select"
+        />
+    </OutputContainer>
     <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"

@@ -54,12 +54,10 @@ export default function MyComponent() {
     ## ErrorMessage
     Displays an error message.
 
-   <OutputContainer 
-        components={[
-            <ErrorMessage>An unexpected error occured. Please try again later.</ErrorMessage>
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <ErrorMessage width="30rem">An unexpected error occured. Please try again later.</ErrorMessage>
+    </OutputContainer>
+    
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -75,12 +73,10 @@ export default function MyComponent() {
     <h3 id="variants">Variants</h3>
 
     <h4 id="warning">Warning</h4>
-    <OutputContainer 
-        components={[
-            <ErrorMessage>An unexpected error occured. Please try again later.</ErrorMessage>
-        ]} 
-        height="20rem" 
-    />
+    <OutputContainer height="20rem">
+        <ErrorMessage width="30rem">An unexpected error occured. Please try again later.</ErrorMessage>
+    </OutputContainer>
+
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
@@ -88,10 +84,9 @@ export default function MyComponent() {
     />
 
     <h4 id="danger">Danger</h4>
-    <OutputContainer
-        components={[<ErrorMessage type="danger">An unexpected error occured. Please try again later.</ErrorMessage>]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <ErrorMessage width="30rem" type="danger">An unexpected error occured. Please try again later.</ErrorMessage>
+    </OutputContainer>
     <CodeBlock 
         langHighlight="jsx"
         langDisplay="JSX"
@@ -114,7 +109,7 @@ export default function MyComponent() {
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/getting-started/dropdown" direction="left">Dropdown</ArrowLink>
+            <ArrowLink path="/docs/components/dropdown" direction="left">Dropdown</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>

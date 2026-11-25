@@ -30,6 +30,7 @@
     background-color: var(--devrosui-background-primary);
     border: 1px solid var(--devrosui-button-secondary-border);
     margin: 0.5rem 0;
+    cursor: pointer;
 }
 
 html.light .select-button {
@@ -86,6 +87,7 @@ ul.option-list button, .select-button {
 ul.option-list button {
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 ul.option-list button:hover, .select-button:hover {

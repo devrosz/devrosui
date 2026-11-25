@@ -1,0 +1,22 @@
+.spinner {
+    animation: spin 1s ease-in infinite;
+    color: var(--devrosui-text-primary);
+}
+
+.spinner.primary {
+    color: var(--devrosui-text-primary);
+}
+
+.spinner.secondary {
+    color: var(--devrosui-text-secondary);
+}
+
+.spinner.tertiary {
+    color: var(--devrosui-text-tertiary);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

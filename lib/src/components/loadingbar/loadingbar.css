@@ -1,0 +1,33 @@
+.loading-bar {
+    position: relative;
+    content: "";
+    border-radius: 16px;
+    background-color: var(--devrosui-button-secondary-hover);
+}
+
+.loading-bar-progress {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    background-color: var(--devrosui-background-secondary);
+    transition: 0.25s ease-out;
+}
+
+/* Primary styling */
+.loading-bar.primary {
+    background-color: var(--devrosui-button-secondary-hover);
+}
+
+.loading-bar-progress.primary {
+    background-color: var(--devrosui-background-secondary);
+}
+
+/* Secondary styling */
+.loading-bar.secondary {
+    background-color: var(--devrosui-button-primary-hover);
+}
+
+.loading-bar-progress.secondary {
+    background-color: var(--devrosui-background-primary);
+}

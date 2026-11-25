@@ -100,7 +100,9 @@ export default function Showcase() {
                     return (
                         <div className={className} key={"showcase-" + i}>
                             <div className="demo-container-output">
-                                <OutputContainer components={[component]} width="23rem" height="23rem" />
+                                <OutputContainer width="23rem" height="23rem">
+                                    {component}
+                                </OutputContainer>
                             </div>
                             <div className="component-header">
                                 <div>

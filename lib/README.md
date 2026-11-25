@@ -119,3 +119,12 @@ when rendering ```<Accordion.Item>``` inside the ```.map``` method.
 
 ### v2.1.8
 - allowed user to pass ```className``` prop to the ```<Button>``` component so the user can apply custom styling on top of the in-library styling.
+
+### v2.1.9
+- prevent the click animation on ```<Button>``` when the button is disabled.
+- fixed bug in ```Calendar``` and ```Datepicker``` where some february months had an extra week which actually belongs to march of that year.
+- added pointer cursors on ```Tabs```, ```Switch```, ```Select```, ```Dropdown```, ```Datepicker```, ```Calendar``` and ```Button```.
+
+### v2.2.9
+- added loading spinner component.
+- added a loading bar component.

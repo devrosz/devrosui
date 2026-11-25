@@ -109,10 +109,9 @@ export default function MyComponent() {
     ## Switch
     Slidable button that toggles between two-states.
 
-   <OutputContainer 
-    components={[<Basic />]}
-    height="20rem" 
-/>
+    <OutputContainer height="20rem">
+        <Basic />
+    </OutputContainer>
    
    <h3 id="import">Import</h3>
 
@@ -134,10 +133,9 @@ export default function MyComponent() {
     
     <h4 id="label">Label</h4>
 
-    <OutputContainer 
-        components={[<Label />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Label />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -158,10 +156,9 @@ export default function MyComponent() {
 
     <h4 id="description">Description</h4>
 
-    <OutputContainer 
-        components={[<Description />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Description />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -185,10 +182,9 @@ export default function MyComponent() {
 
     <h4 id="icons">Icons</h4>
 
-    <OutputContainer 
-        components={[<Icons />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Icons />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -211,10 +207,9 @@ export default function MyComponent() {
 
     <h4 id="initial">Initial value</h4>
 
-    <OutputContainer 
-        components={[<Description isActive={true} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Description isActive={true} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -238,10 +233,9 @@ export default function MyComponent() {
 
     <h4 id="disabled">Disabled</h4>
 
-    <OutputContainer 
-        components={[<Description disabled={true} />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Description disabled={true} />
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"
@@ -322,7 +316,7 @@ export default function MyComponent() {
     <div className="docs-page-explore">
         <div className="docs-page-explore-link">
             <h6>Previous</h6>
-            <ArrowLink path="/docs/components/slider" direction="left">Slider</ArrowLink>
+            <ArrowLink path="/docs/components/spinner" direction="left">Spinner</ArrowLink>
         </div>
         <div className="docs-page-explore-link">
             <h6>Next</h6>

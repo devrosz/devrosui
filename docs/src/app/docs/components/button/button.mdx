@@ -71,11 +71,9 @@ export default function MyComponent() {
     ## Button
     Rounded button component with multiple variants.
 
-   <OutputContainer components={[
+   <OutputContainer height="20rem">
         <Button>Click me</Button>
-    ]}
-    height="20rem" 
-   />
+   </OutputContainer>
    
    <h3 id="import">Import</h3>
    <CodeBlock 
@@ -92,7 +90,7 @@ export default function MyComponent() {
 
    <h4 id="colours">Colours</h4>
 
-    <OutputContainer components={[
+    <OutputContainer height="20rem">
         <div 
             style={{
                 "display": "flex",
@@ -107,9 +105,7 @@ export default function MyComponent() {
             <Button variant="tertiary">Tertiary</Button>
             <Button variant="danger">Danger</Button>
         </div>
-    ]}
-    height="20rem" 
-   />
+   </OutputContainer>
 
    <CodeBlock 
         langHighlight="jsx"
@@ -124,7 +120,7 @@ export default function MyComponent() {
 
     <h4 id="icons-text">Icons and text</h4>
 
-    <OutputContainer components={[
+    <OutputContainer height="20rem">
         <div 
             style={{
                 "display": "flex",
@@ -151,9 +147,7 @@ export default function MyComponent() {
                 Delete
             </Button>
         </div>
-    ]}
-    height="20rem" 
-   />
+    </OutputContainer>
 
    <CodeBlock 
         langHighlight="jsx"
@@ -183,7 +177,7 @@ export default function MyComponent() {
 
     <h4 id="icons">Icons only</h4>
 
-    <OutputContainer components={[
+    <OutputContainer height="20rem">
         <div 
             style={{
                 "display": "flex",
@@ -206,9 +200,7 @@ export default function MyComponent() {
                 <FaRegTrashAlt variant={{fontSize: "1rem"}} />
             </Button>
         </div>
-    ]}
-    height="20rem" 
-   />
+    </OutputContainer>
 
    <CodeBlock 
         langHighlight="jsx"
@@ -234,12 +226,9 @@ export default function MyComponent() {
 
     <h4 id="custom">Custom styling</h4>
 
-    <OutputContainer
-        components={[
-            <Button style={{width: "200px"}}>Login</Button>
-        ]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <Button style={{width: "200px"}}>Login</Button>
+    </OutputContainer>
 
     <CodeBlock
         langHighlight="jsx"

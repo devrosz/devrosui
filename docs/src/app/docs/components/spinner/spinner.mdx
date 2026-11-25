@@ -1,0 +1,149 @@
+import BreadCrumbs from "@/components/interfaces/breadcrumbs/BreadCrumbs"
+import CodeBlock from "@/components/interfaces/codeblock/CodeBlock"
+import ArrowLink from "@/components/interfaces/arrowlink/ArrowLink"
+import OutputContainer from "@/components/interfaces/outputcontainer/OutputContainer"
+import TableOfContents from "@/components/interfaces/tableofcontents/TableOfContents"
+import { Spinner } from "@devrosui/react"
+
+export const headers = [
+    {
+        id: "import",
+        title: "Import",
+        level: 0
+    },
+    {
+        id: "usage",
+        title: "Usage",
+        level: 0
+    },
+    {
+        id: "variants",
+        title: "Variants",
+        level: 0
+    },
+    {
+        id: "colors",
+        title: "Colors",
+        level: 1
+    },
+    {
+        id: "sizes",
+        title: "Sizes",
+        level: 1
+    },
+    {
+        id: "props",
+        title: "Props",
+        level: 0
+    }
+]
+
+
+export const exampleCode = 
+`
+import { Spinner } from "@devrosui/react"
+
+export default function MyComponent() {
+    return <Spinner />
+}
+`
+
+<div className="docs-page-content">
+    <BreadCrumbs />
+    ## Spinner
+    Loading spinner that spins infinitely.
+
+    <OutputContainer height="20rem">
+        <Spinner size="5rem" />
+    </OutputContainer>
+   
+   <h3 id="import">Import</h3>
+   <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={'import { Spinner } from "@devrosui/react"'}
+    />
+   
+   <h3 id="usage">Usage</h3>
+
+   <CodeBlock langHighlight="jsx" langDisplay="JSX" code={exampleCode} />
+
+    <h3 id="variants">Variants</h3>
+
+    <h4 id="colors">Colors</h4>
+    <OutputContainer height="20rem">
+        <div key="colors"
+            style={{
+                "display": "flex",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem"
+            }}
+        >
+            <Spinner />
+            <Spinner color="secondary" />
+            <Spinner color="tertiary" />
+        </div>
+    </OutputContainer>
+
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Spinner color="primary" />
+            // Not visible due to black background. Try to switch to light mode!
+            <Spinner color="secondary" />
+            <Spinner color="tertiary" />
+        `}
+    />
+
+    <h4 id="sizes">Sizes</h4>
+    <OutputContainer height="20rem">
+        <div key="sizes"
+            style={{
+                "display": "flex",
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "1rem"
+            }}
+        >
+            <Spinner size="1rem" />
+            <Spinner size="2rem" />
+            <Spinner size="3rem" />
+        </div>
+    </OutputContainer>
+
+    <CodeBlock 
+        langHighlight="jsx"
+        langDisplay="JSX"
+        code={`
+            <Spinner size="1rem" />
+            <Spinner size="2rem" />
+            <Spinner size="3rem" />
+        `}
+    />
+
+    <h3 id="props">Props</h3>
+
+    <div className="docs-page-table-container">
+        | Prop | Type | Default | Description |
+        | :--- | :--- | :------ | :---------- |
+        | ```color``` | ```"primary" \| "secondary" \| "tertiary"``` | ```"primary"``` | Color of the loading spinner |
+        | ```size``` | ```string``` | ```"1.5rem"``` | Size of the loading spinner |
+    </div>
+
+    <div className="docs-page-explore">
+        <div className="docs-page-explore-link">
+            <h6>Previous</h6>
+            <ArrowLink path="/docs/getting-started/slider" direction="left">Slider</ArrowLink>
+        </div>
+        <div className="docs-page-explore-link">
+            <h6>Next</h6>
+            <ArrowLink path="/docs/components/switch" direction="right">Switch</ArrowLink>
+        </div>
+    </div>
+</div>
+
+<TableOfContents headers={headers} />

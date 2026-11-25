@@ -68,7 +68,9 @@ export default function MyComponent() {
     right now for easy navigation. It is also possible to click on parent directories within
     this route to navigate back.
 
-    <OutputContainer components={[<BreadCrumbs path={examplePath} />]} height="20rem" />
+    <OutputContainer height="20rem">
+        <BreadCrumbs path={examplePath} />
+    </OutputContainer>
     <h3 id="import">Import</h3>
     <CodeBlock
         langHighlight="jsx"
@@ -91,10 +93,9 @@ export default function MyComponent() {
     You can also choose any character as delimiter as shown below.
 
     <h4 id="chevron-delimiter">Chevron Delimiter</h4>
-    <OutputContainer 
-        components={[<BreadCrumbs path={examplePath} delimiter=">" />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <BreadCrumbs path={examplePath} delimiter=">" />
+    </OutputContainer>
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -102,10 +103,9 @@ export default function MyComponent() {
     />
 
     <h4 id="slash-delimiter">Slash Delimiter</h4>
-    <OutputContainer 
-        components={[<BreadCrumbs path={examplePath} delimiter="/" />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <BreadCrumbs path={examplePath} delimiter="/" />
+    </OutputContainer>
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
@@ -113,10 +113,9 @@ export default function MyComponent() {
     />
 
     <h4 id="empty-delimiter">Empty Delimiter</h4>
-    <OutputContainer 
-        components={[<BreadCrumbs path={examplePath} delimiter=" " />]}
-        height="20rem"
-    />
+    <OutputContainer height="20rem">
+        <BreadCrumbs path={examplePath} delimiter=" " />
+    </OutputContainer>
      <CodeBlock
         langHighlight="jsx"
         langDisplay="JSX"
