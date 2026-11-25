@@ -20,6 +20,7 @@
     background-color: transparent;
     color: var(--devrosui-text-tertiary);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .tab button {
@@ -37,6 +38,10 @@
 .tab-text {
     position: relative;
     z-index: 3;
+}
+
+.tab-text > * {
+    cursor: pointer;
 }
 
 .tab.active {

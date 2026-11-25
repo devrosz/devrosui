@@ -12,6 +12,7 @@
   align-items: center;
   text-align: center;
   gap: 4px;
+  cursor: pointer;
 }
 
 .custom-button > * {
